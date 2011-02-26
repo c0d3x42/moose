@@ -39,6 +39,16 @@ suite.addBatch({
         'we get ': function (topic) {
             assert.equal(topic.sql, "select * from test where x = 0");
         }
+    },
+
+     'when using find and a number = 0': {
+        topic: function () {
+            return new Mysql("test", db).find({x : 0})
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where x = 0");
+        }
     }
 });
 
@@ -51,12 +61,32 @@ suite.addBatch({
         'we get ': function (topic) {
             assert.equal(topic.sql, "select * from test where x != 0");
         }
+    },
+
+     'when using find and a number != 0': {
+        topic: function () {
+            return new Mysql("test", db).find({x : {neq : 0}})
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where x != 0");
+        }
     }
 });
 suite.addBatch({
     'when finding a number > zero': {
         topic: function () {
             return new Mysql("test", db).gt({x : 0})
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where x > 0");
+        }
+    },
+
+     'when using find and a number > 0': {
+        topic: function () {
+            return new Mysql("test", db).find({x : {gt : 0}})
         },
 
         'we get ': function (topic) {
@@ -74,6 +104,16 @@ suite.addBatch({
         'we get ': function (topic) {
             assert.equal(topic.sql, "select * from test where x >= 0");
         }
+    },
+
+     'when using find and a number >= to one': {
+        topic: function () {
+            return new Mysql("test", db).find({x : {gte : 0}})
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where x >= 0");
+        }
     }
 });
 
@@ -86,6 +126,16 @@ suite.addBatch({
         'we get ': function (topic) {
             assert.equal(topic.sql, "select * from test where x < 1");
         }
+    },
+
+     'when using find and a number < to one': {
+        topic: function () {
+            return new Mysql("test", db).find({x : {lt : 1}})
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where x < 1");
+        }
     }
 });
 
@@ -93,6 +143,16 @@ suite.addBatch({
     'when finding a number <= to one': {
         topic: function () {
             return new Mysql("test", db).lte({x : 1})
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where x <= 1");
+        }
+    },
+
+     'when using find and a number <= to one': {
+        topic: function () {
+            return new Mysql("test", db).find({x : {lte : 1}})
         },
 
         'we get ': function (topic) {
@@ -149,7 +209,17 @@ suite.addBatch({
         'we get ': function (topic) {
             assert.equal(topic.sql, "select * from test where flag is true and otherFlag is false and anotherFlag is unknown and yetAnotherFlag is null");
         }
-    }
+    },
+
+    'when using find and is operation': {
+        topic: function () {
+            return new Mysql("test", db).find({flag : {is : "unknown"}})
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where flag is unknown");
+        }
+    },
 });
 
 suite.addBatch({
@@ -200,7 +270,17 @@ suite.addBatch({
         'we get ': function (topic) {
             assert.equal(topic.sql, "select * from test where flag is not true and otherFlag is not false and anotherFlag is not unknown and yetAnotherFlag is not null");
         }
-    }
+    },
+
+    'when using find and is operations': {
+        topic: function () {
+            return new Mysql("test", db).find({flag : {isNot : "unknown"}})
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where flag is not unknown");
+        }
+    },
 });
 
 suite.addBatch({
@@ -266,7 +346,7 @@ suite.addBatch({
 suite.addBatch({
     'when grouping queries': {
         topic: function () {
-            return new Mysql("test", db).group({flag : {isNot : null}, x : 1}).or().group({x : 2});
+            return new Mysql("test", db).logicGroup({flag : {isNot : null}, x : 1}).or().logicGroup({x : 2});
         },
 
         'we get ': function (topic) {
@@ -276,7 +356,7 @@ suite.addBatch({
 
     'when grouping queries nested in or': {
         topic: function () {
-            return new Mysql("test", db).group({flag : {isNot : null}, x : 1}).or().group({x : 2});
+            return new Mysql("test", db).logicGroup({flag : {isNot : null}, x : 1}).or().logicGroup({x : 2});
         },
 
         'we get ': function (topic) {
@@ -328,7 +408,10 @@ suite.addBatch({
 
     'when ordering by multiple properties both desc': {
         topic: function () {
-            return new Mysql("test", db).order([{x : "desc"}, {y : "desc"}]);
+            return new Mysql("test", db).order([
+                {x : "desc"},
+                {y : "desc"}
+            ]);
         },
 
         'we get ': function (topic) {
@@ -670,7 +753,55 @@ suite.addBatch({
     }
 });
 
+suite.addBatch({
+    'when using in operation': {
+        topic: function () {
+            return new Mysql("test", db).in({id : [1,2,3,4,5]}).end();
+        },
 
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where id in (1,2,3,4,5)");
+        }
+    },
+    'when using not in operation': {
+        topic: function () {
+            return new Mysql("test", db).notIn({id : [1,2,3,4,5]}).end();
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where id not in (1,2,3,4,5)");
+        }
+    },
+    'when chaining in and notIn operation': {
+        topic: function () {
+            return new Mysql("test", db).in({id : [1,2,3,4,5]}).notIn({id2 : [6,7,8,9,10]}).end();
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where id in (1,2,3,4,5) and id2 not in (6,7,8,9,10)");
+        }
+    },
+
+    'when nesting in operations': {
+        topic: function () {
+            return new Mysql("test", db).in({id : [1,2,3,4,5], id2 : [6,7,8,9,10]});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where id in (1,2,3,4,5) and id2 in (6,7,8,9,10)");
+        }
+    },
+
+    'when using find and in operations': {
+        topic: function () {
+            return new Mysql("test", db).find({id : [1,2,3,4,5], id2 : [6,7,8,9,10]});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where id in (1,2,3,4,5) and id2 in (6,7,8,9,10)");
+        }
+    }
+});
 
 suite.addBatch({
     'when finding a number > zero': {
