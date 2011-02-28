@@ -4,7 +4,6 @@ var vows = require('vows'),
         Client = require('mysql').Client,
         db = new Client();
 // Create a Test Suite
-console.log(Mysql);
 var suite = vows.describe('mysql adapter')
 suite.addBatch({
     'when finding all records with all fields': {
@@ -41,7 +40,7 @@ suite.addBatch({
         }
     },
 
-     'when using find and a number = 0': {
+    'when using find and a number = 0': {
         topic: function () {
             return new Mysql("test", db).find({x : 0})
         },
@@ -63,7 +62,7 @@ suite.addBatch({
         }
     },
 
-     'when using find and a number != 0': {
+    'when using find and a number != 0': {
         topic: function () {
             return new Mysql("test", db).find({x : {neq : 0}})
         },
@@ -84,7 +83,7 @@ suite.addBatch({
         }
     },
 
-     'when using find and a number > 0': {
+    'when using find and a number > 0': {
         topic: function () {
             return new Mysql("test", db).find({x : {gt : 0}})
         },
@@ -106,7 +105,7 @@ suite.addBatch({
         }
     },
 
-     'when using find and a number >= to one': {
+    'when using find and a number >= to one': {
         topic: function () {
             return new Mysql("test", db).find({x : {gte : 0}})
         },
@@ -128,7 +127,7 @@ suite.addBatch({
         }
     },
 
-     'when using find and a number < to one': {
+    'when using find and a number < to one': {
         topic: function () {
             return new Mysql("test", db).find({x : {lt : 1}})
         },
@@ -150,7 +149,7 @@ suite.addBatch({
         }
     },
 
-     'when using find and a number <= to one': {
+    'when using find and a number <= to one': {
         topic: function () {
             return new Mysql("test", db).find({x : {lte : 1}})
         },
@@ -799,6 +798,531 @@ suite.addBatch({
 
         'we get ': function (topic) {
             assert.equal(topic.sql, "select * from test where id in (1,2,3,4,5) and id2 in (6,7,8,9,10)");
+        }
+    }
+});
+
+suite.addBatch({
+    'when limiting result set': {
+        topic: function () {
+            return new Mysql("test", db).limit(1);
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test limit 1");
+        }
+    },
+
+    'when limiting result set with offset': {
+        topic: function () {
+            return new Mysql("test", db).limit(1, 10);
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test limit 1 offset 10");
+        }
+    },
+
+    'when limiting result set with a query': {
+        topic: function () {
+            return new Mysql("test", db).find({a : {gte : "b"}}).limit(1);
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where a >= 'b' limit 1");
+        }
+    }
+});
+
+suite.addBatch({
+    'when querying with like': {
+        topic: function () {
+            return new Mysql("test", db).like({name : "bob"});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where name like 'bob'");
+        }
+    },
+
+    'when querying with not like': {
+        topic: function () {
+            return new Mysql("test", db).notLike({name : "bob"});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where name not like 'bob'");
+        }
+    },
+
+    'when querying like with find': {
+        topic: function () {
+            return new Mysql("test", db).find({firstName : {like : 'bob'}, lastName : {notLike : "henry"}});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where firstName like 'bob' and lastName not like 'henry'");
+        }
+    }
+});
+
+suite.addBatch({
+    'when limiting result set with offset': {
+        topic: function () {
+            return new Mysql("test", db).limit(1, 10);
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test limit 1 offset 10");
+        }
+    },
+
+    'when limiting result set with a query': {
+        topic: function () {
+            return new Mysql("test", db).find({a : {gte : "b"}}).offset(10);
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where a >= 'b' offset 10");
+        }
+    }
+});
+
+suite.addBatch({
+    'when grouping result set': {
+        topic: function () {
+            return new Mysql("test", db).group("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test group by name");
+        }
+    },
+
+    'when grouping result set with an array of columns': {
+        topic: function () {
+            return new Mysql("test", db).group(["name", "age"]);
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test group by name, age");
+        }
+    },
+    'when grouping result set with a having clause': {
+        topic: function () {
+            return new Mysql("test", db).group("name", {name : "bob"});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test group by name having name = 'bob'");
+        }
+    },
+
+    'when grouping result set with an array of columns and a having clause': {
+        topic: function () {
+            return new Mysql("test", db).group(["name", "age"], {age : {between : [10, 20]}});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test group by name, age having age >= 10 and age <= 20");
+        }
+    },
+
+    'when grouping result set with an array of columns and using having function': {
+        topic: function () {
+            return new Mysql("test", db).group(["name", "age"]).having({age : {between : [10, 20]}});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test group by name, age having age >= 10 and age <= 20");
+        }
+    },
+
+
+    'when grouping result set with an array of columns and using find function': {
+        topic: function () {
+            return new Mysql("test", db).group(["name", "age"]).having().find({age : {between : [10, 20]}});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test group by name, age having age >= 10 and age <= 20");
+        }
+    },
+
+
+    'when grouping result set with an array of columns and using find function': {
+        topic: function () {
+            return new Mysql("test", db).group(["name", "age"]).having().isNull("age");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test group by name, age having age is null");
+        }
+    },
+
+    'when grouping result set with variance': {
+        topic: function () {
+            return new Mysql("test", db).groupAndVariance("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select *, variance(name) as name_variance from test group by name");
+        }
+    },
+
+    'when grouping result set with varSamp': {
+        topic: function () {
+            return new Mysql("test", db).groupAndVarSamp("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select *, var_samp(name) as name_var_samp from test group by name");
+        }
+    },
+    'when grouping result set with varPop': {
+        topic: function () {
+            return new Mysql("test", db).groupAndVarPop("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select *, var_pop(name) as name_var_pop from test group by name");
+        }
+    },
+
+    'when grouping result set with stdDev': {
+        topic: function () {
+            return new Mysql("test", db).groupAndStdDev("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select *, stddev(name) as name_stddev from test group by name");
+        }
+    },
+    'when grouping result set with stdDevSamp': {
+        topic: function () {
+            return new Mysql("test", db).groupAndStdDevSamp("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select *, stddev_samp(name) as name_stddev_samp from test group by name");
+        }
+    },
+
+    'when grouping result set with stdDevPop': {
+        topic: function () {
+            return new Mysql("test", db).groupAndStdDevPop("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select *, stddev_pop(name) as name_stddev_pop from test group by name");
+        }
+    },
+
+    'when grouping result set with std': {
+        topic: function () {
+            return new Mysql("test", db).groupAndStd("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select *, std(name) as name_std from test group by name");
+        }
+    },
+
+    'when grouping result set with bitXor': {
+        topic: function () {
+            return new Mysql("test", db).groupAndBitXor("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select *, bit_xor(name) as name_bit_xor from test group by name");
+        }
+    },
+
+    'when grouping result set with bitOr': {
+        topic: function () {
+            return new Mysql("test", db).groupAndBitOr("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select *, bit_or(name) as name_bit_or from test group by name");
+        }
+    },
+
+    'when grouping result set with bitAnd': {
+        topic: function () {
+            return new Mysql("test", db).groupAndBitAnd("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select *, bit_and(name) as name_bit_and from test group by name");
+        }
+    },
+
+
+    'when grouping result set with max': {
+        topic: function () {
+            return new Mysql("test", db).groupAndMax("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select *, max(name) as name_max from test group by name");
+        }
+    },
+
+    'when grouping result set with min': {
+        topic: function () {
+            return new Mysql("test", db).groupAndMin("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select *, min(name) as name_min from test group by name");
+        }
+    },
+
+
+    'when grouping result set with avg': {
+        topic: function () {
+            return new Mysql("test", db).groupAndAvg("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select *, avg(name) as name_avg from test group by name");
+        }
+    },
+
+
+    'when grouping result set with sum': {
+        topic: function () {
+            return new Mysql("test", db).groupAndSum("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select *, sum(name) as name_sum from test group by name");
+        }
+    },
+
+    'when grouping result set with count': {
+        topic: function () {
+            return new Mysql("test", db).groupAndCount("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select *, count(name) as name_count from test group by name");
+        }
+    }
+});
+
+suite.addBatch({
+     'when querying with variance': {
+        topic: function () {
+            return new Mysql("test", db).variance("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select variance(name) as name_variance from test");
+        }
+    },
+
+    'when querying with varSamp': {
+        topic: function () {
+            return new Mysql("test", db).varSamp("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select var_samp(name) as name_var_samp from test");
+        }
+    },
+    'when querying with varPop': {
+        topic: function () {
+            return new Mysql("test", db).varPop("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select var_pop(name) as name_var_pop from test");
+        }
+    },
+
+    'when querying with stdDev': {
+        topic: function () {
+            return new Mysql("test", db).stdDev("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select stddev(name) as name_stddev from test");
+        }
+    },
+    'when querying with stdDevSamp': {
+        topic: function () {
+            return new Mysql("test", db).stdDevSamp("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select stddev_samp(name) as name_stddev_samp from test");
+        }
+    },
+
+    'when querying with stdDevPop': {
+        topic: function () {
+            return new Mysql("test", db).stdDevPop("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select stddev_pop(name) as name_stddev_pop from test");
+        }
+    },
+
+    'when querying with std': {
+        topic: function () {
+            return new Mysql("test", db).std("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select std(name) as name_std from test");
+        }
+    },
+
+    'when querying with bitXor': {
+        topic: function () {
+            return new Mysql("test", db).bitXor("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select bit_xor(name) as name_bit_xor from test");
+        }
+    },
+
+    'when querying with bitOr': {
+        topic: function () {
+            return new Mysql("test", db).bitOr("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select bit_or(name) as name_bit_or from test");
+        }
+    },
+
+    'when querying with bitAnd': {
+        topic: function () {
+            return new Mysql("test", db).bitAnd("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select bit_and(name) as name_bit_and from test");
+        }
+    },
+
+
+    'when querying with max': {
+        topic: function () {
+            return new Mysql("test", db).max("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select max(name) as name_max from test");
+        }
+    },
+
+    'when querying with min': {
+        topic: function () {
+            return new Mysql("test", db).min("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select min(name) as name_min from test");
+        }
+    },
+
+
+    'when querying with avg': {
+        topic: function () {
+            return new Mysql("test", db).avg("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select avg(name) as name_avg from test");
+        }
+    },
+
+
+    'when querying with sum': {
+        topic: function () {
+            return new Mysql("test", db).sum("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select sum(name) as name_sum from test");
+        }
+    },
+
+    'when querying with count': {
+        topic: function () {
+            return new Mysql("test", db).count("name");
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select count(name) as name_count from test");
+        }
+    },
+
+    'when querying with count without options': {
+        topic: function () {
+            return new Mysql("test", db).count();
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select count(*) as count from test");
+        }
+    }
+});
+
+suite.addBatch({
+    'when finding values between two values': {
+        topic: function () {
+            return new Mysql("test", db).between({x : [1,5]});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where x >= 1 and x <= 5");
+        }
+    },
+
+    'when finding values not between two values': {
+        topic: function () {
+            return new Mysql("test", db).notBetween({x : [1,5]});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where x <= 1 and x >= 5");
+        }
+    },
+
+    'when finding values not between two values with strings': {
+        topic: function () {
+            return new Mysql("test", db).notBetween({x : ["a","b"]});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where x <= 'a' and x >= 'b'");
+        }
+    },
+
+    'when finding values not between two values with strings uning find': {
+        topic: function () {
+            return new Mysql("test", db).find({x : {notBetween : ["a","b"]}});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where x <= 'a' and x >= 'b'");
+        }
+    },
+
+    'when finding values between two values with strings uning find': {
+        topic: function () {
+            return new Mysql("test", db).find({x : {between : ["a","b"]}});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where x >= 'a' and x <= 'b'");
         }
     }
 });
