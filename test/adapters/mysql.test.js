@@ -1,6 +1,7 @@
 var vows = require('vows'),
         assert = require('assert'),
-        Mysql = require("../../lib/adapters").mysql,
+        moose = require("../../lib"),
+        Mysql = moose.adapters.mysql,
         Client = require('mysql').Client,
         db = new Client();
 // Create a Test Suite
@@ -218,7 +219,7 @@ suite.addBatch({
         'we get ': function (topic) {
             assert.equal(topic.sql, "select * from test where flag is unknown");
         }
-    },
+    }
 });
 
 suite.addBatch({
@@ -279,7 +280,7 @@ suite.addBatch({
         'we get ': function (topic) {
             assert.equal(topic.sql, "select * from test where flag is not unknown");
         }
-    },
+    }
 });
 
 suite.addBatch({
@@ -426,7 +427,7 @@ suite.addBatch({
         'we get ': function (topic) {
             assert.equal(topic.sql, "select * from test order by x, y, z desc");
         }
-    },
+    }
 
 
 });
@@ -480,7 +481,7 @@ suite.addBatch({
         'we get ': function (topic) {
             assert.equal(topic.sql, "select * from test where x <= 1 or y >= 1");
         }
-    },
+    }
 });
 
 suite.addBatch({
@@ -755,7 +756,7 @@ suite.addBatch({
 suite.addBatch({
     'when using in operation': {
         topic: function () {
-            return new Mysql("test", db).in({id : [1,2,3,4,5]}).end();
+            return new Mysql("test", db)["in"]({id : [1,2,3,4,5]}).end();
         },
 
         'we get ': function (topic) {
@@ -773,7 +774,7 @@ suite.addBatch({
     },
     'when chaining in and notIn operation': {
         topic: function () {
-            return new Mysql("test", db).in({id : [1,2,3,4,5]}).notIn({id2 : [6,7,8,9,10]}).end();
+            return new Mysql("test", db)["in"]({id : [1,2,3,4,5]}).notIn({id2 : [6,7,8,9,10]}).end();
         },
 
         'we get ': function (topic) {
@@ -783,11 +784,21 @@ suite.addBatch({
 
     'when nesting in operations': {
         topic: function () {
-            return new Mysql("test", db).in({id : [1,2,3,4,5], id2 : [6,7,8,9,10]});
+            return new Mysql("test", db)["in"]({id : [1,2,3,4,5], id2 : [6,7,8,9,10]});
         },
 
         'we get ': function (topic) {
             assert.equal(topic.sql, "select * from test where id in (1,2,3,4,5) and id2 in (6,7,8,9,10)");
+        }
+    },
+
+    'when nesting in with another Mysql query': {
+        topic: function () {
+            return new Mysql("test", db)["in"]({id : new Mysql("test2", db).select("id2").between({name : ["A", "B"]})});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select * from test where id in (select id2 from test2 where name >= 'A' and name <= 'B')");
         }
     },
 
@@ -1113,7 +1124,7 @@ suite.addBatch({
 });
 
 suite.addBatch({
-     'when querying with variance': {
+    'when querying with variance': {
         topic: function () {
             return new Mysql("test", db).variance("name");
         },
@@ -1328,6 +1339,120 @@ suite.addBatch({
 });
 
 suite.addBatch({
+    'when updating': {
+        topic: function () {
+            return new Mysql("test", db).update({x : 1});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "update test set x=1");
+        }
+    },
+
+    'when updating with query': {
+        topic: function () {
+            return new Mysql("test", db).update({x : 1}, {x : {between : [1,5]}});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "update test set x=1 where x >= 1 and x <= 5");
+        }
+    },
+
+    'when updating with where func': {
+        topic: function () {
+            return new Mysql("test", db).update({x : 1}).where({x : {between : [1,5]}});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "update test set x=1 where x >= 1 and x <= 5");
+        }
+    },
+
+    'when updating with find func': {
+        topic: function () {
+            return new Mysql("test", db).update({x : 1}).find({x : {between : [1,5]}});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "update test set x=1 where x >= 1 and x <= 5");
+        }
+    },
+
+    'when updating with join': {
+        topic: function () {
+            return new Mysql("test", db).update({x : 1}).join("test2", {flag : false});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "update test inner join test2 on test.flag=test2.false set x=1");
+        }
+    }
+});
+
+suite.addBatch({
+    'when deleting': {
+        topic: function () {
+            return new Mysql("test", db).remove();
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "delete from test");
+        }
+    },
+
+    'when deleting with query': {
+        topic: function () {
+            return new Mysql("test", db).remove(null, {x : {between : [1,5]}});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "delete from test where x >= 1 and x <= 5");
+        }
+    },
+
+    'when deleting with where func': {
+        topic: function () {
+            return new Mysql("test", db).remove().where({x : {between : [1,5]}});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "delete from test where x >= 1 and x <= 5");
+        }
+    },
+
+    'when deleting with find func': {
+        topic: function () {
+            return new Mysql("test", db).remove().find({x : {between : [1,5]}});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "delete from test where x >= 1 and x <= 5");
+        }
+    },
+
+    'when deleting with join': {
+        topic: function () {
+            return new Mysql("test", db).remove().join("test2", {flag : false});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "delete test from test inner join test2 on test.flag=test2.false");
+        }
+    },
+
+    'when deleting with multiple tables': {
+        topic: function () {
+            return new Mysql("test", db).remove("test2").join("test2", {flag : false});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "delete test, test2 from test inner join test2 on test.flag=test2.false");
+        }
+    }
+});
+
+suite.addBatch({
     'when finding a number > zero': {
         topic: function () {
             return new Mysql("test", db).find({x : {gt : 0}})
@@ -1388,4 +1513,4 @@ suite.addBatch({
     }
 });
 
-suite.run(); // Run it
+suite.export(module);
