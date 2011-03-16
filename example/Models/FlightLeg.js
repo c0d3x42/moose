@@ -2,6 +2,7 @@ var moose = require("../../lib"),
     airlines = require("../tables");
 
 module.exports = exports = (FlightLeg = moose.addModel(airlines.flightLeg, {
+    plugins : [moose.plugins.CachePlugin],
     instance : {
         toObject : function(){
             var obj = this.super(arguments);

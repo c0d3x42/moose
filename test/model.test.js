@@ -4,7 +4,7 @@ var vows = require('vows'),
         moose = require("../lib"),
         hitch = moose.hitch;
 
-moose.createConnection({user : "root",database : 'test'});
+moose.createConnection({user : "test", password : "testpass", database : 'test'});
 var suite = vows.describe("model object");
 
 
@@ -103,6 +103,7 @@ moose.refresh(employee).then(function() {
 
             " and get a list of one employees" : function(t) {
                 assert.length(t, 1);
+                console.log(t);
                 var emp = t[0];
                 assert.instanceOf(emp, Employee);
                 assert.equal("doug", emp.firstname);

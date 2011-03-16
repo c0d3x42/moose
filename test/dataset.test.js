@@ -3,7 +3,7 @@ var vows = require('vows'),
         moose = require("../lib"),
         sql = require("./tables/dataset").sql;
 // Create a Test Suite
-moose.createConnection({user : "root",database : 'test'});
+moose.createConnection({user : "test", password : "testpass", database : 'test'});
 
 moose.execute(sql).then(function(results) {
     var suite = vows.describe('mysql adapter');
@@ -12,9 +12,7 @@ moose.execute(sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.find().forEach(function(results) {
-                    self.callback(null, results);
-                });
+                d.find().forEach(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -25,9 +23,8 @@ moose.execute(sql).then(function(results) {
         'finding the first results': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").find().first(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.find().first(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -39,9 +36,8 @@ moose.execute(sql).then(function(results) {
         'finding the all results': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").find().all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.find().all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -52,9 +48,8 @@ moose.execute(sql).then(function(results) {
         'finding one results': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").find().one(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.find().one(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -65,9 +60,8 @@ moose.execute(sql).then(function(results) {
         'finding last result': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").find().last(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.find().last(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -78,9 +72,8 @@ moose.execute(sql).then(function(results) {
         'when calling run': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").find().run(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.find().run(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -93,9 +86,8 @@ moose.execute(sql).then(function(results) {
         'find results in': {
             topic: function () {
                 var self = this;
-                var d = moose.getDataset("works").find({eid : [1,2,3,4,5,6]}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.find({eid : [1,2,3,4,5,6]}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -110,9 +102,8 @@ moose.execute(sql).then(function(results) {
         'find results not in': {
             topic: function () {
                 var self = this;
-                var d = moose.getDataset("works").notIn({eid : [1,2,3,4,5,6]}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.notIn({eid : [1,2,3,4,5,6]}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -129,9 +120,8 @@ moose.execute(sql).then(function(results) {
         'find results with limited columns': {
             topic: function () {
                 var self = this;
-                var d = moose.getDataset("works").select(['firstname', 'lastname']).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.select(['firstname', 'lastname']).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -153,9 +143,8 @@ moose.execute(sql).then(function(results) {
         'when finding a number = zero': {
             topic: function () {
                 var self = this;
-                var d = moose.getDataset("works").eq({eid : 1}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.eq({eid : 1}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -168,9 +157,8 @@ moose.execute(sql).then(function(results) {
         'when finding a number = zero using find': {
             topic: function () {
                 var self = this;
-                var d = moose.getDataset("works").find({eid : 1}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.find({eid : 1}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -185,9 +173,8 @@ moose.execute(sql).then(function(results) {
         'when finding a number != 1': {
             topic: function () {
                 var self = this;
-                var d = moose.getDataset("works").neq({eid : 1}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.neq({eid : 1}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -198,9 +185,8 @@ moose.execute(sql).then(function(results) {
         'when finding a number != 1 using find': {
             topic: function () {
                 var self = this;
-                var d = moose.getDataset("works").find({eid : {neq : 1}}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.find({eid : {neq : 1}}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -213,9 +199,8 @@ moose.execute(sql).then(function(results) {
         'when finding a number > 1': {
             topic: function () {
                 var self = this;
-                var d = moose.getDataset("works").gt({eid : 1}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.gt({eid : 1}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -226,9 +211,8 @@ moose.execute(sql).then(function(results) {
         'when finding a number > 1 using find': {
             topic: function () {
                 var self = this;
-                var d = moose.getDataset("works").find({eid : {gt : 1}}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.find({eid : {gt : 1}}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -241,9 +225,8 @@ moose.execute(sql).then(function(results) {
         'when finding a number >= 1': {
             topic: function () {
                 var self = this;
-                var d = moose.getDataset("works").gte({eid : 1}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.gte({eid : 1}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -254,9 +237,8 @@ moose.execute(sql).then(function(results) {
         'when finding a number >= 1 using find': {
             topic: function () {
                 var self = this;
-                var d = moose.getDataset("works").find({eid : {gte : 1}}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.find({eid : {gte : 1}}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -269,9 +251,8 @@ moose.execute(sql).then(function(results) {
         'when finding a number < 1': {
             topic: function () {
                 var self = this;
-                var d = moose.getDataset("works").lt({eid : 1}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.lt({eid : 1}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -282,9 +263,8 @@ moose.execute(sql).then(function(results) {
         'when finding a number < 1 using find': {
             topic: function () {
                 var self = this;
-                var d = moose.getDataset("works").find({eid : {lt : 1}}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.find({eid : {lt : 1}}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -297,9 +277,8 @@ moose.execute(sql).then(function(results) {
         'when finding a number <= 1': {
             topic: function () {
                 var self = this;
-                var d = moose.getDataset("works").lte({eid : 1}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.lte({eid : 1}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -310,9 +289,8 @@ moose.execute(sql).then(function(results) {
         'when finding a number <= 1 using find': {
             topic: function () {
                 var self = this;
-                var d = moose.getDataset("works").find({eid : {lte : 1}}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.find({eid : {lte : 1}}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -325,9 +303,8 @@ moose.execute(sql).then(function(results) {
         'when finding a number <= 1': {
             topic: function () {
                 var self = this;
-                var d = moose.getDataset("works").lte({eid : 1}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.lte({eid : 1}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -338,9 +315,8 @@ moose.execute(sql).then(function(results) {
         'when finding a number <= 1 using find': {
             topic: function () {
                 var self = this;
-                var d = moose.getDataset("works").find({eid : {lte : 1}}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.find({eid : {lte : 1}}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -353,9 +329,8 @@ moose.execute(sql).then(function(results) {
         'when finding a flag is true': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").is({flag : true}).forEach(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.is({flag : true}).forEach(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -366,9 +341,8 @@ moose.execute(sql).then(function(results) {
         'when finding a flag is true': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").is({flag : false}).forEach(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.is({flag : false}).forEach(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -379,9 +353,8 @@ moose.execute(sql).then(function(results) {
         'when finding a flag is null': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").is({flag : null}).forEach(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.is({flag : null}).forEach(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -392,9 +365,8 @@ moose.execute(sql).then(function(results) {
         'when finding a flag is unknown': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").is({flag : "unknown"}).forEach(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.is({flag : "unknown"}).forEach(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -405,9 +377,8 @@ moose.execute(sql).then(function(results) {
         'when finding a flag is false another_flag is true and yet_another_flag is true': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").is({flag : false, another_flag : true, yet_another_flag : true}).forEach(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.is({flag : false, another_flag : true, yet_another_flag : true}).forEach(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -420,9 +391,8 @@ moose.execute(sql).then(function(results) {
         'when finding a flag is false using find': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").find({flag : {is : false}}).forEach(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.find({flag : {is : false}}).forEach(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -435,9 +405,8 @@ moose.execute(sql).then(function(results) {
         'when finding a flag isNot true': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").isNot({flag : true}).forEach(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.isNot({flag : true}).forEach(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -448,9 +417,8 @@ moose.execute(sql).then(function(results) {
         'when finding a flag isNot true': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").isNot({flag : false}).forEach(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.isNot({flag : false}).forEach(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -461,9 +429,8 @@ moose.execute(sql).then(function(results) {
         'when finding a flag isNot null': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").isNot({flag : null}).forEach(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.isNot({flag : null}).forEach(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -474,9 +441,8 @@ moose.execute(sql).then(function(results) {
         'when finding a flag isNot unknown': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").isNot({flag : "unknown"}).forEach(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.isNot({flag : "unknown"}).forEach(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -487,9 +453,8 @@ moose.execute(sql).then(function(results) {
         'when finding a flag isNot false another_flag isNot true and yet_another_flag isNot true': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").isNot({flag : false, another_flag : true, yet_another_flag : true}).forEach(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.isNot({flag : false, another_flag : true, yet_another_flag : true}).forEach(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -502,9 +467,8 @@ moose.execute(sql).then(function(results) {
         'when finding a flag isNot false using find': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").find({flag : {isNot : false}}).forEach(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.find({flag : {isNot : false}}).forEach(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -517,9 +481,8 @@ moose.execute(sql).then(function(results) {
         'when logically grouping queries': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").logicGroup({flag : {is : false}}).or().logicGroup({eid : 2}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.logicGroup({flag : {is : false}}).or().logicGroup({eid : 2}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -538,9 +501,8 @@ moose.execute(sql).then(function(results) {
         'when ordering queries': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").order("firstname").all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.order("firstname").all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -557,9 +519,8 @@ moose.execute(sql).then(function(results) {
         'when ordering queries desc': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").order({"firstname" : "desc"}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.order({"firstname" : "desc"}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -576,9 +537,8 @@ moose.execute(sql).then(function(results) {
         'when ordering queries with one desc': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").order(["firstname", {"lastname" : "desc"}]).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.order(["firstname", {"lastname" : "desc"}]).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -599,9 +559,8 @@ moose.execute(sql).then(function(results) {
         'when chaining ordered queries with one desc': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").order("firstname").order({"lastname" : "desc"}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.order("firstname").order({"lastname" : "desc"}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -624,9 +583,8 @@ moose.execute(sql).then(function(results) {
         'when joining two tables using join and object': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").join("employee", {eid : "eid"}).first(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.join("employee", {eid : "eid"}).first(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -641,9 +599,8 @@ moose.execute(sql).then(function(results) {
         'when joining two tables using join and object with where': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").join("employee", {eid : "eid"}).where({"works.eid" : 1}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.join("employee", {eid : "eid"}).where({"works.eid" : 1}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -660,9 +617,8 @@ moose.execute(sql).then(function(results) {
         'when chaining joins two tables using join and object with where': {
             topic: function () {
                 var self = this;
-                moose.getDataset("works").join("employee", {eid : "eid"}).join("company", {company_name : "company_name"}).where({"works.eid" : 1}).all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.join("employee", {eid : "eid"}).join("company", {company_name : "company_name"}).where({"works.eid" : 1}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -682,11 +638,9 @@ moose.execute(sql).then(function(results) {
         "when using group operation" :{
             topic: function () {
                 var self = this;
-                var q = moose.getDataset("works").select("firstname")
-                        .group("firstname").order({firstname : "desc"});
-                q.all(function(results) {
-                    self.callback(null, results);
-                });
+                var d = moose.getDataset("works");
+                d.select("firstname")
+                        .group("firstname").order({firstname : "desc"}).all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -703,11 +657,10 @@ moose.execute(sql).then(function(results) {
         "when using group operation using having operation" :{
             topic: function () {
                 var self = this;
-                moose.getDataset("works").select("firstname")
+                var d = moose.getDataset("works");
+                d.select("firstname")
                         .group("firstname", {firstname : {between : ['Ann', 'Eric']}}).order({firstname : "desc"})
-                        .all(function(results) {
-                    self.callback(null, results);
-                });
+                        .all(hitch(this, "callback", null));
             },
 
             'we get ': function (topic) {
@@ -721,7 +674,5 @@ moose.execute(sql).then(function(results) {
     });
 
     suite.run({reporter : require("vows/reporters/spec")});
-}, function(err) {
-    throw err
-});
+}, function(err) {throw err});
 

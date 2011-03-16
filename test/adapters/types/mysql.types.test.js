@@ -30,8 +30,7 @@ var suite = vows.describe('mysql types');
  description : ""  */
 
 
-["CHAR", "VARCHAR", "TINYTEXT",
-    "MEDIUMTEXT", "LONGTEXT"].forEach(function(type) {
+["CHAR", "VARCHAR", "TINYTEXT"].forEach(function(type) {
     var batch = {};
     batch['when creating ' + type + ' type'] = {
         topic: function () {
@@ -39,7 +38,7 @@ var suite = vows.describe('mysql types');
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type);
+            assert.equal(topic.sql, type + "(255)");
         }
     };
 
@@ -49,7 +48,7 @@ var suite = vows.describe('mysql types');
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + " NOT NULL");
+            assert.equal(topic.sql, type + "(255) NOT NULL");
         }
     };
 
@@ -59,7 +58,7 @@ var suite = vows.describe('mysql types');
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + " NOT NULL UNIQUE");
+            assert.equal(topic.sql, type + "(255) NOT NULL UNIQUE");
         }
     };
 
@@ -92,9 +91,82 @@ var suite = vows.describe('mysql types');
             assert.equal(topic.fromSql("HELLO"), "HELLO");
             assert.equal(topic.toSql("HELLO"), "HELLO");
             assert.isTrue(topic.check("HELLO"));
-            assert.throws((function(){topic.fromSql(1)}));
-            assert.throws((function(){topic.fromSql(new Date())}));
-            assert.throws((function(){topic.fromSql(true)}));
+            assert.throws((function(){topic.toSql(1)}));
+            assert.throws((function(){topic.toSql(true)}));
+            assert.throws((function(){topic.toSql(new Date())}));
+            assert.throws((function(){topic.check(1)}));
+            assert.throws((function(){topic.check(true)}));
+            assert.throws((function(){topic.check(new Date())}));
+            if(type == "CHAR"){
+               assert.throws((function(){topic.check("HELLOO")}));
+            }
+        }
+    };
+    suite.addBatch(batch);
+
+});
+["MEDIUMTEXT", "LONGTEXT"].forEach(function(type) {
+    var batch = {};
+    var length = type=="MEDIUMTEXT" ? "(" + 16777215 + ")" : "(" + 4294967295 + ")";
+    batch['when creating ' + type + ' type'] = {
+        topic: function () {
+            return types[type]();
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, type + length);
+        }
+    };
+
+    batch['when creating ' + type + length +' type with null'] = {
+        topic: function () {
+            return  types[type]({allowNull : false});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, type + length +" NOT NULL");
+        }
+    };
+
+    batch['when creating ' + type + ' type with null and unique'] = {
+        topic: function () {
+            return  types[type]({allowNull : false, unique : true});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, type + length +" NOT NULL UNIQUE");
+        }
+    };
+
+    batch['when creating ' + type + ' type with null, unique, and length'] = {
+        topic: function () {
+            return  types[type]({allowNull : false, unique : true, length : 10, primaryKey : true});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, type + "(10) NOT NULL PRIMARY KEY UNIQUE");
+        }
+    };
+
+    batch['when creating ' + type + ' type with null, unique, length, and default'] = {
+        topic: function () {
+            return  types[type]({allowNull : false, unique : true, length : 10, primaryKey : true, "default" : "A"});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, type + "(10) NOT NULL PRIMARY KEY DEFAULT 'A' UNIQUE");
+        }
+    };
+
+    batch['when creating ' + type + ' type from sql'] = {
+        topic: function () {
+            return types[type]({length : 5});
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.fromSql("HELLO"), "HELLO");
+            assert.equal(topic.toSql("HELLO"), "HELLO");
+            assert.isTrue(topic.check("HELLO"));
             assert.throws((function(){topic.toSql(1)}));
             assert.throws((function(){topic.toSql(true)}));
             assert.throws((function(){topic.toSql(new Date())}));

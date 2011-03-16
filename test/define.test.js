@@ -4,36 +4,52 @@ var vows = require('vows'),
 
 var suite = vows.describe("Define");
 
+
+//Super of other classes
 var Mammal = moose.define(null, {
     instance : {
 
         constructor: function(options) {
+            options = options || {};
+            this.super(arguments);
             this._type = options.type || "mammal"
         },
 
         speak : function() {
-            return "A mammal of type " + this._type + " sounds like";
+            return  "A mammal of type " + this._type + " sounds like";
         }
     },
 
+    //Define your getters
     getters : {
         type : function(type) {
             return this._type;
         }
+    },
+
+    //Define your static methods
+    static : {
+        soundOff : function() {
+            return "Im a mammal!!"
+        }
     }
 });
 
-var Dog = moose.define(Mammal, {
+//Show singular inheritance
+var Wolf = moose.define(Mammal, {
     instance: {
         constructor: function(options) {
-            this._sound = "woof";
-            this._color = options.color || "black";
+            options = options || {};
+            //call your super constructor you can call this after you initialize or not
+            //call it at all to prevent the supers from initilizing things
+            this.super(arguments);
+            this._sound = "growl";
+            this._color = options.color || "grey";
 
         },
 
         speak : function() {
-            var s = this.super(arguments);
-            return s + " a " + this._sound;
+            return this.super(arguments) + " a " + this._sound;
         }
     },
 
@@ -45,39 +61,93 @@ var Dog = moose.define(Mammal, {
         sound : function() {
             return this._sound;
         }
+    },
+
+    static : {
+        soundOff : function() {
+            //You can even call super in your statics!!!
+            return this.super(arguments) + " that growls";
+        }
     }
 });
 
-var Lab = moose.define(null, {
-      instance : {
-          speak : function(){
-                return "Im a lab " + that
-          },
-      }
-});
 
-var Breed = moose.define(Dog, {
+//Typical heirachical inheritance
+// Mammal->Wolf->Dog
+var Dog = moose.define(Wolf, {
     instance: {
         constructor: function(options) {
+            options = options || {};
+            this.super(arguments);
+            this._sound = "woof";
+
+        },
+
+        speak : function() {
+            return this.super(arguments) + " thats domesticated";
+        }
+    },
+
+    static : {
+        soundOff : function() {
+            return this.super(arguments) + " but now barks";
+        }
+    }
+});
+
+// Mammal->Wolf->Dog->Breed
+var Breed = moose.define(Dog, {
+    instance: {
+
+        _pitch : "high",
+
+        constructor: function(options) {
+            options = options || {};
+            this.super(arguments);
             this.breed = options.breed || "lab";
         },
 
         speak : function() {
-            var s = this.super(arguments);
-            return s + " thats really loud!";
+            console.log(3);
+            return this.super(arguments) + " with a " + this._pitch + " pitch!";
+        }
+    },
+
+    getters : {
+        pitch : function(){
+            return this._pitch;
+        }
+    },
+
+    static : {
+        soundOff : function() {
+            return this.super(arguments).toUpperCase() + "!";
         }
     }
 });
+
+//Example of multiple inheritace
+//What really happens is you mixin Wold, Dog, and Breed
+//However you are only truely an instance of Mammal
+//However the inheritance chain will look like
+//Mammal->Wolf->Dog->Breed
+//So if you call this.super, it will check breed then dog then wolf then mammal
+//be found through inheritance
+var Lab = moose.define([Mammal, Wolf, Dog, Breed]);
 
 suite.addBatch({
     "a dog " :{
         topic : new Dog({color : "gold"}),
 
         "should sound like a dog" : function(dog) {
-            assert.equal(dog.speak(), "A mammal of type mammal sounds like a woof");
+            //This is true because they inherit from eachother!
+            assert.isTrue(dog instanceof Wolf)
+            assert.isTrue(dog instanceof Mammal)
+            assert.equal(dog.speak(), "A mammal of type mammal sounds like a woof thats domesticated");
             assert.equal(dog.type, "mammal");
             assert.equal(dog.color, "gold");
             assert.equal(dog.sound, "woof");
+            assert.equal(Dog.soundOff(), "Im a mammal!! that growls but now barks");
         }
     }
 });
@@ -87,10 +157,34 @@ suite.addBatch({
         topic : new Breed({color : "gold", type : "lab"}),
 
         "should sound like a lab" : function(dog) {
-            assert.equal(dog.speak(), "A mammal of type lab sounds like a woof thats really loud!");
+            //the next three are true because they inherit from each other
+            assert.isTrue(dog instanceof Dog)
+            assert.isTrue(dog instanceof Wolf)
+            assert.isTrue(dog instanceof Mammal)
+            assert.equal(dog.speak(), "A mammal of type lab sounds like a woof thats domesticated with a high pitch!");
             assert.equal(dog.type, "lab");
             assert.equal(dog.color, "gold");
             assert.equal(dog.sound, "woof");
+            assert.equal(Breed.soundOff(), "IM A MAMMAL!! THAT GROWLS BUT NOW BARKS!");
+        }
+    }
+});
+
+suite.addBatch({
+    "a LAB " :{
+        topic : new Lab(),
+
+        "should sound like a lab" : function(dog) {
+            //the next three are false because they are mixins
+            assert.isFalse(dog instanceof Breed)
+            assert.isFalse(dog instanceof Dog)
+            assert.isFalse(dog instanceof Wolf)
+            assert.isTrue(dog instanceof Mammal)
+            assert.equal(dog.speak(), "A mammal of type mammal sounds like a woof thats domesticated with a high pitch!");
+            assert.equal(dog.type, "mammal");
+            assert.equal(dog.color, "grey");
+            assert.equal(dog.sound, "woof");
+            assert.equal(Lab.soundOff(), "IM A MAMMAL!! THAT GROWLS BUT NOW BARKS!");
         }
     }
 });

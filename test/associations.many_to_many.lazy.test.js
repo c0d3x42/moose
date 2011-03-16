@@ -66,7 +66,7 @@ moose.refresh([companyEmployee, employee, company]).then(function() {
                     var emps = company.employees;
                     assert.length(emps, 2);
                     emps.forEach(function(emp, i) {
-                        assert.equal(emp.id, i + 1);
+                        assert.ok((emp.id == i + 1));
                     });
                     return company
                 },
