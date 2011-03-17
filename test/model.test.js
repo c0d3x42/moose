@@ -394,6 +394,6 @@ moose.refresh(employee).then(function() {
         }
     });
     suite.run({reporter : require("vows/reporters/spec")});
-});
+}, function(err){console.log(err)});
 
 

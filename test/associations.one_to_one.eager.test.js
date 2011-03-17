@@ -39,6 +39,7 @@ moose.refresh([works, employee]).then(function() {
 
             " the employee should work at google " : function(employee) {
                 var works = employee.works;
+                console.log(works.companyName);
                 assert.equal(works.companyName, "Google");
                 assert.equal(works.salary, 100000);
                 return employee

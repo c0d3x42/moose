@@ -3,12 +3,13 @@ var moose = require("../../lib"),
         types = mysql.types;
 
 var company = new moose.Table("company", {
-    id :           types.INT({allowNull : false, primaryKey : true, autoIncrement : true}),
+    id :           types.INT({allowNull : false, autoIncrement : true}),
     companyName :   types.VARCHAR({length : 20, allowNull : false})
 });
+company.primaryKey("id");
 
 var employee = new moose.Table("employee", {
-    id :             types.INT({allowNull : false, primaryKey : true, autoIncrement : true}),
+    id :             types.INT({allowNull : false, autoIncrement : true}),
     firstname :       types.VARCHAR({length : 20, allowNull : false}),
     lastname :        types.VARCHAR({length : 20, allowNull : false}),
     midinitial :      types.CHAR({length : 1}),
@@ -16,12 +17,15 @@ var employee = new moose.Table("employee", {
     street :          types.VARCHAR({length : 50, allowNull : false}),
     city :            types.VARCHAR({length : 20, allowNull : false})
 });
+employee.primaryKey("id");
 
 var companyEmployee = new moose.Table("companyEmployee", {
-    companyId :  types.INT({allowNull : false, foreignKey : {company : "id"}}),
-    employeeId :  types.INT({allowNull : false, foreignKey : {employee : "id"}})
+    companyId :  types.INT({allowNull : false}),
+    employeeId :  types.INT({allowNull : false})
 });
 
+companyEmployee.primaryKey(["companyId", "employeeId"]);
+companyEmployee.foreignKey({companyId : {company : "id"}, employeeId : {employee : "id"}});
 
 exports.company = company;
 exports.employee = employee;

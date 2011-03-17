@@ -3,7 +3,7 @@ var moose = require("../../lib"),
         types = mysql.types;
 
 var schema = new moose.Table("employee", {
-    eid :             types.INT({allowNull : false, primaryKey : true, primaryKey : true, autoIncrement : true}),
+    eid :             types.INT({allowNull : false, autoIncrement : true}),
     firstname :       types.VARCHAR({length : 20, allowNull : false}),
     lastname :        types.VARCHAR({length : 20, allowNull : false}),
     midinitial :      types.CHAR({length : 1}),
@@ -11,5 +11,6 @@ var schema = new moose.Table("employee", {
     street :          types.VARCHAR({length : 50, allowNull : false}),
     city :            types.VARCHAR({length : 20, allowNull : false})
 });
+schema.primaryKey("eid");
 
 exports.employee = schema;

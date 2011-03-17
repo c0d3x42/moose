@@ -1,6 +1,7 @@
 var vows = require('vows'),
         assert = require('assert'),
-        types = require("../../../lib").adapters.mysql.types;
+        adapter = require("../../../lib").adapters.mysql,
+        types = adapter.types;
 
 var suite = vows.describe('mysql types');
 
@@ -23,8 +24,6 @@ var suite = vows.describe('mysql types');
  BOOLEAN:
 
  allowNull : true,
- primaryKey : false,
- foreignKey : false,
  "default" : null,
  unique : false,
  description : ""  */
@@ -64,23 +63,24 @@ var suite = vows.describe('mysql types');
 
     batch['when creating ' + type + ' type with null, unique, and length'] = {
         topic: function () {
-            return  types[type]({allowNull : false, unique : true, length : 10, primaryKey : true});
+            return  types[type]({allowNull : false, unique : true, length : 10});
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "(10) NOT NULL PRIMARY KEY UNIQUE");
+            assert.equal(topic.sql, type + "(10) NOT NULL UNIQUE");
         }
     };
 
     batch['when creating ' + type + ' type with null, unique, length, and default'] = {
         topic: function () {
-            return  types[type]({allowNull : false, unique : true, length : 10, primaryKey : true, "default" : "A"});
+            return  types[type]({allowNull : false, unique : true, length : 10, "default" : "A"});
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "(10) NOT NULL PRIMARY KEY DEFAULT 'A' UNIQUE");
+            assert.equal(topic.sql, type + "(10) NOT NULL DEFAULT 'A' UNIQUE");
         }
     };
+
 
     batch['when creating ' + type + ' type from sql'] = {
         topic: function () {
@@ -91,14 +91,28 @@ var suite = vows.describe('mysql types');
             assert.equal(topic.fromSql("HELLO"), "HELLO");
             assert.equal(topic.toSql("HELLO"), "HELLO");
             assert.isTrue(topic.check("HELLO"));
-            assert.throws((function(){topic.toSql(1)}));
-            assert.throws((function(){topic.toSql(true)}));
-            assert.throws((function(){topic.toSql(new Date())}));
-            assert.throws((function(){topic.check(1)}));
-            assert.throws((function(){topic.check(true)}));
-            assert.throws((function(){topic.check(new Date())}));
-            if(type == "CHAR"){
-               assert.throws((function(){topic.check("HELLOO")}));
+            assert.throws((function() {
+                topic.toSql(1)
+            }));
+            assert.throws((function() {
+                topic.toSql(true)
+            }));
+            assert.throws((function() {
+                topic.toSql(new Date())
+            }));
+            assert.throws((function() {
+                topic.check(1)
+            }));
+            assert.throws((function() {
+                topic.check(true)
+            }));
+            assert.throws((function() {
+                topic.check(new Date())
+            }));
+            if (type == "CHAR") {
+                assert.throws((function() {
+                    topic.check("HELLOO")
+                }));
             }
         }
     };
@@ -107,7 +121,7 @@ var suite = vows.describe('mysql types');
 });
 ["MEDIUMTEXT", "LONGTEXT"].forEach(function(type) {
     var batch = {};
-    var length = type=="MEDIUMTEXT" ? "(" + 16777215 + ")" : "(" + 4294967295 + ")";
+    var length = type == "MEDIUMTEXT" ? "(" + 16777215 + ")" : "(" + 4294967295 + ")";
     batch['when creating ' + type + ' type'] = {
         topic: function () {
             return types[type]();
@@ -118,13 +132,13 @@ var suite = vows.describe('mysql types');
         }
     };
 
-    batch['when creating ' + type + length +' type with null'] = {
+    batch['when creating ' + type + length + ' type with null'] = {
         topic: function () {
             return  types[type]({allowNull : false});
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + length +" NOT NULL");
+            assert.equal(topic.sql, type + length + " NOT NULL");
         }
     };
 
@@ -134,29 +148,30 @@ var suite = vows.describe('mysql types');
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + length +" NOT NULL UNIQUE");
+            assert.equal(topic.sql, type + length + " NOT NULL UNIQUE");
         }
     };
 
     batch['when creating ' + type + ' type with null, unique, and length'] = {
         topic: function () {
-            return  types[type]({allowNull : false, unique : true, length : 10, primaryKey : true});
+            return  types[type]({allowNull : false, unique : true, length : 10});
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "(10) NOT NULL PRIMARY KEY UNIQUE");
+            assert.equal(topic.sql, type + "(10) NOT NULL UNIQUE");
         }
     };
 
     batch['when creating ' + type + ' type with null, unique, length, and default'] = {
         topic: function () {
-            return  types[type]({allowNull : false, unique : true, length : 10, primaryKey : true, "default" : "A"});
+            return  types[type]({allowNull : false, unique : true, length : 10, "default" : "A"});
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "(10) NOT NULL PRIMARY KEY DEFAULT 'A' UNIQUE");
+            assert.equal(topic.sql, type + "(10) NOT NULL DEFAULT 'A' UNIQUE");
         }
     };
+
 
     batch['when creating ' + type + ' type from sql'] = {
         topic: function () {
@@ -167,14 +182,28 @@ var suite = vows.describe('mysql types');
             assert.equal(topic.fromSql("HELLO"), "HELLO");
             assert.equal(topic.toSql("HELLO"), "HELLO");
             assert.isTrue(topic.check("HELLO"));
-            assert.throws((function(){topic.toSql(1)}));
-            assert.throws((function(){topic.toSql(true)}));
-            assert.throws((function(){topic.toSql(new Date())}));
-            assert.throws((function(){topic.check(1)}));
-            assert.throws((function(){topic.check(true)}));
-            assert.throws((function(){topic.check(new Date())}));
-            if(type == "CHAR"){
-               assert.throws((function(){topic.check("HELLOO")}));
+            assert.throws((function() {
+                topic.toSql(1)
+            }));
+            assert.throws((function() {
+                topic.toSql(true)
+            }));
+            assert.throws((function() {
+                topic.toSql(new Date())
+            }));
+            assert.throws((function() {
+                topic.check(1)
+            }));
+            assert.throws((function() {
+                topic.check(true)
+            }));
+            assert.throws((function() {
+                topic.check(new Date())
+            }));
+            if (type == "CHAR") {
+                assert.throws((function() {
+                    topic.check("HELLOO")
+                }));
             }
         }
     };
@@ -216,21 +245,21 @@ var suite = vows.describe('mysql types');
 
     batch['when creating ' + type + ' type with null, unique, and length'] = {
         topic: function () {
-            return  types[type]({allowNull : false, unique : true, length : 10, primaryKey : true, enums : ["A", "B"]});
+            return  types[type]({allowNull : false, unique : true, length : 10, enums : ["A", "B"]});
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "('A','B') NOT NULL PRIMARY KEY UNIQUE");
+            assert.equal(topic.sql, type + "('A','B') NOT NULL UNIQUE");
         }
     };
 
     batch['when creating ' + type + ' type with null, unique, length, and default'] = {
         topic: function () {
-            return  types[type]({allowNull : false, unique : true, length : 10, primaryKey : true, "default" : "A", enums : ["A", "B"]});
+            return  types[type]({allowNull : false, unique : true, length : 10, "default" : "A", enums : ["A", "B"]});
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "('A','B') NOT NULL PRIMARY KEY DEFAULT 'A' UNIQUE");
+            assert.equal(topic.sql, type + "('A','B') NOT NULL DEFAULT 'A' UNIQUE");
         }
     };
 
@@ -243,17 +272,39 @@ var suite = vows.describe('mysql types');
             assert.equal(topic.fromSql("A"), "A");
             assert.equal(topic.toSql("A"), "A");
             assert.isTrue(topic.check("A"));
-            assert.throws((function(){topic.fromSql(1)}));
-            assert.throws((function(){topic.fromSql(new Date())}));
-            assert.throws((function(){topic.fromSql(true)}));
-            assert.throws((function(){topic.toSql(1)}));
-            assert.throws((function(){topic.toSql("C")}));
-            assert.throws((function(){topic.toSql(true)}));
-            assert.throws((function(){topic.toSql(new Date())}));
-            assert.throws((function(){topic.check(1)}));
-            assert.throws((function(){topic.check("C")}));
-            assert.throws((function(){topic.check(true)}));
-            assert.throws((function(){topic.check(new Date())}));
+            assert.throws((function() {
+                topic.fromSql(1)
+            }));
+            assert.throws((function() {
+                topic.fromSql(new Date())
+            }));
+            assert.throws((function() {
+                topic.fromSql(true)
+            }));
+            assert.throws((function() {
+                topic.toSql(1)
+            }));
+            assert.throws((function() {
+                topic.toSql("C")
+            }));
+            assert.throws((function() {
+                topic.toSql(true)
+            }));
+            assert.throws((function() {
+                topic.toSql(new Date())
+            }));
+            assert.throws((function() {
+                topic.check(1)
+            }));
+            assert.throws((function() {
+                topic.check("C")
+            }));
+            assert.throws((function() {
+                topic.check(true)
+            }));
+            assert.throws((function() {
+                topic.check(new Date())
+            }));
         }
     };
 
@@ -296,42 +347,42 @@ var suite = vows.describe('mysql types');
 
     batch['when creating ' + type + ' type with null, unique, and size'] = {
         topic: function () {
-            return  types[type]({allowNull : false, unique : true, size : 10, primaryKey : true});
+            return  types[type]({allowNull : false, unique : true, size : 10});
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "(10) NOT NULL PRIMARY KEY UNIQUE");
+            assert.equal(topic.sql, type + "(10) NOT NULL UNIQUE");
         }
     };
 
     batch['when creating ' + type + ' type with null, unique, unsigned, and size'] = {
         topic: function () {
-            return  types[type]({allowNull : false, unique : true, size : 10, primaryKey : true, unsigned : true});
+            return  types[type]({allowNull : false, unique : true, size : 10, unsigned : true});
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "(10) NOT NULL PRIMARY KEY UNIQUE UNSIGNED");
+            assert.equal(topic.sql, type + "(10) NOT NULL UNIQUE UNSIGNED");
         }
     };
 
 
     batch['when creating ' + type + ' type with null, unique, length, unisgned, and default'] = {
         topic: function () {
-            return  types[type]({allowNull : false, unique : true, size : 10, primaryKey : true, "default" : 10, unsigned : true});
+            return  types[type]({allowNull : false, unique : true, size : 10, "default" : 10, unsigned : true});
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "(10) NOT NULL PRIMARY KEY DEFAULT 10 UNIQUE UNSIGNED");
+            assert.equal(topic.sql, type + "(10) NOT NULL DEFAULT 10 UNIQUE UNSIGNED");
         }
     };
 
     batch['when creating ' + type + ' type with null, unique, length, default, unsigned, and autoIncrement'] = {
         topic: function () {
-            return  types[type]({allowNull : false, unique : true, size : 10, primaryKey : true, "default" : 10, autoIncrement : true, unsigned : true});
+            return  types[type]({allowNull : false, unique : true, size : 10, "default" : 10, autoIncrement : true, unsigned : true});
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "(10) NOT NULL PRIMARY KEY AUTO_INCREMENT DEFAULT 10 UNIQUE UNSIGNED");
+            assert.equal(topic.sql, type + "(10) NOT NULL AUTO_INCREMENT DEFAULT 10 UNIQUE UNSIGNED");
         }
     };
 
@@ -344,15 +395,33 @@ var suite = vows.describe('mysql types');
             assert.equal(topic.fromSql("10"), 10);
             assert.equal(topic.toSql(10), 10);
             assert.isTrue(topic.check(10));
-            assert.throws((function(){topic.fromSql(new Date())}));
-            assert.throws((function(){topic.fromSql("A")}));
-            assert.throws((function(){topic.fromSql(true)}));
-            assert.throws((function(){topic.toSql(new Date())}));
-            assert.throws((function(){topic.toSql("A")}));
-            assert.throws((function(){topic.toSql(true)}));
-            assert.throws((function(){topic.check(new Date())}));
-            assert.throws((function(){topic.check("A")}));
-            assert.throws((function(){topic.check(true)}));
+            assert.throws((function() {
+                topic.fromSql(new Date())
+            }));
+            assert.throws((function() {
+                topic.fromSql("A")
+            }));
+            assert.throws((function() {
+                topic.fromSql(true)
+            }));
+            assert.throws((function() {
+                topic.toSql(new Date())
+            }));
+            assert.throws((function() {
+                topic.toSql("A")
+            }));
+            assert.throws((function() {
+                topic.toSql(true)
+            }));
+            assert.throws((function() {
+                topic.check(new Date())
+            }));
+            assert.throws((function() {
+                topic.check("A")
+            }));
+            assert.throws((function() {
+                topic.check(true)
+            }));
         }
     };
     suite.addBatch(batch);
@@ -392,52 +461,52 @@ var suite = vows.describe('mysql types');
 
     batch['when creating ' + type + ' type with null, unique, and size'] = {
         topic: function () {
-            return  types[type]({allowNull : false, unique : true, size : 10, primaryKey : true});
+            return  types[type]({allowNull : false, unique : true, size : 10});
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "(10) NOT NULL PRIMARY KEY UNIQUE");
+            assert.equal(topic.sql, type + "(10) NOT NULL UNIQUE");
         }
     };
 
     batch['when creating ' + type + ' type with null, unique, unsigned, and size'] = {
         topic: function () {
-            return  types[type]({allowNull : false, unique : true, size : 10, primaryKey : true, unsigned : true});
+            return  types[type]({allowNull : false, unique : true, size : 10, unsigned : true});
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "(10) NOT NULL PRIMARY KEY UNIQUE UNSIGNED");
+            assert.equal(topic.sql, type + "(10) NOT NULL UNIQUE UNSIGNED");
         }
     };
 
 
     batch['when creating ' + type + ' type with null, unique, length, unisgned, and default'] = {
         topic: function () {
-            return  types[type]({allowNull : false, unique : true, size : 10, primaryKey : true, "default" : 10, unsigned : true});
+            return  types[type]({allowNull : false, unique : true, size : 10, "default" : 10, unsigned : true});
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "(10) NOT NULL PRIMARY KEY DEFAULT 10 UNIQUE UNSIGNED");
+            assert.equal(topic.sql, type + "(10) NOT NULL DEFAULT 10 UNIQUE UNSIGNED");
         }
     };
 
     batch['when creating ' + type + ' type with null, unique, length, default, unsigned, and autoIncrement'] = {
         topic: function () {
-            return  types[type]({allowNull : false, unique : true, size : 10, primaryKey : true, "default" : 10, autoIncrement : true, unsigned : true});
+            return  types[type]({allowNull : false, unique : true, size : 10, "default" : 10, autoIncrement : true, unsigned : true});
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "(10) NOT NULL PRIMARY KEY AUTO_INCREMENT DEFAULT 10 UNIQUE UNSIGNED");
+            assert.equal(topic.sql, type + "(10) NOT NULL AUTO_INCREMENT DEFAULT 10 UNIQUE UNSIGNED");
         }
     };
 
     batch['when creating ' + type + ' type with null, unique, length, default, unsigned, digits, and autoIncrement'] = {
         topic: function () {
-            return  types[type]({allowNull : false, digits : 3, unique : true, size : 10, primaryKey : true, "default" : 10, autoIncrement : true, unsigned : true});
+            return  types[type]({allowNull : false, digits : 3, unique : true, size : 10, "default" : 10, autoIncrement : true, unsigned : true});
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "(10,3) NOT NULL PRIMARY KEY AUTO_INCREMENT DEFAULT 10 UNIQUE UNSIGNED");
+            assert.equal(topic.sql, type + "(10,3) NOT NULL AUTO_INCREMENT DEFAULT 10 UNIQUE UNSIGNED");
         }
     };
 
@@ -450,15 +519,33 @@ var suite = vows.describe('mysql types');
             assert.equal(topic.fromSql("10.000"), 10.000);
             assert.equal(topic.toSql(10.000), "10.000");
             assert.isTrue(topic.check(10.000));
-            assert.throws((function(){topic.fromSql(newDate)}));
-            assert.throws((function(){topic.fromSql("A")}));
-            assert.throws((function(){topic.fromSql(true)}));
-            assert.throws((function(){topic.toSql(new Date)}));
-            assert.throws((function(){topic.toSql("A")}));
-            assert.throws((function(){topic.toSql(true)}));
-            assert.throws((function(){topic.check(new Date)}));
-            assert.throws((function(){topic.check("A")}));
-            assert.throws((function(){topic.check(true)}));
+            assert.throws((function() {
+                topic.fromSql(newDate)
+            }));
+            assert.throws((function() {
+                topic.fromSql("A")
+            }));
+            assert.throws((function() {
+                topic.fromSql(true)
+            }));
+            assert.throws((function() {
+                topic.toSql(new Date)
+            }));
+            assert.throws((function() {
+                topic.toSql("A")
+            }));
+            assert.throws((function() {
+                topic.toSql(true)
+            }));
+            assert.throws((function() {
+                topic.check(new Date)
+            }));
+            assert.throws((function() {
+                topic.check("A")
+            }));
+            assert.throws((function() {
+                topic.check(true)
+            }));
         }
     };
 
@@ -499,11 +586,11 @@ var suite = vows.describe('mysql types');
 
     batch['when creating ' + type + ' type with null, unique'] = {
         topic: function () {
-            return  types[type]({allowNull : false, unique : true, primaryKey : true});
+            return  types[type]({allowNull : false, unique : true});
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + " NOT NULL PRIMARY KEY UNIQUE");
+            assert.equal(topic.sql, type + " NOT NULL UNIQUE");
         }
     };
     var def = "", date = null;
@@ -530,11 +617,11 @@ var suite = vows.describe('mysql types');
 
     batch['when creating ' + type + ' type with null, unique, default'] = {
         topic: function () {
-            return  types[type]({allowNull : false, unique : true, primaryKey : true, "default" : def});
+            return  types[type]({allowNull : false, unique : true, "default" : def});
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + " NOT NULL PRIMARY KEY DEFAULT '" + def + "' UNIQUE");
+            assert.equal(topic.sql, type + " NOT NULL DEFAULT '" + def + "' UNIQUE");
         }
     };
 
@@ -547,15 +634,33 @@ var suite = vows.describe('mysql types');
             assert.equal(topic.fromSql(def).toString(), date);
             assert.equal(topic.toSql(date).toString(), def);
             assert.isTrue(topic.check(date));
-            assert.throws((function(){topic.fromSql(1)}));
-            assert.throws((function(){topic.fromSql("A")}));
-            assert.throws((function(){topic.fromSql(true)}));
-            assert.throws((function(){topic.toSql(1)}));
-            assert.throws((function(){topic.toSql("A")}));
-            assert.throws((function(){topic.toSql(true)}));
-            assert.throws((function(){topic.check(1)}));
-            assert.throws((function(){topic.check("A")}));
-            assert.throws((function(){topic.check(true)}));
+            assert.throws((function() {
+                topic.fromSql(1)
+            }));
+            assert.throws((function() {
+                topic.fromSql("A")
+            }));
+            assert.throws((function() {
+                topic.fromSql(true)
+            }));
+            assert.throws((function() {
+                topic.toSql(1)
+            }));
+            assert.throws((function() {
+                topic.toSql("A")
+            }));
+            assert.throws((function() {
+                topic.toSql(true)
+            }));
+            assert.throws((function() {
+                topic.check(1)
+            }));
+            assert.throws((function() {
+                topic.check("A")
+            }));
+            assert.throws((function() {
+                topic.check(true)
+            }));
         }
     };
 
@@ -596,46 +701,97 @@ var suite = vows.describe('mysql types');
 
     batch['when creating ' + type + ' type with null, unique'] = {
         topic: function () {
-            return  types[type]({allowNull : false, unique : true, primaryKey : true});
+            return  types[type]({allowNull : false, unique : true});
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + " NOT NULL PRIMARY KEY UNIQUE");
+            assert.equal(topic.sql, type + " NOT NULL UNIQUE");
         }
     };
 
     batch['when creating ' + type + ' type with null, unique, length, and default'] = {
         topic: function () {
-            return  types[type]({allowNull : false, unique : true, primaryKey : true, "default" : true});
+            return  types[type]({allowNull : false, unique : true, "default" : true});
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + " NOT NULL PRIMARY KEY DEFAULT true UNIQUE");
+            assert.equal(topic.sql, type + " NOT NULL DEFAULT true UNIQUE");
         }
     };
     batch['when creating ' + type + ' type from sql'] = {
-           topic: function () {
-               return types[type]();
-           },
+        topic: function () {
+            return types[type]();
+        },
 
-           'we get ': function (topic) {
-               assert.equal(topic.fromSql("true"), true);
-               assert.equal(topic.toSql(true), true);
-               assert.isTrue(topic.check(true));
-               assert.equal(topic.fromSql("false"), false);
-               assert.equal(topic.toSql(false), false);
-               assert.isTrue(topic.check(false));
-               assert.throws((function(){topic.fromSql(1)}));
-               assert.throws((function(){topic.fromSql("A")}));
-               assert.throws((function(){topic.fromSql(new Date())}));
-               assert.throws((function(){topic.toSql(1)}));
-               assert.throws((function(){topic.toSql("A")}));
-               assert.throws((function(){topic.toSql(new Date())}));
-               assert.throws((function(){topic.check(1)}));
-               assert.throws((function(){topic.check("A")}));
-               assert.throws((function(){topic.check(new Date())}));
-           }
-       };
+        'we get ': function (topic) {
+            assert.equal(topic.fromSql("true"), true);
+            assert.equal(topic.toSql(true), true);
+            assert.isTrue(topic.check(true));
+            assert.equal(topic.fromSql("false"), false);
+            assert.equal(topic.toSql(false), false);
+            assert.isTrue(topic.check(false));
+            assert.throws((function() {
+                topic.fromSql(1)
+            }));
+            assert.throws((function() {
+                topic.fromSql("A")
+            }));
+            assert.throws((function() {
+                topic.fromSql(new Date())
+            }));
+            assert.throws((function() {
+                topic.toSql(1)
+            }));
+            assert.throws((function() {
+                topic.toSql("A")
+            }));
+            assert.throws((function() {
+                topic.toSql(new Date())
+            }));
+            assert.throws((function() {
+                topic.check(1)
+            }));
+            assert.throws((function() {
+                topic.check("A")
+            }));
+            assert.throws((function() {
+                topic.check(new Date())
+            }));
+        }
+    };
+
+    suite.addBatch({
+        "foreign key with string" : {
+            topic: function () {
+                return adapter.foreignKey("myColumn", {otherTable : "otherTableColumn"});
+            },
+
+            'we get ': function (topic) {
+                assert.equal(topic, "FOREIGN KEY (myColumn) REFERENCES otherTable (otherTableColumn)");
+            }
+        },
+
+        "foreign key with object" : {
+            topic: function () {
+                return adapter.foreignKey({myColumn : {otherTable : "otherTableColumn"}, myColumn2 : {otherTable2 : "otherTableColumn2"}});
+            },
+
+            'we get ': function (topic) {
+                assert.equal(topic, "FOREIGN KEY (myColumn) REFERENCES otherTable (otherTableColumn),FOREIGN KEY (myColumn2) REFERENCES otherTable2 (otherTableColumn2)");
+            }
+        },
+
+
+        "foreign key with array" : {
+            topic: function () {
+                return adapter.foreignKey(["myColumn", "myColumn2"], {otherTable : ["otherTableColumn", "otherTableColumn2"]});
+            },
+
+            'we get ': function (topic) {
+                assert.equal(topic, "FOREIGN KEY (myColumn,myColumn2) REFERENCES otherTable (otherTableColumn,otherTableColumn2)");
+            }
+        }
+    });
 
     suite.addBatch(batch);
 });

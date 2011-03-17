@@ -28,7 +28,7 @@ Company.manyToMany("employees", {
 
 var gender = ["M", "F"];
 
-moose.refresh([companyEmployee, employee, company]).then(function() {
+moose.refresh([employee, company, companyEmployee]).then(function() {
     var suite = vows.describe("Many to Many Eager association ");
 
     suite.addBatch({
