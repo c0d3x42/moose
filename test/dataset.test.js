@@ -1,7 +1,7 @@
 var vows = require('vows'),
         assert = require('assert'),
         moose = require("../lib"),
-        sql = require("./tables/dataset").sql;
+        sql = require("./data/dataset").sql;
 // Create a Test Suite
 moose.createConnection({user : "test", password : "testpass", database : 'test'});
 
@@ -338,7 +338,7 @@ moose.execute(sql).then(function(results) {
             }
         },
 
-        'when finding a flag is true': {
+        'when finding a flag is false': {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
@@ -414,7 +414,7 @@ moose.execute(sql).then(function(results) {
             }
         },
 
-        'when finding a flag isNot true': {
+        'when finding a flag isNot false': {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");

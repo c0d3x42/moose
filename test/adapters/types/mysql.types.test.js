@@ -361,7 +361,7 @@ var suite = vows.describe('mysql types');
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "(10) NOT NULL UNIQUE UNSIGNED");
+            assert.equal(topic.sql, type + "(10) UNSIGNED NOT NULL UNIQUE");
         }
     };
 
@@ -372,7 +372,7 @@ var suite = vows.describe('mysql types');
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "(10) NOT NULL DEFAULT 10 UNIQUE UNSIGNED");
+            assert.equal(topic.sql, type + "(10) UNSIGNED NOT NULL DEFAULT 10 UNIQUE");
         }
     };
 
@@ -382,7 +382,7 @@ var suite = vows.describe('mysql types');
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "(10) NOT NULL AUTO_INCREMENT DEFAULT 10 UNIQUE UNSIGNED");
+            assert.equal(topic.sql, type + "(10) UNSIGNED NOT NULL AUTO_INCREMENT DEFAULT 10 UNIQUE");
         }
     };
 
@@ -475,7 +475,7 @@ var suite = vows.describe('mysql types');
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "(10) NOT NULL UNIQUE UNSIGNED");
+            assert.equal(topic.sql, type + "(10) UNSIGNED NOT NULL UNIQUE");
         }
     };
 
@@ -486,7 +486,7 @@ var suite = vows.describe('mysql types');
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "(10) NOT NULL DEFAULT 10 UNIQUE UNSIGNED");
+            assert.equal(topic.sql, type + "(10) UNSIGNED NOT NULL DEFAULT 10 UNIQUE");
         }
     };
 
@@ -496,7 +496,7 @@ var suite = vows.describe('mysql types');
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "(10) NOT NULL AUTO_INCREMENT DEFAULT 10 UNIQUE UNSIGNED");
+            assert.equal(topic.sql, type + "(10) UNSIGNED NOT NULL AUTO_INCREMENT DEFAULT 10 UNIQUE");
         }
     };
 
@@ -506,7 +506,7 @@ var suite = vows.describe('mysql types');
         },
 
         'we get ': function (topic) {
-            assert.equal(topic.sql, type + "(10,3) NOT NULL AUTO_INCREMENT DEFAULT 10 UNIQUE UNSIGNED");
+            assert.equal(topic.sql, type + "(10,3) UNSIGNED NOT NULL AUTO_INCREMENT DEFAULT 10 UNIQUE");
         }
     };
 

@@ -1,22 +1,12 @@
 var vows = require('vows'),
         assert = require('assert'),
-        tables = require("./tables/manyToOne.table"),
-        employee = tables.employee,
-        company = tables.company,
+        helper = require("./data/manyToOne.eager.models"),
         moose = require("../lib"),
         hitch = moose.hitch;
 
-moose.createConnection({user : "root",database : 'test'});
-var Employee = moose.addModel(employee);
-var Company = moose.addModel(company);
-
-//define associations
-Employee.manyToOne("company", {model : Company.tableName, key : {companyId : "id"}});
-Company.oneToMany("employees", {model : Employee.tableName, orderBy : {eid : "desc"}, fetchType : Company.fetchType.EAGER, key : {id : "companyId"}});
-
 var gender = ["M", "F"];
-
-moose.refresh([employee, company]).then(function() {
+helper.loadModels().then(function() {
+    var Company = moose.getModel("company"), Employee = moose.getModel("employee");
     var suite = vows.describe("Many to Many Eager association ");
 
     suite.addBatch({
@@ -46,7 +36,7 @@ moose.refresh([employee, company]).then(function() {
                 });
                 c1.save().then(hitch(this, function(c) {
                     this.callback(null, c);
-                }));
+                }), hitch(this, "callback"));
             },
 
             " the company should have employees " : {
@@ -54,22 +44,22 @@ moose.refresh([employee, company]).then(function() {
                     var emps = company.employees;
                     assert.length(emps, 2);
                     emps.forEach(function(emp, i) {
-                        assert.equal(i + 1, emp.eid);
+                        assert.equal(i + 1, emp.id);
                     });
                     return company
                 },
 
                 " when querying the employees " : {
                     topic : function(company) {
-                        Employee.filter({companyId : company.id}).all().then(hitch(this, "callback", null));
+                        Employee.filter({companyId : company.id}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
                     },
 
                     "the employees company should not be loaded yet" : {
 
                         topic : function(emps) {
                             assert.length(emps, 2);
-                            assert.equal(1, emps[0].eid);
-                            assert.equal(2, emps[1].eid);
+                            assert.equal(1, emps[0].id);
+                            assert.equal(2, emps[1].id);
                             emps[0].company.then(hitch(this, "callback", null));
                             emps[1].company.then(hitch(this, "callback", null));
                         },
@@ -101,7 +91,7 @@ moose.refresh([employee, company]).then(function() {
                 assert.length(emps, 2);
                 var ids = [2,1]
                 emps.forEach(function(emp, i) {
-                    assert.equal(ids[i], emp.eid);
+                    assert.equal(ids[i], emp.id);
                 });
             },
 
@@ -122,7 +112,7 @@ moose.refresh([employee, company]).then(function() {
                     assert.length(emps, 3);
                     var ids = [3, 2,1];
                     emps.forEach(function(emp, i) {
-                        assert.equal(emp.eid, ids[i]);
+                        assert.equal(emp.id, ids[i]);
                     });
                 }
             }
@@ -142,7 +132,7 @@ moose.refresh([employee, company]).then(function() {
                 assert.length(emps, 3);
                 ids = [3,2,1]
                 emps.forEach(function(emp, i) {
-                    assert.equal(ids[i], emp.eid);
+                    assert.equal(ids[i], emp.id);
                 });
             },
 
@@ -158,7 +148,7 @@ moose.refresh([employee, company]).then(function() {
                     assert.length(emps, 2);
                     var ids = [3,2]
                     emps.forEach(function(emp, i) {
-                        assert.equal(ids[i], emp.eid);
+                        assert.equal(ids[i], emp.id);
                     });
                 }
             }
@@ -178,7 +168,7 @@ moose.refresh([employee, company]).then(function() {
                 assert.length(emps, 2);
                 ids = [3,2]
                 emps.forEach(function(emp, i) {
-                    assert.equal(ids[i], emp.eid);
+                    assert.equal(ids[i], emp.id);
                 });
             },
 
@@ -246,7 +236,7 @@ moose.refresh([employee, company]).then(function() {
                     var ids = [6,5,4]
                     assert.length(emps, 3);
                     emps.forEach(function(emp, i) {
-                        assert.equal(emp.eid, ids[i]);
+                        assert.equal(emp.id, ids[i]);
                     });
                 }
             }

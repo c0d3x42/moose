@@ -1,33 +1,12 @@
 var vows = require('vows'),
         assert = require('assert'),
-        tables = require("./tables/manyToMany.table"),
-        employee = tables.employee,
-        company = tables.company,
-        companyEmployee = tables.companyEmployee,
+        helper = require("./data/manyToMany.lazy.models"),
         moose = require("../lib"),
         hitch = moose.hitch;
 
-moose.createConnection({user : "root",database : 'test'});
-var Employee = moose.addModel(employee);
-var Company = moose.addModel(company);
-var CompanyEmployee = moose.addModel(companyEmployee);
-
-//define associations
-Employee.manyToMany("companies", {
-    model : Company.tableName,
-    joinTable : CompanyEmployee.tableName,
-    key : {employeeId : "companyId"}
-});
-Company.manyToMany("employees", {
-    model : Employee.tableName,
-    orderBy : {id : "desc"},
-    joinTable : CompanyEmployee.tableName,
-    key : {companyId : "employeeId"}
-});
-
 var gender = ["M", "F"];
-
-moose.refresh([companyEmployee, employee, company]).then(function() {
+helper.loadModels().then(function() {
+    var Company = moose.getModel("company"), Employee = moose.getModel("employee"), CompanyEmployee = moose.getModel("companyEmployee");
     var suite = vows.describe("Many to Many Eager association ");
 
     suite.addBatch({

@@ -1,23 +1,12 @@
 var vows = require('vows'),
         assert = require('assert'),
-        tables = require("./tables/oneToOne.table"),
-        employee = tables.employee,
-        works = tables.works,
+        helper = require("./data/oneToOne.lazy.models"),
         moose = require("../lib"),
         hitch = moose.hitch;
 
-moose.createConnection({user : "root",database : 'test'});
-var Employee = moose.addModel(employee);
-var Works = moose.addModel(works);
-
-//define associations
-Employee.oneToOne("works", {model : Works.tableName, key : {eid : "eid"}});
-Works.manyToOne("employee", {model : Employee.tableName, key : {eid : "eid"}});
-
 var gender = ["M", "F"];
-
-moose.refresh([works, employee]).then(function() {
-
+helper.loadModels().then(function() {
+    var Works = moose.getModel("works"), Employee = moose.getModel("employee");
     var suite = vows.describe("One to One Eager association ");
 
     suite.addBatch({
@@ -95,7 +84,7 @@ moose.refresh([works, employee]).then(function() {
                 assert.equal(emp.gender, gender[1 % 2]);
                 assert.equal(emp.street, "Street " + 1);
                 assert.equal(emp.city, "City " + 1);
-                return employee
+                return emp
             }
         }
 
@@ -121,5 +110,5 @@ moose.refresh([works, employee]).then(function() {
 
     suite.run({reporter : require("vows/reporters/spec")});
 
-});
+}, function(err){console.log(err)});
 

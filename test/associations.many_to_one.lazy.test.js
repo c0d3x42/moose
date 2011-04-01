@@ -1,22 +1,12 @@
 var vows = require('vows'),
         assert = require('assert'),
-        tables = require("./tables/manyToOne.table"),
-        employee = tables.employee,
-        company = tables.company,
+        helper = require("./data/manyToOne.lazy.models"),
         moose = require("../lib"),
         hitch = moose.hitch;
 
-moose.createConnection({user : "root",database : 'test'});
-var Employee = moose.addModel(employee);
-var Company = moose.addModel(company);
-
-//define associations
-Employee.manyToOne("company", {model : Company.tableName,  fetchType : Employee.fetchType.EAGER, key : {companyId : "id"}});
-Company.oneToMany("employees", {model : Employee.tableName, orderBy : {eid : "desc"}, key : {id : "companyId"}});
-
 var gender = ["M", "F"];
-
-moose.refresh([employee, company]).then(function() {
+helper.loadModels().then(function() {
+    var Company = moose.getModel("company"), Employee = moose.getModel("employee");
 
     var suite = vows.describe("Many to Many Lazy association ");
 
@@ -55,7 +45,7 @@ moose.refresh([employee, company]).then(function() {
                     var emps = company.employees;
                     assert.length(emps, 2);
                     emps.forEach(function(emp, i) {
-                        assert.equal(i + 1, emp.eid);
+                        assert.equal(i + 1, emp.id);
                     }, this);
                     return company
                 },
@@ -67,8 +57,8 @@ moose.refresh([employee, company]).then(function() {
 
                     "the employees company should be loaded" : function(emps) {
                         assert.length(emps, 2);
-                        assert.equal(1, emps[0].eid);
-                        assert.equal(2, emps[1].eid);
+                        assert.equal(1, emps[0].id);
+                        assert.equal(2, emps[1].id);
                         assert.isNotNull(emps[0].company);
                         assert.isNotNull(emps[1].company);
                         assert.equal(emps[0].company.companyName, "Google");
@@ -96,7 +86,7 @@ moose.refresh([employee, company]).then(function() {
                     assert.length(emps, 2);
                     var ids = [2,1]
                     emps.forEach(function(emp, i) {
-                        assert.equal(ids[i], emp.eid);
+                        assert.equal(ids[i], emp.id);
                     });
                 }
 
@@ -124,7 +114,7 @@ moose.refresh([employee, company]).then(function() {
                     assert.length(emps, 3);
                     var ids = [3, 2,1];
                     emps.forEach(function(emp, i) {
-                        assert.equal(emp.eid, ids[i]);
+                        assert.equal(emp.id, ids[i]);
                     });
                 }
             }
@@ -153,7 +143,7 @@ moose.refresh([employee, company]).then(function() {
                     assert.length(emps, 2);
                     var ids = [3,2]
                     emps.forEach(function(emp, i) {
-                        assert.equal(ids[i], emp.eid);
+                        assert.equal(ids[i], emp.id);
                     });
                 }
             }
@@ -233,7 +223,7 @@ moose.refresh([employee, company]).then(function() {
                     var ids = [6,5,4]
                     assert.length(emps, 3);
                     emps.forEach(function(emp, i) {
-                        assert.equal(emp.eid, ids[i]);
+                        assert.equal(emp.id, ids[i]);
                     });
                 }
             }

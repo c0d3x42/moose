@@ -1,25 +1,14 @@
 var vows = require('vows'),
         assert = require('assert'),
-        employee = require("./tables/model").employee,
+        helper = require("./data/model.models"),
         moose = require("../lib"),
         hitch = moose.hitch;
 
-moose.createConnection({user : "test", password : "testpass", database : 'test'});
 var suite = vows.describe("model object");
 
 
-var Employee = moose.addModel(employee, {
-    static : {
-        //class methods
-        findByGender : function(gender, callback, errback) {
-            Employee.filter({gender : gender}).all(callback, errback);
-        }
-    },
-    instance : {} //instance methods
-});
-
-
-moose.refresh(employee).then(function() {
+helper.loadModels().then(function() {
+    var Employee = moose.getModel("employee");
     suite.addBatch({
         "Should check if an object is valid" : {
             topic : function() {
@@ -28,7 +17,7 @@ moose.refresh(employee).then(function() {
 
             "and be true" : function(topic) {
                 var val = {
-                    eid : 1,
+                    id : 1,
                     firstname : "doug",
                     lastname : "martin",
                     midinitial : null,
@@ -41,7 +30,7 @@ moose.refresh(employee).then(function() {
 
             "and be false" : function(topic) {
                 var val = {
-                    eid : "1",
+                    id : "1",
                     firstname : true,
                     lastname : false,
                     midinitial : "AA",
@@ -60,7 +49,7 @@ moose.refresh(employee).then(function() {
 
             "and be true" : function(topic) {
                 var val = {
-                    eid : 1,
+                    id : 1,
                     firstname : "doug",
                     lastname : "martin",
                     midinitial : null,
@@ -75,7 +64,7 @@ moose.refresh(employee).then(function() {
 
             "and be false" : function(topic) {
                 var val = {
-                    eid : "1",
+                    id : "1",
                     firstname : true,
                     lastname : false,
                     midinitial : "AA",
@@ -148,7 +137,7 @@ moose.refresh(employee).then(function() {
         "Should filter"  : {
             topic : function() {
                 var self = this;
-                var d = Employee.filter({eid : [1,2,3,4,5,6]}).all(hitch(this, "callback", null), function(err) {
+                var d = Employee.filter({id : [1,2,3,4,5,6]}).all(hitch(this, "callback", null), function(err) {
                     console.log(err);
                 });
             },
@@ -158,7 +147,7 @@ moose.refresh(employee).then(function() {
                 assert.length(topic, 6);
                 topic.forEach(function(t) {
                     assert.instanceOf(t, Employee);
-                    assert.equal(i++, t.eid);
+                    assert.equal(i++, t.id);
                 });
             }
         },
@@ -211,7 +200,7 @@ moose.refresh(employee).then(function() {
 
             "and return 21 employees" : function(topic) {
                 assert.instanceOf(topic, Employee);
-                assert.equal(this.count++, topic.eid);
+                assert.equal(this.count++, topic.id);
             }
         },
 
@@ -222,9 +211,9 @@ moose.refresh(employee).then(function() {
                 var d = Employee.one(hitch(this, "callback", null));
             },
 
-            "and return employee with eid of 1" : function(topic) {
+            "and return employee with id of 1" : function(topic) {
                 assert.instanceOf(topic, Employee);
-                assert.equal(1, topic.eid);
+                assert.equal(1, topic.id);
             }
         },
 
@@ -235,9 +224,9 @@ moose.refresh(employee).then(function() {
                 var d = Employee.last(hitch(this, "callback", null));
             },
 
-            "and return employee with eid of 21" : function(topic) {
+            "and return employee with id of 21" : function(topic) {
                 assert.instanceOf(topic, Employee);
-                //assert.equal(21, topic.eid);
+                //assert.equal(21, topic.id);
             }
         },
 
@@ -245,14 +234,14 @@ moose.refresh(employee).then(function() {
         "Should find all employees with query"  : {
             topic : function() {
                 var self = this;
-                var d = Employee.all({eid : [1,2,3,4,5,6]}, hitch(this, "callback", null));
+                var d = Employee.all({id : [1,2,3,4,5,6]}, hitch(this, "callback", null));
             },
 
             "and return 6 employees" : function(topic) {
                 assert.length(topic, 6);
                 topic.forEach(function(e, i) {
                     assert.instanceOf(e, Employee);
-                    assert.equal(i + 1, e.eid);
+                    assert.equal(i + 1, e.id);
                 })
             }
         },
@@ -261,13 +250,13 @@ moose.refresh(employee).then(function() {
             topic : function() {
                 var self = this;
                 this.count = 1;
-                var d = Employee.forEach({eid : [1,2,3,4,5,6]}, hitch(this, "callback", null));
+                var d = Employee.forEach({id : [1,2,3,4,5,6]}, hitch(this, "callback", null));
             },
 
             "and return 6 employees" : function(topic) {
                 var ids = [1,2,3,4,5,6]
                 assert.instanceOf(topic, Employee);
-                assert.isTrue(ids.indexOf(topic.eid) != -1);
+                assert.isTrue(ids.indexOf(topic.id) != -1);
             }
         },
 
@@ -275,12 +264,12 @@ moose.refresh(employee).then(function() {
             topic : function() {
                 var self = this;
                 this.count = 1;
-                var d = Employee.one({eid : {gt : 5, lt : 11}}, hitch(this, "callback", null));
+                var d = Employee.one({id : {gt : 5, lt : 11}}, hitch(this, "callback", null));
             },
 
-            "and return employee with eid of 1" : function(topic) {
+            "and return employee with id of 1" : function(topic) {
                 assert.instanceOf(topic, Employee);
-                assert.equal(topic.eid, 6);
+                assert.equal(topic.id, 6);
             }
         },
 
@@ -288,12 +277,12 @@ moose.refresh(employee).then(function() {
             topic : function() {
                 var self = this;
                 this.count = 1;
-                var d = Employee.last({eid : {gt : 5, lt : 11}}, hitch(this, "callback", null));
+                var d = Employee.last({id : {gt : 5, lt : 11}}, hitch(this, "callback", null));
             },
 
-            "and return employee with eid of 21" : function(topic) {
+            "and return employee with id of 21" : function(topic) {
                 assert.instanceOf(topic, Employee);
-                assert.equal(10, topic.eid);
+                assert.equal(10, topic.id);
             }
         }
     });
@@ -313,7 +302,7 @@ moose.refresh(employee).then(function() {
 
             "and the employee should have an id" : function(emp) {
                 assert.instanceOf(emp, Employee);
-                assert.isNumber(emp.eid);
+                assert.isNumber(emp.id);
             },
 
             "Should be able to update the employee" : {
@@ -325,12 +314,12 @@ moose.refresh(employee).then(function() {
                 "and when querying the employee it should be updated" : {
 
                     topic : function(e, emp) {
-                        Employee.one({eid : emp.eid}).then(hitch(this, "callback", null));
+                        Employee.one({id : emp.id}).then(hitch(this, "callback", null));
                     },
 
                     " with the new name" : function(emp) {
                         assert.instanceOf(emp, Employee);
-                        assert.isNumber(emp.eid);
+                        assert.isNumber(emp.id);
                         assert.equal(emp.firstname, "doug");
                     },
 
@@ -346,7 +335,7 @@ moose.refresh(employee).then(function() {
 
                             topic : function(emp1, emp) {
                                 var self = this;
-                                Employee.one({eid : emp.eid}, function(results) {
+                                Employee.one({id : emp.id}, function(results) {
                                     self.callback(null, results);
                                 });
                             },
@@ -382,8 +371,8 @@ moose.refresh(employee).then(function() {
     suite.addBatch({
         "Should do an update on a single record" : {
             topic : function() {
-                Employee.update({firstname : "dougie"}, {eid : 2}, hitch(this, function() {
-                    Employee.filter({eid : 2}).one(hitch(this, "callback", null));
+                Employee.update({firstname : "dougie"}, {id : 2}, hitch(this, function() {
+                    Employee.filter({id : 2}).one(hitch(this, "callback", null));
                 }));
             },
 

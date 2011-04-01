@@ -1,0 +1,27 @@
+var moose = require("../../lib"),
+        mysql = moose.adapters.mysql,
+        types = mysql.types;
+
+exports.loadModels = function() {
+    var ret = new moose.Promise();
+    var options = {
+        connection : {user : "test", password : "testpass", database : 'test'},
+        dir : "./data/migrations/oneToOne",
+        start : 0,
+        up : false
+    };
+
+    moose.migrate(options).then(function() {
+        moose.migrate(moose.merge(options, {up : true}))
+                .chain(hitch(moose, "loadSchemas", ["works", "employee"]))
+                .then(function(works, employee) {
+            var Works = moose.addModel(works);
+            var Employee = moose.addModel(employee);
+            //define associations
+            Employee.oneToOne("works", {model : Works.tableName, key : {eid : "eid"}});
+            Works.manyToOne("employee", {model : Employee.tableName, key : {eid : "eid"}});
+            ret.callback();
+        }, hitch(console, "log"));
+    });
+    return ret;
+}
