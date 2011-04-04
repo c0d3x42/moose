@@ -1,4 +1,4 @@
-var moose = require("../../../../lib"),
+var moose = require("../../../../../lib"),
         mysql = moose.adapters.mysql,
         types = mysql.types;
 
@@ -11,15 +11,12 @@ exports.up = function() {
         table.column("gender", types.ENUM({enums : ["M", "F"], allowNull : false}));
         table.column("street", types.VARCHAR({length : 50, allowNull : false}));
         table.column("city", types.VARCHAR({length : 20, allowNull : false}));
-        table.column("updatedAt", types.DATETIME());
-        table.column("createdAt", types.DATETIME());
+        table.column("updated", types.DATETIME());
+        table.column("created", types.DATETIME());
         table.primaryKey("id");
     });
 };
 
 exports.down = function() {
-    moose.dropTable("companyEmployee");
-    moose.dropTable("works");
     moose.dropTable("employee");
-    moose.dropTable("company");
 };

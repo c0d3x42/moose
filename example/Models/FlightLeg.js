@@ -1,7 +1,6 @@
-var moose = require("../../lib"),
-    airlines = require("../tables");
+var moose = require("../../lib");
 
-module.exports = exports = (FlightLeg = moose.addModel(airlines.flightLeg, {
+module.exports = exports = (FlightLeg = moose.addModel(moose.getSchema("flight_leg"), {
     plugins : [moose.plugins.CachePlugin],
     instance : {
         toObject : function(){
@@ -17,18 +16,18 @@ module.exports = exports = (FlightLeg = moose.addModel(airlines.flightLeg, {
 
 var fetchType = FlightLeg.fetchType;
 FlightLeg.oneToMany("legInstances", {
-    model : airlines.legInstance.tableName,
+    model : "leg_instance",
     key : {id : "flightLegId"}
 });
 
 FlightLeg.manyToOne("departs", {
-    model : airlines.airport.tableName,
+    model : "airport",
     fetchType : fetchType.EAGER,
     key : {departureCode : "airportCode"}
 });
 
 FlightLeg.manyToOne("arrives", {
-    model : airlines.airport.tableName,
+    model : "airport",
     fetchType : fetchType.EAGER,
     key : {arrivalCode : "airportCode"}
 });

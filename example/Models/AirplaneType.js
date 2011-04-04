@@ -1,14 +1,13 @@
-var moose = require("../../lib"),
-    airlines = require("../tables");
+var moose = require("../../lib");
 
-module.exports = exports =(AirPlaneType = moose.addModel(airlines.airplaneType));
+module.exports = exports =(AirPlaneType = moose.addModel(moose.getSchema("airplane_type")));
 
 var fetchType = AirPlaneType.fetchType;
 AirPlaneType.manyToMany("supportedAirports", {
-    joinTable : airlines.canLand.tableName,
+    joinTable : "can_land",
     fetchType : fetchType.EAGER,
-    model : airlines.airport.tableName,
+    model : "airport",
     key : {airportCode : "typeId"}
 });
 
-AirPlaneType.oneToMany("airplanes", {model : airlines.airplane.tableName,key : {type_id : "id"}});
+AirPlaneType.oneToMany("airplanes", {model : "airplane", key : {type_id : "id"}});

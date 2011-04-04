@@ -2,32 +2,10 @@ var vows = require('vows'),
         assert = require('assert'),
         moose = require("../../lib"),
         hitch = moose.hitch,
-        mysql = moose.adapters.mysql,
-        types = mysql.types;
+        helper = require("../data/plugins.models");
 
-moose.createConnection({user : "root",database : 'test'});
-var suite = vows.describe("model object");
-
-
-var schema = new moose.Table("employee", {
-    id :             types.INT({allowNull : false, primaryKey : true, primaryKey : true, autoIncrement : true}),
-    firstname :       types.VARCHAR({length : 20, allowNull : false}),
-    lastname :        types.VARCHAR({length : 20, allowNull : false}),
-    midinitial :      types.CHAR({length : 1}),
-    gender :          types.ENUM({enums : ["M", "F"], allowNull : false}),
-    street :          types.VARCHAR({length : 50, allowNull : false}),
-    city :            types.VARCHAR({length : 20, allowNull : false}),
-    updated :         types.DATETIME(),
-    created :         types.DATETIME()
-});
-
-var Employee = moose.addModel(schema, {
-    plugins : [moose.plugins.TimeStampPlugin]
-});
-
-Employee.timestamp({updateOnCreate : true});
-
-moose.refresh(schema).then(function() {
+helper.loadUpdateOnCreateModels().then(function() {
+    Employee = moose.getModel("employee");
     var suite = vows.describe("TimeStampPlugin updateOnCreate");
 
     suite.addBatch({
@@ -54,6 +32,7 @@ moose.refresh(schema).then(function() {
                 assert.deepEqual(topic.updated, topic.created);
                 assert.instanceOf(topic.updated, Date);
                 assert.instanceOf(topic.created, Date);
+                helper.dropUpdateOnCreateModels();
             }
         }
     });

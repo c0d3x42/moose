@@ -1,4 +1,3 @@
-var moose = require("../../lib"),
-    airlines = require("../tables");
+var moose = require("../../lib");
 
-module.exports = exports = moose.addModel(airlines.canLand);
+module.exports = exports = moose.addModel(moose.getSchema("can_land"));

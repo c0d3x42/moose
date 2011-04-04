@@ -255,6 +255,7 @@ helper.loadModels().then(function() {
 
             " the employees should still exits " : function(count) {
                 assert.equal(count, 6);
+                helper.dropModels();
             }
         }
     });

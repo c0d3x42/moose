@@ -1,12 +1,5 @@
 var moose = require("../lib"),
-        models = require("./models"),
-        tables = require("./tables");
-
-var refreshTables = [];
-for (var i in tables) {
-    refreshTables.push(tables[i]);
-}
-;
+        models = require("./models");
 
 /***************************START MOCK DATA*********************/
 var airports = [
@@ -84,13 +77,25 @@ var flights = [
 /***************************END MOCK DATA*********************/
 
 exports.loadData = function() {
-
     var ret = new moose.Promise();
-    moose.createConnection({user : "root",database : 'airline'});
-    moose.refresh(refreshTables)
-            .chain(moose.hitch(models.Airport, "save", airports), hitch(ret, "errback"))
-            .chain(moose.hitch(models.AirPlaneType, "save", airplaneTypes), hitch(ret, "errback"))
-            .chain(moose.hitch(models.Flight, "save", flights), hitch(ret, "errback"))
-            .then(hitch(ret, "callback"), hitch(ret, "errback"));
+    var options = {
+        connection : {user : "test", password : "testpass", database : 'airline'},
+        dir : "./migrations",
+        start : 0,
+        up : false
+    };
+    //migrate down to clear any previous data
+    moose.migrate(options)
+            //migrate up to create tables
+            .chain(moose.hitch(moose, "migrate", moose.merge({}, options, {up : true})), moose.hitch(ret, "errback"))
+            .chain(models.load, hitch(ret, "errback"))
+            .then(function() {
+                //now load out data
+                var Airport = moose.getModel("airport"), AirplaneType = moose.getModel("airplane_type"), Flight = moose.getModel("flight");
+                Airport.save(airports)
+                        .chain(moose.hitch(AirplaneType, "save", airplaneTypes), moose.hitch(ret, "errback"))
+                        .chain(moose.hitch(Flight, "save", flights), moose.hitch(ret, "errback"))
+                        .then(hitch(ret, "callback"), hitch(ret, "errback"));
+            }, hitch(ret, "errback"));
     return ret;
 }

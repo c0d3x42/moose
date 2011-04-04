@@ -1,17 +1,16 @@
-var moose = require("../../lib"),
-        airlines = require("../tables");
+var moose = require("../../lib");
 
-module.exports = exports = (LegInstance = moose.addModel(airlines.legInstance));
+module.exports = exports = (LegInstance = moose.addModel(moose.getSchema("leg_instance")));
 
 var fetchType = LegInstance.fetchType;
 LegInstance.manyToOne("airplane", {
-    model : airlines.airplane.tableName,
+    model : "airplane",
     fetchType : fetchType.EAGER,
     key : {id : "type_id"}
 });
 
 LegInstance.manyToOne("flightLeg", {
-    model : airlines.flightLeg.tableName,
+    model : "flight_leg",
     fetchType : fetchType.EAGER,
     key : {flightLegId : "id"}
 });

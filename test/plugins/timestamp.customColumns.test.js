@@ -2,32 +2,10 @@ var vows = require('vows'),
         assert = require('assert'),
         moose = require("../../lib"),
         hitch = moose.hitch,
-        mysql = moose.adapters.mysql,
-        types = mysql.types;
+        helper = require("../data/plugins.models");
 
-moose.createConnection({user : "root",database : 'test'});
-var suite = vows.describe("model object");
-
-
-var schema = new moose.Table("employee", {
-    id :             types.INT({allowNull : false, primaryKey : true, primaryKey : true, autoIncrement : true}),
-    firstname :       types.VARCHAR({length : 20, allowNull : false}),
-    lastname :        types.VARCHAR({length : 20, allowNull : false}),
-    midinitial :      types.CHAR({length : 1}),
-    gender :          types.ENUM({enums : ["M", "F"], allowNull : false}),
-    street :          types.VARCHAR({length : 50, allowNull : false}),
-    city :            types.VARCHAR({length : 20, allowNull : false}),
-    updatedAt :         types.DATETIME(),
-    createdAt :         types.DATETIME()
-});
-
-var Employee = moose.addModel(schema, {
-    plugins : [moose.plugins.TimeStampPlugin]
-});
-
-Employee.timestamp({updated : "updatedAt", created : "createdAt"});
-
-moose.refresh(schema).then(function() {
+helper.loadCustomModels().then(function() {
+    Employee = moose.getModel("employee");
     var suite = vows.describe("TimeStampPlugin updateOnCreate");
 
     suite.addBatch({
@@ -35,7 +13,7 @@ moose.refresh(schema).then(function() {
         "when creating an employee" : {
             topic : function() {
                 Employee.save({
-                    eid : 1,
+                    id : 1,
                     firstname : "doug",
                     lastname : "martin",
                     midinitial : null,
@@ -44,8 +22,8 @@ moose.refresh(schema).then(function() {
                     city : "NOWHERE"
                 }).then(hitch(this, function(e) {
                     //force reload
-                    e.reload().then(hitch(this, "callback", null));
-                }));
+                    e.reload().then(hitch(this, "callback", null), hitch(this, "callback"));
+                }), hitch(this, "callback"));
             },
 
             "the updatedAt time stamp should not be set" : function(topic) {
@@ -73,6 +51,7 @@ moose.refresh(schema).then(function() {
                     assert.isNotNull(topic.updatedAt);
                     assert.instanceOf(topic.updatedAt, Date);
                     assert.notDeepEqual(topic.updatedAt, topic.createdAt);
+                    helper.dropCustomModels();
                 }
             }
         }

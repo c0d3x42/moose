@@ -83,7 +83,7 @@ helper.loadModels().then(function() {
 
         "When finding a company" : {
             topic : function() {
-                Company.one().then(hitch(this, "callback", null));
+                Company.one().then(hitch(this, "callback", null), hitch(this, "callback"));
             },
 
             " the company should have employees " : function(company) {
@@ -104,7 +104,7 @@ helper.loadModels().then(function() {
                         gender : gender[1 % 3],
                         street : "Street " + 3,
                         city : "City " + 3
-                    })).save().chain(hitch(company, "reload")).then(hitch(this, "callback", null));
+                    })).save().chain(hitch(company, "reload"), hitch(this, "callback")).then(hitch(this, "callback", null), hitch(this, "callback"));
                 },
 
                 "the company should have three employees " : function(company) {
@@ -124,7 +124,7 @@ helper.loadModels().then(function() {
 
         "When finding a company" : {
             topic : function() {
-                Company.one().then(hitch(this, "callback", null));
+                Company.one().then(hitch(this, "callback", null), hitch(this, "callback"));
             },
 
             " the company should have employees " : function(company) {
@@ -140,7 +140,9 @@ helper.loadModels().then(function() {
                 topic : function(company) {
                     //remove the last employee
                     //since there are three
-                    company.removeEmployee(2).save().chain(hitch(company, "reload")).then(hitch(this, "callback", null));
+                    company.removeEmployee(2).save()
+                            .chain(hitch(company, "reload"), hitch(this, "callback"))
+                            .then(hitch(this, "callback", null), hitch(this, "callback"));
                 },
 
                 "the company should have two employees " : function(company) {
@@ -160,7 +162,7 @@ helper.loadModels().then(function() {
 
         "When finding a company" : {
             topic : function() {
-                Company.one().then(hitch(this, "callback", null));
+                Company.one().then(hitch(this, "callback", null), hitch(this, "callback"));
             },
 
             " the company should have employees " : function(company) {
@@ -176,7 +178,9 @@ helper.loadModels().then(function() {
                 topic : function(company) {
                     //remove the last employee
                     //since there are three
-                    company.spliceEmployees(0, 2).save().chain(hitch(company, "reload")).then(hitch(this, "callback", null));
+                    company.spliceEmployees(0, 2).save()
+                            .chain(hitch(company, "reload"), hitch(this, "callback"))
+                            .then(hitch(this, "callback", null), hitch(this, "callback"));
                 },
 
                 "the company should have 0 employees " : function(company) {
@@ -191,7 +195,7 @@ helper.loadModels().then(function() {
     suite.addBatch({
         "When finding a company" : {
             topic : function() {
-                Company.one().then(hitch(this, "callback", null));
+                Company.one().then(hitch(this, "callback", null), hitch(this, "callback"));
             },
 
             " the company should no employees " : function(company) {
@@ -228,7 +232,7 @@ helper.loadModels().then(function() {
                             street : "Street " + 3,
                             city : "City " + 3
                         })
-                    ]).save().chain(hitch(company, "reload")).then(hitch(this, "callback", null));
+                    ]).save().chain(hitch(company, "reload"), hitch(this, "callback")).then(hitch(this, "callback", null), hitch(this, "callback"));
                 },
 
                 "the company should have 3 employees " : function(company) {
@@ -249,11 +253,12 @@ helper.loadModels().then(function() {
                 Company.one().chain(
                         function(c) {
                             return c.remove();
-                        }).chain(hitch(Employee, "count")).then(hitch(this, "callback", null));
+                        }).chain(hitch(Employee, "count"), hitch(this, "callback")).then(hitch(this, "callback", null), hitch(this, "callback"));
             },
 
             " the company should no employees " : function(count) {
                 assert.equal(count, 0);
+                helper.dropModels();
             }
         }
     });

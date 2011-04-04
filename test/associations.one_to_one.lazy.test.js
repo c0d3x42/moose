@@ -24,7 +24,7 @@ helper.loadModels().then(function() {
                         companyName : "Google",
                         salary : 100000
                     }
-                }).save().then(hitch(this, "callback", null));
+                }).save().then(hitch(this, "callback", null), hitch(this, "callback"));
             },
 
             " the employee should work at google " : function(employee) {
@@ -41,7 +41,7 @@ helper.loadModels().then(function() {
 
         "When finding an employee" : {
             topic : function() {
-                Employee.one().then(hitch(this, "callback", null));
+                Employee.one().then(hitch(this, "callback", null), hitch(this, "callback"));
             },
 
 
@@ -49,7 +49,7 @@ helper.loadModels().then(function() {
                 topic : function(employee) {
                     var works = employee.works;
                     assert.instanceOf(works, Promise);
-                    works.addCallback(hitch(this, "callback", null, employee));
+                    works.then(hitch(this, "callback", null, employee), hitch(this, "callback"));
                 },
 
                 " but now they should" : function(employee) {
@@ -69,7 +69,7 @@ helper.loadModels().then(function() {
         "When finding workers" : {
             topic : function() {
                 Works.one().then(hitch(this, function(worker) {
-                    worker.employee.then(hitch(this, "callback", null, worker));
+                    worker.employee.then(hitch(this, "callback", null, worker), hitch(this, "callback"));
                 }));
             },
 
@@ -97,12 +97,13 @@ helper.loadModels().then(function() {
                 Employee.one().chain(
                         function(e) {
                             return e.remove();
-                        }).chain(hitch(Works, "count")).then(hitch(this, "callback", null));
+                        }).chain(hitch(Works, "count"), hitch(this, "callback")).then(hitch(this, "callback", null), hitch(this, "callback"));
             },
 
 
             " the the works count should be 0 " : function(count) {
                 assert.equal(count, 0);
+                helper.dropModels();
             }
         }
 

@@ -92,7 +92,6 @@ helper.loadModels().then(function() {
 
             " and get a list of one employees" : function(t) {
                 assert.length(t, 1);
-                console.log(t);
                 var emp = t[0];
                 assert.instanceOf(emp, Employee);
                 assert.equal("doug", emp.firstname);
@@ -137,9 +136,7 @@ helper.loadModels().then(function() {
         "Should filter"  : {
             topic : function() {
                 var self = this;
-                var d = Employee.filter({id : [1,2,3,4,5,6]}).all(hitch(this, "callback", null), function(err) {
-                    console.log(err);
-                });
+                var d = Employee.filter({id : [1,2,3,4,5,6]}).all(hitch(this, "callback", null), hitch(this, "callback"));
             },
 
             "and return employees" : function(topic) {
@@ -180,7 +177,7 @@ helper.loadModels().then(function() {
         "Should find all employees"  : {
             topic : function() {
                 var self = this;
-                var d = Employee.all(hitch(this, "callback", null));
+                var d = Employee.all().then(hitch(this, "callback", null), hitch(this, "callback"));;
             },
 
             "and return 21 employees" : function(topic) {
@@ -195,7 +192,7 @@ helper.loadModels().then(function() {
             topic : function() {
                 var self = this;
                 this.count = 1;
-                var d = Employee.forEach(hitch(this, "callback", null));
+                var d = Employee.forEach(hitch(this, "callback", null)).addErrback(hitch(this, "callback"));
             },
 
             "and return 21 employees" : function(topic) {
@@ -208,7 +205,7 @@ helper.loadModels().then(function() {
             topic : function() {
                 var self = this;
                 this.count = 1;
-                var d = Employee.one(hitch(this, "callback", null));
+                var d = Employee.one().then(hitch(this, "callback", null), hitch(this, "callback"));;
             },
 
             "and return employee with id of 1" : function(topic) {
@@ -221,7 +218,7 @@ helper.loadModels().then(function() {
             topic : function() {
                 var self = this;
                 this.count = 1;
-                var d = Employee.last(hitch(this, "callback", null));
+                var d = Employee.last().then(hitch(this, "callback", null), hitch(this, "callback"));;
             },
 
             "and return employee with id of 21" : function(topic) {
@@ -234,7 +231,7 @@ helper.loadModels().then(function() {
         "Should find all employees with query"  : {
             topic : function() {
                 var self = this;
-                var d = Employee.all({id : [1,2,3,4,5,6]}, hitch(this, "callback", null));
+                var d = Employee.all({id : [1,2,3,4,5,6]}).then(hitch(this, "callback", null), hitch(this, "callback"));
             },
 
             "and return 6 employees" : function(topic) {
@@ -250,7 +247,7 @@ helper.loadModels().then(function() {
             topic : function() {
                 var self = this;
                 this.count = 1;
-                var d = Employee.forEach({id : [1,2,3,4,5,6]}, hitch(this, "callback", null));
+                var d = Employee.forEach({id : [1,2,3,4,5,6]},hitch(this, "callback", null)).addErrback(hitch(this, "callback"));
             },
 
             "and return 6 employees" : function(topic) {
@@ -264,7 +261,7 @@ helper.loadModels().then(function() {
             topic : function() {
                 var self = this;
                 this.count = 1;
-                var d = Employee.one({id : {gt : 5, lt : 11}}, hitch(this, "callback", null));
+                var d = Employee.one({id : {gt : 5, lt : 11}}).then(hitch(this, "callback", null), hitch(this, "callback"));
             },
 
             "and return employee with id of 1" : function(topic) {
@@ -277,7 +274,7 @@ helper.loadModels().then(function() {
             topic : function() {
                 var self = this;
                 this.count = 1;
-                var d = Employee.last({id : {gt : 5, lt : 11}}, hitch(this, "callback", null));
+                var d = Employee.filter({id : {gt : 5, lt : 11}}).last().then(hitch(this, "callback", null), hitch(this, "callback"));
             },
 
             "and return employee with id of 21" : function(topic) {
@@ -297,7 +294,7 @@ helper.loadModels().then(function() {
                     gender : "M",
                     street : "1 nowhere st.",
                     city : "NOWHERE"
-                }).then(hitch(this, "callback", null));
+                }).then(hitch(this, "callback", null), hitch(this, "callback"));
             },
 
             "and the employee should have an id" : function(emp) {
@@ -308,13 +305,13 @@ helper.loadModels().then(function() {
             "Should be able to update the employee" : {
                 topic : function(emp) {
                     emp.firstname = "doug";
-                    emp.update().then(hitch(this, "callback", null));
+                    emp.update().then(hitch(this, "callback", null), hitch(this, "callback"));
                 },
 
                 "and when querying the employee it should be updated" : {
 
                     topic : function(e, emp) {
-                        Employee.one({id : emp.id}).then(hitch(this, "callback", null));
+                        Employee.one({id : emp.id}).then(hitch(this, "callback", null), hitch(this, "callback"));
                     },
 
                     " with the new name" : function(emp) {
@@ -326,9 +323,7 @@ helper.loadModels().then(function() {
                     "Should be able to delete the employee" :  {
                         topic : function(e, emp) {
                             self = this;
-                            emp.remove().then(function() {
-                                self.callback(null, emp);
-                            });
+                            emp.remove().then(hitch(this, "callback", null, emp), hitch(this, "callback"));
                         },
 
                         "and when when querying the deleted employee" : {
@@ -379,10 +374,12 @@ helper.loadModels().then(function() {
             " all records should be updated" : function(emp) {
                 assert.instanceOf(emp, Employee);
                 assert.equal(emp.firstname, "dougie");
+                helper.dropModels();
             }
         }
     });
+
     suite.run({reporter : require("vows/reporters/spec")});
-}, function(err){console.log(err)});
+}, function(err){throw err});
 
 

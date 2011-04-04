@@ -1,3 +1,5 @@
+var moose = require("../../lib");
+
 exports.sql = "DROP TABLE IF EXISTS works;"
         + "DROP TABLE IF EXISTS companyEmployee;"
         + "DROP TABLE IF EXISTS company;"
@@ -76,4 +78,12 @@ exports.sql = "DROP TABLE IF EXISTS works;"
         + "INSERT INTO works (eid, lastname, firstname, midinitial, company_name, salary) VALUES(19, 'Thomson',  'Ron',     'F', 'FIRST Bank',     '39000');"
         + "INSERT INTO works (eid, lastname, firstname, midinitial, company_name, salary) VALUES(20, 'Young',    'Don',     'R', 'Mutual OF Omaha','27000');"
         + "INSERT INTO works (eid, lastname, firstname, midinitial, company_name, salary) values(21, 'Wong',     'Carole',  'S', 'FIRST Bank',     '44000');";
-console.log(exports.sql);
+
+exports.dropModels = function() {
+    var ret = new moose.Promise();
+    moose.execute("DROP TABLE IF EXISTS works;"
+        + "DROP TABLE IF EXISTS companyEmployee;"
+        + "DROP TABLE IF EXISTS company;"
+        + "DROP TABLE IF EXISTS employee;").then(moose.hitch(ret, "callback"), moose.hitch(ret, "errback"));
+    return ret;
+};
