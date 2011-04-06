@@ -12,7 +12,7 @@ var Mammal = moose.define(null, {
         constructor: function(options) {
             options = options || {};
             this.super(arguments);
-            this._type = options.type || "mammal"
+            this._type = options.type || "mammal";
         },
 
         speak : function() {
@@ -30,7 +30,7 @@ var Mammal = moose.define(null, {
     //Define your static methods
     static : {
         soundOff : function() {
-            return "Im a mammal!!"
+            return "Im a mammal!!";
         }
     }
 });
@@ -141,8 +141,8 @@ suite.addBatch({
 
         "should sound like a dog" : function(dog) {
             //This is true because they inherit from eachother!
-            assert.isTrue(dog instanceof Wolf)
-            assert.isTrue(dog instanceof Mammal)
+            assert.isTrue(dog instanceof Wolf);
+            assert.isTrue(dog instanceof Mammal);
             assert.equal(dog.speak(), "A mammal of type mammal sounds like a woof thats domesticated");
             assert.equal(dog.type, "mammal");
             assert.equal(dog.color, "gold");
@@ -158,9 +158,9 @@ suite.addBatch({
 
         "should sound like a lab" : function(dog) {
             //the next three are true because they inherit from each other
-            assert.isTrue(dog instanceof Dog)
-            assert.isTrue(dog instanceof Wolf)
-            assert.isTrue(dog instanceof Mammal)
+            assert.isTrue(dog instanceof Dog);
+            assert.isTrue(dog instanceof Wolf);
+            assert.isTrue(dog instanceof Mammal);
             assert.equal(dog.speak(), "A mammal of type lab sounds like a woof thats domesticated with a high pitch!");
             assert.equal(dog.type, "lab");
             assert.equal(dog.color, "gold");
@@ -176,10 +176,10 @@ suite.addBatch({
 
         "should sound like a lab" : function(dog) {
             //the next three are false because they are mixins
-            assert.isFalse(dog instanceof Breed)
-            assert.isFalse(dog instanceof Dog)
-            assert.isFalse(dog instanceof Wolf)
-            assert.isTrue(dog instanceof Mammal)
+            assert.isFalse(dog instanceof Breed);
+            assert.isFalse(dog instanceof Dog);
+            assert.isFalse(dog instanceof Wolf);
+            assert.isTrue(dog instanceof Mammal);
             assert.equal(dog.speak(), "A mammal of type mammal sounds like a woof thats domesticated with a high pitch!");
             assert.equal(dog.type, "mammal");
             assert.equal(dog.color, "grey");

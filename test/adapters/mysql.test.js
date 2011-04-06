@@ -5,7 +5,7 @@ var vows = require('vows'),
         Client = require('mysql').Client,
         db = new Client();
 // Create a Test Suite
-var suite = vows.describe('mysql adapter')
+var suite = vows.describe('mysql adapter');
 suite.addBatch({
     'when finding all records with all fields': {
         topic: function () {
@@ -33,7 +33,7 @@ suite.addBatch({
 suite.addBatch({
     'when finding a number = zero': {
         topic: function () {
-            return new Mysql("test", db).eq({x : 0})
+            return new Mysql("test", db).eq({x : 0});
         },
 
         'we get ': function (topic) {
@@ -43,7 +43,7 @@ suite.addBatch({
 
     'when using find and a number = 0': {
         topic: function () {
-            return new Mysql("test", db).find({x : 0})
+            return new Mysql("test", db).find({x : 0});
         },
 
         'we get ': function (topic) {
@@ -55,7 +55,7 @@ suite.addBatch({
 suite.addBatch({
     'when finding a number != zero': {
         topic: function () {
-            return new Mysql("test", db).neq({x : 0})
+            return new Mysql("test", db).neq({x : 0});
         },
 
         'we get ': function (topic) {
@@ -65,7 +65,7 @@ suite.addBatch({
 
     'when using find and a number != 0': {
         topic: function () {
-            return new Mysql("test", db).find({x : {neq : 0}})
+            return new Mysql("test", db).find({x : {neq : 0}});
         },
 
         'we get ': function (topic) {
@@ -76,7 +76,7 @@ suite.addBatch({
 suite.addBatch({
     'when finding a number > zero': {
         topic: function () {
-            return new Mysql("test", db).gt({x : 0})
+            return new Mysql("test", db).gt({x : 0});
         },
 
         'we get ': function (topic) {
@@ -86,7 +86,7 @@ suite.addBatch({
 
     'when using find and a number > 0': {
         topic: function () {
-            return new Mysql("test", db).find({x : {gt : 0}})
+            return new Mysql("test", db).find({x : {gt : 0}});
         },
 
         'we get ': function (topic) {
@@ -98,7 +98,7 @@ suite.addBatch({
 suite.addBatch({
     'when finding a number >= to zero': {
         topic: function () {
-            return new Mysql("test", db).gte({x : 0})
+            return new Mysql("test", db).gte({x : 0});
         },
 
         'we get ': function (topic) {
@@ -108,7 +108,7 @@ suite.addBatch({
 
     'when using find and a number >= to one': {
         topic: function () {
-            return new Mysql("test", db).find({x : {gte : 0}})
+            return new Mysql("test", db).find({x : {gte : 0}});
         },
 
         'we get ': function (topic) {
@@ -120,7 +120,7 @@ suite.addBatch({
 suite.addBatch({
     'when finding a number < one': {
         topic: function () {
-            return new Mysql("test", db).lt({x : 1})
+            return new Mysql("test", db).lt({x : 1});
         },
 
         'we get ': function (topic) {
@@ -130,7 +130,7 @@ suite.addBatch({
 
     'when using find and a number < to one': {
         topic: function () {
-            return new Mysql("test", db).find({x : {lt : 1}})
+            return new Mysql("test", db).find({x : {lt : 1}});
         },
 
         'we get ': function (topic) {
@@ -142,7 +142,7 @@ suite.addBatch({
 suite.addBatch({
     'when finding a number <= to one': {
         topic: function () {
-            return new Mysql("test", db).lte({x : 1})
+            return new Mysql("test", db).lte({x : 1});
         },
 
         'we get ': function (topic) {
@@ -152,7 +152,7 @@ suite.addBatch({
 
     'when using find and a number <= to one': {
         topic: function () {
-            return new Mysql("test", db).find({x : {lte : 1}})
+            return new Mysql("test", db).find({x : {lte : 1}});
         },
 
         'we get ': function (topic) {
@@ -164,7 +164,7 @@ suite.addBatch({
 suite.addBatch({
     'when finding a flag is true': {
         topic: function () {
-            return new Mysql("test", db).is({flag : true})
+            return new Mysql("test", db).is({flag : true});
         },
 
         'we get ': function (topic) {
@@ -174,7 +174,7 @@ suite.addBatch({
 
     'when finding a flag is false': {
         topic: function () {
-            return new Mysql("test", db).is({flag : false})
+            return new Mysql("test", db).is({flag : false});
         },
 
         'we get ': function (topic) {
@@ -184,7 +184,7 @@ suite.addBatch({
 
     'when finding a flag is null': {
         topic: function () {
-            return new Mysql("test", db).is({flag : null})
+            return new Mysql("test", db).is({flag : null});
         },
 
         'we get ': function (topic) {
@@ -194,7 +194,7 @@ suite.addBatch({
 
     'when finding a flag is unknown': {
         topic: function () {
-            return new Mysql("test", db).is({flag : "unknown"})
+            return new Mysql("test", db).is({flag : "unknown"});
         },
 
         'we get ': function (topic) {
@@ -204,7 +204,7 @@ suite.addBatch({
 
     'when finding a flag is true and otherFlag is false and anotherFlag is unknown and yetAnotherFlag is null': {
         topic: function () {
-            return new Mysql("test", db).is({flag : true, otherFlag : false, anotherFlag : "unknown", yetAnotherFlag : null})
+            return new Mysql("test", db).is({flag : true, otherFlag : false, anotherFlag : "unknown", yetAnotherFlag : null});
         },
         'we get ': function (topic) {
             assert.equal(topic.sql, "select * from test where flag is true and otherFlag is false and anotherFlag is unknown and yetAnotherFlag is null");
@@ -213,7 +213,7 @@ suite.addBatch({
 
     'when using find and is operation': {
         topic: function () {
-            return new Mysql("test", db).find({flag : {is : "unknown"}})
+            return new Mysql("test", db).find({flag : {is : "unknown"}});
         },
 
         'we get ': function (topic) {
@@ -225,7 +225,7 @@ suite.addBatch({
 suite.addBatch({
     'when finding a flag is not true': {
         topic: function () {
-            return new Mysql("test", db).isNot({flag : true})
+            return new Mysql("test", db).isNot({flag : true});
         },
 
         'we get ': function (topic) {
@@ -235,7 +235,7 @@ suite.addBatch({
 
     'when finding a flag is not false': {
         topic: function () {
-            return new Mysql("test", db).isNot({flag : false})
+            return new Mysql("test", db).isNot({flag : false});
         },
 
         'we get ': function (topic) {
@@ -245,7 +245,7 @@ suite.addBatch({
 
     'when finding a flag is not null': {
         topic: function () {
-            return new Mysql("test", db).isNot({flag : null})
+            return new Mysql("test", db).isNot({flag : null});
         },
 
         'we get ': function (topic) {
@@ -255,7 +255,7 @@ suite.addBatch({
 
     'when finding a flag is not unknown': {
         topic: function () {
-            return new Mysql("test", db).isNot({flag : "unknown"})
+            return new Mysql("test", db).isNot({flag : "unknown"});
         },
 
         'we get ': function (topic) {
@@ -265,7 +265,7 @@ suite.addBatch({
 
     'when finding a flag isNot true and otherFlag isNot false and anotherFlag isNot unknown and yetAnotherFlag isNot null': {
         topic: function () {
-            return new Mysql("test", db).isNot({flag : true, otherFlag : false, anotherFlag : "unknown", yetAnotherFlag : null})
+            return new Mysql("test", db).isNot({flag : true, otherFlag : false, anotherFlag : "unknown", yetAnotherFlag : null});
         },
         'we get ': function (topic) {
             assert.equal(topic.sql, "select * from test where flag is not true and otherFlag is not false and anotherFlag is not unknown and yetAnotherFlag is not null");
@@ -274,7 +274,7 @@ suite.addBatch({
 
     'when using find and is operations': {
         topic: function () {
-            return new Mysql("test", db).find({flag : {isNot : "unknown"}})
+            return new Mysql("test", db).find({flag : {isNot : "unknown"}});
         },
 
         'we get ': function (topic) {
@@ -286,7 +286,7 @@ suite.addBatch({
 suite.addBatch({
     'when finding a flag is null': {
         topic: function () {
-            return new Mysql("test", db).isNull("flag")
+            return new Mysql("test", db).isNull("flag");
         },
 
         'we get ': function (topic) {
@@ -298,7 +298,7 @@ suite.addBatch({
 suite.addBatch({
     'when finding a flag is not null': {
         topic: function () {
-            return new Mysql("test", db).isNotNull("flag")
+            return new Mysql("test", db).isNotNull("flag");
         },
 
         'we get ': function (topic) {
@@ -310,7 +310,7 @@ suite.addBatch({
 suite.addBatch({
     'when chaining is commands together': {
         topic: function () {
-            return new Mysql("test", db).is({flag : false}).isNot({flag : "unknown"}).isNull("anotherFlag").isNotNull("yetAnotherFlag")
+            return new Mysql("test", db).is({flag : false}).isNot({flag : "unknown"}).isNull("anotherFlag").isNotNull("yetAnotherFlag");
         },
 
         'we get ': function (topic) {
@@ -322,7 +322,7 @@ suite.addBatch({
 suite.addBatch({
     'when finding a flag is not null and flag is true or flag is false': {
         topic: function () {
-            return new Mysql("test", db).isNotNull("flag").is({flag : true}).or({flag : {is : false}})
+            return new Mysql("test", db).isNotNull("flag").is({flag : true}).or({flag : {is : false}});
         },
 
         'we get ': function (topic) {
@@ -334,7 +334,7 @@ suite.addBatch({
 suite.addBatch({
     'when finding a flag is not null and flag is true or flag is false': {
         topic: function () {
-            return new Mysql("test", db).isNotNull("flag").is({flag : true}).or({flag : {is : false}})
+            return new Mysql("test", db).isNotNull("flag").is({flag : true}).or({flag : {is : false}});
         },
 
         'we get ': function (topic) {
@@ -435,7 +435,7 @@ suite.addBatch({
 suite.addBatch({
     'when finding a number <= to one and y >= 1': {
         topic: function () {
-            return new Mysql("test", db).lte({x : 1}).gte({y : 1})
+            return new Mysql("test", db).lte({x : 1}).gte({y : 1});
         },
 
         'we get ': function (topic) {
@@ -445,7 +445,7 @@ suite.addBatch({
 
     'when finding a number <= to one and y >= 1 using and': {
         topic: function () {
-            return new Mysql("test", db).lte({x : 1}).and({y : { gte : 1}})
+            return new Mysql("test", db).lte({x : 1}).and({y : { gte : 1}});
         },
 
         'we get ': function (topic) {
@@ -455,7 +455,7 @@ suite.addBatch({
 
     'when finding a number <= to one and y >= 1 using and chain': {
         topic: function () {
-            return new Mysql("test", db).lte({x : 1}).and().gte({y : 1})
+            return new Mysql("test", db).lte({x : 1}).and().gte({y : 1});
         },
 
         'we get ': function (topic) {
@@ -465,7 +465,7 @@ suite.addBatch({
 
     'when finding a number <= to one or y >= 1 or': {
         topic: function () {
-            return new Mysql("test", db).lte({x : 1}).or({y : {gte : 1}})
+            return new Mysql("test", db).lte({x : 1}).or({y : {gte : 1}});
         },
 
         'we get ': function (topic) {
@@ -475,7 +475,7 @@ suite.addBatch({
 
     'when finding a number <= to one or y >= 1 using or chain': {
         topic: function () {
-            return new Mysql("test", db).lte({x : 1}).or().gte({y : 1})
+            return new Mysql("test", db).lte({x : 1}).or().gte({y : 1});
         },
 
         'we get ': function (topic) {
@@ -1455,7 +1455,7 @@ suite.addBatch({
 suite.addBatch({
     'when finding a number > zero': {
         topic: function () {
-            return new Mysql("test", db).find({x : {gt : 0}})
+            return new Mysql("test", db).find({x : {gt : 0}});
         },
 
         'we get ': function (topic) {
@@ -1464,7 +1464,7 @@ suite.addBatch({
     },
     'when finding a number >= to 0': {
         topic: function () {
-            return new Mysql("test", db).find({x : {gte : 0}})
+            return new Mysql("test", db).find({x : {gte : 0}});
         },
 
         'we get ': function (topic) {
@@ -1474,7 +1474,7 @@ suite.addBatch({
 
     'when finding a number < 1': {
         topic: function () {
-            return new Mysql("test", db).find({x : {lt : 1}})
+            return new Mysql("test", db).find({x : {lt : 1}});
         },
 
         'we get ': function (topic) {
@@ -1484,7 +1484,7 @@ suite.addBatch({
 
     'when finding a number <= to 1': {
         topic: function () {
-            return new Mysql("test", db).find({x : {lte : 1}})
+            return new Mysql("test", db).find({x : {lte : 1}});
         },
 
         'we get ': function (topic) {
@@ -1494,7 +1494,7 @@ suite.addBatch({
 
     'when finding x <= to 1 and  y >= to 1': {
         topic: function () {
-            return new Mysql("test", db).find({x : {lte : 1}, y : {gte : 1}})
+            return new Mysql("test", db).find({x : {lte : 1}, y : {gte : 1}});
         },
 
         'we get ': function (topic) {
@@ -1504,7 +1504,7 @@ suite.addBatch({
 
     'when finding x > 0 and  y >= 1 z < 1 k <= 1': {
         topic: function () {
-            return new Mysql("test", db).find({x : {gt : 0}, y : {gte : 1}, z : {lt : 1}, k : {lte : 1}})
+            return new Mysql("test", db).find({x : {gt : 0}, y : {gte : 1}, z : {lt : 1}, k : {lte : 1}});
         },
 
         'we get ': function (topic) {

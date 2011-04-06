@@ -17,7 +17,7 @@ module.exports = exports = moose.define(null, {
                        response = {error : "Could not find a model with id " + id};
                    }
                    res.send(response);
-               })
+               });
            }));
        }
    }

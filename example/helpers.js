@@ -30,10 +30,10 @@ var airplaneTypes = [
 ];
 
 var dateUtil = function(date, amount, type) {
-    var timeConv = {"seconds" : 1000, "minutes" : 60000, "hours" : 3600000}
+    var timeConv = {"seconds" : 1000, "minutes" : 60000, "hours" : 3600000};
     amount = timeConv[type] * amount;
     return new Date(date.getTime() + amount);
-}
+};
 
 var flights = [
     {
@@ -98,4 +98,4 @@ exports.loadData = function() {
                         .then(hitch(ret, "callback"), hitch(ret, "errback"));
             }, hitch(ret, "errback"));
     return ret;
-}
+};

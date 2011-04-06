@@ -34,7 +34,7 @@ exports.loadModels = function() {
         ret.callback();
     }, hitch(ret, "errback"));
     return ret;
-}
+};
 
 exports.dropModels = function() {
     var ret = new moose.Promise();

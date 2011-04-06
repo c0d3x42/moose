@@ -506,7 +506,7 @@ moose.execute(helper.sql).then(function(results) {
             },
 
             'we get ': function (topic) {
-                assert.length(topic, 2)
+                assert.length(topic, 2);
                 var rec1 = topic[0];
                 var rec2 = topic[1];
                 assert.equal(rec1.flag, 0);
@@ -531,7 +531,7 @@ moose.execute(helper.sql).then(function(results) {
                     "Susanne","Tom"];
                 assert.length(topic, 21);
                 topic.forEach(function(rec, i) {
-                    assert.equal(rec.firstname, names[i])
+                    assert.equal(rec.firstname, names[i]);
                 });
             }
         },
@@ -549,7 +549,7 @@ moose.execute(helper.sql).then(function(results) {
                     "Susanne","Tom"].reverse();
                 assert.length(topic, 21);
                 topic.forEach(function(rec, i) {
-                    assert.equal(rec.firstname, names[i])
+                    assert.equal(rec.firstname, names[i]);
                 });
             }
         },
@@ -696,6 +696,6 @@ moose.execute(helper.sql).then(function(results) {
 
     suite.run({reporter : require("vows/reporters/spec")});
 }, function(err) {
-    throw err
+    throw err;
 });
 

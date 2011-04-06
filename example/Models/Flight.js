@@ -7,7 +7,7 @@ module.exports = exports = (Flight = moose.addModel(moose.getSchema("flight"), {
         toObject : function() {
             var obj = this.super(arguments);
             obj.legs = this.legs.map(function(l) {
-                return l.toObject()
+                return l.toObject();
             });
             return obj;
         }

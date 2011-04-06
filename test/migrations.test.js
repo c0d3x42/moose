@@ -12,7 +12,7 @@ var vows = require('vows'),
  *  options.end : the migration to end at*/
 
 
-var SHOW_TABLES = 'SHOW TABLES'
+var SHOW_TABLES = 'SHOW TABLES';
 
 var suite = vows.describe('mysql adapter');
 

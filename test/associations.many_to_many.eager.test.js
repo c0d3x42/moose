@@ -47,7 +47,7 @@ helper.loadModels().then(function() {
                     emps.forEach(function(emp, i) {
                         assert.equal(emp.id, i + 1);
                     });
-                    return company
+                    return company;
                 },
 
                 " when querying the employees " : {
@@ -90,7 +90,7 @@ helper.loadModels().then(function() {
             " the company should have employees " : function(company) {
                 var emps = company.employees;
                 assert.length(emps, 2);
-                var ids = [2,1]
+                var ids = [2,1];
                 emps.forEach(function(emp, i) {
                     assert.equal(ids[i], emp.id);
                 });
@@ -131,7 +131,7 @@ helper.loadModels().then(function() {
             " the company should have employees " : function(company) {
                 var emps = company.employees;
                 assert.length(emps, 3);
-                ids = [3,2,1]
+                ids = [3,2,1];
                 emps.forEach(function(emp, i) {
                     assert.equal(ids[i], emp.id);
                 });
@@ -147,7 +147,7 @@ helper.loadModels().then(function() {
                 "the company should have two employees " : function(company) {
                     var emps = company.employees;
                     assert.length(emps, 2);
-                    var ids = [3,2]
+                    var ids = [3,2];
                     emps.forEach(function(emp, i) {
                         assert.equal(ids[i], emp.id);
                     });
@@ -167,7 +167,7 @@ helper.loadModels().then(function() {
             " the company should have employees " : function(company) {
                 var emps = company.employees;
                 assert.length(emps, 2);
-                ids = [3,2]
+                ids = [3,2];
                 emps.forEach(function(emp, i) {
                     assert.equal(ids[i], emp.id);
                 });
@@ -234,7 +234,7 @@ helper.loadModels().then(function() {
 
                 "the company should have 3 employees " : function(company) {
                     var emps = company.employees;
-                    var ids = [6,5,4]
+                    var ids = [6,5,4];
                     assert.length(emps, 3);
                     emps.forEach(function(emp, i) {
                         assert.equal(emp.id, ids[i]);

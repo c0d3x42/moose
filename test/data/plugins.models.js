@@ -24,7 +24,7 @@ exports.loadDefaultModels = function() {
 };
 
 exports.dropDefaultModels = function() {
-    var ret = new moose.Promise()
+    var ret = new moose.Promise();
     var options = {
         connection : {user : "test", password : "testpass", database : 'test'},
         dir : "./data/migrations/plugins/timestamp",
@@ -59,7 +59,7 @@ exports.loadCustomModels = function() {
 };
 
 exports.dropCustomModels = function() {
-    var ret = new moose.Promise()
+    var ret = new moose.Promise();
     var options = {
         connection : {user : "test", password : "testpass", database : 'test'},
         dir : "./data/migrations/plugins/timestamp",
@@ -94,7 +94,7 @@ exports.loadUpdateOnCreateModels = function() {
 };
 
 exports.dropUpdateOnCreateModels = function() {
-    var ret = new moose.Promise()
+    var ret = new moose.Promise();
     var options = {
         connection : {user : "test", password : "testpass", database : 'test'},
         dir : "./data/migrations/plugins/timestamp",

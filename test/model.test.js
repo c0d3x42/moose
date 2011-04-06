@@ -12,7 +12,7 @@ helper.loadModels().then(function() {
     suite.addBatch({
         "Should check if an object is valid" : {
             topic : function() {
-                return Employee
+                return Employee;
             },
 
             "and be true" : function(topic) {
@@ -184,7 +184,7 @@ helper.loadModels().then(function() {
                 assert.length(topic, 21);
                 topic.forEach(function(e) {
                     assert.instanceOf(e, Employee);
-                })
+                });
             }
         },
 
@@ -239,7 +239,7 @@ helper.loadModels().then(function() {
                 topic.forEach(function(e, i) {
                     assert.instanceOf(e, Employee);
                     assert.equal(i + 1, e.id);
-                })
+                });
             }
         },
 
@@ -251,7 +251,7 @@ helper.loadModels().then(function() {
             },
 
             "and return 6 employees" : function(topic) {
-                var ids = [1,2,3,4,5,6]
+                var ids = [1,2,3,4,5,6];
                 assert.instanceOf(topic, Employee);
                 assert.isTrue(ids.indexOf(topic.id) != -1);
             }
@@ -358,7 +358,7 @@ helper.loadModels().then(function() {
                 assert.length(records, 21);
                 records.forEach(function(r) {
                     assert.equal(r.firstname, "doug");
-                })
+                });
             }
         }
     });
@@ -380,6 +380,6 @@ helper.loadModels().then(function() {
     });
 
     suite.run({reporter : require("vows/reporters/spec")});
-}, function(err){throw err});
+}, function(err){throw err;});
 
 

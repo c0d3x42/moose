@@ -5,6 +5,7 @@ var vows = require('vows'),
         hitch = moose.hitch;
 
 var gender = ["M", "F"];
+
 helper.loadModels().then(function() {
     var Company = moose.getModel("company"), Employee = moose.getModel("employee"), CompanyEmployee = moose.getModel("companyEmployee");
     var suite = vows.describe("Many to Many Eager association ");
@@ -44,7 +45,7 @@ helper.loadModels().then(function() {
                     emps.forEach(function(emp, i) {
                         assert.ok((emp.id == i + 1));
                     });
-                    return company
+                    return company;
                 },
 
                 " when querying the employees " : {
@@ -91,7 +92,7 @@ helper.loadModels().then(function() {
 
                 " but after fetching them there should be two" : function(emps) {
                     assert.length(emps, 2);
-                    var ids = [2,1]
+                    var ids = [2,1];
                     emps.forEach(function(emp, i) {
                         assert.equal(emp.id, ids[i]);
                     });
@@ -113,7 +114,7 @@ helper.loadModels().then(function() {
                             .chain(hitch(company, "reload"), hitch(this, "callback"))
                             .chain(
                             function(company) {
-                                return company.employees
+                                return company.employees;
                             }, hitch(this, "callback")).then(hitch(this, "callback", null), hitch(this, "callback"));
                 },
 
@@ -140,17 +141,23 @@ helper.loadModels().then(function() {
                 topic : function(company) {
                     //remove the last employee
                     //since there are three
+
                     company.removeEmployee(2)
                             .chain(hitch(company, "save"), hitch(this, "callback"))
-                            .chain(hitch(company, "reload"), hitch(this, "callback"))
+                            .chain(function(){
+                        console.log("hello");
+                        return company.reload();
+                    }, hitch(this, "callback"))
                             .then(hitch(this, function(newComp) {
+                        console.log("hello");
                         newComp.employees.then(hitch(this, "callback", null), hitch(this, "callback"));
                     }), hitch(this, "callback"));
                 },
 
                 "the company should have two employees " : function(emps) {
+                    console.log("hello");
                     assert.length(emps, 2);
-                    var ids = [3,2]
+                    var ids = [3,2];
                     emps.forEach(function(emp, i) {
                         assert.equal(emp.id, ids[i]);
                     });
@@ -232,7 +239,7 @@ helper.loadModels().then(function() {
 
 
                 "the company should have 3 employees " : function(emps) {
-                    var ids = [6,5,4]
+                    var ids = [6,5,4];
                     assert.length(emps, 3);
                     emps.forEach(function(emp, i) {
                         assert.equal(emp.id, ids[i]);
@@ -266,5 +273,6 @@ helper.loadModels().then(function() {
     console.log(err);
     throw err;
 });
+
 
 

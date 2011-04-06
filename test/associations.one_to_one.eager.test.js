@@ -32,7 +32,7 @@ helper.loadModels().then(function() {
                 console.log(works.companyName);
                 assert.equal(works.companyName, "Google");
                 assert.equal(works.salary, 100000);
-                return employee
+                return employee;
             }
         }
 
@@ -50,7 +50,7 @@ helper.loadModels().then(function() {
                 var works = employee.works;
                 assert.equal(works.companyName, "Google");
                 assert.equal(works.salary, 100000);
-                return employee
+                return employee;
             }
         }
 
@@ -62,7 +62,7 @@ helper.loadModels().then(function() {
             topic : function() {
                 Works.one().then(hitch(this, function(w){
                     w.employee.then(hitch(this, "callback", null, w));
-                }), hitch(this, "callback"))
+                }), hitch(this, "callback"));
             },
 
 
@@ -76,7 +76,7 @@ helper.loadModels().then(function() {
                 assert.equal(emp.gender, gender[1 % 2]);
                 assert.equal(emp.street, "Street " + 1);
                 assert.equal(emp.city, "City " + 1);
-                return emp
+                return emp;
             }
         }
 
