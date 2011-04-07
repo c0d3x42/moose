@@ -1,6 +1,6 @@
 var vows = require('vows'),
         assert = require('assert'),
-        helper = require("./data/oneToOne.lazy.models"),
+        helper = require("./data/oneToOne.customFilter.lazy.models"),
         moose = require("../lib"),
         hitch = moose.hitch;
 
@@ -8,7 +8,6 @@ var gender = ["M", "F"];
 helper.loadModels().then(function() {
     var Works = moose.getModel("works"), Employee = moose.getModel("employee");
     var suite = vows.describe("One to One Eager association ");
-
     suite.addBatch({
 
         "When creating a employee " : {
@@ -58,58 +57,27 @@ helper.loadModels().then(function() {
                     assert.equal(works.salary, 100000);
                     return employee;
                 }
-            }
-        }
-
-    });
-
-
-    suite.addBatch({
-
-        "When finding workers" : {
-            topic : function() {
-                Works.one().then(hitch(this, function(worker) {
-                    worker.employee.then(hitch(this, "callback", null, worker), hitch(this, "callback"));
-                }));
             },
 
+            " the employees custom work should not be loaded yet" : {
+                topic : function(employee) {
+                    var works = employee.customWorks;
+                    assert.instanceOf(works, Promise);
+                    works.then(hitch(this, "callback", null, employee), hitch(this, "callback"));
+                },
 
-            " the worker should work at google and have an associated employee" : function(works) {
-                var emp = works.employee;
-                assert.equal(works.companyName, "Google");
-                assert.equal(works.salary, 100000);
-                assert.equal(emp.lastname, "last" + 1);
-                assert.equal(emp.firstname, "first" + 1);
-                assert.equal(emp.midinitial, "m");
-                assert.equal(emp.gender, gender[1 % 2]);
-                assert.equal(emp.street, "Street " + 1);
-                assert.equal(emp.city, "City " + 1);
-                return emp;
+                " but now it should" : function(employee) {
+                    var works = employee.customWorks;
+                    assert.equal(works.companyName, "Google");
+                    assert.equal(works.salary, 100000);
+                    return employee;
+                }
             }
+        },
+        teardown : function() {
+            helper.dropModels();
         }
-
     });
 
-    suite.addBatch({
-
-        "When deleting an employee" : {
-            topic : function() {
-                Employee.one().chain(
-                        function(e) {
-                            return e.remove();
-                        }).chain(hitch(Works, "count"), hitch(this, "callback")).then(hitch(this, "callback", null), hitch(this, "callback"));
-            },
-
-
-            " the the works count should be 0 " : function(count) {
-                assert.equal(count, 0);
-                helper.dropModels();
-            }
-        }
-
-    });
-
-    suite.run({reporter : require("vows/reporters/spec")});
-
-}, function(err){console.log(err);});
-
+      suite.run({reporter : require("vows/reporters/spec")});
+});

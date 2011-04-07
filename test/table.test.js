@@ -394,7 +394,7 @@ suite.addBatch({
             return emp;
         },
 
-        " it should have proper create table syntax " : function(topic) {
+        " it should have proper alter table syntax " : function(topic) {
             assert.equal(topic.alterTableSql, "ALTER TABLE employee CHANGE COLUMN firstname firstName VARCHAR(20) NOT NULL,CHANGE COLUMN lastname lastName VARCHAR(20) NOT NULL;");
         }
     },
@@ -415,7 +415,7 @@ suite.addBatch({
             return emp;
         },
 
-        " it should have proper create table syntax " : function(topic) {
+        " it should have proper alter table syntax " : function(topic) {
             assert.equal(topic.alterTableSql, "ALTER TABLE employee ADD COLUMN anotherColumn VARCHAR(255);");
         }
     },
@@ -437,7 +437,7 @@ suite.addBatch({
             return emp;
         },
 
-        " it should have proper create table syntax " : function(topic) {
+        " it should have proper alter table syntax " : function(topic) {
             assert.equal(topic.alterTableSql, "ALTER TABLE employee DROP COLUMN anotherColumn;");
         }
     },
@@ -458,7 +458,7 @@ suite.addBatch({
             return emp;
         },
 
-        " it should have proper create table syntax " : function(topic) {
+        " it should have proper alter table syntax " : function(topic) {
             assert.equal(topic.alterTableSql, "ALTER TABLE employee MODIFY COLUMN city VARCHAR(20) NOT NULL DEFAULT 'testCity';");
         }
     },
@@ -479,7 +479,7 @@ suite.addBatch({
             return emp;
         },
 
-        " it should have proper create table syntax " : function(topic) {
+        " it should have proper alter table syntax " : function(topic) {
             assert.equal(topic.alterTableSql, "ALTER TABLE employee MODIFY COLUMN city LONGTEXT NULL;");
         }
     },
@@ -500,7 +500,7 @@ suite.addBatch({
             return emp;
         },
 
-        " it should have proper create table syntax " : function(topic) {
+        " it should have proper alter table syntax " : function(topic) {
             assert.equal(topic.alterTableSql, "ALTER TABLE employee MODIFY COLUMN city VARCHAR(20) NULL;");
         }
     },
@@ -522,7 +522,7 @@ suite.addBatch({
             return emp;
         },
 
-        " it should have proper create table syntax " : function(topic) {
+        " it should have proper alter table syntax " : function(topic) {
             assert.equal(topic.alterTableSql, "ALTER TABLE employee DROP PRIMARY KEY , ADD PRIMARY KEY (city);");
         }
     },
@@ -544,7 +544,7 @@ suite.addBatch({
             return emp;
         },
 
-        " it should have proper create table syntax " : function(topic) {
+        " it should have proper alter table syntax " : function(topic) {
             assert.equal(topic.alterTableSql, "ALTER TABLE employee DROP PRIMARY KEY , ADD CONSTRAINT pk_cityId PRIMARY KEY (city,id);");
         }
     },
@@ -566,7 +566,7 @@ suite.addBatch({
             return emp;
         },
 
-        " it should have proper create table syntax " : function(topic) {
+        " it should have proper alter table syntax " : function(topic) {
             assert.equal(topic.alterTableSql, "ALTER TABLE employee DROP PRIMARY KEY;");
         }
     },
@@ -589,7 +589,7 @@ suite.addBatch({
             return emp;
         },
 
-        " it should have proper create table syntax " : function(topic) {
+        " it should have proper alter table syntax " : function(topic) {
             assert.equal(topic.alterTableSql, "ALTER TABLE employee ADD CONSTRAINT fk_cityStreet FOREIGN KEY (city,street) REFERENCES cities (name,street),ADD FOREIGN KEY (city) REFERENCES cities (name),ADD FOREIGN KEY (street) REFERENCES streets (name);");
         }
     },
@@ -612,7 +612,7 @@ suite.addBatch({
             return emp;
         },
 
-        " it should have proper create table syntax " : function(topic) {
+        " it should have proper alter table syntax " : function(topic) {
             assert.equal(topic.alterTableSql, "ALTER TABLE employee DROP FOREIGN KEY fk_cityStreet,DROP FOREIGN KEY city,DROP FOREIGN KEY street;");
         }
     },
@@ -634,7 +634,7 @@ suite.addBatch({
             return emp;
         },
 
-        " it should have proper create table syntax " : function(topic) {
+        " it should have proper alter table syntax " : function(topic) {
             assert.equal(topic.alterTableSql, "ALTER TABLE employee ADD CONSTRAINT uc_cityStreet UNIQUE (city,street);");
         }
     },
@@ -656,7 +656,7 @@ suite.addBatch({
             return emp;
         },
 
-        " it should have proper create table syntax " : function(topic) {
+        " it should have proper alter table syntax " : function(topic) {
             assert.equal(topic.alterTableSql, "ALTER TABLE employee DROP INDEX uc_cityStreet;");
         }
     },
@@ -678,8 +678,31 @@ suite.addBatch({
             return emp;
         },
 
-        " it should have proper create table syntax " : function(topic) {
+        " it should have proper alter table syntax " : function(topic) {
             assert.equal(topic.alterTableSql, "ALTER TABLE employee RENAME employeeTwo;");
+        }
+    },
+
+    "When a table is renamed and a column is added " : {
+        topic : function(topic) {
+            var emp = new Table("employee", {
+                id :             types.INT({allowNull : false}),
+                firstname :       types.VARCHAR({length : 20, allowNull : false}),
+                lastname :        types.VARCHAR({length : 20, allowNull : false}),
+                midinitial :      types.CHAR({length : 1}),
+                gender :          types.ENUM({enums : ["M", "F"], allowNull : false}),
+                street :          types.VARCHAR({length : 50, allowNull : false}),
+                city :            types.VARCHAR({length : 20, allowNull : false}),
+                updated :         types.TIMESTAMP(),
+                primaryKey :      "id"
+            });
+            emp.rename("employeeTwo");
+            emp.addColumn("anotherColumn", types.STRING());
+            return emp;
+        },
+
+        " it should have proper alter table syntax " : function(topic) {
+            assert.equal(topic.alterTableSql, "ALTER TABLE employee RENAME employeeTwo , ADD COLUMN anotherColumn VARCHAR(255) NULL;");
         }
     }
 });
