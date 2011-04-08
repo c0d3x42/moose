@@ -900,6 +900,28 @@ suite.addBatch({
 });
 
 suite.addBatch({
+    'when selecting distinct result': {
+        topic: function () {
+            return new Mysql("test", db).find({id : 1}).distinct();
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select distinct * from test where id = 1");
+        }
+    },
+
+    'when select distinct result sets with a query': {
+        topic: function () {
+            return new Mysql("test", db).join("test2", {id : "id"}).where({"test2.other" : 1}).select("test.*").distinct();
+        },
+
+        'we get ': function (topic) {
+            assert.equal(topic.sql, "select distinct test.* from test inner join test2 on test.id=test2.id where test2.other = 1");
+        }
+    }
+});
+
+suite.addBatch({
     'when grouping result set': {
         topic: function () {
             return new Mysql("test", db).group("name");
