@@ -1,9 +1,10 @@
 var moose = require("../../lib"),
         mysql = moose.adapters.mysql,
-        types = mysql.types;
+        types = mysql.types,
+        comb = require("comb");
 
 exports.loadModels = function() {
-    var ret = new moose.Promise();
+    var ret = new comb.Promise();
     var options = {
         connection : {user : "test", password : "testpass", database : 'test'},
         dir : "./data/migrations/model",
@@ -11,7 +12,7 @@ exports.loadModels = function() {
         up : true
     };
     moose.migrate(options)
-            .chain(hitch(moose, "loadSchema", "employee"))
+            .chain(comb.hitch(moose, "loadSchema", "employee"), comb.hitch(ret, "errback"))
             .then(function(employee) {
         var Employee = moose.addModel(employee, {
             static : {
@@ -23,19 +24,19 @@ exports.loadModels = function() {
             instance : {} //instance methods
         });
         ret.callback();
-    }, hitch(console, "log"));
+    }, comb.hitch(console, "log"));
 
     return ret;
 };
 
 exports.dropModels = function() {
-    var ret = new moose.Promise();
+    var ret = new comb.Promise();
     var options = {
         connection : {user : "test", password : "testpass", database : 'test'},
         dir : "./data/migrations/model",
         start : 0,
         up : false
     };
-    moose.migrate(options).then(moose.hitch(ret, "callback"), moose.hitch(ret, "errback"));
+    moose.migrate(options).then(comb.hitch(ret, "callback"), comb.hitch(ret, "errback"));
     return ret;
 };

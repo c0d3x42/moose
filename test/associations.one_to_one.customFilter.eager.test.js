@@ -2,7 +2,8 @@ var vows = require('vows'),
         assert = require('assert'),
         helper = require("./data/oneToOne.customFilter.eager.models"),
         moose = require("../lib"),
-        hitch = moose.hitch;
+        comb = require("comb"),
+        hitch = comb.hitch;
 
 var gender = ["M", "F"];
 helper.loadModels().then(function() {

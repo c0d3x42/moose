@@ -2,7 +2,8 @@ var vows = require('vows'),
         assert = require('assert'),
         helper = require("./data/oneToOne.eager.models"),
         moose = require("../lib"),
-        hitch = moose.hitch;
+        comb = require("comb"),
+        hitch = comb.hitch;
 
 var gender = ["M", "F"];
 helper.loadModels().then(function() {
@@ -60,7 +61,7 @@ helper.loadModels().then(function() {
 
         "When finding workers" : {
             topic : function() {
-                Works.one().then(hitch(this, function(w){
+                Works.one().then(hitch(this, function(w) {
                     w.employee.then(hitch(this, "callback", null, w));
                 }), hitch(this, "callback"));
             },

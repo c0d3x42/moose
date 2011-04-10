@@ -2,7 +2,9 @@ var vows = require('vows'),
         assert = require('assert'),
         helper = require("./data/oneToOne.lazy.models"),
         moose = require("../lib"),
-        hitch = moose.hitch;
+        comb = require("comb"),
+        Promise = comb.Promise,
+        hitch = comb.hitch;
 
 var gender = ["M", "F"];
 helper.loadModels().then(function() {
@@ -111,5 +113,7 @@ helper.loadModels().then(function() {
 
     suite.run({reporter : require("vows/reporters/spec")});
 
-}, function(err){console.log(err);});
+}, function(err) {
+    console.log(err);
+});
 

@@ -1,5 +1,6 @@
 var vows = require('vows'),
         assert = require('assert'),
+        comb = require("comb"),
         moose = require("../lib"),
         sql = require("./data/dataset").sql;
 
@@ -26,12 +27,12 @@ suite.addBatch({
                 end : 0,
                 up : true
             };
-            moose.migrate(options).then(hitch(this, "callback", null), hitch(this, "callback"));
+            moose.migrate(options).then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
         },
 
         "and showing tables" :{
             topic : function(res) {
-                moose.execute(SHOW_TABLES).then(hitch(this, "callback", null), hitch(this, "callback"));
+                moose.execute(SHOW_TABLES).then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
             },
 
             "only company should be created" : {
@@ -52,12 +53,12 @@ suite.addBatch({
                             end : 0,
                             up : false
                         };
-                        moose.migrate(options).then(hitch(this, "callback", null), hitch(this, "callback"));
+                        moose.migrate(options).then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                     },
 
                     "and showing tables" :{
                         topic : function(res) {
-                            moose.execute(SHOW_TABLES).then(hitch(this, "callback", null), hitch(this, "callback"));
+                            moose.execute(SHOW_TABLES).then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                         },
 
                         "the result should be empty" : function(res) {
@@ -82,12 +83,12 @@ suite.addBatch({
                 end : 1,
                 up : true
             };
-            moose.migrate(options).then(hitch(this, "callback", null), hitch(this, "callback"));
+            moose.migrate(options).then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
         },
 
         "and showing tables " :{
             topic : function(res) {
-                moose.execute(SHOW_TABLES).then(hitch(this, "callback", null), hitch(this, "callback"));
+                moose.execute(SHOW_TABLES).then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
             },
 
             "only employee should be created " : {
@@ -108,12 +109,12 @@ suite.addBatch({
                             end : 1,
                             up : false
                         };
-                        moose.migrate(options).then(hitch(this, "callback", null), hitch(this, "callback"));
+                        moose.migrate(options).then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                     },
 
                     "and showing tables " :{
                         topic : function(res) {
-                            moose.execute(SHOW_TABLES).then(hitch(this, "callback", null), hitch(this, "callback"));
+                            moose.execute(SHOW_TABLES).then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                         },
 
                         "the result should be empty" : function(res) {
@@ -138,12 +139,12 @@ suite.addBatch({
                 end : 1,
                 up : true
             };
-            moose.migrate(options).then(hitch(this, "callback", null), hitch(this, "callback"));
+            moose.migrate(options).then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
         },
 
         "and showing tables" :{
             topic : function(res) {
-                moose.execute(SHOW_TABLES).then(hitch(this, "callback", null), hitch(this, "callback"));
+                moose.execute(SHOW_TABLES).then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
             },
 
             "only employee and company should be created" : {
@@ -165,12 +166,12 @@ suite.addBatch({
                             end : 1,
                             up : false
                         };
-                        moose.migrate(options).then(hitch(this, "callback", null), hitch(this, "callback"));
+                        moose.migrate(options).then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                     },
 
                     "and showing tables" :{
                         topic : function(res) {
-                            moose.execute(SHOW_TABLES).then(hitch(this, "callback", null), hitch(this, "callback"));
+                            moose.execute(SHOW_TABLES).then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                         },
 
                         "the result should be empty" : function(res) {
@@ -195,12 +196,12 @@ suite.addBatch({
                 end : 3,
                 up : true
             };
-            moose.migrate(options).then(hitch(this, "callback", null), hitch(this, "callback"));
+            moose.migrate(options).then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
         },
 
         "and showing tables" :{
             topic : function(res) {
-                moose.execute(SHOW_TABLES).then(hitch(this, "callback", null), hitch(this, "callback"));
+                moose.execute(SHOW_TABLES).then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
             },
 
             "only employee and company should be created" : {
@@ -222,12 +223,12 @@ suite.addBatch({
                             end : 4,
                             up : true
                         };
-                        moose.migrate(options).then(hitch(this, "callback", null), hitch(this, "callback"));
+                        moose.migrate(options).then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                     },
 
                     "and showing tables" :{
                         topic : function(res) {
-                            moose.execute(SHOW_TABLES).then(hitch(this, "callback", null), hitch(this, "callback"));
+                            moose.execute(SHOW_TABLES).then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                         },
 
                         "the result should be empty" : function(res) {
@@ -245,12 +246,12 @@ suite.addBatch({
                                     end : 4,
                                     up : false
                                 };
-                                moose.migrate(options).then(hitch(this, "callback", null), hitch(this, "callback"));
+                                moose.migrate(options).then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                             },
 
                             "and showing tables" :{
                                 topic : function(res) {
-                                    moose.execute(SHOW_TABLES).then(hitch(this, "callback", null), hitch(this, "callback"));
+                                    moose.execute(SHOW_TABLES).then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                                 },
 
                                 "the result should be empty" : function(res) {

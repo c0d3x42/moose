@@ -2,7 +2,8 @@ var vows = require('vows'),
         assert = require('assert'),
         helper = require("./data/model.models"),
         moose = require("../lib"),
-        hitch = moose.hitch;
+        comb = require("comb"),
+        hitch = comb.hitch;
 
 var suite = vows.describe("model object");
 
@@ -177,7 +178,8 @@ helper.loadModels().then(function() {
         "Should find all employees"  : {
             topic : function() {
                 var self = this;
-                var d = Employee.all().then(hitch(this, "callback", null), hitch(this, "callback"));;
+                var d = Employee.all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                ;
             },
 
             "and return 21 employees" : function(topic) {
@@ -205,7 +207,8 @@ helper.loadModels().then(function() {
             topic : function() {
                 var self = this;
                 this.count = 1;
-                var d = Employee.one().then(hitch(this, "callback", null), hitch(this, "callback"));;
+                var d = Employee.one().then(hitch(this, "callback", null), hitch(this, "callback"));
+                ;
             },
 
             "and return employee with id of 1" : function(topic) {
@@ -218,7 +221,8 @@ helper.loadModels().then(function() {
             topic : function() {
                 var self = this;
                 this.count = 1;
-                var d = Employee.last().then(hitch(this, "callback", null), hitch(this, "callback"));;
+                var d = Employee.last().then(hitch(this, "callback", null), hitch(this, "callback"));
+                ;
             },
 
             "and return employee with id of 21" : function(topic) {
@@ -247,7 +251,7 @@ helper.loadModels().then(function() {
             topic : function() {
                 var self = this;
                 this.count = 1;
-                var d = Employee.forEach({id : [1,2,3,4,5,6]},hitch(this, "callback", null)).addErrback(hitch(this, "callback"));
+                var d = Employee.forEach({id : [1,2,3,4,5,6]}, hitch(this, "callback", null)).addErrback(hitch(this, "callback"));
             },
 
             "and return 6 employees" : function(topic) {
@@ -380,6 +384,8 @@ helper.loadModels().then(function() {
     });
 
     suite.run({reporter : require("vows/reporters/spec")});
-}, function(err){throw err;});
+}, function(err) {
+    throw err;
+});
 
 

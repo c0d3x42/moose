@@ -1,4 +1,5 @@
 var vows = require('vows'),
+        comb = require("comb"),
         assert = require('assert'),
         moose = require("../lib"),
         helper = require("./data/dataset");
@@ -12,7 +13,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.find().forEach(hitch(this, "callback", null)).addErrback(hitch(this, "callback"));
+                d.find().forEach(comb.hitch(this, "callback", null)).addErrback(comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -24,7 +25,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.find().first(hitch(this, "callback", null)).addErrback(hitch(this, "callback"));
+                d.find().first(comb.hitch(this, "callback", null)).addErrback(comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -37,7 +38,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.find().all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.find().all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -49,7 +50,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.find().one().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.find().one().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                 ;
             },
 
@@ -62,7 +63,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.find().last().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.find().last().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                 ;
             },
 
@@ -75,7 +76,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.find().run().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.find().run().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                 ;
             },
 
@@ -90,7 +91,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.find({eid : [1,2,3,4,5,6]}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.find({eid : [1,2,3,4,5,6]}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                 ;
             },
 
@@ -107,7 +108,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.notIn({eid : [1,2,3,4,5,6]}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.notIn({eid : [1,2,3,4,5,6]}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                 ;
             },
 
@@ -126,7 +127,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.select(['firstname', 'lastname']).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.select(['firstname', 'lastname']).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                 ;
             },
 
@@ -150,7 +151,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.eq({eid : 1}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.eq({eid : 1}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                 ;
             },
 
@@ -165,7 +166,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.find({eid : 1}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.find({eid : 1}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                 ;
             },
 
@@ -182,7 +183,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.neq({eid : 1}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.neq({eid : 1}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                 ;
             },
 
@@ -195,7 +196,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.find({eid : {neq : 1}}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.find({eid : {neq : 1}}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                 ;
             },
 
@@ -210,7 +211,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.gt({eid : 1}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.gt({eid : 1}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                 ;
             },
 
@@ -223,7 +224,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.find({eid : {gt : 1}}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.find({eid : {gt : 1}}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                 ;
             },
 
@@ -238,7 +239,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.gte({eid : 1}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.gte({eid : 1}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                 ;
             },
 
@@ -251,7 +252,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.find({eid : {gte : 1}}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.find({eid : {gte : 1}}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                 ;
             },
 
@@ -266,7 +267,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.lt({eid : 1}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.lt({eid : 1}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                 ;
             },
 
@@ -279,7 +280,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.find({eid : {lt : 1}}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.find({eid : {lt : 1}}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                 ;
             },
 
@@ -294,7 +295,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.lte({eid : 1}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.lte({eid : 1}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                 ;
             },
 
@@ -307,7 +308,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.find({eid : {lte : 1}}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.find({eid : {lte : 1}}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                 ;
             },
 
@@ -322,7 +323,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.lte({eid : 1}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.lte({eid : 1}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                 ;
             },
 
@@ -335,7 +336,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.find({eid : {lte : 1}}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.find({eid : {lte : 1}}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
                 ;
             },
 
@@ -350,7 +351,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.is({flag : true}).forEach(hitch(this, "callback", null)).addErrback(hitch(this, "callback"));
+                d.is({flag : true}).forEach(comb.hitch(this, "callback", null)).addErrback(comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -362,7 +363,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.is({flag : false}).forEach(hitch(this, "callback", null)).addErrback(hitch(this, "callback"));
+                d.is({flag : false}).forEach(comb.hitch(this, "callback", null)).addErrback(comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -374,7 +375,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.is({flag : null}).forEach(hitch(this, "callback", null)).addErrback(hitch(this, "callback"));
+                d.is({flag : null}).forEach(comb.hitch(this, "callback", null)).addErrback(comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -386,7 +387,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.is({flag : "unknown"}).forEach(hitch(this, "callback", null)).addErrback(hitch(this, "callback"));
+                d.is({flag : "unknown"}).forEach(comb.hitch(this, "callback", null)).addErrback(comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -398,7 +399,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.is({flag : false, another_flag : true, yet_another_flag : true}).forEach(hitch(this, "callback", null)).addErrback(hitch(this, "callback"));
+                d.is({flag : false, another_flag : true, yet_another_flag : true}).forEach(comb.hitch(this, "callback", null)).addErrback(comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -412,7 +413,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.find({flag : {is : false}}).forEach(hitch(this, "callback", null)).addErrback(hitch(this, "callback"));
+                d.find({flag : {is : false}}).forEach(comb.hitch(this, "callback", null)).addErrback(comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -426,7 +427,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.isNot({flag : true}).forEach(hitch(this, "callback", null)).addErrback(hitch(this, "callback"));
+                d.isNot({flag : true}).forEach(comb.hitch(this, "callback", null)).addErrback(comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -438,7 +439,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.isNot({flag : false}).forEach(hitch(this, "callback", null)).addErrback(hitch(this, "callback"));
+                d.isNot({flag : false}).forEach(comb.hitch(this, "callback", null)).addErrback(comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -450,7 +451,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.isNot({flag : null}).forEach(hitch(this, "callback", null)).addErrback(hitch(this, "callback"));
+                d.isNot({flag : null}).forEach(comb.hitch(this, "callback", null)).addErrback(comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -462,7 +463,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.isNot({flag : "unknown"}).forEach(hitch(this, "callback", null)).addErrback(hitch(this, "callback"));
+                d.isNot({flag : "unknown"}).forEach(comb.hitch(this, "callback", null)).addErrback(comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -474,7 +475,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.isNot({flag : false, another_flag : true, yet_another_flag : true}).forEach(hitch(this, "callback", null)).addErrback(hitch(this, "callback"));
+                d.isNot({flag : false, another_flag : true, yet_another_flag : true}).forEach(comb.hitch(this, "callback", null)).addErrback(comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -488,7 +489,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.find({flag : {isNot : false}}).forEach(hitch(this, "callback", null)).addErrback(hitch(this, "callback"));
+                d.find({flag : {isNot : false}}).forEach(comb.hitch(this, "callback", null)).addErrback(comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -502,7 +503,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.logicGroup({flag : {is : false}}).or().logicGroup({eid : 2}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.logicGroup({flag : {is : false}}).or().logicGroup({eid : 2}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -522,7 +523,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.order("firstname").all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.order("firstname").all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -540,7 +541,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.order({"firstname" : "desc"}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.order({"firstname" : "desc"}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -558,7 +559,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.order(["firstname", {"lastname" : "desc"}]).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.order(["firstname", {"lastname" : "desc"}]).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -580,7 +581,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.order("firstname").order({"lastname" : "desc"}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.order("firstname").order({"lastname" : "desc"}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -604,7 +605,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.join("employee", {eid : "eid"}).first().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.join("employee", {eid : "eid"}).first().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -620,7 +621,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.join("employee", {eid : "eid"}).where({"works.eid" : 1}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.join("employee", {eid : "eid"}).where({"works.eid" : 1}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -638,7 +639,7 @@ moose.execute(helper.sql).then(function(results) {
             topic: function () {
                 var self = this;
                 var d = moose.getDataset("works");
-                d.join("employee", {eid : "eid"}).join("company", {company_name : "company_name"}).where({"works.eid" : 1}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                d.join("employee", {eid : "eid"}).join("company", {company_name : "company_name"}).where({"works.eid" : 1}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -660,7 +661,7 @@ moose.execute(helper.sql).then(function(results) {
                 var self = this;
                 var d = moose.getDataset("works");
                 d.select("firstname")
-                        .group("firstname").order({firstname : "desc"}).all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                        .group("firstname").order({firstname : "desc"}).all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {
@@ -680,7 +681,7 @@ moose.execute(helper.sql).then(function(results) {
                 var d = moose.getDataset("works");
                 d.select("firstname")
                         .group("firstname", {firstname : {between : ['Ann', 'Eric']}}).order({firstname : "desc"})
-                        .all().then(hitch(this, "callback", null), hitch(this, "callback"));
+                        .all().then(comb.hitch(this, "callback", null), comb.hitch(this, "callback"));
             },
 
             'we get ': function (topic) {

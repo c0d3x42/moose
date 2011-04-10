@@ -1,9 +1,10 @@
 var moose = require("../../lib"),
         mysql = moose.adapters.mysql,
-        types = mysql.types;
+        types = mysql.types,
+        comb = require("comb");
 
 exports.loadModels = function() {
-    var ret = new moose.Promise();
+    var ret = new comb.Promise();
     var options = {
         connection : {user : "test", password : "testpass", database : 'test'},
         dir : "./data/migrations/oneToOne",
@@ -11,7 +12,7 @@ exports.loadModels = function() {
         up : true
     };
     moose.migrate(options)
-            .chain(hitch(moose, "loadSchemas", ["works", "employee"]))
+            .chain(comb.hitch(moose, "loadSchemas", ["works", "employee"]), comb.hitch(ret, "errback"))
             .then(function(works, employee) {
         var Works = moose.addModel(works);
         var Employee = moose.addModel(employee);
@@ -25,19 +26,19 @@ exports.loadModels = function() {
         });
         Works.manyToOne("employee", {model : Employee.tableName, key : {eid : "eid"}});
         ret.callback();
-    }, hitch(console, "log"));
+    }, comb.hitch(console, "log"));
 
     return ret;
 };
 
 exports.dropModels = function() {
-    var ret = new moose.Promise();
+    var ret = new comb.Promise();
     var options = {
         connection : {user : "test", password : "testpass", database : 'test'},
         dir : "./data/migrations/oneToOne",
         start : 0,
         up : false
     };
-    moose.migrate(options).then(moose.hitch(ret, "callback"), moose.hitch(ret, "errback"));
+    moose.migrate(options).then(comb.hitch(ret, "callback"), comb.hitch(ret, "errback"));
     return ret;
 };

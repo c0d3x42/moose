@@ -2,7 +2,8 @@ var vows = require('vows'),
         assert = require('assert'),
         helper = require("./data/manyToMany.customFilter.lazy.models"),
         moose = require("../lib"),
-        hitch = moose.hitch;
+        comb = require("comb"),
+        hitch = comb.hitch;
 
 var gender = ["M", "F"];
 helper.loadModels().then(function() {
@@ -50,10 +51,10 @@ helper.loadModels().then(function() {
 
             "and when loading omaha employees " : {
                 topic : function(company) {
-                   company.omahaEmployees.then(hitch(this, "callback", null), hitch(this, "callback"));
+                    company.omahaEmployees.then(hitch(this, "callback", null), hitch(this, "callback"));
                 },
 
-                "there should be two" : function(emps){
+                "there should be two" : function(emps) {
                     assert.length(emps, 2);
                     emps.forEach(function(emp, i) {
                         assert.equal(emp.id, i + 1);
@@ -63,35 +64,35 @@ helper.loadModels().then(function() {
             },
 
             " when querying the employees " : {
-                    topic : function(company) {
-                        Employee.filter({id : {"in" :  [1,2, 3]}}).order("id").all().then(hitch(this, "callback", null));
+                topic : function(company) {
+                    Employee.filter({id : {"in" :  [1,2, 3]}}).order("id").all().then(hitch(this, "callback", null));
+                },
+
+                "the employees company should not be loaded yet" : {
+
+                    topic : function(emps) {
+                        assert.length(emps, 3);
+                        assert.equal(1, emps[0].id);
+                        assert.equal(2, emps[1].id);
+                        assert.equal(3, emps[2].id);
+                        emps[0].companies.then(hitch(this, "callback", null));
+                        emps[1].companies.then(hitch(this, "callback", null));
+                        emps[2].companies.then(hitch(this, "callback", null));
                     },
 
-                    "the employees company should not be loaded yet" : {
+                    " the company should not be null" : function(companies) {
+                        assert.length(companies, 1);
+                    },
 
-                        topic : function(emps) {
-                            assert.length(emps, 3);
-                            assert.equal(1, emps[0].id);
-                            assert.equal(2, emps[1].id);
-                            assert.equal(3, emps[2].id);
-                            emps[0].companies.then(hitch(this, "callback", null));
-                            emps[1].companies.then(hitch(this, "callback", null));
-                            emps[2].companies.then(hitch(this, "callback", null));
-                        },
-
-                        " the company should not be null" : function(companies) {
-                            assert.length(companies, 1);
-                        },
-
-                        " the company name should be Google" : function(companies) {
-                            assert.equal(companies[0].companyName, "Google");
-                        }
-
+                    " the company name should be Google" : function(companies) {
+                        assert.equal(companies[0].companyName, "Google");
                     }
+
                 }
+            }
         },
 
-        teardown : function(){
+        teardown : function() {
             helper.dropModels();
         }
 

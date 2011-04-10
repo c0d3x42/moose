@@ -1,6 +1,7 @@
 var vows = require('vows'),
         assert = require('assert'),
         moose = require("../lib"),
+        comb = require("comb"),
         mysql = moose.adapters.mysql,
         types = mysql.types,
         Table = moose.Table;

@@ -1,7 +1,8 @@
 var vows = require('vows'),
         assert = require('assert'),
         moose = require("../../lib"),
-        hitch = moose.hitch,
+        comb = require("comb"),
+        hitch = comb.hitch,
         helper = require("../data/plugins.models");
 
 helper.loadDefaultModels().then(function() {

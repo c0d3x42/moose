@@ -2,7 +2,8 @@ var vows = require('vows'),
         assert = require('assert'),
         helper = require("./data/manyToOne.customFilter.lazy.models"),
         moose = require("../lib"),
-        hitch = moose.hitch;
+        comb = require("comb"),
+        hitch = comb.hitch;
 
 var gender = ["M", "F"];
 helper.loadModels().then(function() {
@@ -49,7 +50,7 @@ helper.loadModels().then(function() {
 
             "and retrieving omaha employees " : {
                 topic : function(company) {
-                   company.omahaEmployees.then(hitch(this, "callback", null), hitch(this, "callback"));
+                    company.omahaEmployees.then(hitch(this, "callback", null), hitch(this, "callback"));
                 },
 
                 "there should be two " : function(emps) {

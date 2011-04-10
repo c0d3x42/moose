@@ -1,5 +1,6 @@
 var moose = require("../lib"),
-        models = require("./models");
+        models = require("./models"),
+        comb = require("comb");
 
 /***************************START MOCK DATA*********************/
 var airports = [
@@ -77,7 +78,7 @@ var flights = [
 /***************************END MOCK DATA*********************/
 
 exports.loadData = function() {
-    var ret = new moose.Promise();
+    var ret = new comb.Promise();
     var options = {
         connection : {user : "test", password : "testpass", database : 'airline'},
         dir : "./migrations",
@@ -87,15 +88,15 @@ exports.loadData = function() {
     //migrate down to clear any previous data
     moose.migrate(options)
             //migrate up to create tables
-            .chain(moose.hitch(moose, "migrate", moose.merge({}, options, {up : true})), moose.hitch(ret, "errback"))
-            .chain(models.load, hitch(ret, "errback"))
+            .chain(comb.hitch(moose, "migrate", comb.merge({}, options, {up : true})), comb.hitch(ret, "errback"))
+            .chain(models.load, comb.hitch(ret, "errback"))
             .then(function() {
                 //now load out data
                 var Airport = moose.getModel("airport"), AirplaneType = moose.getModel("airplane_type"), Flight = moose.getModel("flight");
                 Airport.save(airports)
-                        .chain(moose.hitch(AirplaneType, "save", airplaneTypes), moose.hitch(ret, "errback"))
-                        .chain(moose.hitch(Flight, "save", flights), moose.hitch(ret, "errback"))
-                        .then(hitch(ret, "callback"), hitch(ret, "errback"));
-            }, hitch(ret, "errback"));
+                        .chain(comb.hitch(AirplaneType, "save", airplaneTypes), comb.hitch(ret, "errback"))
+                        .chain(comb.hitch(Flight, "save", flights), comb.hitch(ret, "errback"))
+                        .then(comb.hitch(ret, "callback"), comb.hitch(ret, "errback"));
+            }, comb.hitch(ret, "errback"));
     return ret;
 };

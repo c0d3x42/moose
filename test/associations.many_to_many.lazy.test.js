@@ -2,7 +2,8 @@ var vows = require('vows'),
         assert = require('assert'),
         helper = require("./data/manyToMany.lazy.models"),
         moose = require("../lib"),
-        hitch = moose.hitch;
+        comb = require("comb"),
+        hitch = comb.hitch;
 
 var gender = ["M", "F"];
 
@@ -144,7 +145,7 @@ helper.loadModels().then(function() {
 
                     company.removeEmployee(2)
                             .chain(hitch(company, "save"), hitch(this, "callback"))
-                            .chain(function(){
+                            .chain(function() {
                         console.log("hello");
                         return company.reload();
                     }, hitch(this, "callback"))
@@ -183,7 +184,7 @@ helper.loadModels().then(function() {
                             .chain(hitch(company, "reload"), hitch(this, "callback"))
                             .then(hitch(this, function(newComp) {
                         newComp.employees.then(hitch(this, "callback", null), hitch(this, "callback"));
-                    }), hitch(this,"callback"));
+                    }), hitch(this, "callback"));
                 },
 
                 "the company should have 0 employees " : function(emps) {
@@ -269,7 +270,7 @@ helper.loadModels().then(function() {
 
     suite.run({reporter : require("vows/reporters/spec")});
 
-}, function(err){
+}, function(err) {
     console.log(err);
     throw err;
 });

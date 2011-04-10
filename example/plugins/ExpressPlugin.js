@@ -1,13 +1,13 @@
-var moose = require("../../lib");
+var moose = require("../../lib"), comb = require("comb");
 
 /*
 * Very simple express routing for a model
 * */
-module.exports = exports = moose.define(null, {
+module.exports = exports = comb.define(null, {
    static : {
 
        route : function(app){
-           app.get("/" + this.tableName + "/:id", moose.hitch(this, function(req, res){
+           app.get("/" + this.tableName + "/:id", comb.hitch(this, function(req, res){
                var id = req.params.id;
                this.findById(id).then(function(model){
                    var response;
