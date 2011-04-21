@@ -1,6 +1,7 @@
 var vows = require('vows'),
         assert = require('assert'),
         adapter = require("../../../lib").adapters.mysql,
+        comb = require("comb"),
         types = adapter.types;
 
 var suite = vows.describe('mysql types');
@@ -596,21 +597,20 @@ var suite = vows.describe('mysql types');
     switch (type) {
         case  "DATE" :
             def = "1999-10-10";
-            date = new Date(Date.parse(def));
+            date = comb.date.parse(def, "yyyy-MM-dd");
             break;
         case  "TIME" :
             def = "12:12:12";
-            date = new Date();
-            date.setHours(12, 12, 12);
+            date = comb.date.parse(def, "h:m:s");
             break;
         case  "TIMESTAMP" :
         case  "DATETIME" :
             def = "1999-10-10 12:12:12";
-            date = new Date(Date.parse(def));
+            date = comb.date.parse(def, "yyy-MM-dd h:m:s");
             break;
         case  "YEAR" :
             def = "1999";
-            date = new Date(Date.parse(def));
+            date = comb.date.parse(def, "yyyy");
             break;
     }
 
@@ -1024,7 +1024,7 @@ suite.addBatch({
     },
 
     "when altering a columns default value" : {
-      topic: function () {
+        topic: function () {
             return adapter.alterColumn("myColumn", {original : types.FLOAT({allowNull : false, unique : true, size : 10, "default" : 10, autoIncrement : true, unsigned : true}), "default" : 12});
         },
 

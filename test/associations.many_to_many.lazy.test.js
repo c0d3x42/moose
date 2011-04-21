@@ -146,17 +146,14 @@ helper.loadModels().then(function() {
                     company.removeEmployee(2)
                             .chain(hitch(company, "save"), hitch(this, "callback"))
                             .chain(function() {
-                        console.log("hello");
                         return company.reload();
                     }, hitch(this, "callback"))
                             .then(hitch(this, function(newComp) {
-                        console.log("hello");
                         newComp.employees.then(hitch(this, "callback", null), hitch(this, "callback"));
                     }), hitch(this, "callback"));
                 },
 
                 "the company should have two employees " : function(emps) {
-                    console.log("hello");
                     assert.length(emps, 2);
                     var ids = [3,2];
                     emps.forEach(function(emp, i) {
