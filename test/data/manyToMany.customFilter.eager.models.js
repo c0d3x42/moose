@@ -35,7 +35,7 @@ exports.loadModels = function() {
         Company.manyToMany("omahaEmployees", {
             model : "employee",
             filter : function() {
-                var companyEmloyeeDataset = CompanyEmployee.getDataset().select('employeeId').find({companyId : this.id});
+                var companyEmloyeeDataset = CompanyEmployee.dataset.select('employeeId').find({companyId : this.id});
                 return Employee.filter({id : {"in" : companyEmloyeeDataset}, city : 'Omaha'}).order("lastname");
             },
             joinTable : "companyEmployee",

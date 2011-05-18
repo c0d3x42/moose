@@ -1,0 +1,342 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">associations</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"../associations"</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>  2</span> </span><span class="WHIT">        </span><span class="NAME">oneToMany</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">associations.oneToMany</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>  3</span> </span><span class="WHIT">        </span><span class="NAME">manyToOne</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">associations.manyToOne</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>  4</span> </span><span class="WHIT">        </span><span class="NAME">oneToOne</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">associations.oneToOne</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>  5</span> </span><span class="WHIT">        </span><span class="NAME">manyToMany</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">associations.manyToMany</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>  6</span> </span><span class="WHIT">        </span><span class="NAME">fetch</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">associations.fetch</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>  7</span> </span><span class="WHIT">        </span><span class="NAME">comb</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"comb"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  8</span> 
+<span class='line'>  9</span> </span><span class="COMM">/**
+<span class='line'> 10</span>  * @class
+<span class='line'> 11</span>  *  &lt;p>plugin to expose association capability.&lt;/p>
+<span class='line'> 12</span>  *
+<span class='line'> 13</span>  * The associations exposed include
+<span class='line'> 14</span>  *
+<span class='line'> 15</span>  *
+<span class='line'> 16</span>  *
+<span class='line'> 17</span>  *
+<span class='line'> 18</span>  * &lt;ul>
+<span class='line'> 19</span>  *     &lt;li>oneToMany - Foreign key in associated model's table points to this
+<span class='line'> 20</span>  *         model's primary key.   Each current model object can be associated with
+<span class='line'> 21</span>  *         more than one associated model objects.  Each associated model object
+<span class='line'> 22</span>  *         can be associated with only one current model object.&lt;/li>
+<span class='line'> 23</span>  *     &lt;li>manyToOne - Foreign key in current model's table points to
+<span class='line'> 24</span>  *         associated model's primary key.  Each associated model object can
+<span class='line'> 25</span>  *         be associated with more than one current model objects.  Each current
+<span class='line'> 26</span>  *         model object can be associated with only one associated model object.&lt;/li>
+<span class='line'> 27</span>  *     &lt;li>oneToOne - Similar to one_to_many in terms of foreign keys, but
+<span class='line'> 28</span>  *         only one object is associated to the current object through the
+<span class='line'> 29</span>  *         association.  The methods created are similar to many_to_one, except
+<span class='line'> 30</span>  *         that the one_to_one setter method saves the passed object./li>
+<span class='line'> 31</span>  *     &lt;li>manyToMany - A join table is used that has a foreign key that points
+<span class='line'> 32</span>  *         to this model's primary key and a foreign key that points to the
+<span class='line'> 33</span>  *          associated model's primary key.  Each current model object can be
+<span class='line'> 34</span>  *         associated with many associated model objects, and each associated
+<span class='line'> 35</span>  *         model object can be associated with many current model objects./li>
+<span class='line'> 36</span>  * &lt;/ul>
+<span class='line'> 37</span>  *
+<span class='line'> 38</span>  * @name AssociationPlugin
+<span class='line'> 39</span>  * @memberOf moose.plugins
+<span class='line'> 40</span>  *
+<span class='line'> 41</span>  */</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="NAME">exports.AssociationPlugin</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">comb.define</span><span class="PUNC">(</span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">    </span><span class="NAME">static</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">    </span><span class="COMM">/**@lends moose.plugins.AssociationPlugin*/</span><span class="WHIT">
+<span class='line'> 45</span> 
+<span class='line'> 46</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'> 47</span>          * One of the most common forms of associtaions. One to Many is the inverse of Many to one. One to Many often describes a parent child reationship,
+<span class='line'> 48</span>          * where the One To many Model is the parent, and the many to one model is the child.
+<span class='line'> 49</span>          * &lt;p>For example consider a BiologicalFather and his children. The father can have many children, but a child can have only one Biological Father.&lt;/p>
+<span class='line'> 50</span>          *
+<span class='line'> 51</span>          * @example
+<span class='line'> 52</span>          * biological_father       child
+<span class='line'> 53</span>          * -------------_          -------------------------
+<span class='line'> 54</span>          * |id  | name  |          |id | bioFatherId  | name |
+<span class='line'> 55</span>          * --------------          -------------------------
+<span class='line'> 56</span>          * | 1  | Fred  |          | 1 |     1        | Bobby |
+<span class='line'> 57</span>          * | 2  | Ben   |  ------> | 2 |     1        | Alice |
+<span class='line'> 58</span>          * | 3  | Bob   |          | 3 |     1        | Susan |
+<span class='line'> 59</span>          * | 4  | Scott |          | 4 |     4        | Brad  |
+<span class='line'> 60</span>          * --------------          -------------------------
+<span class='line'> 61</span>          *
+<span class='line'> 62</span>          * @example
+<span class='line'> 63</span>          *
+<span class='line'> 64</span>          * //define Social security model
+<span class='line'> 65</span>          * var BioFather = moose.addModel("biological_father");
+<span class='line'> 66</span>          *
+<span class='line'> 67</span>          * //define Person  model
+<span class='line'> 68</span>          * var Child = moose.addModel("child");
+<span class='line'> 69</span>          *
+<span class='line'> 70</span>          * //Create oneToMany relationship from father to child
+<span class='line'> 71</span>          * BioFather.oneToMany("children", {
+<span class='line'> 72</span>          *                                  model : Child.tableName,
+<span class='line'> 73</span>          *                                  key : {id : "bioFatherId"}
+<span class='line'> 74</span>          *                     });
+<span class='line'> 75</span>          *
+<span class='line'> 76</span>          *
+<span class='line'> 77</span>          * //Create oneToOne relation ship from ssn to person with a fetchtype of eager.
+<span class='line'> 78</span>          * Child.manyToOne("biologicalFather", {
+<span class='line'> 79</span>          *                                  model : BioFather.tableName,
+<span class='line'> 80</span>          *                                  fetchType : BioFather.fetchType.EAGER,
+<span class='line'> 81</span>          *                                  key : {bioFatherId : "id"}
+<span class='line'> 82</span>          *                });
+<span class='line'> 83</span>          *
+<span class='line'> 84</span>          * Child.findById(1).then(function(child){
+<span class='line'> 85</span>          *     child.father.name => "fred"
+<span class='line'> 86</span>          * });
+<span class='line'> 87</span>          *
+<span class='line'> 88</span>          * BioFather.findById(1).then(function(father){
+<span class='line'> 89</span>          *     father.children.then(function(children){
+<span class='line'> 90</span>          *         children.length => 3
+<span class='line'> 91</span>          *     });
+<span class='line'> 92</span>          * });
+<span class='line'> 93</span>          *
+<span class='line'> 94</span>          * &lt;/p>
+<span class='line'> 95</span>          * @param {String} name the alias of the association. The key you provide here is how the association
+<span class='line'> 96</span>          *                      will be looked up on instances of this model.
+<span class='line'> 97</span>          * @param {Object} options object that describes the association.
+<span class='line'> 98</span>          * @param {String} options.model the table name of the model that this Model is associated with.
+<span class='line'> 99</span>          * @param {Function} options.filter Custom filter to define a custom association.
+<span class='line'>100</span>          *                  The filter is called in the scope of model that the association is added to.
+<span class='line'>101</span>          *                  Say we have a model called BioFather that is a one to many to a model called Child.
+<span class='line'>102</span>          * &lt;pre class="code">
+<span class='line'>103</span>          * BioFather.oneToMany("children", {
+<span class='line'>104</span>          *                   model : Child.tableName,
+<span class='line'>105</span>          *                   fetchType : BioFather.fetchType.EAGER,
+<span class='line'>106</span>          *                   filter : function(){
+<span class='line'>107</span>          *                       return  Child.filter({bioFatherId : this.id});
+<span class='line'>108</span>          *                   }
+<span class='line'>109</span>          *                });
+<span class='line'>110</span>          * @param {AssociationPlugin.fetchType.EAGER|AssociationPlugin.fetchType.EAGER} [options.fetchType=AssociationPlugin.fetchType.LAZY]
+<span class='line'>111</span>          *          how fetch the association, if specified to lazy then the association is lazy loaded.
+<span class='line'>112</span>          *          Otherwise the association is loaded when the model is loaded.
+<span class='line'>113</span>          * @param {Object} key this defines the foreign key relationship
+<span class='line'>114</span>          *  &lt;pre class="code">
+<span class='line'>115</span>          *      {thisModelsKey : otherModelsKey}
+<span class='line'>116</span>          *  &lt;/pre>
+<span class='line'>117</span>          * @param {String|Object} [options.orderBy] column or columns to order the associated model by.
+<span class='line'>118</span>          */</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">        </span><span class="NAME">oneToMany</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">assoc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">oneToMany</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.moose</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">            </span><span class="NAME">assoc.inject</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>123</span> 
+<span class='line'>124</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>125</span>          * See {@link AssociationPlugin.oneToMany}
+<span class='line'>126</span>          * @param {String} name the alias of the association. The key you provide here is how the association
+<span class='line'>127</span>          *                      will be looked up on instances of this model.
+<span class='line'>128</span>          * @param {Object} options object that describes the association.
+<span class='line'>129</span>          * @param {String} options.model the table name of the model that this Model is associated with.
+<span class='line'>130</span>          * @param {Function} options.filter Custom filter to define a custom association.
+<span class='line'>131</span>          *                  The filter is called in the scope of model that the association is added to.
+<span class='line'>132</span>          *                  Say we have a model called Child that is a many to one to a model called BioFather.
+<span class='line'>133</span>          * &lt;pre class="code">
+<span class='line'>134</span>          * Child.manyToOne("biologicalFather", {
+<span class='line'>135</span>          *                   model : BioFather.tableName,
+<span class='line'>136</span>          *                   fetchType : BioFather.fetchType.EAGER,
+<span class='line'>137</span>          *                   filter : function(){
+<span class='line'>138</span>          *                       return  BioFather.filter({id : this.bidFatherId});
+<span class='line'>139</span>          *                   }
+<span class='line'>140</span>          *                });
+<span class='line'>141</span>          *
+<span class='line'>142</span>          * @param {AssociationPlugin.fetchType.EAGER|AssociationPlugin.fetchType.EAGER} [options.fetchType=AssociationPlugin.fetchType.LAZY]
+<span class='line'>143</span>          *          how fetch the association, if specified to lazy then the association is lazy loaded.
+<span class='line'>144</span>          *          Otherwise the association is loaded when the model is loaded.
+<span class='line'>145</span>          * @param {Object} key this defines the foreign key relationship
+<span class='line'>146</span>          * @param {String|Array} [options.orderBy] column or columns to order the associated model by.
+<span class='line'>147</span>          *  &lt;pre class="code">
+<span class='line'>148</span>          *      {thisModelsKey : otherModelsKey}
+<span class='line'>149</span>          *  &lt;/pre>
+<span class='line'>150</span>          * @param {String|Object} [options.orderBy] column or columns to order the associated model by.
+<span class='line'>151</span>          */</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">        </span><span class="NAME">manyToOne</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>153</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">assoc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">manyToOne</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.moose</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="WHIT">            </span><span class="NAME">assoc.inject</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>156</span> 
+<span class='line'>157</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>158</span>          * &lt;p>Simplest form of association. This describes where there is a one to one relationship between classes.&lt;/p>
+<span class='line'>159</span>          *
+<span class='line'>160</span>          * When createing a reciprocal one to one relationship between models one of the models should be a many to one association.
+<span class='line'>161</span>          * The table that contains the foreign key should contain have the manyToOne relationship.
+<span class='line'>162</span>          *
+<span class='line'>163</span>          * &lt;p>For example consider social security numbers. There is one social security per person, this would be considered a one to one relationship.
+<span class='line'>164</span>          *
+<span class='line'>165</span>          * @example
+<span class='line'>166</span>          *          Person                  SSN NUMBER
+<span class='line'>167</span>          *-------------------------         ---------------
+<span class='line'>168</span>          *|id         | ssn       |         |id          |
+<span class='line'>169</span>          *-------------------------         ---------------
+<span class='line'>170</span>          *|00000001   | 111111111 |         | 111111111  |
+<span class='line'>171</span>          *| ......... | ......... | ------> | .........  |
+<span class='line'>172</span>          *| ......... | ......... |         | .........  |
+<span class='line'>173</span>          *| nnnnnnnnn | nnnnnnnn  |         | nnnnnnnnn  |
+<span class='line'>174</span>          *-------------------------         ---------------
+<span class='line'>175</span>          *
+<span class='line'>176</span>          * @example
+<span class='line'>177</span>          *
+<span class='line'>178</span>          * //define Social security model
+<span class='line'>179</span>          * var SocialSecurityNumber = moose.addModel("ssn");
+<span class='line'>180</span>          *
+<span class='line'>181</span>          * //define Person  model
+<span class='line'>182</span>          * var Person = moose.addModel("person");
+<span class='line'>183</span>          *
+<span class='line'>184</span>          * //Create oneToOne relation ship from ssn to person with a fetchtype of eager.
+<span class='line'>185</span>          * SocialSecurityNumber.oneToOne("person", {
+<span class='line'>186</span>          *                                  model : Person.tableName,
+<span class='line'>187</span>          *                                  fetchType : SocialSecurityNumber.fetchType.EAGER,
+<span class='line'>188</span>          *                                  key : {id : "ssn"}
+<span class='line'>189</span>          *                              });
+<span class='line'>190</span>          *
+<span class='line'>191</span>          * //Create oneToMany relation ship from person to ssn,
+<span class='line'>192</span>          * //It is many to one because is contains the ssn foreign key.
+<span class='line'>193</span>          *
+<span class='line'>194</span>          * Person.manyToOne("ssn", {
+<span class='line'>195</span>          *                          model : SocialSecurityNumber.tableName,
+<span class='line'>196</span>          *                          key : {ssn : "id"}
+<span class='line'>197</span>          *                 });
+<span class='line'>198</span>          *
+<span class='line'>199</span>          *
+<span class='line'>200</span> 
+<span class='line'>201</span>          *
+<span class='line'>202</span>          * Person.findById(1).then(function(person){
+<span class='line'>203</span>          *    person.ssn.then(function(ssn){
+<span class='line'>204</span>          *       ssn.id => 111111111
+<span class='line'>205</span>          *    });
+<span class='line'>206</span>          * });
+<span class='line'>207</span>          *
+<span class='line'>208</span>          * SocialSecurityNumber.findById(111111111).then(function(ssn){
+<span class='line'>209</span>          *    ssn.person.id => 1
+<span class='line'>210</span>          * });
+<span class='line'>211</span>          * &lt;/p>
+<span class='line'>212</span>          * @param {String} name the alias of the association. The key you provide here is how the association
+<span class='line'>213</span>          *                      will be looked up on instances of this model.
+<span class='line'>214</span>          * @param {Object} options object that describes the association.
+<span class='line'>215</span>          * @param {String} options.model the table name of the model that this Model is associated with.
+<span class='line'>216</span>          * @param {Function} options.filter Custom filter to define a custom association.
+<span class='line'>217</span>          *                  The filter is called in the scope of model that the association is added to.
+<span class='line'>218</span>          *                  Say we have the same models as defined above.
+<span class='line'>219</span>          * &lt;pre class="code">
+<span class='line'>220</span>          *  SocialSecurityNumber.oneToOne("person", {
+<span class='line'>221</span>          *      model : Person.tableName,
+<span class='line'>222</span>          *      filter : function(){
+<span class='line'>223</span>          *          //find the worker that has my id.
+<span class='line'>224</span>          *          return Person.filter({ssn : this.id});
+<span class='line'>225</span>          *      }
+<span class='line'>226</span>          * });
+<span class='line'>227</span>          * &lt;/pre>
+<span class='line'>228</span>          * @param {AssociationPlugin.fetchType.EAGER|AssociationPlugin.fetchType.EAGER} [options.fetchType=AssociationPlugin.fetchType.LAZY]
+<span class='line'>229</span>          *          how fetch the association, if specified to lazy then the association is lazy loaded.
+<span class='line'>230</span>          *          Otherwise the association is loaded when the model is loaded.
+<span class='line'>231</span>          * @param {Object} key this defines the foreign key relationship
+<span class='line'>232</span>          *  &lt;pre class="code">
+<span class='line'>233</span>          *      {thisModelsKey : otherModelsKey}
+<span class='line'>234</span>          *  &lt;/pre>
+<span class='line'>235</span>          * @param {String|Object} [options.orderBy] column or columns to order the associated model by.
+<span class='line'>236</span>          */</span><span class="WHIT">
+<span class='line'>237</span> </span><span class="WHIT">        </span><span class="NAME">oneToOne</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>238</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">assoc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">oneToOne</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.moose</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>239</span> </span><span class="WHIT">            </span><span class="NAME">assoc.inject</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>240</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>241</span> 
+<span class='line'>242</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>243</span>          * The manyToMany association allows a model to be associated to many other rows in another model.
+<span class='line'>244</span>          * and the associated model can be associated with many rows in this model. This is done by
+<span class='line'>245</span>          * using a join table to associate the two models.
+<span class='line'>246</span>          * &lt;p>For example consider phone numbers. Each person can have multiple phone numbers.
+<span class='line'>247</span>          *
+<span class='line'>248</span>          * @example
+<span class='line'>249</span>          * phone          person_phone                   person
+<span class='line'>250</span>          * ------         ----------------------         -----
+<span class='line'>251</span>          * |id  |         |person_id | phone_id|         |id |
+<span class='line'>252</span>          * ------         ----------------------         -----
+<span class='line'>253</span>          * | 1  |         |        1 |       1 |         | 1 |
+<span class='line'>254</span>          * | .  | &lt;------ |        1 |       2 | ------> | 2 |
+<span class='line'>255</span>          * | .  |         |        2 |       2 |         | 3 |
+<span class='line'>256</span>          * | n  |         |        2 |       1 |         | 4 |
+<span class='line'>257</span>          * ------         ----------------------         -----
+<span class='line'>258</span>          *
+<span class='line'>259</span>          * @example
+<span class='line'>260</span>          *
+<span class='line'>261</span>          * //define the PhoneNumber model
+<span class='line'>262</span>          * var PhoneNumber = moose.addModel("phone");
+<span class='line'>263</span>          *
+<span class='line'>264</span>          * //define Person model
+<span class='line'>265</span>          * var Person = moose.addModel("person");
+<span class='line'>266</span>          *
+<span class='line'>267</span>          * //Create manyToMany relationship from person to PhoneNumber
+<span class='line'>268</span>          * Person.manyToMany("phoneNumbers", {
+<span class='line'>269</span>          *                      model : PhoneNumber.tableName,
+<span class='line'>270</span>          *                      joinTable : "person_phone",
+<span class='line'>271</span>          *                      key : {person_id : "phone_id"}
+<span class='line'>272</span>          *});
+<span class='line'>273</span>          *
+<span class='line'>274</span>          *
+<span class='line'>275</span>          * PhoneNumber.manyToMany("owners", {
+<span class='line'>276</span>          *                      model : Person.tableName,
+<span class='line'>277</span>          *                      joinTable : "person_phone",
+<span class='line'>278</span>          *                      key : {phone_id : "person_id"}
+<span class='line'>279</span>          *});
+<span class='line'>280</span>          *
+<span class='line'>281</span>          * Person.findById(1).then(function(person){
+<span class='line'>282</span>          *    person.phoneNumbers.then(function(numbers){
+<span class='line'>283</span>          *       numbers.length => 2
+<span class='line'>284</span>          *    });
+<span class='line'>285</span>          * });
+<span class='line'>286</span>          *
+<span class='line'>287</span>          * PhoneNumber.findById(1).then(function(number){
+<span class='line'>288</span>          *    number.owners.then(function(owners){
+<span class='line'>289</span>          *        owners.length => 2;
+<span class='line'>290</span>          *    });
+<span class='line'>291</span>          * });
+<span class='line'>292</span>          * &lt;/p>
+<span class='line'>293</span>          * @param {String} name the alias of the association. The key you provide here is how the association
+<span class='line'>294</span>          *                      will be looked up on instances of this model.
+<span class='line'>295</span>          * @param {Object} options object that describes the association.
+<span class='line'>296</span>          * @param {String} options.model the table name of the model that this Model is associated with.
+<span class='line'>297</span>          * @param {String} options.joinTable the name of the joining table.
+<span class='line'>298</span>          * @param {Function} options.filter Custom filter to define a custom association.
+<span class='line'>299</span>          *                  The filter is called in the scope of model that the association is added to.
+<span class='line'>300</span>          *                  Say we have the same models as defined above.
+<span class='line'>301</span>          * &lt;pre class="code">
+<span class='line'>302</span>          * //Define the join table model so we can query it.
+<span class='line'>303</span>          * PersonPhone = moose.addModel(person_phone);
+<span class='line'>304</span>          * PhoneNumber.manyToMany("owners", {
+<span class='line'>305</span>          *                      model : Person.tableName,
+<span class='line'>306</span>          *                      joinTable : "person_phone",
+<span class='line'>307</span>          *                      filter : function(){
+<span class='line'>308</span>          *                              //find all the person ids
+<span class='line'>309</span>          *                            var jd = PhoneNumber.dataset
+<span class='line'>310</span>          *                                                .select('person_id')
+<span class='line'>311</span>          *                                                .find({phone_id : this.id});
+<span class='line'>312</span>          *                            //now query person with the ids!
+<span class='line'>313</span>          *                            return Person.filter({id : {"in" : jd}});
+<span class='line'>314</span>          *                      }
+<span class='line'>315</span>          *  });
+<span class='line'>316</span>          * &lt;/pre>
+<span class='line'>317</span>          * @param {AssociationPlugin.fetchType.EAGER|AssociationPlugin.fetchType.EAGER} [options.fetchType=AssociationPlugin.fetchType.LAZY]
+<span class='line'>318</span>          *          how fetch the association, if specified to lazy then the association is lazy loaded.
+<span class='line'>319</span>          *          Otherwise the association is loaded when the model is loaded.
+<span class='line'>320</span>          * @param {Object} key this defines the foreign key relationship
+<span class='line'>321</span>          *  &lt;pre class="code">
+<span class='line'>322</span>          *      {thisModelsKey : otherModelsKey}
+<span class='line'>323</span>          *  &lt;/pre>
+<span class='line'>324</span>          * @param {String|Object} [options.orderBy] column or columns to order the associated model by.
+<span class='line'>325</span>          */</span><span class="WHIT">
+<span class='line'>326</span> </span><span class="WHIT">        </span><span class="NAME">manyToMany</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>327</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">assoc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">manyToMany</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.moose</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>328</span> </span><span class="WHIT">            </span><span class="NAME">assoc.inject</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>329</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>330</span> 
+<span class='line'>331</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>332</span>          * @borrows _Association.fetch as fetch
+<span class='line'>333</span>          */</span><span class="WHIT">
+<span class='line'>334</span> </span><span class="WHIT">        </span><span class="NAME">fetchType</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">fetch</span><span class="WHIT">
+<span class='line'>335</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>
