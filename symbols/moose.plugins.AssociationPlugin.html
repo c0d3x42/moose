@@ -1,0 +1,995 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - moose.plugins.AssociationPlugin</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><a href="../symbols/_Association.html">_Association</a></li>
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/Dataset.html">Dataset</a></li>
+	
+	<li><a href="../symbols/ManyToMany.html">ManyToMany</a></li>
+	
+	<li><a href="../symbols/ManyToOne.html">ManyToOne</a></li>
+	
+	<li><a href="../symbols/MayToOne.html">MayToOne</a></li>
+	
+	<li><a href="../symbols/Migrations.html">Migrations</a></li>
+	
+	<li><a href="../symbols/Model.html">Model</a></li>
+	
+	<li><a href="../symbols/moose.html">moose</a></li>
+	
+	<li><a href="../symbols/moose.adapters.html">moose.adapters</a></li>
+	
+	<li><a href="../symbols/moose.adapters.mysql.html">moose.adapters.mysql</a></li>
+	
+	<li><a href="../symbols/moose.adapters.mysql.types.html">moose.adapters.mysql.types</a></li>
+	
+	<li><a href="../symbols/moose.plugins.html">moose.plugins</a></li>
+	
+	<li><a href="../symbols/moose.plugins.AssociationPlugin.html">moose.plugins.AssociationPlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.CachePlugin.html">moose.plugins.CachePlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.QueryPlugin.html">moose.plugins.QueryPlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.TimeStampPlugin.html">moose.plugins.TimeStampPlugin</a></li>
+	
+	<li><a href="../symbols/moose.Table.html">moose.Table</a></li>
+	
+	<li><a href="../symbols/OneToMany.html">OneToMany</a></li>
+	
+	<li><a href="../symbols/SQL.html">SQL</a></li>
+	
+	<li><a href="../symbols/Type.html">Type</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class moose.plugins.AssociationPlugin
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				<p>plugin to expose association capability.</p>
+
+The associations exposed include
+
+
+
+
+<ul>
+    <li>oneToMany - Foreign key in associated model's table points to this
+        model's primary key.   Each current model object can be associated with
+        more than one associated model objects.  Each associated model object
+        can be associated with only one current model object.</li>
+    <li>manyToOne - Foreign key in current model's table points to
+        associated model's primary key.  Each associated model object can
+        be associated with more than one current model objects.  Each current
+        model object can be associated with only one associated model object.</li>
+    <li>oneToOne - Similar to one_to_many in terms of foreign keys, but
+        only one object is associated to the current object through the
+        association.  The methods created are similar to many_to_one, except
+        that the one_to_one setter method saves the passed object./li>
+    <li>manyToMany - A join table is used that has a foreign key that points
+        to this model's primary key and a foreign key that points to the
+         associated model's primary key.  Each current model object can be
+        associated with many associated model objects, and each associated
+        model object can be associated with many current model objects./li>
+</ul>
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_plugins_association.js.html">association.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class moose.plugins.AssociationPlugin.">
+				<caption>Class Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/moose.plugins.AssociationPlugin.html#constructor">moose.plugins.AssociationPlugin</a></b>()
+							</div>
+							<div class="description"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class moose.plugins.AssociationPlugin.">
+					<caption>Field Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Field Attributes</th>
+							<th scope="col">Field Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								moose.plugins.AssociationPlugin.<b><a href="../symbols/moose.plugins.AssociationPlugin.html#.fetchType">fetchType</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class moose.plugins.AssociationPlugin.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.plugins.AssociationPlugin.<b><a href="../symbols/moose.plugins.AssociationPlugin.html#.manyToMany">manyToMany</a></b>(name, options, key)
+								</div>
+								<div class="description">The manyToMany association allows a model to be associated to many other rows in another model.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.plugins.AssociationPlugin.<b><a href="../symbols/moose.plugins.AssociationPlugin.html#.manyToOne">manyToOne</a></b>(name, options, key)
+								</div>
+								<div class="description">See AssociationPlugin.oneToMany</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.plugins.AssociationPlugin.<b><a href="../symbols/moose.plugins.AssociationPlugin.html#.oneToMany">oneToMany</a></b>(name, options, key)
+								</div>
+								<div class="description">One of the most common forms of associtaions.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.plugins.AssociationPlugin.<b><a href="../symbols/moose.plugins.AssociationPlugin.html#.oneToOne">oneToOne</a></b>(name, options, key)
+								</div>
+								<div class="description"><p>Simplest form of association.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Class Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>moose.plugins.AssociationPlugin</b>()
+				</div>
+				
+				<div class="description">
+					
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+				<div class="sectionTitle">
+					Field Detail
+				</div>
+				
+					<a name=".fetchType"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">moose.plugins.AssociationPlugin.</span><b>fetchType</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name=".manyToMany"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">moose.plugins.AssociationPlugin.</span><b>manyToMany</b>(name, options, key)
+					
+					</div>
+					<div class="description">
+						The manyToMany association allows a model to be associated to many other rows in another model.
+and the associated model can be associated with many rows in this model. This is done by
+using a join table to associate the two models.
+<p>For example consider phone numbers. Each person can have multiple phone numbers.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">phone          person_phone                   person
+------         ----------------------         -----
+|id  |         |person_id | phone_id|         |id |
+------         ----------------------         -----
+| 1  |         |        1 |       1 |         | 1 |
+| .  | <------ |        1 |       2 | ------> | 2 |
+| .  |         |        2 |       2 |         | 3 |
+| n  |         |        2 |       1 |         | 4 |
+------         ----------------------         -----</pre>
+					
+					<pre class="code">
+//define the PhoneNumber model
+var PhoneNumber = moose.addModel("phone");
+
+//define Person model
+var Person = moose.addModel("person");
+
+//Create manyToMany relationship from person to PhoneNumber
+Person.manyToMany("phoneNumbers", {
+                     model : PhoneNumber.tableName,
+                     joinTable : "person_phone",
+                     key : {person_id : "phone_id"}
+});
+
+
+PhoneNumber.manyToMany("owners", {
+                     model : Person.tableName,
+                     joinTable : "person_phone",
+                     key : {phone_id : "person_id"}
+});
+
+Person.findById(1).then(function(person){
+   person.phoneNumbers.then(function(numbers){
+      numbers.length => 2
+   });
+});
+
+PhoneNumber.findById(1).then(function(number){
+   number.owners.then(function(owners){
+       owners.length => 2;
+   });
+});
+</p></pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>name</b>
+									
+								</dt>
+								<dd>the alias of the association. The key you provide here is how the association
+                     will be looked up on instances of this model.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>object that describes the association.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>options.model</b>
+									
+								</dt>
+								<dd>the table name of the model that this Model is associated with.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>options.joinTable</b>
+									
+								</dt>
+								<dd>the name of the joining table.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>options.filter</b>
+									
+								</dt>
+								<dd>Custom filter to define a custom association.
+                 The filter is called in the scope of model that the association is added to.
+                 Say we have the same models as defined above.
+<pre class="code">
+//Define the join table model so we can query it.
+PersonPhone = moose.addModel(person_phone);
+PhoneNumber.manyToMany("owners", {
+                     model : Person.tableName,
+                     joinTable : "person_phone",
+                     filter : function(){
+                             //find all the person ids
+                           var jd = PhoneNumber.dataset
+                                               .select('person_id')
+                                               .find({phone_id : this.id});
+                           //now query person with the ids!
+                           return Person.filter({id : {"in" : jd}});
+                     }
+ });
+</pre></dd>
+							
+								<dt>
+									<span class="light fixedFont">{AssociationPlugin.fetchType.EAGER|AssociationPlugin.fetchType.EAGER}</span> <b>options.fetchType</b>
+									<i>Optional, Default: AssociationPlugin.fetchType.LAZY</i>
+								</dt>
+								<dd>how fetch the association, if specified to lazy then the association is lazy loaded.
+         Otherwise the association is loaded when the model is loaded.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>key</b>
+									
+								</dt>
+								<dd>this defines the foreign key relationship
+ <pre class="code">
+     {thisModelsKey : otherModelsKey}
+ </pre></dd>
+							
+								<dt>
+									<span class="light fixedFont">{String|Object}</span> <b>options.orderBy</b>
+									<i>Optional</i>
+								</dt>
+								<dd>column or columns to order the associated model by.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".manyToOne"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">moose.plugins.AssociationPlugin.</span><b>manyToOne</b>(name, options, key)
+					
+					</div>
+					<div class="description">
+						See AssociationPlugin.oneToMany
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>name</b>
+									
+								</dt>
+								<dd>the alias of the association. The key you provide here is how the association
+                     will be looked up on instances of this model.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>object that describes the association.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>options.model</b>
+									
+								</dt>
+								<dd>the table name of the model that this Model is associated with.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>options.filter</b>
+									
+								</dt>
+								<dd>Custom filter to define a custom association.
+                 The filter is called in the scope of model that the association is added to.
+                 Say we have a model called Child that is a many to one to a model called BioFather.
+<pre class="code">
+Child.manyToOne("biologicalFather", {
+                  model : BioFather.tableName,
+                  fetchType : BioFather.fetchType.EAGER,
+                  filter : function(){
+                      return  BioFather.filter({id : this.bidFatherId});
+                  }
+               });</dd>
+							
+								<dt>
+									<span class="light fixedFont">{AssociationPlugin.fetchType.EAGER|AssociationPlugin.fetchType.EAGER}</span> <b>options.fetchType</b>
+									<i>Optional, Default: AssociationPlugin.fetchType.LAZY</i>
+								</dt>
+								<dd>how fetch the association, if specified to lazy then the association is lazy loaded.
+         Otherwise the association is loaded when the model is loaded.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>key</b>
+									
+								</dt>
+								<dd>this defines the foreign key relationship</dd>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>options.orderBy</b>
+									<i>Optional</i>
+								</dt>
+								<dd>column or columns to order the associated model by.
+ <pre class="code">
+     {thisModelsKey : otherModelsKey}
+ </pre></dd>
+							
+								<dt>
+									<span class="light fixedFont">{String|Object}</span> <b>options.orderBy</b>
+									<i>Optional</i>
+								</dt>
+								<dd>column or columns to order the associated model by.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".oneToMany"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">moose.plugins.AssociationPlugin.</span><b>oneToMany</b>(name, options, key)
+					
+					</div>
+					<div class="description">
+						One of the most common forms of associtaions. One to Many is the inverse of Many to one. One to Many often describes a parent child reationship,
+where the One To many Model is the parent, and the many to one model is the child.
+<p>For example consider a BiologicalFather and his children. The father can have many children, but a child can have only one Biological Father.</p>
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">biological_father       child
+-------------_          -------------------------
+|id  | name  |          |id | bioFatherId  | name |
+--------------          -------------------------
+| 1  | Fred  |          | 1 |     1        | Bobby |
+| 2  | Ben   |  ------> | 2 |     1        | Alice |
+| 3  | Bob   |          | 3 |     1        | Susan |
+| 4  | Scott |          | 4 |     4        | Brad  |
+--------------          -------------------------</pre>
+					
+					<pre class="code">
+//define Social security model
+var BioFather = moose.addModel("biological_father");
+
+//define Person  model
+var Child = moose.addModel("child");
+
+//Create oneToMany relationship from father to child
+BioFather.oneToMany("children", {
+                                 model : Child.tableName,
+                                 key : {id : "bioFatherId"}
+                    });
+
+
+//Create oneToOne relation ship from ssn to person with a fetchtype of eager.
+Child.manyToOne("biologicalFather", {
+                                 model : BioFather.tableName,
+                                 fetchType : BioFather.fetchType.EAGER,
+                                 key : {bioFatherId : "id"}
+               });
+
+Child.findById(1).then(function(child){
+    child.father.name => "fred"
+});
+
+BioFather.findById(1).then(function(father){
+    father.children.then(function(children){
+        children.length => 3
+    });
+});
+
+</p></pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>name</b>
+									
+								</dt>
+								<dd>the alias of the association. The key you provide here is how the association
+                     will be looked up on instances of this model.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>object that describes the association.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>options.model</b>
+									
+								</dt>
+								<dd>the table name of the model that this Model is associated with.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>options.filter</b>
+									
+								</dt>
+								<dd>Custom filter to define a custom association.
+                 The filter is called in the scope of model that the association is added to.
+                 Say we have a model called BioFather that is a one to many to a model called Child.
+<pre class="code">
+BioFather.oneToMany("children", {
+                  model : Child.tableName,
+                  fetchType : BioFather.fetchType.EAGER,
+                  filter : function(){
+                      return  Child.filter({bioFatherId : this.id});
+                  }
+               });</dd>
+							
+								<dt>
+									<span class="light fixedFont">{AssociationPlugin.fetchType.EAGER|AssociationPlugin.fetchType.EAGER}</span> <b>options.fetchType</b>
+									<i>Optional, Default: AssociationPlugin.fetchType.LAZY</i>
+								</dt>
+								<dd>how fetch the association, if specified to lazy then the association is lazy loaded.
+         Otherwise the association is loaded when the model is loaded.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>key</b>
+									
+								</dt>
+								<dd>this defines the foreign key relationship
+ <pre class="code">
+     {thisModelsKey : otherModelsKey}
+ </pre></dd>
+							
+								<dt>
+									<span class="light fixedFont">{String|Object}</span> <b>options.orderBy</b>
+									<i>Optional</i>
+								</dt>
+								<dd>column or columns to order the associated model by.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".oneToOne"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">moose.plugins.AssociationPlugin.</span><b>oneToOne</b>(name, options, key)
+					
+					</div>
+					<div class="description">
+						<p>Simplest form of association. This describes where there is a one to one relationship between classes.</p>
+
+When createing a reciprocal one to one relationship between models one of the models should be a many to one association.
+The table that contains the foreign key should contain have the manyToOne relationship.
+
+<p>For example consider social security numbers. There is one social security per person, this would be considered a one to one relationship.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">         Person                  SSN NUMBER
+-------------------------         ---------------
+|id         | ssn       |         |id          |
+-------------------------         ---------------
+|00000001   | 111111111 |         | 111111111  |
+| ......... | ......... | ------> | .........  |
+| ......... | ......... |         | .........  |
+| nnnnnnnnn | nnnnnnnn  |         | nnnnnnnnn  |
+-------------------------         ---------------</pre>
+					
+					<pre class="code">
+//define Social security model
+var SocialSecurityNumber = moose.addModel("ssn");
+
+//define Person  model
+var Person = moose.addModel("person");
+
+//Create oneToOne relation ship from ssn to person with a fetchtype of eager.
+SocialSecurityNumber.oneToOne("person", {
+                                 model : Person.tableName,
+                                 fetchType : SocialSecurityNumber.fetchType.EAGER,
+                                 key : {id : "ssn"}
+                             });
+
+//Create oneToMany relation ship from person to ssn,
+//It is many to one because is contains the ssn foreign key.
+
+Person.manyToOne("ssn", {
+                         model : SocialSecurityNumber.tableName,
+                         key : {ssn : "id"}
+                });
+
+
+
+Person.findById(1).then(function(person){
+   person.ssn.then(function(ssn){
+      ssn.id => 111111111
+   });
+});
+
+SocialSecurityNumber.findById(111111111).then(function(ssn){
+   ssn.person.id => 1
+});
+</p></pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>name</b>
+									
+								</dt>
+								<dd>the alias of the association. The key you provide here is how the association
+                     will be looked up on instances of this model.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>object that describes the association.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>options.model</b>
+									
+								</dt>
+								<dd>the table name of the model that this Model is associated with.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>options.filter</b>
+									
+								</dt>
+								<dd>Custom filter to define a custom association.
+                 The filter is called in the scope of model that the association is added to.
+                 Say we have the same models as defined above.
+<pre class="code">
+ SocialSecurityNumber.oneToOne("person", {
+     model : Person.tableName,
+     filter : function(){
+         //find the worker that has my id.
+         return Person.filter({ssn : this.id});
+     }
+});
+</pre></dd>
+							
+								<dt>
+									<span class="light fixedFont">{AssociationPlugin.fetchType.EAGER|AssociationPlugin.fetchType.EAGER}</span> <b>options.fetchType</b>
+									<i>Optional, Default: AssociationPlugin.fetchType.LAZY</i>
+								</dt>
+								<dd>how fetch the association, if specified to lazy then the association is lazy loaded.
+         Otherwise the association is loaded when the model is loaded.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>key</b>
+									
+								</dt>
+								<dd>this defines the foreign key relationship
+ <pre class="code">
+     {thisModelsKey : otherModelsKey}
+ </pre></dd>
+							
+								<dt>
+									<span class="light fixedFont">{String|Object}</span> <b>options.orderBy</b>
+									<i>Optional</i>
+								</dt>
+								<dd>column or columns to order the associated model by.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Wed May 18 2011 17:03:49 GMT-0500 (CDT)
+		</div>
+	</body>
+</html>

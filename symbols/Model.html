@@ -1,0 +1,966 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - Model</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><a href="../symbols/_Association.html">_Association</a></li>
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/Dataset.html">Dataset</a></li>
+	
+	<li><a href="../symbols/ManyToMany.html">ManyToMany</a></li>
+	
+	<li><a href="../symbols/ManyToOne.html">ManyToOne</a></li>
+	
+	<li><a href="../symbols/MayToOne.html">MayToOne</a></li>
+	
+	<li><a href="../symbols/Migrations.html">Migrations</a></li>
+	
+	<li><a href="../symbols/Model.html">Model</a></li>
+	
+	<li><a href="../symbols/moose.html">moose</a></li>
+	
+	<li><a href="../symbols/moose.adapters.html">moose.adapters</a></li>
+	
+	<li><a href="../symbols/moose.adapters.mysql.html">moose.adapters.mysql</a></li>
+	
+	<li><a href="../symbols/moose.adapters.mysql.types.html">moose.adapters.mysql.types</a></li>
+	
+	<li><a href="../symbols/moose.plugins.html">moose.plugins</a></li>
+	
+	<li><a href="../symbols/moose.plugins.AssociationPlugin.html">moose.plugins.AssociationPlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.CachePlugin.html">moose.plugins.CachePlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.QueryPlugin.html">moose.plugins.QueryPlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.TimeStampPlugin.html">moose.plugins.TimeStampPlugin</a></li>
+	
+	<li><a href="../symbols/moose.Table.html">moose.Table</a></li>
+	
+	<li><a href="../symbols/OneToMany.html">OneToMany</a></li>
+	
+	<li><a href="../symbols/SQL.html">SQL</a></li>
+	
+	<li><a href="../symbols/Type.html">Type</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class Model
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				<br />Extends
+					comb.plugins.Middleware, <a href="../symbols/moose.plugins.AssociationPlugin.html">moose.plugins.AssociationPlugin</a>, <a href="../symbols/moose.plugins.QueryPlugin.html">moose.plugins.QueryPlugin</a>.<br />
+				
+			
+				
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_model.js.html">model.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Model.">
+				<caption>Class Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/Model.html#constructor">Model</a></b>(columnValues)
+							</div>
+							<div class="description">Base class for all models.</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class Model.">
+					<caption>Field Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Field Attributes</th>
+							<th scope="col">Field Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Model.html#isChanged">isChanged</a></b>
+								</div>
+								<div class="description">true if the model has been changed and not saved.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Model.html#isNew">isNew</a></b>
+								</div>
+								<div class="description">true if this model is new and does not exist in the database.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Model.<b><a href="../symbols/Model.html#.moose">moose</a></b>
+								</div>
+								<div class="description">moose  - read only</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Model.html#moose">moose</a></b>
+								</div>
+								<div class="description">moose  - read only</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Model.html#primaryKeyValue">primaryKeyValue</a></b>
+								</div>
+								<div class="description">the value of this models primaryKey</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								Model.<b><a href="../symbols/Model.html#.table">table</a></b>
+								</div>
+								<div class="description">The table that this Model represents.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Model.html#table">table</a></b>
+								</div>
+								<div class="description">The table this model represent</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Model.html#type">type</a></b>
+								</div>
+								<div class="description">The database type such as mysql</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+				<dl class="inheritsList">
+				
+				</dl>
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Model.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Model.<b><a href="../symbols/Model.html#.create">create</a></b>(values)
+								</div>
+								<div class="description">Create a new model initialized with the specified values.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#isValid">isValid</a></b>(options)
+								</div>
+								<div class="description">Validate values against the model <a href="../symbols/moose.Table.html#validate">moose.Table#validate</a></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Model.<b><a href="../symbols/Model.html#.isValid">isValid</a></b>(options)
+								</div>
+								<div class="description">Validate values against the Model <a href="../symbols/moose.Table.html#validate">moose.Table#validate</a></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Model.<b><a href="../symbols/Model.html#.load">load</a></b>(values)
+								</div>
+								<div class="description">Create a new model instance from sql values.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#toJson">toJson</a></b>()
+								</div>
+								<div class="description">Convert this model to JSON, containing column, value pairs.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Model.html#toObject">toObject</a></b>()
+								</div>
+								<div class="description">Convert this model to an object, containing column, value pairs.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+				<dl class="inheritsList">
+				<dt>Methods borrowed from class <a href="../symbols/moose.plugins.QueryPlugin.html">moose.plugins.QueryPlugin</a>: </dt><dd><a href="../symbols/moose.plugins.QueryPlugin.html#reload">reload</a>, <a href="../symbols/moose.plugins.QueryPlugin.html#remove">remove</a>, <a href="../symbols/moose.plugins.QueryPlugin.html#save">save</a>, <a href="../symbols/moose.plugins.QueryPlugin.html#toSql">toSql</a>, <a href="../symbols/moose.plugins.QueryPlugin.html#update">update</a></dd>
+				</dl>
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Class Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>Model</b>(columnValues)
+				</div>
+				
+				<div class="description">
+					Base class for all models.
+<p>This is used through moose.addModel, <b>NOT directly.</b></p>
+					
+				</div>
+				
+				
+				
+				
+					
+						<dl class="detailList">
+						<dt class="heading">Parameters:</dt>
+						
+							<dt>
+								<span class="light fixedFont">{Object}</span>  <b>columnValues</b>
+								
+							</dt>
+								<dd>values of each column to be used by this Model.</dd>
+						
+						</dl>
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+				<div class="sectionTitle">
+					Field Detail
+				</div>
+				
+					<a name="isChanged"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Boolean}</span>
+					<b>isChanged</b>
+					
+					</div>
+					<div class="description">
+						true if the model has been changed and not saved.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="isNew"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Boolean}</span>
+					<b>isNew</b>
+					
+					</div>
+					<div class="description">
+						true if this model is new and does not exist in the database.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".moose"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/moose.html">moose</a>}</span>
+					<span class="light">Model.</span><b>moose</b>
+					
+					</div>
+					<div class="description">
+						moose  - read only
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="moose"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/moose.html">moose</a>}</span>
+					<b>moose</b>
+					
+					</div>
+					<div class="description">
+						moose  - read only
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="primaryKeyValue"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{*}</span>
+					<b>primaryKeyValue</b>
+					
+					</div>
+					<div class="description">
+						the value of this models primaryKey
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".table"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">Model.</span><b>table</b>
+					
+					</div>
+					<div class="description">
+						The table that this Model represents.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="table"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/moose.Table.html">moose.Table</a>}</span>
+					<b>table</b>
+					
+					</div>
+					<div class="description">
+						The table this model represent
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="type"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>type</b>
+					
+					</div>
+					<div class="description">
+						The database type such as mysql
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name=".create"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Model.html">Model</a>}</span>
+					<span class="light">Model.</span><b>create</b>(values)
+					
+					</div>
+					<div class="description">
+						Create a new model initialized with the specified values.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>values</b>
+									
+								</dt>
+								<dd>the values to initialize the model with.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Model.html">Model</a>}</span> instantiated model initialized with the values passed in.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="isValid"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Boolean}</span>
+					<b>isValid</b>(options)
+					
+					</div>
+					<div class="description">
+						Validate values against the model <a href="../symbols/moose.Table.html#validate">moose.Table#validate</a>
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>options</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Boolean}</span> true if the values are valid</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".isValid"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Boolean}</span>
+					<span class="light">Model.</span><b>isValid</b>(options)
+					
+					</div>
+					<div class="description">
+						Validate values against the Model <a href="../symbols/moose.Table.html#validate">moose.Table#validate</a>
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>options</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Boolean}</span> true if the values are valid</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".load"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Model.html">Model</a>}</span>
+					<span class="light">Model.</span><b>load</b>(values)
+					
+					</div>
+					<div class="description">
+						Create a new model instance from sql values.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">
+var myModel = Model.load({
+   myDate : "1999-01-01",
+   intValue : "1"
+});
+
+//intValue is converted to a number.
+myModel.intValue => 1,
+//mydate is converted to a date
+myModel.myDate => new Date(1999,01,01);</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>values</b>
+									
+								</dt>
+								<dd>object containing the values to initialize the model with.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Model.html">Model</a>}</span> instantiated model initialized with the values passed in.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="toJson"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{JSON}</span>
+					<b>toJson</b>()
+					
+					</div>
+					<div class="description">
+						Convert this model to JSON, containing column, value pairs.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{JSON}</span> the JSON version of this model.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="toObject"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Object}</span>
+					<b>toObject</b>()
+					
+					</div>
+					<div class="description">
+						Convert this model to an object, containing column, value pairs.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> the object version of this model.</dd>
+							
+							</dl>
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Wed May 18 2011 17:03:49 GMT-0500 (CDT)
+		</div>
+	</body>
+</html>

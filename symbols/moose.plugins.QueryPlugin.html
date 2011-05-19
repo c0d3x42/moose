@@ -1,0 +1,1775 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - moose.plugins.QueryPlugin</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><a href="../symbols/_Association.html">_Association</a></li>
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/Dataset.html">Dataset</a></li>
+	
+	<li><a href="../symbols/ManyToMany.html">ManyToMany</a></li>
+	
+	<li><a href="../symbols/ManyToOne.html">ManyToOne</a></li>
+	
+	<li><a href="../symbols/MayToOne.html">MayToOne</a></li>
+	
+	<li><a href="../symbols/Migrations.html">Migrations</a></li>
+	
+	<li><a href="../symbols/Model.html">Model</a></li>
+	
+	<li><a href="../symbols/moose.html">moose</a></li>
+	
+	<li><a href="../symbols/moose.adapters.html">moose.adapters</a></li>
+	
+	<li><a href="../symbols/moose.adapters.mysql.html">moose.adapters.mysql</a></li>
+	
+	<li><a href="../symbols/moose.adapters.mysql.types.html">moose.adapters.mysql.types</a></li>
+	
+	<li><a href="../symbols/moose.plugins.html">moose.plugins</a></li>
+	
+	<li><a href="../symbols/moose.plugins.AssociationPlugin.html">moose.plugins.AssociationPlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.CachePlugin.html">moose.plugins.CachePlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.QueryPlugin.html">moose.plugins.QueryPlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.TimeStampPlugin.html">moose.plugins.TimeStampPlugin</a></li>
+	
+	<li><a href="../symbols/moose.Table.html">moose.Table</a></li>
+	
+	<li><a href="../symbols/OneToMany.html">OneToMany</a></li>
+	
+	<li><a href="../symbols/SQL.html">SQL</a></li>
+	
+	<li><a href="../symbols/Type.html">Type</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class moose.plugins.QueryPlugin
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				Adds query support to a model. The QueryPlugin exposes methods to save, update, create, and delete.
+The plugin also exposes static functions to query Models. The functions exposed on class are.
+<ul>
+    <li>filter</li>
+    <li>findById</li>
+    <li>count</li>
+    <li>join</li>
+    <li>where</li>
+    <li>select</li>
+    <li>all</li>
+    <li>forEach</li>
+    <li>first</li>
+    <li>one</li>
+    <li>last</li>
+</ul>
+
+All queries require an action to be called on them before the results are fetched. The action methods are :
+
+<ul>
+    <li>all</li>
+    <li>forEach</li>
+    <li>first</li>
+    <li>one</li>
+    <li>last</li>
+
+</ul>
+
+The action items accept a callback that will be called with the results. They also return a promise that will be
+called with the results.
+
+<p>Assume we have an Employee model.</p>
+
+<p>
+     <b>first</b></br>
+     Get the record in a dataset, this query does not require an action method
+     <pre class="code">
+         Employee.first() => select * from employee limit 1
+     </pre>
+</p>
+
+<p>
+     <b>filter</b></br>
+     Sets the where clause on a query. See <a href="../symbols/Dataset.html">Dataset</a>
+     <pre class="code">
+         //Equality Checks
+         Employee.filter({eid : 1})
+                 => select * from employee where eid = 1
+         Employee.filter({eid : {gt : 1}})
+                 => select * from employee where eid > 1
+         Employee.filter({eid : {gte : 1}})
+                 => select * from employee where eid >= 1
+         Employee.filter({eid : {lt : 1}})
+                 => select * from employee where eid < 1
+         Employee.filter({eid : {lte : 1}})
+                 => select * from employee where eid <= 1
+         //Nested query in filter
+         Employee.filter({eid : {gt : 1}, lastname : "bob"})
+                 => select * from employee where eid > 1 and lastname = 'bob';
+         Employee.filter({eid : [1,2,3], lastname : "bob"})
+                 => select * from employee where eid in (1,2,3) and lastname = 'bob'
+     </pre>
+</p>
+<p>
+     <b>findById</b></br>
+     Find a record in a dataset by id, this query does not require an action method
+     <pre class="code">
+         Employee.findById(1) => select * from employee where eid = 1
+     </pre>
+</p>
+<p>
+     <b>count</b></br>
+     Find the number of records in a dataset, this query does not require an action method
+     <pre class="code">
+         Employee.count() => select count(*) as count from employee
+         Employee.filter({eid : {gte : 1}}).count()
+                 => select count(*) as count from employee  where eid > 1
+     </pre>
+</p>
+<p>
+     <b>join</b></br>
+     Get Join two models together, this will not create model instances for the result.
+     <pre class="code">
+         Employee.join("words", {eid : "eid"}).where({"employee.eid" : 1})
+                 => select * from employee inner join works on employee.id=works.id where employee.eid = 1
+     </pre>
+</p>
+
+<p>
+     <b>Where</b></br>
+     Sets the where clause on a query. See <a href="../symbols/Dataset.html">Dataset</a>
+     <pre class="code">
+         //Equality Checks
+         Employee.where({eid : 1})
+                 => select * from employee where eid = 1
+         Employee.where({eid : {gt : 1}})
+                 => select * from employee where eid > 1
+         Employee.where({eid : {gte : 1}})
+                 => select * from employee where eid >= 1
+         Employee.where({eid : {lt : 1}})
+                 => select * from employee where eid < 1
+         Employee.where({eid : {lte : 1}})
+                 => select * from employee where eid <= 1
+         //Nested query in filter
+         Employee.where({eid : {gt : 1}, lastname : "bob"})
+                 => select * from employee where eid > 1 and lastname = 'bob';
+         Employee.where({eid : [1,2,3], lastname : "bob"})
+                 => select * from employee where eid in (1,2,3) and lastname = 'bob'
+     </pre>
+</p>
+
+<p>
+     <b>select</b></br>
+     Selects only certain columns to return, this will not create model instances for the result.
+     <pre class="code">
+         Employee.select(eid).where({firstname : { gt : "bob"}})
+                 => select eid from employee where firstname > "bob"
+     </pre>
+</p>
+
+
+<p>
+     <b>all, foreach, first, one, last</b></br>
+     These methods all act as action methods and fetch the results immediately. Each method accepts a query, callback, and errback.
+     The methods return a promise that can be used to listen for results also.
+     <pre class="code">
+         Employee.all()
+                 => select * from employee
+         Employee.forEach(function(){})
+                 => select * from employee
+         Employee.forEach({eid : [1,2,3]}, function(){}))
+                 => select * from employee where eid in (1,2,3)
+         Employee.one()
+                 => select * from employee limit 1
+     </pre>
+</p>
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_plugins_query.js.html">query.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class moose.plugins.QueryPlugin.">
+				<caption>Class Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/moose.plugins.QueryPlugin.html#constructor">moose.plugins.QueryPlugin</a></b>()
+							</div>
+							<div class="description"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class moose.plugins.QueryPlugin.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.plugins.QueryPlugin.<b><a href="../symbols/moose.plugins.QueryPlugin.html#.all">all</a></b>(callback, errback)
+								</div>
+								<div class="description">Retrieve all rows from the query.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.plugins.QueryPlugin.<b><a href="../symbols/moose.plugins.QueryPlugin.html#.count">count</a></b>(callback, errback)
+								</div>
+								<div class="description">Retrieve the number of records in the database.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.plugins.QueryPlugin.<b><a href="../symbols/moose.plugins.QueryPlugin.html#.filter">filter</a></b>(options, hydrate)
+								</div>
+								<div class="description">Filter a model to return a subset of results.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.plugins.QueryPlugin.<b><a href="../symbols/moose.plugins.QueryPlugin.html#.findById">findById</a></b>(id)
+								</div>
+								<div class="description">Retrieves a record by the primarykey of a table.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.plugins.QueryPlugin.<b><a href="../symbols/moose.plugins.QueryPlugin.html#.first">first</a></b>(callback, errback)
+								</div>
+								<div class="description">Retrieve the first result from an ordered query.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.plugins.QueryPlugin.<b><a href="../symbols/moose.plugins.QueryPlugin.html#.forEach">forEach</a></b>(callback, errback, scope)
+								</div>
+								<div class="description">Provide Array style looping a query results.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.plugins.QueryPlugin.<b><a href="../symbols/moose.plugins.QueryPlugin.html#.join">join</a></b>(table, options)
+								</div>
+								<div class="description">This is an alias for an inner join.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.plugins.QueryPlugin.<b><a href="../symbols/moose.plugins.QueryPlugin.html#.last">last</a></b>(callback, errback)
+								</div>
+								<div class="description">Retrieve the last result from an ordered query.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.plugins.QueryPlugin.<b><a href="../symbols/moose.plugins.QueryPlugin.html#.one">one</a></b>(callback, errback)
+								</div>
+								<div class="description">Retrieve one row result from the query.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/moose.plugins.QueryPlugin.html#reload">reload</a></b>()
+								</div>
+								<div class="description">Force the reload of the data for a particular model instance.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.plugins.QueryPlugin.<b><a href="../symbols/moose.plugins.QueryPlugin.html#.remove">remove</a></b>(q, errback)
+								</div>
+								<div class="description">Remove rows from the Model.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/moose.plugins.QueryPlugin.html#remove">remove</a></b>(errback)
+								</div>
+								<div class="description">Remove this model.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.plugins.QueryPlugin.<b><a href="../symbols/moose.plugins.QueryPlugin.html#.save">save</a></b>(record, errback)
+								</div>
+								<div class="description">Save either a new model or list of models to the database.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/moose.plugins.QueryPlugin.html#save">save</a></b>(options, errback)
+								</div>
+								<div class="description">Save a model with new values.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.plugins.QueryPlugin.<b><a href="../symbols/moose.plugins.QueryPlugin.html#.select">select</a></b>(columns, options)
+								</div>
+								<div class="description">Use to return particular columns from a query, i.e.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/moose.plugins.QueryPlugin.html#toSql">toSql</a></b>()
+								</div>
+								<div class="description">Serializes all values in this model to the sql equivalent.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/moose.plugins.QueryPlugin.html#update">update</a></b>(options, errback)
+								</div>
+								<div class="description">Update a model with new values.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.plugins.QueryPlugin.<b><a href="../symbols/moose.plugins.QueryPlugin.html#.update">update</a></b>(vals, options, callback, errback)
+								</div>
+								<div class="description">Update multiple rows with a set of values.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.plugins.QueryPlugin.<b><a href="../symbols/moose.plugins.QueryPlugin.html#.where">where</a></b>(options)
+								</div>
+								<div class="description">Set the where clause of the query.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Class Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>moose.plugins.QueryPlugin</b>()
+				</div>
+				
+				<div class="description">
+					
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name=".all"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{comb.Promise}</span>
+					<span class="light">moose.plugins.QueryPlugin.</span><b>all</b>(callback, errback)
+					
+					</div>
+					<div class="description">
+						Retrieve all rows from the query.
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_dataset.js.html">dataset.js</a>.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">
+dataset.all(function(r){
+    Do something....
+}, function(err){
+    Do something...
+});
+
+//OR
+
+dataset.all().then(function(r){
+    Do something....
+}, function(err){
+    Do something...
+});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>callback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed with the results.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>errback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed if an error occurs.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with results or the error if one occurs.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".count"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{comb.Promise}</span>
+					<span class="light">moose.plugins.QueryPlugin.</span><b>count</b>(callback, errback)
+					
+					</div>
+					<div class="description">
+						Retrieve the number of records in the database.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>callback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>function to execute with the result</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>errback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>funciton to execute if the operation fails</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with the result, or errors if the operation fails.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".filter"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Dataset.html">Dataset</a>}</span>
+					<span class="light">moose.plugins.QueryPlugin.</span><b>filter</b>(options, hydrate)
+					
+					</div>
+					<div class="description">
+						Filter a model to return a subset of results. <a href="../symbols/SQL.html#find">SQL#find</a>
+
+<p><b>This function requires all, forEach, one, last,
+      or count to be called inorder for the results to be fetched</b></p>
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									<i>Optional</i>
+								</dt>
+								<dd>query to filter the dataset by.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>hydrate</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>if true model instances will be the result of the query,
+                                 otherwise just the results will be returned.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Dataset.html">Dataset</a>}</span> A dataset to query, and or fetch results.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".findById"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{comb.Promise}</span>
+					<span class="light">moose.plugins.QueryPlugin.</span><b>findById</b>(id)
+					
+					</div>
+					<div class="description">
+						Retrieves a record by the primarykey of a table.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{*}</span> <b>id</b>
+									
+								</dt>
+								<dd>the primary key record to find.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with the record or null if one is not found.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".first"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{comb.Promise}</span>
+					<span class="light">moose.plugins.QueryPlugin.</span><b>first</b>(callback, errback)
+					
+					</div>
+					<div class="description">
+						Retrieve the first result from an ordered query.
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_dataset.js.html">dataset.js</a>.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">dataset.first(function(r){
+    Do something....
+}, function(err){
+    Do something...
+});
+
+//OR
+
+dataset.first().then(function(r){
+    Do something....
+}, function(err){
+    Do something...
+});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>callback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed with the row</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>errback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed if an error occurs.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with result or the error if one occurs.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".forEach"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{comb.Promise}</span>
+					<span class="light">moose.plugins.QueryPlugin.</span><b>forEach</b>(callback, errback, scope)
+					
+					</div>
+					<div class="description">
+						Provide Array style looping a query results.
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_dataset.js.html">dataset.js</a>.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">dataset.forEach(function(r, i){
+    console.log("Row %d", i);
+});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>callback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed for each row returned.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>errback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed if an error occurs.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>scope</b>
+									<i>Optional</i>
+								</dt>
+								<dd>scope to execute the callback and errback in.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with results or the error if one occurs.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".join"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<span class="light">moose.plugins.QueryPlugin.</span><b>join</b>(table, options)
+					
+					</div>
+					<div class="description">
+						This is an alias for an inner join.
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_sql.js.html">sql.js</a>.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">
+//select * from test inner join test2 on test.id=test2.id
+ sql.join("test2", {id : "id"});
+//select * from test inner join test2 using (id, name)
+ sql.join("test2", ["id", "name"]);
+ //select * from test inner join test2 on test.id=test2.id left join test3 using (name)
+sql.join("test2", {id : "id"}).leftJoin("test3", ["name"]);
+//select * from test inner join test2 using (id, name) natural join test3
+sql.join("test2", ["id", "name"]).naturalJoin("test3
+//select * from test inner join test2 on test.id=test2.id left join test3 using (name) where x = 2 or x = 3
+sql.join("test2", {id : "id"}).leftJoin("test3", ["name"]).eq({x : 2}).or({x : 3});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|<a href="../symbols/SQL.html">SQL</a>}</span> <b>table</b>
+									
+								</dt>
+								<dd>the table or SQL clause that specifies the joining table.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array|Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>When an array is passed in the a using clause is used
+         to specify the columns to join on, of an object is passed in then it is the same as using an on clause;</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".last"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{comb.Promise}</span>
+					<span class="light">moose.plugins.QueryPlugin.</span><b>last</b>(callback, errback)
+					
+					</div>
+					<div class="description">
+						Retrieve the last result from an ordered query. If the query is not ordered then the result is ambiguous.
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_dataset.js.html">dataset.js</a>.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">
+dataset.last(function(r){
+    Do something....
+}, function(err){
+    Do something...
+});
+
+//OR
+
+dataset.last().then(function(r){
+    Do something....
+}, function(err){
+    Do something...
+});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>callback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed with the row</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>errback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed if an error occurs.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with result or the error if one occurs.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".one"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{comb.Promise}</span>
+					<span class="light">moose.plugins.QueryPlugin.</span><b>one</b>(callback, errback)
+					
+					</div>
+					<div class="description">
+						Retrieve one row result from the query.
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_dataset.js.html">dataset.js</a>.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">
+dataset.one(function(r){
+    Do something....
+}, function(err){
+    Do something...
+});
+
+//OR
+
+dataset.one().then(function(r){
+    Do something....
+}, function(err){
+    Do something...
+});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>callback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed with the row</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>errback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed if an error occurs.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with result or the error if one occurs.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="reload"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>reload</b>()
+					
+					</div>
+					<div class="description">
+						Force the reload of the data for a particular model instance.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">
+myModel.reload().then(function(myModel){
+   //work with this instance
+});</pre>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with the reloaded model instance.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".remove"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{comb.Promise}</span>
+					<span class="light">moose.plugins.QueryPlugin.</span><b>remove</b>(q, errback)
+					
+					</div>
+					<div class="description">
+						Remove rows from the Model.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>q</b>
+									<i>Optional</i>
+								</dt>
+								<dd>query to filter the rows to remove</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>errback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>function to call if the removal fails.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back when the removal completes.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="remove"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>remove</b>(errback)
+					
+					</div>
+					<div class="description">
+						Remove this model.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>errback</b>
+									
+								</dt>
+								<dd>called in the deletion fails.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back after the deletion is successful</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".save"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{comb.Promise}</span>
+					<span class="light">moose.plugins.QueryPlugin.</span><b>save</b>(record, errback)
+					
+					</div>
+					<div class="description">
+						Save either a new model or list of models to the database.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">
+//Save a group of records
+MyModel.save([m1,m2, m3]);
+
+Save a single record
+MyModel.save(m1);</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Array|Object}</span> <b>record</b>
+									
+								</dt>
+								<dd>the record/s to save to the database</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>errback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>function to execute if the save fails</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with the saved record/s.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="save"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>save</b>(options, errback)
+					
+					</div>
+					<div class="description">
+						Save a model with new values.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">
+someModel.save({
+     myVal1 : "newValue1",
+     myVal2 : "newValue2",
+     myVal3 : "newValue3"
+     }).then(..do something);
+
+//or
+
+someModel.myVal1 = "newValue1";
+someModel.myVal2 = "newValue2";
+someModel.myVal3 = "newValue3";
+
+someModel.save().then(..so something);</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									<i>Optional</i>
+								</dt>
+								<dd>values to save this model with</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>errback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>function to call if the save fails, the promise will errback also if it fails.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called on completion or error of save.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".select"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<span class="light">moose.plugins.QueryPlugin.</span><b>select</b>(columns, options)
+					
+					</div>
+					<div class="description">
+						Use to return particular columns from a query, i.e. select clause in sql.
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_sql.js.html">sql.js</a>.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">var sql = new SQL("test", db);
+
+//select a, b, c from testTable;
+sql.select(["a", "b", "c"]);
+//select a from testTable;
+sql.select("a");
+//select a from test where x = 1 and y >=1 and y <= 10
+sql.select("a", {x : 1, y : {between : [1,10]}});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>columns</b>
+									
+								</dt>
+								<dd>the columns to select</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>query <a href="../symbols/SQL.html#find">SQL#find</a></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="toSql"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>toSql</b>()
+					
+					</div>
+					<div class="description">
+						Serializes all values in this model to the sql equivalent.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="update"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>update</b>(options, errback)
+					
+					</div>
+					<div class="description">
+						Update a model with new values.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">
+someModel.update({
+     myVal1 : "newValue1",
+     myVal2 : "newValue2",
+     myVal3 : "newValue3"
+     }).then(..do something);
+
+//or
+
+someModel.myVal1 = "newValue1";
+someModel.myVal2 = "newValue2";
+someModel.myVal3 = "newValue3";
+
+someModel.update().then(..so something);</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									<i>Optional</i>
+								</dt>
+								<dd>values to update this model with</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>errback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>function to call if the update fails, the promise will errback also if it fails.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called on completion or error of update.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".update"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{comb.Promise|<a href="../symbols/Dataset.html">Dataset</a>}</span>
+					<span class="light">moose.plugins.QueryPlugin.</span><b>update</b>(vals, options, callback, errback)
+					
+					</div>
+					<div class="description">
+						Update multiple rows with a set of values.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>vals</b>
+									
+								</dt>
+								<dd>the values to set on each row.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									<i>Optional</i>
+								</dt>
+								<dd>query to limit the rows that are updated</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>callback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>function to call after the update is complete.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>errback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>function to call if the update errors.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise|<a href="../symbols/Dataset.html">Dataset</a>}</span> if just values were passed in then a dataset is returned and exec has to be
+                                 called in order to complete the update.
+                               If options, callback, or errback are provided then the update is executed
+                               and a promise is returned that will be called back when the update completes.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".where"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<span class="light">moose.plugins.QueryPlugin.</span><b>where</b>(options)
+					
+					</div>
+					<div class="description">
+						Set the where clause of the query.
+This is different fron find in that it can be used with updates, and deletions.
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_sql.js.html">sql.js</a>.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">QUERYING
+
+var sql = new SQL("test", db);
+
+//select * from test where id = 1
+sql.where({id : 1});
+//select * from test where id in (1,2,3,4,5)
+sql.where({id : [1,2,3,4,5]});
+//select * from test where x != 0
+sql.where({x : {neq : 0}});
+//select distinct * from test where id = 1
+sql.where({id : 1}).distinct();
+//select * from test where a >= 'b' limit 1
+sql.where({a : {gte : "b"}}).limit(1);
+//select * from test where flag is unknown
+sql.where({flag : {is : "unknown"}});
+//select * from test where flag is not unknown
+sql.where({flag : {isNot : "unknown"}});
+//select * from test where flag is false and flag is not unknown and anotherFlag is null and yetAnotherFlag is not null
+sql.where({flag : {is : false}, flag2 : {isNot : "unknown"}, anotherFlag : {isNull : true}, yetAnotherFlag : {isNotNull : true}});
+//select * from test where firstName like 'bob' and lastName not like 'henry'
+sql.where({firstName : {like : 'bob'}, lastName : {notLike : "henry"}});
+//select * from test where firstName like 'bob' and lastName not like 'henry'
+sql.where({firstName : {like : 'bob'}, lastName : {notLike : "henry"}});</pre>
+					
+					<pre class="code">UPDATES
+
+//update test set x=1 where x >= 1 and x <= 5
+sql.update({x : 1}).where({x : {between : [1,5]}});</pre>
+					
+					<pre class="code">DELETIONS
+
+//delete from test where x >= 1 and x <= 5
+sql.remove().where({x : {between : [1,5]}});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>See <a href="../symbols/SQL.html#find">SQL#find</a></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Wed May 18 2011 17:03:49 GMT-0500 (CDT)
+		</div>
+	</body>
+</html>
