@@ -12,7 +12,8 @@
     {
         "vows" : "*",
         "mysql" : "*",
-        "mysql-pool" : "*"
+        "mysql-pool" : "*",
+        "comb" : "*"
     },
     "directories": {
         "lib": "lib"
