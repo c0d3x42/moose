@@ -4,16 +4,17 @@
     "version": "0.0.1",
     "repository": {
         "type": "git",
-        "url": "git@github.com:Pollen-LLC/moose.git"
+        "url": "https://github.com/Pollenware/hive"
     },
-    "author": "Pollenware (http://www.pollenware.com)",
+    "author": "Pollenware (http://pollenware.github.com)",
     "main": "index.js",
     "dependencies" :
     {
         "vows" : "*",
         "mysql" : "*",
         "mysql-pool" : "*",
-        "comb" : "*"
+        "comb" : "*",
+        "express" : "*"
     },
     "directories": {
         "lib": "lib"
