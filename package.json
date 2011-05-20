@@ -4,7 +4,7 @@
     "version": "0.0.1",
     "repository": {
         "type": "git",
-        "url": "https://github.com/Pollenware/hive"
+        "url": "git@github.com:Pollen/moose.git"
     },
     "author": "Pollenware (http://pollenware.github.com)",
     "main": "index.js",
