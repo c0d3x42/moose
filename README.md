@@ -16,6 +16,13 @@ License
 
 MIT <https://github.com/Pollenware/hive/raw/moose/LICENSE>
 
+
+See Also
+--------
+
+* Sequel: <http://sequel.rubyforge.org/>
+* Wikipedia on ORMs: <http://en.wikipedia.org/wiki/Object-relational_mapping>
+
 Meta
 ----
 
