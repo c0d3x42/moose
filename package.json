@@ -14,7 +14,8 @@
         "mysql" : "*",
         "mysql-pool" : "*",
         "comb" : "*",
-        "express" : "*"
+        "express" : "*",
+        "hive-cache" : "*"
     },
     "directories": {
         "lib": "lib"
