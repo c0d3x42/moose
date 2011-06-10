@@ -10,12 +10,12 @@ An ORM for node with these features:
 * Support for multiple databases   
 * A plugin api, e.g., from examples/plugins/ExpressPlugin.js
 
-var moose = require("../../lib"), comb = require("comb");
 
 ```javascript
 /*
 * Very simple express routing for a model
 * */
+var moose = require("../../lib"), comb = require("comb");
 module.exports = exports = comb.define(null, {
    static : {
        route : function(app){
