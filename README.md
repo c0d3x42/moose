@@ -2,8 +2,40 @@
 
 ##Overview
 
-ORM for node. See usage
+An ORM for node with these features:
 
+* Migrations
+* Associations
+* Connection pooling
+* Support for multiple databases   
+* A plugin api, e.g., from examples/plugins/ExpressPlugin.js
+
+var moose = require("../../lib"), comb = require("comb");
+
+```javascript
+/*
+* Very simple express routing for a model
+* */
+module.exports = exports = comb.define(null, {
+   static : {
+       route : function(app){
+           app.get("/" + this.tableName + "/:id", comb.hitch(this, function(req, res){
+               var id = req.params.id;
+               this.findById(id).then(function(model){
+                   var response;
+                   if(model){
+                       response = model.toObject();
+                   }else{
+                       response = {error : "Could not find a model with id " + id};
+                   }
+                   res.send(response);
+               });
+           }));
+       }
+   }
+});
+```
+    
 ## Installation
 
     npm install moose
