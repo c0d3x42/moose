@@ -61,7 +61,6 @@ exports.up = function() {
         table.foreignKey({departureCode : {airport : "airportCode"}});
         table.foreignKey({arrivalCode : {airport : "airportCode"}});
         table.foreignKey({flightId : {flight : "id"}});
-
     });
 
     moose.createTable("leg_instance", function(table){

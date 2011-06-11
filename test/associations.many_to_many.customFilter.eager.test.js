@@ -8,7 +8,7 @@ var vows = require('vows'),
 var gender = ["M", "F"];
 helper.loadModels().then(function() {
     var Company = moose.getModel("company"), Employee = moose.getModel("employee"), CompanyEmployee = moose.getModel("companyEmployee");
-    var suite = vows.describe("Many to Many Eager association ");
+    var suite = vows.describe("Many to Many custom filter Eager association ");
 
     suite.addBatch({
 

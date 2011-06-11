@@ -1,7 +1,8 @@
 {
     "name": "moose",
     "description": "A node orm",
-    "version": "0.0.1",
+    "version": "0.0.2",
+	"keywords" : ["ORM", "orm", "mysql", "MySQL", "MySql", "Object Relational Model", "Associations", "sql", "database"],
     "repository": {
         "type": "git",
         "url": "git@github.com:Pollen/moose.git"
@@ -10,11 +11,8 @@
     "main": "index.js",
     "dependencies" :
     {
-        "vows" : "*",
         "mysql" : "*",
-        "mysql-pool" : "*",
-        "comb" : "*",
-        "express" : "*",
+        "comb" : ">=0.0.2",
         "hive-cache" : "*"
     },
     "directories": {

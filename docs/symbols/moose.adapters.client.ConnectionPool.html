@@ -1,0 +1,738 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - moose.adapters.client.ConnectionPool</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><a href="../symbols/_Association.html">_Association</a></li>
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/Dataset.html">Dataset</a></li>
+	
+	<li><a href="../symbols/ManyToMany.html">ManyToMany</a></li>
+	
+	<li><a href="../symbols/ManyToOne.html">ManyToOne</a></li>
+	
+	<li><a href="../symbols/MayToOne.html">MayToOne</a></li>
+	
+	<li><a href="../symbols/Migrations.html">Migrations</a></li>
+	
+	<li><a href="../symbols/Model.html">Model</a></li>
+	
+	<li><a href="../symbols/moose.html">moose</a></li>
+	
+	<li><a href="../symbols/moose.adapters.html">moose.adapters</a></li>
+	
+	<li><a href="../symbols/moose.adapters.client.Client.html">moose.adapters.client.Client</a></li>
+	
+	<li><a href="../symbols/moose.adapters.client.ConnectionPool.html">moose.adapters.client.ConnectionPool</a></li>
+	
+	<li><a href="../symbols/moose.adapters.client.mysql.ConnectionPool.html">moose.adapters.client.mysql.ConnectionPool</a></li>
+	
+	<li><a href="../symbols/moose.adapters.client.mysql.Query.html">moose.adapters.client.mysql.Query</a></li>
+	
+	<li><a href="../symbols/moose.adapters.client.mysql.TransactionQuery.html">moose.adapters.client.mysql.TransactionQuery</a></li>
+	
+	<li><a href="../symbols/moose.adapters.mysql.html">moose.adapters.mysql</a></li>
+	
+	<li><a href="../symbols/moose.adapters.mysql.types.html">moose.adapters.mysql.types</a></li>
+	
+	<li><a href="../symbols/moose.plugins.html">moose.plugins</a></li>
+	
+	<li><a href="../symbols/moose.plugins.AssociationPlugin.html">moose.plugins.AssociationPlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.CachePlugin.html">moose.plugins.CachePlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.QueryPlugin.html">moose.plugins.QueryPlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.TimeStampPlugin.html">moose.plugins.TimeStampPlugin</a></li>
+	
+	<li><a href="../symbols/moose.Table.html">moose.Table</a></li>
+	
+	<li><a href="../symbols/OneToMany.html">OneToMany</a></li>
+	
+	<li><a href="../symbols/SQL.html">SQL</a></li>
+	
+	<li><a href="../symbols/Type.html">Type</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class moose.adapters.client.ConnectionPool
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				<br />Extends
+					comb.collections.Pool.<br />
+				
+			
+				Base class for all connection pools
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/lib_adapters_clients_ConnectionPool.js.html">ConnectionPool.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class moose.adapters.client.ConnectionPool.">
+				<caption>Class Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/moose.adapters.client.ConnectionPool.html#constructor">moose.adapters.client.ConnectionPool</a></b>()
+							</div>
+							<div class="description"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class moose.adapters.client.ConnectionPool.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/moose.adapters.client.ConnectionPool.html#closeConnection">closeConnection</a></b>(conn)
+								</div>
+								<div class="description">Override to implement close connection functionality;</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/moose.adapters.client.ConnectionPool.html#createConnection">createConnection</a></b>()
+								</div>
+								<div class="description">Override to create connections to insert into this ConnectionPool.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/moose.adapters.client.ConnectionPool.html#endAll">endAll</a></b>()
+								</div>
+								<div class="description">Override to implement the closing of all connections.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/moose.adapters.client.ConnectionPool.html#getConnection">getConnection</a></b>()
+								</div>
+								<div class="description">Performs a query on one of the connection in this Pool.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/moose.adapters.client.ConnectionPool.html#removeConnection">removeConnection</a></b>(conn)
+								</div>
+								<div class="description">Removes a connection from the pool.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/moose.adapters.client.ConnectionPool.html#returnConnection">returnConnection</a></b>(connection)
+								</div>
+								<div class="description">Return a connection to the pool.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/moose.adapters.client.ConnectionPool.html#returnObject">returnObject</a></b>(connection)
+								</div>
+								<div class="description">Override comb.collections.Pool to allow async validation to allow
+pools to do any calls to reset a connection if it needs to be done.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/moose.adapters.client.ConnectionPool.html#validate">validate</a></b>(connection)
+								</div>
+								<div class="description">Override to provide any additional validation.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Class Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>moose.adapters.client.ConnectionPool</b>()
+				</div>
+				
+				<div class="description">
+					
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name="closeConnection"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>closeConnection</b>(conn)
+					
+					</div>
+					<div class="description">
+						Override to implement close connection functionality;
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{*}</span> <b>conn</b>
+									
+								</dt>
+								<dd>the connection to close;</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back when the connection is closed.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="createConnection"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>createConnection</b>()
+					
+					</div>
+					<div class="description">
+						Override to create connections to insert into this ConnectionPool.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="endAll"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>endAll</b>()
+					
+					</div>
+					<div class="description">
+						Override to implement the closing of all connections.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called when all connections are closed.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getConnection"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>getConnection</b>()
+					
+					</div>
+					<div class="description">
+						Performs a query on one of the connection in this Pool.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> A promise to called back with a connection.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="removeConnection"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>removeConnection</b>(conn)
+					
+					</div>
+					<div class="description">
+						Removes a connection from the pool.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>conn</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="returnConnection"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{*}</span>
+					<b>returnConnection</b>(connection)
+					
+					</div>
+					<div class="description">
+						Return a connection to the pool.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{*}</span> <b>connection</b>
+									
+								</dt>
+								<dd>the connection to return.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{*}</span> an adapter specific connection.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="returnObject"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>returnObject</b>(connection)
+					
+					</div>
+					<div class="description">
+						Override comb.collections.Pool to allow async validation to allow
+pools to do any calls to reset a connection if it needs to be done.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{*}</span> <b>connection</b>
+									
+								</dt>
+								<dd>the connection to return.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="validate"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>validate</b>(connection)
+					
+					</div>
+					<div class="description">
+						Override to provide any additional validation. By default the promise is called back with true.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{*}</span> <b>connection</b>
+									
+								</dt>
+								<dd>the conneciton to validate.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with a valid or invalid state.</dd>
+							
+							</dl>
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sat Jun 11 2011 03:16:40 GMT-0500 (CDT)
+		</div>
+	</body>
+</html>

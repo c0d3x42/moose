@@ -1,7 +1,6 @@
 var moose = require("../../lib"), comb = require("comb");
 
 exports.sql = "DROP TABLE IF EXISTS works;"
-        + "DROP TABLE IF EXISTS companyEmployee;"
         + "DROP TABLE IF EXISTS company;"
         + "DROP TABLE IF EXISTS employee;"
         + "CREATE TABLE company ("
@@ -85,5 +84,6 @@ exports.dropModels = function() {
         + "DROP TABLE IF EXISTS companyEmployee;"
         + "DROP TABLE IF EXISTS company;"
         + "DROP TABLE IF EXISTS employee;").then(comb.hitch(ret, "callback"), comb.hitch(ret, "errback"));
+	moose.closeConnection();
     return ret;
 };

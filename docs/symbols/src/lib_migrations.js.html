@@ -1,0 +1,482 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">comb</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"comb"</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>  2</span> </span><span class="WHIT">		</span><span class="NAME">logging</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">comb.logging</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>  3</span> </span><span class="WHIT">		</span><span class="NAME">Logger</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">logging.Logger</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>  4</span> </span><span class="WHIT">		</span><span class="NAME">LOGGER</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Logger.getLogger</span><span class="PUNC">(</span><span class="STRN">"comb.migrations"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  5</span> </span><span class="WHIT">		</span><span class="NAME">hitch</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">comb.hitch</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>  6</span> </span><span class="WHIT">		</span><span class="NAME">Promise</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">comb.Promise</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>  7</span> </span><span class="WHIT">		</span><span class="NAME">PromiseList</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">comb.PromiseList</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>  8</span> </span><span class="WHIT">		</span><span class="NAME">fs</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"fs"</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>  9</span> </span><span class="WHIT">		</span><span class="NAME">path</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"path"</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 10</span> </span><span class="WHIT">		</span><span class="NAME">tables</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./table"</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 11</span> </span><span class="WHIT">		</span><span class="NAME">Table</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">tables.Table</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 12</span> 
+<span class='line'> 13</span> </span><span class="COMM">/**
+<span class='line'> 14</span>  *@class This is a plugin for moose to add migration functionality.
+<span class='line'> 15</span>  * Migrations are the preferred way of handling table creation, deletion, and altering.
+<span class='line'> 16</span>  * &lt;p>Adds
+<span class='line'> 17</span>  * &lt;ul>
+<span class='line'> 18</span>  *     &lt;li>migrate - perform a migration&lt;/li>
+<span class='line'> 19</span>  *     &lt;li>createTable - to create a new table&lt;/li>
+<span class='line'> 20</span>  *     &lt;li>dropTable - drop a table&lt;/li>
+<span class='line'> 21</span>  *     &lt;li>alterTable - alter an existing table&lt;/li>
+<span class='line'> 22</span>  * &lt;/ul>
+<span class='line'> 23</span>  *
+<span class='line'> 24</span>  * Migrations are done through files contained in a particular directory, the directory should only contain migrations.
+<span class='line'> 25</span>  * In order for moose to determine which versions to use
+<span class='line'> 26</span>  * the file names must end in &lt;versionNumber>.js where versionNumber is a integer value representing the version num.
+<span class='line'> 27</span>  * An example directory structure might look like the following:
+<span class='line'> 28</span>  *
+<span class='line'> 29</span>  * &lt;pre class="code">
+<span class='line'> 30</span>  * -migrations
+<span class='line'> 31</span>  *      - createFirstTables.1.js
+<span class='line'> 32</span>  *      - shortDescription.2.js
+<span class='line'> 33</span>  *      - another.3.js
+<span class='line'> 34</span>  *      .
+<span class='line'> 35</span>  *      .
+<span class='line'> 36</span>  *      .
+<span class='line'> 37</span>  *      -lastMigration.n.js
+<span class='line'> 38</span>  * &lt;/pre>
+<span class='line'> 39</span>  *
+<span class='line'> 40</span>  * In order to easily identify where certain schema alterations have taken place it is a good idea to provide a brief
+<span class='line'> 41</span>  * but meaningful migration name.
+<span class='line'> 42</span>  *
+<span class='line'> 43</span>  * createEmployee.1.js
+<span class='line'> 44</span>  * &lt;/br>
+<span class='line'> 45</span>  *
+<span class='line'> 46</span>  * In order to run a migraton all one has to do is call moose.migrate(options);
+<span class='line'> 47</span>  *
+<span class='line'> 48</span>  * &lt;pre class="code">
+<span class='line'> 49</span>  *  moose.migrate({
+<span class='line'> 50</span>  *               connection : {user : "test", password : "testpass", database : 'test'}, //Connection information to connect to the database.
+<span class='line'> 51</span>  *               dir : "location of migrations", //Location of the directory containing the migrations.
+<span class='line'> 52</span>  *               start : 0,//What version to start migrating at.
+<span class='line'> 53</span>  *               end : 0,  //What version to stop migrations at.
+<span class='line'> 54</span>  *               up : true //set to true to go up in migrations, false to rollback
+<span class='line'> 55</span>  *  });
+<span class='line'> 56</span>  * &lt;/pre>
+<span class='line'> 57</span>  *
+<span class='line'> 58</span>  * &lt;p>Example migration file&lt;/b>
+<span class='line'> 59</span>  * &lt;pre class="code">
+<span class='line'> 60</span>  *
+<span class='line'> 61</span>  * //Up function used to migrate up a version
+<span class='line'> 62</span>  * exports.up = function() {
+<span class='line'> 63</span>  *   //create a new table
+<span class='line'> 64</span>  *   moose.createTable("company", function(table) {
+<span class='line'> 65</span>  *       //the table instance is passed in.
+<span class='line'> 66</span>  *       //add columns
+<span class='line'> 67</span>  *       table.column("id", types.INT({allowNull : false, autoIncrement : true}));
+<span class='line'> 68</span>  *       table.column("companyName", types.VARCHAR({length : 20, allowNull : false}));
+<span class='line'> 69</span>  *       //set the primary key
+<span class='line'> 70</span>  *       table.primaryKey("id");
+<span class='line'> 71</span>  *   });
+<span class='line'> 72</span>  *   moose.createTable("employee", function(table) {
+<span class='line'> 73</span>  *       table.column("id", types.INT({allowNull : false, autoIncrement : true}));
+<span class='line'> 74</span>  *       table.column("firstname", types.VARCHAR({length : 20, allowNull : false}));
+<span class='line'> 75</span>  *       table.column("lastname", types.VARCHAR({length : 20, allowNull : false}));
+<span class='line'> 76</span>  *       table.column("midinitial", types.CHAR({length : 1}));
+<span class='line'> 77</span>  *       table.column("gender", types.ENUM({enums : ["M", "F"], allowNull : false}));
+<span class='line'> 78</span>  *       table.column("street", types.VARCHAR({length : 50, allowNull : false}));
+<span class='line'> 79</span>  *       table.column("city", types.VARCHAR({length : 20, allowNull : false}));
+<span class='line'> 80</span>  *       table.primaryKey("id");
+<span class='line'> 81</span>  *   });
+<span class='line'> 82</span>  *
+<span class='line'> 83</span>  *   moose.createTable("companyEmployee", function(table) {
+<span class='line'> 84</span>  *       table.column("companyId", types.INT({allowNull : false}));
+<span class='line'> 85</span>  *       table.column("employeeId", types.INT({allowNull : false}));
+<span class='line'> 86</span>  *       table.primaryKey(["companyId", "employeeId"]);
+<span class='line'> 87</span>  *       table.foreignKey({companyId : {company : "id"}, employeeId : {employee : "id"}});
+<span class='line'> 88</span>  *   });
+<span class='line'> 89</span>  *   moose.createTable("works", function(table) {
+<span class='line'> 90</span>  *       table.column("id", types.INT({allowNull : false, autoIncrement : true}));
+<span class='line'> 91</span>  *       table.column("eid", types.INT({allowNull : false}));
+<span class='line'> 92</span>  *       table.column("companyName", types.VARCHAR({length : 20, allowNull : false}));
+<span class='line'> 93</span>  *       table.column("salary", types.DOUBLE({size : 8, digits : 2, allowNull : false}));
+<span class='line'> 94</span>  *       table.primaryKey("id");
+<span class='line'> 95</span>  *       table.foreignKey("eid", {employee : "id"});
+<span class='line'> 96</span>  *
+<span class='line'> 97</span>  *   });
+<span class='line'> 98</span>  *};
+<span class='line'> 99</span>  *
+<span class='line'>100</span>  * //Down function used to migrate down version
+<span class='line'>101</span>  *exports.down = function() {
+<span class='line'>102</span>  *    moose.dropTable("companyEmployee");
+<span class='line'>103</span>  *    moose.dropTable("works");
+<span class='line'>104</span>  *    moose.dropTable("employee");
+<span class='line'>105</span>  *    moose.dropTable("company");
+<span class='line'>106</span>  *};
+<span class='line'>107</span>  * &lt;/pre>
+<span class='line'>108</span>  *@name Migrations
+<span class='line'>109</span>  *
+<span class='line'>110</span>  * */</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">comb.define</span><span class="PUNC">(</span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">			</span><span class="NAME">instance</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>113</span> </span><span class="WHIT">				</span><span class="COMM">/**@lends Migrations.prototype*/</span><span class="WHIT">
+<span class='line'>114</span> 
+<span class='line'>115</span> 
+<span class='line'>116</span> </span><span class="WHIT">				</span><span class="NAME">constructor</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="WHIT">					</span><span class="NAME">this.__deferredMigrations</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>119</span> 
+<span class='line'>120</span> </span><span class="WHIT">				</span><span class="COMM">/**
+<span class='line'>121</span> 				 * Performs the deferred migrations function
+<span class='line'>122</span> 				 *
+<span class='line'>123</span> 				 * Used by create/drop/alter Table functions when within a migraton
+<span class='line'>124</span> 				 * */</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">				</span><span class="NAME">__migrateFun</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fun</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">table</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="WHIT">					</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Promise</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">					</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">adapter</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.adapter</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">					</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">conn</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.getConnection</span><span class="PUNC">(</span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">table.database</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">					</span><span class="NAME">adapter</span><span class="PUNC">[</span><span class="NAME">fun</span><span class="PUNC">]</span><span class="PUNC">(</span><span class="NAME">table</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">conn</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">then</span><span class="PUNC">(</span><span class="NAME">hitch</span><span class="PUNC">(</span><span class="NAME">ret</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"callback"</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">hitch</span><span class="PUNC">(</span><span class="NAME">ret</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"errback"</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">					</span><span class="KEYW">delete</span><span class="WHIT"> </span><span class="NAME">this.schemas</span><span class="PUNC">[</span><span class="NAME">table.database</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.client.database</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NAME">table.tableName</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">					</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>133</span> 
+<span class='line'>134</span> </span><span class="WHIT">				</span><span class="COMM">/**
+<span class='line'>135</span> 				 * &lt;p>Creates a new table. This function should be used while performing a migration.&lt;/p>
+<span class='line'>136</span> 				 * &lt;p>If the table should be created in another DB then the table should have the database set on it.&lt;/p>
+<span class='line'>137</span> 				 *
+<span class='line'>138</span> 				 * @example
+<span class='line'>139</span> 				 * //default database table creation
+<span class='line'>140</span> 				 * moose.createTable("test", function(table){
+<span class='line'>141</span> 				 *     table.column("id", types.INT())
+<span class='line'>142</span> 				 *     table.primaryKey("id");
+<span class='line'>143</span> 				 * });
+<span class='line'>144</span> 				 *
+<span class='line'>145</span> 				 * //create a table in another database
+<span class='line'>146</span> 				 * moose.createTable("test", function(table){
+<span class='line'>147</span> 				 *     table.database = "otherDB";
+<span class='line'>148</span> 				 *     table.column("id", types.INT())
+<span class='line'>149</span> 				 *     table.primaryKey("id");
+<span class='line'>150</span> 				 * });
+<span class='line'>151</span> 				 *
+<span class='line'>152</span> 				 *
+<span class='line'>153</span> 				 * @param {String} tableName the name of the table to create
+<span class='line'>154</span> 				 * @param {Funciton} cb this funciton is callback with the table
+<span class='line'>155</span> 				 *      - All table properties should be specified within this block
+<span class='line'>156</span> 				 *
+<span class='line'>157</span> 				 * @return {comb.Promise} There are two different results that the promise can be called back with.
+<span class='line'>158</span> 				 * &lt;ol>
+<span class='line'>159</span> 				 *     &lt;li>If a migration is currently being performed then the promise is called back with a
+<span class='line'>160</span> 				 *     function that should be called to actually perform the migration.&lt;/li>
+<span class='line'>161</span> 				 *     &lt;li>If the called outside of a migration then the table is created immediately and
+<span class='line'>162</span> 				 *     the promise is called back with the result.&lt;/li>
+<span class='line'>163</span> 				 * &lt;/ol>
+<span class='line'>164</span> 				 *
+<span class='line'>165</span> 				 * */</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">				</span><span class="NAME">createTable</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">tableName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cb</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">					</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">table</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Table</span><span class="PUNC">(</span><span class="NAME">tableName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="WHIT">					</span><span class="NAME">cb</span><span class="PUNC">(</span><span class="NAME">table</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="WHIT">					</span><span class="COMM">//add it to the moose schema map</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">					</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">db</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">table.database</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.client.database</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">schema</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="WHIT">					</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">schema</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.schemas</span><span class="PUNC">[</span><span class="NAME">db</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="WHIT">						</span><span class="NAME">schema</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.schemas</span><span class="PUNC">[</span><span class="NAME">db</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>174</span> </span><span class="WHIT">					</span><span class="NAME">schema</span><span class="PUNC">[</span><span class="NAME">tableName</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">table</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">					</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.__inMigration</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">						</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.__migrateFun</span><span class="PUNC">(</span><span class="STRN">"createTable"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">table</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">						</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Promise</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">						</span><span class="NAME">ret.callback</span><span class="PUNC">(</span><span class="NAME">hitch</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"__migrateFun"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"createTable"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">table</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">						</span><span class="NAME">this.__deferredMigrations.push</span><span class="PUNC">(</span><span class="NAME">ret</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">						</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>184</span> 
+<span class='line'>185</span> 
+<span class='line'>186</span> </span><span class="WHIT">				</span><span class="COMM">/**
+<span class='line'>187</span> 				 * Drops a table
+<span class='line'>188</span> 				 *
+<span class='line'>189</span> 				 * @example
+<span class='line'>190</span> 				 *
+<span class='line'>191</span> 				 * //drop table in default database
+<span class='line'>192</span> 				 * moose.dropTable("test");
+<span class='line'>193</span> 				 *
+<span class='line'>194</span> 				 * //drop table in another database.
+<span class='line'>195</span> 				 * moose.dropTable("test", "otherDB");
+<span class='line'>196</span> 				 *
+<span class='line'>197</span> 				 * @param {String} table the name of the table
+<span class='line'>198</span> 				 * @param {String} [database] the database that the table resides in, if a database is not
+<span class='line'>199</span> 				 *                            provided then the default database is used.
+<span class='line'>200</span> 				 * @return {comb.Promise} There are two different results that the promise can be called back with.
+<span class='line'>201</span> 				 * &lt;ol>
+<span class='line'>202</span> 				 *     &lt;li>If a migration is currently being performed then the promise is called back with a
+<span class='line'>203</span> 				 *     function that should be called to actually perform the migration.&lt;/li>
+<span class='line'>204</span> 				 *     &lt;li>If the called outside of a migration then the table is dropped immediately and
+<span class='line'>205</span> 				 *     the promise is called back with the result.&lt;/li>
+<span class='line'>206</span> 				 * &lt;/ol>
+<span class='line'>207</span> 				 **/</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="WHIT">				</span><span class="NAME">dropTable</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">table</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">database</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>209</span> </span><span class="WHIT">					</span><span class="NAME">table</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Table</span><span class="PUNC">(</span><span class="NAME">table</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="NAME">database</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">database</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="WHIT">					</span><span class="COMM">//delete from the moose schema map</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="WHIT">					</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">db</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">database</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.client.database</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="WHIT">					</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">schema</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.schemas</span><span class="PUNC">[</span><span class="NAME">db</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="WHIT">					</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">schema</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">table</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">schema</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>214</span> </span><span class="WHIT">						</span><span class="KEYW">delete</span><span class="WHIT"> </span><span class="NAME">schema</span><span class="PUNC">[</span><span class="NAME">table</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>215</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>216</span> </span><span class="WHIT">					</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.__inMigration</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>217</span> </span><span class="WHIT">						</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.__migrateFun</span><span class="PUNC">(</span><span class="STRN">"dropTable"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">table</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>218</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>219</span> </span><span class="WHIT">						</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Promise</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>220</span> </span><span class="WHIT">						</span><span class="NAME">ret.callback</span><span class="PUNC">(</span><span class="NAME">hitch</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"__migrateFun"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"dropTable"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">table</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>221</span> </span><span class="WHIT">						</span><span class="NAME">this.__deferredMigrations.push</span><span class="PUNC">(</span><span class="NAME">ret</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>222</span> </span><span class="WHIT">						</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>223</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>224</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>225</span> 
+<span class='line'>226</span> </span><span class="WHIT">				</span><span class="COMM">/**
+<span class='line'>227</span> 				 * Alters a table
+<span class='line'>228</span> 				 *
+<span class='line'>229</span> 				 * @example :
+<span class='line'>230</span> 				 *
+<span class='line'>231</span> 				 * //alter table in default database
+<span class='line'>232</span> 				 * moose.alterTable("test", function(table){
+<span class='line'>233</span> 				 *     table.rename("test2");
+<span class='line'>234</span> 				 *     table.addColumn("myColumn", types.STRING());
+<span class='line'>235</span> 				 * });
+<span class='line'>236</span> 				 *
+<span class='line'>237</span> 				 * //alter table in another database
+<span class='line'>238</span> 				 * moose.alterTable("test", "otherDB", function(table){
+<span class='line'>239</span> 				 *     table.rename("test2");
+<span class='line'>240</span> 				 *     table.addColumn("myColumn", types.STRING());
+<span class='line'>241</span> 				 * });
+<span class='line'>242</span> 				 *
+<span class='line'>243</span> 				 * @param {String} name The name of the table to alter.
+<span class='line'>244</span> 				 * @param {String} [database] the database that the table resides in, if a database is not
+<span class='line'>245</span> 				 *                            provided then the default database is used.
+<span class='line'>246</span> 				 * @param {Function} cb the function to execute with the table passed in as the first argument.
+<span class='line'>247</span> 				 *
+<span class='line'>248</span> 				 * @return {comb.Promise} There are two different results that the promise can be called back with.
+<span class='line'>249</span> 				 * &lt;ol>
+<span class='line'>250</span> 				 *     &lt;li>If a migration is currently being performed then the promise is called back with a
+<span class='line'>251</span> 				 *     function that should be called to actually perform the migration.&lt;/li>
+<span class='line'>252</span> 				 *     &lt;li>If the called outside of a migration then the table is altered immediately and
+<span class='line'>253</span> 				 *     the promise is called back with the result.&lt;/li>
+<span class='line'>254</span> 				 * &lt;/ol>
+<span class='line'>255</span> 				 * */</span><span class="WHIT">
+<span class='line'>256</span> </span><span class="WHIT">				</span><span class="NAME">alterTable</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">database</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cb</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>257</span> </span><span class="WHIT">					</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">comb.isFunction</span><span class="PUNC">(</span><span class="NAME">database</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>258</span> </span><span class="WHIT">						</span><span class="NAME">cb</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">database</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>259</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>260</span> </span><span class="WHIT">					</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Promise</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>261</span> </span><span class="WHIT">					</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">db</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">database</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.client.database</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>262</span> </span><span class="WHIT">					</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">schema</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.schemas</span><span class="PUNC">[</span><span class="NAME">db</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>263</span> </span><span class="WHIT">					</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">schema</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">name</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">schema</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>264</span> </span><span class="WHIT">						</span><span class="KEYW">delete</span><span class="WHIT"> </span><span class="NAME">schema</span><span class="PUNC">[</span><span class="NAME">name</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>265</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>266</span> </span><span class="WHIT">					</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.__inMigration</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>267</span> </span><span class="WHIT">						</span><span class="NAME">this.loadSchema</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">db</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">then</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">table</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>268</span> </span><span class="WHIT">							</span><span class="NAME">cb</span><span class="PUNC">(</span><span class="NAME">table</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>269</span> </span><span class="WHIT">							</span><span class="NAME">this.__migrateFun</span><span class="PUNC">(</span><span class="STRN">"alterTable"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">table</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">then</span><span class="PUNC">(</span><span class="NAME">hitch</span><span class="PUNC">(</span><span class="NAME">ret</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"callback"</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">hitch</span><span class="PUNC">(</span><span class="NAME">ret</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"errback"</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>270</span> </span><span class="WHIT">						</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">hitch</span><span class="PUNC">(</span><span class="NAME">ret</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"errback"</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>271</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>272</span> </span><span class="WHIT">						</span><span class="NAME">this.loadSchema</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">db</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">then</span><span class="PUNC">(</span><span class="NAME">hitch</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">table</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>273</span> </span><span class="WHIT">							</span><span class="NAME">cb</span><span class="PUNC">(</span><span class="NAME">table</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>274</span> </span><span class="WHIT">							</span><span class="NAME">ret.callback</span><span class="PUNC">(</span><span class="NAME">hitch</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"__migrateFun"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"alterTable"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">table</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>275</span> </span><span class="WHIT">							</span><span class="NAME">schema</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.schemas</span><span class="PUNC">[</span><span class="NAME">db</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>276</span> </span><span class="WHIT">							</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">schema</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">name</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">schema</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>277</span> </span><span class="WHIT">								</span><span class="KEYW">delete</span><span class="WHIT"> </span><span class="NAME">schema</span><span class="PUNC">[</span><span class="NAME">name</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>278</span> </span><span class="WHIT">							</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>279</span> </span><span class="WHIT">						</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">hitch</span><span class="PUNC">(</span><span class="NAME">ret</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"errback"</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>280</span> </span><span class="WHIT">						</span><span class="NAME">this.__deferredMigrations.push</span><span class="PUNC">(</span><span class="NAME">ret</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>281</span> </span><span class="WHIT">						</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>282</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>283</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>284</span> 
+<span class='line'>285</span> </span><span class="WHIT">				</span><span class="COMM">/**
+<span class='line'>286</span> 				 * Performs the migration.
+<span class='line'>287</span> 				 *
+<span class='line'>288</span> 				 * @param {Function} fun the function to call to perform the migration
+<span class='line'>289</span> 				 *                  this is an up or down function in a migration file, i.e. exports.up|down.
+<span class='line'>290</span> 				 *
+<span class='line'>291</span> 				 * @return {comb.Promise} called back after the migration completes, and the next can continue.
+<span class='line'>292</span> 				 */</span><span class="WHIT">
+<span class='line'>293</span> </span><span class="WHIT">				</span><span class="NAME">__doMigrate</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fun</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>294</span> </span><span class="WHIT">					</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Promise</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>295</span> </span><span class="WHIT">					</span><span class="NAME">this.__inMigration</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>296</span> </span><span class="WHIT">					</span><span class="NAME">fun</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>297</span> </span><span class="WHIT">					</span><span class="COMM">//all calls should be deferred</span><span class="WHIT">
+<span class='line'>298</span> </span><span class="WHIT">					</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.__deferredMigrations.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>299</span> </span><span class="WHIT">						</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">defList</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">PromiseList</span><span class="PUNC">(</span><span class="NAME">this.__deferredMigrations</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>300</span> </span><span class="WHIT">						</span><span class="NAME">defList.then</span><span class="PUNC">(</span><span class="NAME">hitch</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">res</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>301</span> </span><span class="WHIT">							</span><span class="NAME">this.__deferredMigrations.length</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>302</span> </span><span class="WHIT">							</span><span class="COMM">//map my to retrieve the actual responses</span><span class="WHIT">
+<span class='line'>303</span> </span><span class="WHIT">							</span><span class="COMM">//and call the associated method</span><span class="WHIT">
+<span class='line'>304</span> </span><span class="WHIT">							</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">responses</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">	</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">len</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">res.length</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>305</span> </span><span class="WHIT">							</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">next</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">hitch</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">r</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>306</span> </span><span class="WHIT">								</span><span class="NAME">responses.push</span><span class="PUNC">(</span><span class="NAME">r</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>307</span> </span><span class="WHIT">								</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">len</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>308</span> </span><span class="WHIT">									</span><span class="NAME">f</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">res</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>309</span> </span><span class="WHIT">									</span><span class="NAME">f</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">then</span><span class="PUNC">(</span><span class="NAME">next</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">err</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>310</span> </span><span class="WHIT">										</span><span class="NAME">LOGGER.error</span><span class="PUNC">(</span><span class="NAME">err</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>311</span> </span><span class="WHIT">									</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>312</span> </span><span class="WHIT">								</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>313</span> </span><span class="WHIT">									</span><span class="NAME">ret.callback</span><span class="PUNC">(</span><span class="NAME">responses</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>314</span> </span><span class="WHIT">								</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>315</span> </span><span class="WHIT">								</span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>316</span> </span><span class="WHIT">							</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>317</span> </span><span class="WHIT">							</span><span class="NAME">next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>318</span> </span><span class="WHIT">							</span><span class="COMM">//reset for another migration</span><span class="WHIT">
+<span class='line'>319</span> </span><span class="WHIT">							</span><span class="COMM">//listen for the promises to complete</span><span class="WHIT">
+<span class='line'>320</span> </span><span class="WHIT">						</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">err</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>321</span> </span><span class="WHIT">							</span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">len</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">err.length</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">len</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">--</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>322</span> </span><span class="WHIT">								</span><span class="NAME">LOGGER.error</span><span class="PUNC">(</span><span class="NAME">err</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>323</span> </span><span class="WHIT">							</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>324</span> </span><span class="WHIT">						</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>325</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>326</span> </span><span class="WHIT">						</span><span class="NAME">ret.callback</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>327</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>328</span> </span><span class="WHIT">					</span><span class="NAME">this.__inMigration</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>329</span> </span><span class="WHIT">					</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>330</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>331</span> 
+<span class='line'>332</span> </span><span class="WHIT">				</span><span class="COMM">/**
+<span class='line'>333</span> 				 * Perform a migration.
+<span class='line'>334</span> 				 *
+<span class='line'>335</span> 				 * @example
+<span class='line'>336</span> 				 *  moose.migrate({
+<span class='line'>337</span> 				 *               connection : {user : "test", password : "testpass", database : 'test'}, //Connection information to connect to the database.
+<span class='line'>338</span> 				 *               dir : "location of migrations", //Location of the directory containing the migrations.
+<span class='line'>339</span> 				 *               start : 0,//What version to start migrating at.
+<span class='line'>340</span> 				 *               end : 0,  //What version to stop migrations at.
+<span class='line'>341</span> 				 *               up : true //set to true to go up in migrations, false to rollback
+<span class='line'>342</span> 				 *  });
+<span class='line'>343</span> 
+<span class='line'>344</span> 				 *
+<span class='line'>345</span> 				 * &lt;p>&lt;b>NOTE&lt;/b>&lt;/br>
+<span class='line'>346</span> 				 *  If you start at 0 and end at 0 your migrations will inlude the file only at "migrationName".0.js
+<span class='line'>347</span> 				 *  if you specify start : 0 and end 1 then your migrations will include files "migraiton0".0.js and "migration1".1.js,
+<span class='line'>348</span> 				 *  the names being whatever you specify before the *.0 and *.1
+<span class='line'>349</span> 				 *  &lt;/p>
+<span class='line'>350</span> 
+<span class='line'>351</span> 				 *
+<span class='line'>352</span> 				 * &lt;p>Example migration file&lt;/b>
+<span class='line'>353</span> 				 * @example
+<span class='line'>354</span> 				 *
+<span class='line'>355</span> 				 * //Up function used to migrate up a version
+<span class='line'>356</span> 				 * exports.up = function() {
+<span class='line'>357</span> 				 *   //create a new table
+<span class='line'>358</span> 				 *   moose.createTable("company", function(table) {
+<span class='line'>359</span> 				 *       //the table instance is passed in.
+<span class='line'>360</span> 				 *       //add columns
+<span class='line'>361</span> 				 *       table.column("id", types.INT({allowNull : false, autoIncrement : true}));
+<span class='line'>362</span> 				 *       table.column("companyName", types.VARCHAR({length : 20, allowNull : false}));
+<span class='line'>363</span> 				 *       //set the primary key
+<span class='line'>364</span> 				 *       table.primaryKey("id");
+<span class='line'>365</span> 				 *   });
+<span class='line'>366</span> 				 *   moose.createTable("employee", function(table) {
+<span class='line'>367</span> 				 *       table.column("id", types.INT({allowNull : false, autoIncrement : true}));
+<span class='line'>368</span> 				 *       table.column("firstname", types.VARCHAR({length : 20, allowNull : false}));
+<span class='line'>369</span> 				 *       table.column("lastname", types.VARCHAR({length : 20, allowNull : false}));
+<span class='line'>370</span> 				 *       table.column("midinitial", types.CHAR({length : 1}));
+<span class='line'>371</span> 				 *       table.column("gender", types.ENUM({enums : ["M", "F"], allowNull : false}));
+<span class='line'>372</span> 				 *       table.column("street", types.VARCHAR({length : 50, allowNull : false}));
+<span class='line'>373</span> 				 *       table.column("city", types.VARCHAR({length : 20, allowNull : false}));
+<span class='line'>374</span> 				 *       table.primaryKey("id");
+<span class='line'>375</span> 				 *   });
+<span class='line'>376</span> 				 *
+<span class='line'>377</span> 				 *   moose.createTable("companyEmployee", function(table) {
+<span class='line'>378</span> 				 *       table.column("companyId", types.INT({allowNull : false}));
+<span class='line'>379</span> 				 *       table.column("employeeId", types.INT({allowNull : false}));
+<span class='line'>380</span> 				 *       table.primaryKey(["companyId", "employeeId"]);
+<span class='line'>381</span> 				 *       table.foreignKey({companyId : {company : "id"}, employeeId : {employee : "id"}});
+<span class='line'>382</span> 				 *   });
+<span class='line'>383</span> 				 *   moose.createTable("works", function(table) {
+<span class='line'>384</span> 				 *       table.column("id", types.INT({allowNull : false, autoIncrement : true}));
+<span class='line'>385</span> 				 *       table.column("eid", types.INT({allowNull : false}));
+<span class='line'>386</span> 				 *       table.column("companyName", types.VARCHAR({length : 20, allowNull : false}));
+<span class='line'>387</span> 				 *       table.column("salary", types.DOUBLE({size : 8, digits : 2, allowNull : false}));
+<span class='line'>388</span> 				 *       table.primaryKey("id");
+<span class='line'>389</span> 				 *       table.foreignKey("eid", {employee : "id"});
+<span class='line'>390</span> 				 *
+<span class='line'>391</span> 				 *   });
+<span class='line'>392</span> 				 *};
+<span class='line'>393</span> 				 *
+<span class='line'>394</span> 				 * //Down function used to migrate down version
+<span class='line'>395</span> 				 *exports.down = function() {
+<span class='line'>396</span> 				 *    moose.dropTable("companyEmployee");
+<span class='line'>397</span> 				 *    moose.dropTable("works");
+<span class='line'>398</span> 				 *    moose.dropTable("employee");
+<span class='line'>399</span> 				 *    moose.dropTable("company");
+<span class='line'>400</span> 				 *};
+<span class='line'>401</span> 				 *
+<span class='line'>402</span> 				 * @param {Object} options the options to specify how to perform the migration.
+<span class='line'>403</span> 				 * @param {Object} options.connection : @see moose.createConnection
+<span class='line'>404</span> 				 * @param {String} options.dir Location of the directory where migrations are located.
+<span class='line'>405</span> 				 * @param {Boolean} [options.up = true] If true will migrate up otherwise down.
+<span class='line'>406</span> 				 * @param {Number} [options.start = 0] The migration to start at.
+<span class='line'>407</span> 				 * @param {Number} [options.end=Infinity] The migration to end at this, end is inclusive
+<span class='line'>408</span> 				 *
+<span class='line'>409</span> 				 * @return {comb.Promise} Called back after all migrations have completed.
+<span class='line'>410</span> 				 */</span><span class="WHIT">
+<span class='line'>411</span> </span><span class="WHIT">				</span><span class="NAME">migrate</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>412</span> </span><span class="WHIT">					</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">promise</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Promise</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>413</span> </span><span class="WHIT">					</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dir</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">file</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">migrationDir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">comb.isBoolean</span><span class="PUNC">(</span><span class="NAME">options.up</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">options.up</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>414</span> </span><span class="WHIT">					</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">start</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">options.end</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">"number"</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">options.start</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>415</span> </span><span class="WHIT">							</span><span class="NAME">end</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">options.end</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">"number"</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">options.end</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">Infinity</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>416</span> 
+<span class='line'>417</span> </span><span class="WHIT">					</span><span class="COMM">//if a coonection is not provided or we dont already have a connection</span><span class="WHIT">
+<span class='line'>418</span> </span><span class="WHIT">					</span><span class="COMM">//throw an error</span><span class="WHIT">
+<span class='line'>419</span> </span><span class="WHIT">					</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.connection</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.__connectionReady</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>420</span> </span><span class="WHIT">						</span><span class="COMM">//set our current state, allows us to push any create/alter/delete</span><span class="WHIT">
+<span class='line'>421</span> </span><span class="WHIT">						</span><span class="COMM">//transactions into our deferred</span><span class="WHIT">
+<span class='line'>422</span> 
+<span class='line'>423</span> </span><span class="WHIT">						</span><span class="COMM">//init our connecton information</span><span class="WHIT">
+<span class='line'>424</span> </span><span class="WHIT">						</span><span class="PUNC">!</span><span class="NAME">this.__connectionReady</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">this.createConnection</span><span class="PUNC">(</span><span class="NAME">options.connection</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>425</span> </span><span class="WHIT">						</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.dir</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">dir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">path.resolve</span><span class="PUNC">(</span><span class="NAME">process.cwd</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options.dir</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>426</span> </span><span class="WHIT">						</span><span class="COMM">//read the directory</span><span class="WHIT">
+<span class='line'>427</span> </span><span class="WHIT">						</span><span class="NAME">fs.readdir</span><span class="PUNC">(</span><span class="NAME">dir</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">hitch</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">err</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">files</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>428</span> </span><span class="WHIT">							</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">funs</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fun</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">migrationDir</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="STRN">"up"</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"down"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">parts</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">num</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">file</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">extName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">path.extname</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">baseName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">path.basename</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>429</span> </span><span class="WHIT">							</span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">len</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">files.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">len</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>430</span> </span><span class="WHIT">								</span><span class="NAME">file</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">files</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>431</span> </span><span class="WHIT">								</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">extName</span><span class="PUNC">(</span><span class="NAME">file</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">".js"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>432</span> </span><span class="WHIT">									</span><span class="COMM">//its a js file otherwise ignore</span><span class="WHIT">
+<span class='line'>433</span> </span><span class="WHIT">									</span><span class="COMM">//split the path to get the num</span><span class="WHIT">
+<span class='line'>434</span> </span><span class="WHIT">									</span><span class="NAME">parts</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">baseName</span><span class="PUNC">(</span><span class="NAME">file</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">".js"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">split</span><span class="PUNC">(</span><span class="STRN">"."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>435</span> </span><span class="WHIT">									</span><span class="COMM">//get the migration number</span><span class="WHIT">
+<span class='line'>436</span> </span><span class="WHIT">									</span><span class="NAME">num</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">parts.pop</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>437</span> </span><span class="WHIT">									</span><span class="COMM">//if it is a valid index</span><span class="WHIT">
+<span class='line'>438</span> </span><span class="WHIT">									</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">isNaN</span><span class="PUNC">(</span><span class="NAME">num</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">num</span><span class="WHIT"> </span><span class="PUNC">>=</span><span class="WHIT"> </span><span class="NAME">start</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">num</span><span class="WHIT"> </span><span class="PUNC">&lt;=</span><span class="WHIT"> </span><span class="NAME">end</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>439</span> </span><span class="WHIT">										</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">cls</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="NAME">path.resolve</span><span class="PUNC">(</span><span class="NAME">dir</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">file</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>440</span> </span><span class="WHIT">										</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">cls</span><span class="PUNC">[</span><span class="NAME">fun</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>441</span> </span><span class="WHIT">											</span><span class="COMM">//add it</span><span class="WHIT">
+<span class='line'>442</span> </span><span class="WHIT">											</span><span class="NAME">funs</span><span class="PUNC">[</span><span class="NAME">num</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">start</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">hitch</span><span class="PUNC">(</span><span class="NAME">cls</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fun</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>443</span> </span><span class="WHIT">										</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>444</span> </span><span class="WHIT">									</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>445</span> </span><span class="WHIT">								</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>446</span> </span><span class="WHIT">							</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>447</span> </span><span class="WHIT">							</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">migrationDir</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>448</span> </span><span class="WHIT">								</span><span class="NAME">funs.reverse</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>449</span> </span><span class="WHIT">							</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>450</span> </span><span class="WHIT">							</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">funs.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>451</span> </span><span class="WHIT">								</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="NAME">len</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">funs.length</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>452</span> </span><span class="WHIT">								</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">doMig</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">hitch</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.__doMigrate</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>453</span> </span><span class="WHIT">								</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">next</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">hitch</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">res</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>454</span> </span><span class="WHIT">									</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">len</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>455</span> </span><span class="WHIT">										</span><span class="NAME">doMig</span><span class="PUNC">(</span><span class="NAME">funs</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">then</span><span class="PUNC">(</span><span class="NAME">next</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">err</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>456</span> </span><span class="WHIT">											</span><span class="NAME">LOGGER.log</span><span class="PUNC">(</span><span class="NAME">err</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>457</span> </span><span class="WHIT">										</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>458</span> </span><span class="WHIT">									</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>459</span> </span><span class="WHIT">										</span><span class="NAME">promise.callback</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>460</span> </span><span class="WHIT">									</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>461</span> </span><span class="WHIT">									</span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>462</span> </span><span class="WHIT">								</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>463</span> </span><span class="WHIT">								</span><span class="NAME">next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>464</span> </span><span class="WHIT">							</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>465</span> </span><span class="WHIT">								</span><span class="NAME">promise.callback</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>466</span> </span><span class="WHIT">							</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>467</span> </span><span class="WHIT">						</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>468</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>469</span> </span><span class="WHIT">						</span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Error</span><span class="PUNC">(</span><span class="STRN">"when migrating a connection is required"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>470</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>471</span> </span><span class="WHIT">					</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">promise</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>472</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>473</span> 
+<span class='line'>474</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>475</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>

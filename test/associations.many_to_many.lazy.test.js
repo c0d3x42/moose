@@ -9,7 +9,7 @@ var gender = ["M", "F"];
 
 helper.loadModels().then(function() {
     var Company = moose.getModel("company"), Employee = moose.getModel("employee"), CompanyEmployee = moose.getModel("companyEmployee");
-    var suite = vows.describe("Many to Many Eager association ");
+    var suite = vows.describe("Many to Many lazy association ");
     suite.addBatch({
 
         "When creating a company with employees" : {

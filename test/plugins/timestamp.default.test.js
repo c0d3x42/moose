@@ -7,7 +7,7 @@ var vows = require('vows'),
 
 helper.loadDefaultModels().then(function() {
     Employee = moose.getModel("employee");
-    var suite = vows.describe("TimeStampPlugin updateOnCreate");
+    var suite = vows.describe("TimeStampPlugin default");
     suite.addBatch({
 
         "when creating an employee" : {

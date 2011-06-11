@@ -7,7 +7,7 @@ exports.loadDefaultModels = function() {
     var ret = new comb.Promise();
     var options = {
         connection : {user : "test", password : "testpass", database : 'test'},
-        dir : "./data/migrations/plugins/timestamp",
+        dir : "../data/migrations/plugins/timestamp",
         start : 0,
         end : 0,
         up : true
@@ -28,12 +28,12 @@ exports.dropDefaultModels = function() {
     var ret = new comb.Promise();
     var options = {
         connection : {user : "test", password : "testpass", database : 'test'},
-        dir : "./data/migrations/plugins/timestamp",
+        dir : "../data/migrations/plugins/timestamp",
         start : 0,
         end : 0,
         up : false
     };
-    moose.migrate(options).then(comb.hitch(ret, "callback"), comb.hitch(ret, "errback"));
+    moose.migrate(options).chain(comb.hitch(moose, "closeConnection"), comb.hitch(ret, "errback")).then(comb.hitch(ret, "callback"), comb.hitch(ret, "errback"));
     return ret;
 };
 
@@ -41,7 +41,7 @@ exports.loadCustomModels = function() {
     var ret = new comb.Promise();
     var options = {
         connection : {user : "test", password : "testpass", database : 'test'},
-        dir : "./data/migrations/plugins/timestamp",
+        dir : "../data/migrations/plugins/timestamp",
         start : 0,
         up : true
     };
@@ -63,11 +63,11 @@ exports.dropCustomModels = function() {
     var ret = new comb.Promise();
     var options = {
         connection : {user : "test", password : "testpass", database : 'test'},
-        dir : "./data/migrations/plugins/timestamp",
+        dir : "../data/migrations/plugins/timestamp",
         start : 0,
         up : false
     };
-    moose.migrate(options).then(comb.hitch(ret, "callback"), comb.hitch(ret, "errback"));
+    moose.migrate(options).chain(comb.hitch(moose, "closeConnection"), comb.hitch(ret, "errback")).then(comb.hitch(ret, "callback"), comb.hitch(ret, "errback"));
     return ret;
 };
 
@@ -75,7 +75,7 @@ exports.loadUpdateOnCreateModels = function() {
     var ret = new comb.Promise();
   var options = {
         connection : {user : "test", password : "testpass", database : 'test'},
-        dir : "./data/migrations/plugins/timestamp",
+        dir : "../data/migrations/plugins/timestamp",
         start : 0,
         end : 0,
         up : true
@@ -98,11 +98,11 @@ exports.dropUpdateOnCreateModels = function() {
     var ret = new comb.Promise();
     var options = {
         connection : {user : "test", password : "testpass", database : 'test'},
-        dir : "./data/migrations/plugins/timestamp",
+        dir : "../data/migrations/plugins/timestamp",
         start : 0,
         end : 0,
         up : false
     };
-    moose.migrate(options).then(comb.hitch(ret, "callback"), comb.hitch(ret, "errback"));
+    moose.migrate(options).chain(comb.hitch(moose, "closeConnection"), comb.hitch(ret, "errback")).then(comb.hitch(ret, "callback"), comb.hitch(ret, "errback"));
     return ret;
 };

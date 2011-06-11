@@ -40,6 +40,6 @@ exports.dropModels = function() {
         start : 0,
         up : false
     };
-    moose.migrate(options).then(comb.hitch(ret, "callback"), comb.hitch(ret, "errback"));
+    moose.migrate(options).chain(comb.hitch(moose, "closeConnection"), comb.hitch(ret, "errback")).then(comb.hitch(ret, "callback"), comb.hitch(ret, "errback"));
     return ret;
 };

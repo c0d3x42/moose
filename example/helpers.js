@@ -80,7 +80,7 @@ var flights = [
 exports.loadData = function() {
     var ret = new comb.Promise();
     var options = {
-        connection : {user : "test", password : "testpass", database : 'airline'},
+        connection : {user : "test", password : "testpass", database : 'airline', maxConnections: 100},
         dir : "./migrations",
         start : 0,
         up : false

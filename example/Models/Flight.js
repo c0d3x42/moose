@@ -2,7 +2,7 @@ var moose = require("../../lib"),
         expressPlugin = require("../plugins/ExpressPlugin");
 
 module.exports = exports = (Flight = moose.addModel(moose.getSchema("flight"), {
-    plugins : [moose.plugins.CachePlugin, expressPlugin],
+    plugins : [ expressPlugin],
     instance :{
         toObject : function() {
             var obj = this.super(arguments);

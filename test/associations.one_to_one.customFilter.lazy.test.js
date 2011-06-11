@@ -10,7 +10,7 @@ var vows = require('vows'),
 var gender = ["M", "F"];
 helper.loadModels().then(function() {
     var Works = moose.getModel("works"), Employee = moose.getModel("employee");
-    var suite = vows.describe("One to One Eager association ");
+    var suite = vows.describe("One to One custom filter lazy association ");
     suite.addBatch({
 
         "When creating a employee " : {

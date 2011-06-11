@@ -7,7 +7,7 @@ var vows = require('vows'),
 
 helper.loadCustomModels().then(function() {
     Employee = moose.getModel("employee");
-    var suite = vows.describe("TimeStampPlugin updateOnCreate");
+    var suite = vows.describe("TimeStampPlugin custom columns");
 
     suite.addBatch({
 
