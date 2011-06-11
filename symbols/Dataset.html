@@ -1,0 +1,961 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - Dataset</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><a href="../symbols/_Association.html">_Association</a></li>
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/Dataset.html">Dataset</a></li>
+	
+	<li><a href="../symbols/ManyToMany.html">ManyToMany</a></li>
+	
+	<li><a href="../symbols/ManyToOne.html">ManyToOne</a></li>
+	
+	<li><a href="../symbols/MayToOne.html">MayToOne</a></li>
+	
+	<li><a href="../symbols/Migrations.html">Migrations</a></li>
+	
+	<li><a href="../symbols/Model.html">Model</a></li>
+	
+	<li><a href="../symbols/moose.html">moose</a></li>
+	
+	<li><a href="../symbols/moose.adapters.html">moose.adapters</a></li>
+	
+	<li><a href="../symbols/moose.adapters.mysql.html">moose.adapters.mysql</a></li>
+	
+	<li><a href="../symbols/moose.adapters.mysql.types.html">moose.adapters.mysql.types</a></li>
+	
+	<li><a href="../symbols/moose.plugins.html">moose.plugins</a></li>
+	
+	<li><a href="../symbols/moose.plugins.AssociationPlugin.html">moose.plugins.AssociationPlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.CachePlugin.html">moose.plugins.CachePlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.QueryPlugin.html">moose.plugins.QueryPlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.TimeStampPlugin.html">moose.plugins.TimeStampPlugin</a></li>
+	
+	<li><a href="../symbols/moose.Table.html">moose.Table</a></li>
+	
+	<li><a href="../symbols/OneToMany.html">OneToMany</a></li>
+	
+	<li><a href="../symbols/SQL.html">SQL</a></li>
+	
+	<li><a href="../symbols/Type.html">Type</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class Dataset
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				<br />Extends
+					<a href="../symbols/SQL.html">SQL</a>.<br />
+				
+			
+				Wrapper for <a href="../symbols/SQL.html">SQL</a> adpaters to allow execution functions such as:
+<ul>
+    <li>forEach</li>
+    <li>one</li>
+    <li>all</li>
+    <li>first</li>
+    <li>last</li>
+    <li>all</li>
+    <li>save</li>
+</ul>
+
+This class should be used insead of SQL directly, becuase:
+<ul>
+    <li>Allows for Model creation if needed</li>
+    <li>Handles the massaging of data to make the use of results easier.</li>
+    <li>Closing of database connections</li>
+</ul>
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_dataset.js.html">dataset.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Dataset.">
+				<caption>Class Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/Dataset.html#constructor">Dataset</a></b>()
+							</div>
+							<div class="description"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				
+				
+				<dl class="inheritsList">
+				<dt>Fields borrowed from class <a href="../symbols/SQL.html">SQL</a>: </dt><dd><a href="../symbols/SQL.html#sql">sql</a></dd>
+				</dl>
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Dataset.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Dataset.html#all">all</a></b>(callback, errback)
+								</div>
+								<div class="description">Retrieve all rows from the query.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Dataset.html#first">first</a></b>(callback, errback)
+								</div>
+								<div class="description">Retrieve the first result from an ordered query.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Dataset.html#forEach">forEach</a></b>(callback, errback, scope)
+								</div>
+								<div class="description">Provide Array style looping a query results.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Dataset.html#getLastInsertId">getLastInsertId</a></b>(callback, errback)
+								</div>
+								<div class="description">Retrieve the last inserted id from the database.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Dataset.html#last">last</a></b>(callback, errback)
+								</div>
+								<div class="description">Retrieve the last result from an ordered query.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Dataset.html#one">one</a></b>(callback, errback)
+								</div>
+								<div class="description">Retrieve one row result from the query.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Dataset.html#run">run</a></b>(callback, errback)
+								</div>
+								<div class="description">Alias for <a href="../symbols/Dataset.html#all">Dataset#all</a></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Dataset.html#save">save</a></b>(callback, errback, callback, errback)
+								</div>
+								<div class="description">Save values to a table.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+				<dl class="inheritsList">
+				<dt>Methods borrowed from class <a href="../symbols/SQL.html">SQL</a>: </dt><dd><a href="../symbols/SQL.html#and">and</a>, <a href="../symbols/SQL.html#avg">avg</a>, <a href="../symbols/SQL.html#between">between</a>, <a href="../symbols/SQL.html#bitAnd">bitAnd</a>, <a href="../symbols/SQL.html#bitOr">bitOr</a>, <a href="../symbols/SQL.html#bitXor">bitXor</a>, <a href="../symbols/SQL.html#clear">clear</a>, <a href="../symbols/SQL.html#clearHaving">clearHaving</a>, <a href="../symbols/SQL.html#clearLimit">clearLimit</a>, <a href="../symbols/SQL.html#clearOffset">clearOffset</a>, <a href="../symbols/SQL.html#clearOrder">clearOrder</a>, <a href="../symbols/SQL.html#close">close</a>, <a href="../symbols/SQL.html#count">count</a>, <a href="../symbols/SQL.html#crossJoin">crossJoin</a>, <a href="../symbols/SQL.html#distinct">distinct</a>, <a href="../symbols/SQL.html#end">end</a>, <a href="../symbols/SQL.html#eq">eq</a>, <a href="../symbols/SQL.html#exec">exec</a>, <a href="../symbols/SQL.html#find">find</a>, <a href="../symbols/SQL.html#format">format</a>, <a href="../symbols/SQL.html#fullJoin">fullJoin</a>, <a href="../symbols/SQL.html#fullOuterJoin">fullOuterJoin</a>, <a href="../symbols/SQL.html#group">group</a>, <a href="../symbols/SQL.html#groupAndAvg">groupAndAvg</a>, <a href="../symbols/SQL.html#groupAndBitAnd">groupAndBitAnd</a>, <a href="../symbols/SQL.html#groupAndBitOr">groupAndBitOr</a>, <a href="../symbols/SQL.html#groupAndBitXor">groupAndBitXor</a>, <a href="../symbols/SQL.html#groupAndCount">groupAndCount</a>, <a href="../symbols/SQL.html#groupAndMax">groupAndMax</a>, <a href="../symbols/SQL.html#groupAndMin">groupAndMin</a>, <a href="../symbols/SQL.html#groupAndStd">groupAndStd</a>, <a href="../symbols/SQL.html#groupAndStdDev">groupAndStdDev</a>, <a href="../symbols/SQL.html#groupAndStdDevPop">groupAndStdDevPop</a>, <a href="../symbols/SQL.html#groupAndStdDevSamp">groupAndStdDevSamp</a>, <a href="../symbols/SQL.html#groupAndSum">groupAndSum</a>, <a href="../symbols/SQL.html#groupAndVariance">groupAndVariance</a>, <a href="../symbols/SQL.html#groupAndVarPop">groupAndVarPop</a>, <a href="../symbols/SQL.html#groupAndVarSamp">groupAndVarSamp</a>, <a href="../symbols/SQL.html#gt">gt</a>, <a href="../symbols/SQL.html#gte">gte</a>, <a href="../symbols/SQL.html#having">having</a>, <a href="../symbols/SQL.html#innerJoin">innerJoin</a>, <a href="../symbols/SQL.html#is">is</a>, <a href="../symbols/SQL.html#isNot">isNot</a>, <a href="../symbols/SQL.html#isNotNull">isNotNull</a>, <a href="../symbols/SQL.html#isNull">isNull</a>, <a href="../symbols/SQL.html#join">join</a>, <a href="../symbols/SQL.html#leftJoin">leftJoin</a>, <a href="../symbols/SQL.html#leftOuterJoin">leftOuterJoin</a>, <a href="../symbols/SQL.html#like">like</a>, <a href="../symbols/SQL.html#limit">limit</a>, <a href="../symbols/SQL.html#logicGroup">logicGroup</a>, <a href="../symbols/SQL.html#lt">lt</a>, <a href="../symbols/SQL.html#lte">lte</a>, <a href="../symbols/SQL.html#max">max</a>, <a href="../symbols/SQL.html#min">min</a>, <a href="../symbols/SQL.html#naturalJoin">naturalJoin</a>, <a href="../symbols/SQL.html#naturalLeftJoin">naturalLeftJoin</a>, <a href="../symbols/SQL.html#naturalRightJoin">naturalRightJoin</a>, <a href="../symbols/SQL.html#neq">neq</a>, <a href="../symbols/SQL.html#notBetween">notBetween</a>, <a href="../symbols/SQL.html#notIn">notIn</a>, <a href="../symbols/SQL.html#notLike">notLike</a>, <a href="../symbols/SQL.html#offset">offset</a>, <a href="../symbols/SQL.html#or">or</a>, <a href="../symbols/SQL.html#order">order</a>, <a href="../symbols/SQL.html#orderBy">orderBy</a>, <a href="../symbols/SQL.html#remove">remove</a>, <a href="../symbols/SQL.html#rightJoin">rightJoin</a>, <a href="../symbols/SQL.html#rightOuterJoin">rightOuterJoin</a>, <a href="../symbols/SQL.html#select">select</a>, <a href="../symbols/SQL.html#std">std</a>, <a href="../symbols/SQL.html#stdDev">stdDev</a>, <a href="../symbols/SQL.html#stdDevPop">stdDevPop</a>, <a href="../symbols/SQL.html#stdDevSamp">stdDevSamp</a>, <a href="../symbols/SQL.html#sum">sum</a>, <a href="../symbols/SQL.html#update">update</a>, <a href="../symbols/SQL.html#variance">variance</a>, <a href="../symbols/SQL.html#varPop">varPop</a>, <a href="../symbols/SQL.html#varSamp">varSamp</a>, <a href="../symbols/SQL.html#where">where</a></dd>
+				</dl>
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Class Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>Dataset</b>()
+				</div>
+				
+				<div class="description">
+					
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name="all"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>all</b>(callback, errback)
+					
+					</div>
+					<div class="description">
+						Retrieve all rows from the query.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">
+dataset.all(function(r){
+    Do something....
+}, function(err){
+    Do something...
+});
+
+//OR
+
+dataset.all().then(function(r){
+    Do something....
+}, function(err){
+    Do something...
+});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>callback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed with the results.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>errback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed if an error occurs.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with results or the error if one occurs.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="first"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>first</b>(callback, errback)
+					
+					</div>
+					<div class="description">
+						Retrieve the first result from an ordered query.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">dataset.first(function(r){
+    Do something....
+}, function(err){
+    Do something...
+});
+
+//OR
+
+dataset.first().then(function(r){
+    Do something....
+}, function(err){
+    Do something...
+});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>callback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed with the row</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>errback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed if an error occurs.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with result or the error if one occurs.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="forEach"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>forEach</b>(callback, errback, scope)
+					
+					</div>
+					<div class="description">
+						Provide Array style looping a query results.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">dataset.forEach(function(r, i){
+    console.log("Row %d", i);
+});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>callback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed for each row returned.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>errback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed if an error occurs.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>scope</b>
+									<i>Optional</i>
+								</dt>
+								<dd>scope to execute the callback and errback in.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with results or the error if one occurs.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getLastInsertId"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>getLastInsertId</b>(callback, errback)
+					
+					</div>
+					<div class="description">
+						Retrieve the last inserted id from the database.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">
+dataset.getLastInsertId(function(r){
+    Do something....
+}, function(err){
+    Do something...
+});
+
+//OR
+
+dataset.getLastInsertId().then(function(r){
+    Do something....
+}, function(err){
+    Do something...
+});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>callback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed with the id</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>errback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed if an error occurs.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with id or the error if one occurs.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="last"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>last</b>(callback, errback)
+					
+					</div>
+					<div class="description">
+						Retrieve the last result from an ordered query. If the query is not ordered then the result is ambiguous.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">
+dataset.last(function(r){
+    Do something....
+}, function(err){
+    Do something...
+});
+
+//OR
+
+dataset.last().then(function(r){
+    Do something....
+}, function(err){
+    Do something...
+});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>callback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed with the row</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>errback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed if an error occurs.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with result or the error if one occurs.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="one"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>one</b>(callback, errback)
+					
+					</div>
+					<div class="description">
+						Retrieve one row result from the query.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">
+dataset.one(function(r){
+    Do something....
+}, function(err){
+    Do something...
+});
+
+//OR
+
+dataset.one().then(function(r){
+    Do something....
+}, function(err){
+    Do something...
+});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>callback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed with the row</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>errback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed if an error occurs.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with result or the error if one occurs.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="run"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>run</b>(callback, errback)
+					
+					</div>
+					<div class="description">
+						Alias for <a href="../symbols/Dataset.html#all">Dataset#all</a>
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>callback</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>errback</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="save"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>save</b>(callback, errback, callback, errback)
+					
+					</div>
+					<div class="description">
+						Save values to a table.
+
+</br>
+<b>This should not be used directly</b>
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>callback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed with the row</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>errback</b>
+									<i>Optional</i>
+								</dt>
+								<dd>executed if an error occurs.</dd>
+							
+								<dt>
+									<b>callback</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>errback</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with results or the error if one occurs.</dd>
+							
+							</dl>
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Wed May 18 2011 17:03:49 GMT-0500 (CDT)
+		</div>
+	</body>
+</html>

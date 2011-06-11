@@ -1,0 +1,6225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - SQL</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><a href="../symbols/_Association.html">_Association</a></li>
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/Dataset.html">Dataset</a></li>
+	
+	<li><a href="../symbols/ManyToMany.html">ManyToMany</a></li>
+	
+	<li><a href="../symbols/ManyToOne.html">ManyToOne</a></li>
+	
+	<li><a href="../symbols/MayToOne.html">MayToOne</a></li>
+	
+	<li><a href="../symbols/Migrations.html">Migrations</a></li>
+	
+	<li><a href="../symbols/Model.html">Model</a></li>
+	
+	<li><a href="../symbols/moose.html">moose</a></li>
+	
+	<li><a href="../symbols/moose.adapters.html">moose.adapters</a></li>
+	
+	<li><a href="../symbols/moose.adapters.mysql.html">moose.adapters.mysql</a></li>
+	
+	<li><a href="../symbols/moose.adapters.mysql.types.html">moose.adapters.mysql.types</a></li>
+	
+	<li><a href="../symbols/moose.plugins.html">moose.plugins</a></li>
+	
+	<li><a href="../symbols/moose.plugins.AssociationPlugin.html">moose.plugins.AssociationPlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.CachePlugin.html">moose.plugins.CachePlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.QueryPlugin.html">moose.plugins.QueryPlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.TimeStampPlugin.html">moose.plugins.TimeStampPlugin</a></li>
+	
+	<li><a href="../symbols/moose.Table.html">moose.Table</a></li>
+	
+	<li><a href="../symbols/OneToMany.html">OneToMany</a></li>
+	
+	<li><a href="../symbols/SQL.html">SQL</a></li>
+	
+	<li><a href="../symbols/Type.html">Type</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class SQL
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				Base class for all SQL database query types.
+This class is an abstract class for all SQL adapter implementations.
+
+An instance of SQL provides methods for querying, updating and removing a datase
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_sql.js.html">sql.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class SQL.">
+				<caption>Class Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/SQL.html#constructor">SQL</a></b>()
+							</div>
+							<div class="description"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class SQL.">
+					<caption>Field Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Field Attributes</th>
+							<th scope="col">Field Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/SQL.html#sql">sql</a></b>
+								</div>
+								<div class="description">the current sql query string.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class SQL.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.addColumn">addColumn</a></b>()
+								</div>
+								<div class="description">Create an add column statement
+<p><b>See your client adpater for parameters!</b></p></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.addForeignKey">addForeignKey</a></b>()
+								</div>
+								<div class="description">Create a add foreign key statement
+<p><b>See your client adpater for parameters!</b></p></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.addPrimaryKey">addPrimaryKey</a></b>()
+								</div>
+								<div class="description">Create a add primary key statement
+<p><b>See your client adpater for parameters!</b></p></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.addUnique">addUnique</a></b>()
+								</div>
+								<div class="description">Create a add unique constraint statement
+<p><b>See your client adpater for parameters!</b></p></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.alterColumn">alterColumn</a></b>()
+								</div>
+								<div class="description">Create an alter column statement
+<p><b>See your client adpater for parameters!</b></p></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.alterTable">alterTable</a></b>(table, db)
+								</div>
+								<div class="description">Alter a table.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#and">and</a></b>(options)
+								</div>
+								<div class="description">Add and operator, one does not need to call this but it is provided for clarity.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#avg">avg</a></b>(options)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#between">between</a></b>(options)
+								</div>
+								<div class="description">Add a between check for a column.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#bitAnd">bitAnd</a></b>(options)
+								</div>
+								<div class="description">Helper to add a bit and clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#bitOr">bitOr</a></b>(options)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#bitXor">bitXor</a></b>(options)
+								</div>
+								<div class="description">Helper to add a bit xor clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#clear">clear</a></b>()
+								</div>
+								<div class="description">Clear the current query.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#clearHaving">clearHaving</a></b>()
+								</div>
+								<div class="description">Clear the having clause from the query.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#clearLimit">clearLimit</a></b>()
+								</div>
+								<div class="description">Clear the limit clause on this SQL query</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#clearOffset">clearOffset</a></b>()
+								</div>
+								<div class="description">Removes the offset clause from a query.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#clearOrder">clearOrder</a></b>()
+								</div>
+								<div class="description">Clears the order clause</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#close">close</a></b>()
+								</div>
+								<div class="description">Close the connection.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.column">column</a></b>()
+								</div>
+								<div class="description">Create a column statement
+<p><b>See your client adpater for parameters!</b></p></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#count">count</a></b>(options)
+								</div>
+								<div class="description">Add a count cause to the select portion of the query.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.createTable">createTable</a></b>(table, db)
+								</div>
+								<div class="description">Create a table.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#crossJoin">crossJoin</a></b>(table)
+								</div>
+								<div class="description">Add a cross join to another table</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#distinct">distinct</a></b>()
+								</div>
+								<div class="description">Select on dinstict results, same is distinct clause in SQL statment.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.dropColumn">dropColumn</a></b>()
+								</div>
+								<div class="description">Create a drop column statement
+<p><b>See your client adpater for parameters!</b></p></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.dropForeignKey">dropForeignKey</a></b>()
+								</div>
+								<div class="description">Create a drop foreign key statement
+<p><b>See your client adpater for parameters!</b></p></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.dropPrimaryKey">dropPrimaryKey</a></b>()
+								</div>
+								<div class="description">Create a drop primary key statement
+<p><b>See your client adpater for parameters!</b></p></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.dropTable">dropTable</a></b>(table, db)
+								</div>
+								<div class="description">Drop a table.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.dropUnique">dropUnique</a></b>()
+								</div>
+								<div class="description">Create a drop unique constraint statement
+<p><b>See your client adpater for parameters!</b></p></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#end">end</a></b>()
+								</div>
+								<div class="description">Performs clean up to add any needed protions of a query if not provided.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#eq">eq</a></b>(options)
+								</div>
+								<div class="description">Use to find rows that equal a particular value</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#exec">exec</a></b>()
+								</div>
+								<div class="description">Executes the query, when finished the promise callback is called
+if the query errors then the promise error is called.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#find">find</a></b>(query)
+								</div>
+								<div class="description">This is a wrapper to enable using an object to query a dataset.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.foreignKey">foreignKey</a></b>()
+								</div>
+								<div class="description">Create a foreign key statement
+<p><b>See your client adpater for parameters!</b></p></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#format">format</a></b>(sql, array)
+								</div>
+								<div class="description">Formats and escapes query string.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.format">format</a></b>(sql, array)
+								</div>
+								<div class="description">Formats and escapes query string.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#fullJoin">fullJoin</a></b>(table, options)
+								</div>
+								<div class="description">Add a full join to another table</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#fullOuterJoin">fullOuterJoin</a></b>(table, options)
+								</div>
+								<div class="description">Add a full outer join to another table</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.getLastInsertId">getLastInsertId</a></b>(db)
+								</div>
+								<div class="description">Retrieve the last inserted id on a database.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#group">group</a></b>(key, having)
+								</div>
+								<div class="description">Perform a group operation.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#groupAndAvg">groupAndAvg</a></b>(key, having)
+								</div>
+								<div class="description">Helper to add a group and avg clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#groupAndBitAnd">groupAndBitAnd</a></b>(key, having)
+								</div>
+								<div class="description">Helper to add a group and bit and clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#groupAndBitOr">groupAndBitOr</a></b>(key, having)
+								</div>
+								<div class="description">Helper to add a group and bit or clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#groupAndBitXor">groupAndBitXor</a></b>(key, having)
+								</div>
+								<div class="description">Helper to add a group and bit xor clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#groupAndCount">groupAndCount</a></b>(key, having)
+								</div>
+								<div class="description">Helper to add a group and count clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#groupAndMax">groupAndMax</a></b>(key, having)
+								</div>
+								<div class="description">Helper to add a group and max clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#groupAndMin">groupAndMin</a></b>(key, having)
+								</div>
+								<div class="description">Helper to add a group and min clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#groupAndStd">groupAndStd</a></b>(key, having)
+								</div>
+								<div class="description">Helper to add a group and std clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#groupAndStdDev">groupAndStdDev</a></b>(key, having)
+								</div>
+								<div class="description">Helper to add a group and std dev clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#groupAndStdDevPop">groupAndStdDevPop</a></b>(key, having)
+								</div>
+								<div class="description">Helper to add a group and std dev pop clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#groupAndStdDevSamp">groupAndStdDevSamp</a></b>(key, having)
+								</div>
+								<div class="description">Helper to add a group and std dev samp clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#groupAndSum">groupAndSum</a></b>(key, having)
+								</div>
+								<div class="description">Helper to add a group and sum clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#groupAndVariance">groupAndVariance</a></b>(key, having)
+								</div>
+								<div class="description">Helper to add a group and variance clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#groupAndVarPop">groupAndVarPop</a></b>(key, having)
+								</div>
+								<div class="description">Helper to add a group and var pop clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#groupAndVarSamp">groupAndVarSamp</a></b>(key, having)
+								</div>
+								<div class="description">Helper to add a group and var samp clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#gt">gt</a></b>(options)
+								</div>
+								<div class="description">Use to find rows that are greater than a particular value</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#gte">gte</a></b>(options)
+								</div>
+								<div class="description">Add a check for a value greater than or equal to a particular value.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#having">having</a></b>(options)
+								</div>
+								<div class="description">Add a having clause, this is only valid on queries that contain a group clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#innerJoin">innerJoin</a></b>(table, options)
+								</div>
+								<div class="description">Add an inner join to another table</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#is">is</a></b>(options)
+								</div>
+								<div class="description">Specify an is clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#isNot">isNot</a></b>(options)
+								</div>
+								<div class="description">Add is not clause</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#isNotNull">isNotNull</a></b>(options)
+								</div>
+								<div class="description">Check if a column is not null.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#isNull">isNull</a></b>(options)
+								</div>
+								<div class="description">Add is null check</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.isValidType">isValidType</a></b>()
+								</div>
+								<div class="description">Check if a type is a valid type for this adapter.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#join">join</a></b>(table, options)
+								</div>
+								<div class="description">This is an alias for an inner join.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#leftJoin">leftJoin</a></b>(table, options)
+								</div>
+								<div class="description">Add a left join to another table</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#leftOuterJoin">leftOuterJoin</a></b>(table, options)
+								</div>
+								<div class="description">Add a left outer join to another table</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#like">like</a></b>(options)
+								</div>
+								<div class="description">Add a like clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#limit">limit</a></b>(limit, offset)
+								</div>
+								<div class="description">Use to limit the number of results returned.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#logicGroup">logicGroup</a></b>(query)
+								</div>
+								<div class="description">Add a logic group to a query.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#lt">lt</a></b>(options)
+								</div>
+								<div class="description">Add a check for a value less than a particular value.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#lte">lte</a></b>(options)
+								</div>
+								<div class="description">Add a check for a value less than or equal to a particular value.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#max">max</a></b>(options)
+								</div>
+								<div class="description">Helper to add a max clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#min">min</a></b>(options)
+								</div>
+								<div class="description">Helper to add a min clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#naturalJoin">naturalJoin</a></b>(table)
+								</div>
+								<div class="description">Add a natural join to another table</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#naturalLeftJoin">naturalLeftJoin</a></b>(table)
+								</div>
+								<div class="description">Add a natural left join to another table</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#naturalRightJoin">naturalRightJoin</a></b>(table)
+								</div>
+								<div class="description">Add a natural right join to another table</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#neq">neq</a></b>(options)
+								</div>
+								<div class="description">Use to find rows that have a column that do not equal a particular value.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#notBetween">notBetween</a></b>(@param)
+								</div>
+								<div class="description">Add a not between check for a column.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#notIn">notIn</a></b>(options)
+								</div>
+								<div class="description">Add a not in clause</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#notLike">notLike</a></b>(options)
+								</div>
+								<div class="description">Add a not like clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#offset">offset</a></b>(offset)
+								</div>
+								<div class="description">Specify an offset, offset says to skip that many rows
+before beginning to return rows to the client.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#or">or</a></b>(query)
+								</div>
+								<div class="description">Use to add an or clause</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#order">order</a></b>(options)
+								</div>
+								<div class="description">To be used with queries to specify an order of the result set.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#orderBy">orderBy</a></b>(options)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.primaryKey">primaryKey</a></b>()
+								</div>
+								<div class="description">Create a primary key statement
+<p><b>See your client adpater for parameters!</b></p></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#remove">remove</a></b>(tables, query)
+								</div>
+								<div class="description">Signify this SQL instance as a delete statement
+
+ <p><b>Cannot be used in combination with update, or find queries.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#rightJoin">rightJoin</a></b>(table, options)
+								</div>
+								<div class="description">Add a right join to another table</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#rightOuterJoin">rightOuterJoin</a></b>(table, options)
+								</div>
+								<div class="description">Add a right outer join to another table</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.save">save</a></b>(table, object, db)
+								</div>
+								<div class="description">Perform a batch insert into a table the objects.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.schema">schema</a></b>(tableName, db)
+								</div>
+								<div class="description">Retrieve and create a <a href="../symbols/moose.Table.html">moose.Table</a> from a schema stored in the database.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#select">select</a></b>(columns, options)
+								</div>
+								<div class="description">Use to return particular columns from a query, i.e.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#std">std</a></b>(options)
+								</div>
+								<div class="description">Helper to add a std clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#stdDev">stdDev</a></b>(options)
+								</div>
+								<div class="description">Helper to add a std dev clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#stdDevPop">stdDevPop</a></b>(options)
+								</div>
+								<div class="description">Helper to add a std dev clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#stdDevSamp">stdDevSamp</a></b>(options)
+								</div>
+								<div class="description">Helper to add a std dev samp clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#sum">sum</a></b>(options)
+								</div>
+								<div class="description">Helper to add a sum clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">SQL.<b><a href="../symbols/SQL.html#.unique">unique</a></b>()
+								</div>
+								<div class="description">Create a unique constraint statement
+<p><b>See your client adpater for parameters!</b></p></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#update">update</a></b>(values, query)
+								</div>
+								<div class="description">Signify this SQL instance as an update statement.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#variance">variance</a></b>(options)
+								</div>
+								<div class="description">Helper to add a variance clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#varPop">varPop</a></b>(options)
+								</div>
+								<div class="description">Helper to add a var pop clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#varSamp">varSamp</a></b>(options, options)
+								</div>
+								<div class="description">Helper to add a var samp clause.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/SQL.html#where">where</a></b>(options)
+								</div>
+								<div class="description">Set the where clause of the query.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Class Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>SQL</b>()
+				</div>
+				
+				<div class="description">
+					
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+				<div class="sectionTitle">
+					Field Detail
+				</div>
+				
+					<a name="sql"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{String}</span>
+					<b>sql</b>
+					
+					</div>
+					<div class="description">
+						the current sql query string.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name=".addColumn"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">SQL.</span><b>addColumn</b>()
+					
+					</div>
+					<div class="description">
+						Create an add column statement
+<p><b>See your client adpater for parameters!</b></p>
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".addForeignKey"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">SQL.</span><b>addForeignKey</b>()
+					
+					</div>
+					<div class="description">
+						Create a add foreign key statement
+<p><b>See your client adpater for parameters!</b></p>
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".addPrimaryKey"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">SQL.</span><b>addPrimaryKey</b>()
+					
+					</div>
+					<div class="description">
+						Create a add primary key statement
+<p><b>See your client adpater for parameters!</b></p>
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".addUnique"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">SQL.</span><b>addUnique</b>()
+					
+					</div>
+					<div class="description">
+						Create a add unique constraint statement
+<p><b>See your client adpater for parameters!</b></p>
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".alterColumn"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">SQL.</span><b>alterColumn</b>()
+					
+					</div>
+					<div class="description">
+						Create an alter column statement
+<p><b>See your client adpater for parameters!</b></p>
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".alterTable"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{comb.Promise}</span>
+					<span class="light">SQL.</span><b>alterTable</b>(table, db)
+					
+					</div>
+					<div class="description">
+						Alter a table.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/moose.Table.html">moose.Table</a>}</span> <b>table</b>
+									
+								</dt>
+								<dd>the table to alter on the database</dd>
+							
+								<dt>
+									<span class="light fixedFont">{moose.adapters.client.Query|moose.adapters.client.TransactionQuery}</span> <b>db</b>
+									
+								</dt>
+								<dd>the conneciton to the database.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with results or the error call back is called with an error.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="and"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>and</b>(options)
+					
+					</div>
+					<div class="description">
+						Add and operator, one does not need to call this but it is provided for clarity.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test where x <= 1 and y >= 1
+sql.lte({x : 1}).gte({y : 1});
+sql.lte({x : 1}).and({y : { gte : 1}});
+sql.lte({x : 1}).and().gte({y : 1});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									<i>Optional</i>
+								</dt>
+								<dd>query to append after the and.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="avg"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>avg</b>(options)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select avg(name) as name_avg from test
+sql.avg("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>options</b>
+									<i>Optional, Default: "*"</i>
+								</dt>
+								<dd>if a string is supplied
+then a avg is added for that particular columns, an array
+adds a avg for each column in the array.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="between"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>between</b>(options)
+					
+					</div>
+					<div class="description">
+						Add a between check for a column.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test where x >= 1 and x <= 5
+sql.between({x : [1,5]});
+//select * from test where x >= 'a' and x <= 'b'
+sql.find({x : {between : ["a","b"]}});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>options</b>
+									
+								</dt>
+								<dd>options key value pairs where the
+key is coulmn name and the value is an array of two
+values, first value in the array represents the gte
+value and the second value being the lte value.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="bitAnd"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>bitAnd</b>(options)
+					
+					</div>
+					<div class="description">
+						Helper to add a bit and clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select bit_and(name) as name_bit_and from test
+sql.bitAnd("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>options</b>
+									<i>Optional, Default: "*"</i>
+								</dt>
+								<dd>if a string is supplied
+then a bit and is added for that particular columns, an array
+adds a bit and for each column in the array.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="bitOr"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>bitOr</b>(options)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select bit_or(name) as name_bit_or from test
+sql.bitOr("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>options</b>
+									<i>Optional, Default: "*"</i>
+								</dt>
+								<dd>if a string is supplied
+then a bit or is added for that particular columns, an array
+adds a count for each column in the array.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="bitXor"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>bitXor</b>(options)
+					
+					</div>
+					<div class="description">
+						Helper to add a bit xor clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select bit_xor(name) as name_bit_xor from test
+sql.bitXor("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>options</b>
+									<i>Optional, Default: "*"</i>
+								</dt>
+								<dd>if a string is supplied
+then a bit xor is added for that particular columns, an array
+adds a bit xor for each column in the array.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="clear"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>clear</b>()
+					
+					</div>
+					<div class="description">
+						Clear the current query.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="clearHaving"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>clearHaving</b>()
+					
+					</div>
+					<div class="description">
+						Clear the having clause from the query.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="clearLimit"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>clearLimit</b>()
+					
+					</div>
+					<div class="description">
+						Clear the limit clause on this SQL query
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="clearOffset"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>clearOffset</b>()
+					
+					</div>
+					<div class="description">
+						Removes the offset clause from a query.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="clearOrder"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>clearOrder</b>()
+					
+					</div>
+					<div class="description">
+						Clears the order clause
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="close"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>close</b>()
+					
+					</div>
+					<div class="description">
+						Close the connection.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".column"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">SQL.</span><b>column</b>()
+					
+					</div>
+					<div class="description">
+						Create a column statement
+<p><b>See your client adpater for parameters!</b></p>
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="count"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>count</b>(options)
+					
+					</div>
+					<div class="description">
+						Add a count cause to the select portion of the query.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select count(name) as name_count from test
+sql.count("name");
+//select count(*) as count from test
+sql.count();</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>options</b>
+									<i>Optional, Default: "*"</i>
+								</dt>
+								<dd>if a string is supplied
+then a count is added for that particular columns, an array
+adds a count for each column in the array.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".createTable"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{comb.Promise}</span>
+					<span class="light">SQL.</span><b>createTable</b>(table, db)
+					
+					</div>
+					<div class="description">
+						Create a table.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/moose.Table.html">moose.Table</a>}</span> <b>table</b>
+									
+								</dt>
+								<dd>the table to create on the database</dd>
+							
+								<dt>
+									<span class="light fixedFont">{moose.adapters.client.Query|moose.adapters.client.TransactionQuery}</span> <b>db</b>
+									
+								</dt>
+								<dd>the conneciton to the database.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with results or the error call back is called with an error.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="crossJoin"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>crossJoin</b>(table)
+					
+					</div>
+					<div class="description">
+						Add a cross join to another table
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test cross join test2
+sql.crossJoin("test2");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|<a href="../symbols/SQL.html">SQL</a>}</span> <b>table</b>
+									
+								</dt>
+								<dd>the table or SQL clause that specifies the joining table.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="distinct"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>distinct</b>()
+					
+					</div>
+					<div class="description">
+						Select on dinstict results, same is distinct clause in SQL statment.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select distinct * from test where id = 1
+sql.find({id : 1}).distinct();
+//select distinct test.* from test inner join test2 on test.id=test2.id where test2.other = 1
+sql.join("test2", {id : "id"}).where({"test2.other" : 1}).select("test.*").distinct();</pre>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".dropColumn"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">SQL.</span><b>dropColumn</b>()
+					
+					</div>
+					<div class="description">
+						Create a drop column statement
+<p><b>See your client adpater for parameters!</b></p>
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".dropForeignKey"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">SQL.</span><b>dropForeignKey</b>()
+					
+					</div>
+					<div class="description">
+						Create a drop foreign key statement
+<p><b>See your client adpater for parameters!</b></p>
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".dropPrimaryKey"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">SQL.</span><b>dropPrimaryKey</b>()
+					
+					</div>
+					<div class="description">
+						Create a drop primary key statement
+<p><b>See your client adpater for parameters!</b></p>
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".dropTable"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{comb.Promise}</span>
+					<span class="light">SQL.</span><b>dropTable</b>(table, db)
+					
+					</div>
+					<div class="description">
+						Drop a table.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/moose.Table.html">moose.Table</a>}</span> <b>table</b>
+									
+								</dt>
+								<dd>the table to drop on the database</dd>
+							
+								<dt>
+									<span class="light fixedFont">{moose.adapters.client.Query|moose.adapters.client.TransactionQuery}</span> <b>db</b>
+									
+								</dt>
+								<dd>the conneciton to the database.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with results or the error call back is called with an error.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".dropUnique"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">SQL.</span><b>dropUnique</b>()
+					
+					</div>
+					<div class="description">
+						Create a drop unique constraint statement
+<p><b>See your client adpater for parameters!</b></p>
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="end"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>end</b>()
+					
+					</div>
+					<div class="description">
+						Performs clean up to add any needed protions of a query if not provided.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="eq"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>eq</b>(options)
+					
+					</div>
+					<div class="description">
+						Use to find rows that equal a particular value
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test where x = 0");
+sql.eq({x : 0});
+sql.find({x : 0});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>object with key\<column\> and value\<value it should equal\></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="exec"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>exec</b>()
+					
+					</div>
+					<div class="description">
+						Executes the query, when finished the promise callback is called
+if the query errors then the promise error is called.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with results or the error call back is called with an error.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="find"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>find</b>(query)
+					
+					</div>
+					<div class="description">
+						This is a wrapper to enable using an object to query a dataset.
+The hash can contain the name of any querying function as a key,
+and the value to look for as the value. When using find it signifies
+this SQL instance as a query.
+
+ <p><b>Cannot be used in combination with update, or remove queries.</b></p>
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">;</pre>
+					
+					<pre class="code"> var sql = new SQL("test", db);
+
+//select * from test
+sql.find();
+//select * from test where id = 1;
+sql.find({id : 1});
+//select * from test where x != 0
+sql.find({x : {neq : 0}});
+//select * from test where id in (1,2,3,4,5)
+sql.find({id : [1,2,3,4,5]});
+ //select distinct * from test where id = 1
+sql.find({id : 1}).distinct();
+//select * from test where a >= 'b' limit 1
+sql.find({a : {gte : "b"}}).limit(1);
+//select * from test where flag is unknown
+sql.find({flag : {is : "unknown"}});
+//select * from test where flag is not unknown
+sql.find({flag : {isNot : "unknown"}});
+//select * from test where flag is false and flag is not unknown and anotherFlag is null and yetAnotherFlag is not null
+sql.find({flag : {is : false}, flag2 : {isNot : "unknown"}, anotherFlag : {isNull : true}, yetAnotherFlag : {isNotNull : true}});
+//select * from test where firstName like 'bob' and lastName not like 'henry'
+sql.find({firstName : {like : 'bob'}, lastName : {notLike : "henry"}});
+//select * from test where firstName like 'bob' and lastName not like 'henry'
+sql.find({firstName : {like : 'bob'}, lastName : {notLike : "henry"}});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>query</b>
+									<i>Optional</i>
+								</dt>
+								<dd>query to limit result set.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".foreignKey"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">SQL.</span><b>foreignKey</b>()
+					
+					</div>
+					<div class="description">
+						Create a foreign key statement
+<p><b>See your client adpater for parameters!</b></p>
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="format"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{String}</span>
+					<b>format</b>(sql, array)
+					
+					</div>
+					<div class="description">
+						Formats and escapes query string.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>sql</b>
+									
+								</dt>
+								<dd>the sql to format</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>array</b>
+									
+								</dt>
+								<dd>of values to place in the query.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{String}</span> the formatted string.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".format"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{String}</span>
+					<span class="light">SQL.</span><b>format</b>(sql, array)
+					
+					</div>
+					<div class="description">
+						Formats and escapes query string.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>sql</b>
+									
+								</dt>
+								<dd>the sql to format</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>array</b>
+									
+								</dt>
+								<dd>of values to place in the query.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{String}</span> the formatted string.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="fullJoin"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>fullJoin</b>(table, options)
+					
+					</div>
+					<div class="description">
+						Add a full join to another table
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test full join test2 on test.id=test2.id
+sql.fullJoin("test2", {id : "id"});
+//select * from test full join test2 using (id, name)
+sql.fullJoin("test2", ["id", "name"]);</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|<a href="../symbols/SQL.html">SQL</a>}</span> <b>table</b>
+									
+								</dt>
+								<dd>the table or SQL clause that specifies the joining table.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array|Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>When an array is passed in the a using clause is used
+         to specify the columns to join on, of an object is passed in then it is the same as using an on clause;</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="fullOuterJoin"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>fullOuterJoin</b>(table, options)
+					
+					</div>
+					<div class="description">
+						Add a full outer join to another table
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test full outer join test2 on test.id=test2.id
+sql.fullOuterJoin("test2", {id : "id"});
+//select * from test full outer join test2 using (id, name)
+sql.fullOuterJoin("test2", ["id", "name"]);</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|<a href="../symbols/SQL.html">SQL</a>}</span> <b>table</b>
+									
+								</dt>
+								<dd>the table or SQL clause that specifies the joining table.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array|Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>When an array is passed in the a using clause is used
+         to specify the columns to join on, of an object is passed in then it is the same as using an on clause;</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".getLastInsertId"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{comb.Promise}</span>
+					<span class="light">SQL.</span><b>getLastInsertId</b>(db)
+					
+					</div>
+					<div class="description">
+						Retrieve the last inserted id on a database.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{moose.adapters.client.Query|moose.adapters.client.TransactionQuery}</span> <b>db</b>
+									
+								</dt>
+								<dd>the conneciton to the database.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with id or the error call back is called with an error.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="group"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>group</b>(key, having)
+					
+					</div>
+					<div class="description">
+						Perform a group operation.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test group by name
+sql.group("name");
+//select * from test group by name, age
+sql.group(["name", "age"]);
+//select * from test group by name having name = 'bob'
+sql.group("name", {name : "bob"});
+//select * from test group by name, age having age >= 10 and age <= 20
+sql.group(["name", "age"], {age : {between : [10, 20]}});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>key</b>
+									
+								</dt>
+								<dd>specify the columns to group on.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>having</b>
+									
+								</dt>
+								<dd>specify a having clause <a href="../symbols/SQL.html#having">SQL#having</a>.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="groupAndAvg"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>groupAndAvg</b>(key, having)
+					
+					</div>
+					<div class="description">
+						Helper to add a group and avg clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select *, avg(name) as name_avg from test group by name
+sql.groupAndAvg("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>key</b>
+									
+								</dt>
+								<dd>specify the columns to group and avg on.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>having</b>
+									
+								</dt>
+								<dd>specify a having clause <a href="../symbols/SQL.html#having">SQL#having</a>.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="groupAndBitAnd"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>groupAndBitAnd</b>(key, having)
+					
+					</div>
+					<div class="description">
+						Helper to add a group and bit and clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select *, bit_and(name) as name_bit_and from test group by name
+sql.groupAndBitAnd("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>key</b>
+									
+								</dt>
+								<dd>specify the columns to group and bit and on.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>having</b>
+									
+								</dt>
+								<dd>specify a having clause <a href="../symbols/SQL.html#having">SQL#having</a>.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="groupAndBitOr"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>groupAndBitOr</b>(key, having)
+					
+					</div>
+					<div class="description">
+						Helper to add a group and bit or clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select *, bit_or(name) as name_bit_or from test group by name
+sql.groupAndBitOr("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>key</b>
+									
+								</dt>
+								<dd>specify the columns to group and bit or on.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>having</b>
+									
+								</dt>
+								<dd>specify a having clause <a href="../symbols/SQL.html#having">SQL#having</a>.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="groupAndBitXor"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>groupAndBitXor</b>(key, having)
+					
+					</div>
+					<div class="description">
+						Helper to add a group and bit xor clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select *, bit_xor(name) as name_bit_xor from test group by name
+sql.groupAndBitXor("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>key</b>
+									
+								</dt>
+								<dd>specify the columns to group and bit xor on.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>having</b>
+									
+								</dt>
+								<dd>specify a having clause <a href="../symbols/SQL.html#having">SQL#having</a>.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="groupAndCount"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>groupAndCount</b>(key, having)
+					
+					</div>
+					<div class="description">
+						Helper to add a group and count clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select *, count(name) as name_count from test group by name
+sql.groupAndCount("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>key</b>
+									
+								</dt>
+								<dd>specify the columns to group and count on.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>having</b>
+									
+								</dt>
+								<dd>specify a having clause <a href="../symbols/SQL.html#having">SQL#having</a>.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="groupAndMax"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>groupAndMax</b>(key, having)
+					
+					</div>
+					<div class="description">
+						Helper to add a group and max clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select *, max(name) as name_max from test group by name
+sql.groupAndMax("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>key</b>
+									
+								</dt>
+								<dd>specify the columns to group and max on.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>having</b>
+									
+								</dt>
+								<dd>specify a having clause <a href="../symbols/SQL.html#having">SQL#having</a>.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="groupAndMin"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>groupAndMin</b>(key, having)
+					
+					</div>
+					<div class="description">
+						Helper to add a group and min clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select *, min(name) as name_min from test group by name
+sql.groupAndMin("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>key</b>
+									
+								</dt>
+								<dd>specify the columns to group and min on.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>having</b>
+									
+								</dt>
+								<dd>specify a having clause <a href="../symbols/SQL.html#having">SQL#having</a>.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="groupAndStd"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>groupAndStd</b>(key, having)
+					
+					</div>
+					<div class="description">
+						Helper to add a group and std clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select *, std(name) as name_std from test group by name
+sql.groupAndStd("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>key</b>
+									
+								</dt>
+								<dd>specify the columns to group and std on.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>having</b>
+									
+								</dt>
+								<dd>specify a having clause <a href="../symbols/SQL.html#having">SQL#having</a>.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="groupAndStdDev"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>groupAndStdDev</b>(key, having)
+					
+					</div>
+					<div class="description">
+						Helper to add a group and std dev clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select *, stddev(name) as name_stddev from test group by name
+sql.groupAndStdDev("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>key</b>
+									
+								</dt>
+								<dd>specify the columns to group and std dev on.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>having</b>
+									
+								</dt>
+								<dd>specify a having clause <a href="../symbols/SQL.html#having">SQL#having</a>.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="groupAndStdDevPop"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>groupAndStdDevPop</b>(key, having)
+					
+					</div>
+					<div class="description">
+						Helper to add a group and std dev pop clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select *, stddev_pop(name) as name_stddev_pop from test group by name
+sql.groupAndStdDevPop("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>key</b>
+									
+								</dt>
+								<dd>specify the columns to group and std dev pop on.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>having</b>
+									
+								</dt>
+								<dd>specify a having clause <a href="../symbols/SQL.html#having">SQL#having</a>.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="groupAndStdDevSamp"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>groupAndStdDevSamp</b>(key, having)
+					
+					</div>
+					<div class="description">
+						Helper to add a group and std dev samp clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select *, stddev_samp(name) as name_stddev_samp from test group by name
+sql.groupAndStdDevSamp("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>key</b>
+									
+								</dt>
+								<dd>specify the columns to group and std dev samp on.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>having</b>
+									
+								</dt>
+								<dd>specify a having clause <a href="../symbols/SQL.html#having">SQL#having</a>.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="groupAndSum"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>groupAndSum</b>(key, having)
+					
+					</div>
+					<div class="description">
+						Helper to add a group and sum clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">sql.groupAndSum("name");
+//select *, sum(name) as name_sum from test group by name</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>key</b>
+									
+								</dt>
+								<dd>specify the columns to group and sum on.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>having</b>
+									
+								</dt>
+								<dd>specify a having clause <a href="../symbols/SQL.html#having">SQL#having</a>.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="groupAndVariance"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>groupAndVariance</b>(key, having)
+					
+					</div>
+					<div class="description">
+						Helper to add a group and variance clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select *, variance(name) as name_variance from test group by name
+sql.groupAndVariance("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>key</b>
+									
+								</dt>
+								<dd>specify the columns to group and variance on.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>having</b>
+									
+								</dt>
+								<dd>specify a having clause <a href="../symbols/SQL.html#having">SQL#having</a>.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="groupAndVarPop"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>groupAndVarPop</b>(key, having)
+					
+					</div>
+					<div class="description">
+						Helper to add a group and var pop clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select *, var_pop(name) as name_var_pop from test group by name
+sql.groupAndVarPop("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>key</b>
+									
+								</dt>
+								<dd>specify the columns to group and var pop on.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>having</b>
+									
+								</dt>
+								<dd>specify a having clause <a href="../symbols/SQL.html#having">SQL#having</a>.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="groupAndVarSamp"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>groupAndVarSamp</b>(key, having)
+					
+					</div>
+					<div class="description">
+						Helper to add a group and var samp clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select *, var_samp(name) as name_var_samp from test group by name
+sql.groupAndVarSamp("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>key</b>
+									
+								</dt>
+								<dd>specify the columns to group and var samp on.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>having</b>
+									
+								</dt>
+								<dd>specify a having clause <a href="../symbols/SQL.html#having">SQL#having</a>.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="gt"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>gt</b>(options)
+					
+					</div>
+					<div class="description">
+						Use to find rows that are greater than a particular value
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test where x > 0
+sql.gt({x : 0});
+sql.find({x : {gt : 0}});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>keys values to add greater than checks for.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="gte"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>gte</b>(options)
+					
+					</div>
+					<div class="description">
+						Add a check for a value greater than or equal to a particular value.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test where x >= 0
+sql.gte({x : 0});
+sql.find({x : {gte : 0}});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>key values to add greater than or equal to checks.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="having"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>having</b>(options)
+					
+					</div>
+					<div class="description">
+						Add a having clause, this is only valid on queries that contain a group clause.
+
+Once a having clause has been added all query operations will be added to the having clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test group by name, age having age >= 10 and age <= 20
+sql.group(["name", "age"]).having({age : {between : [10, 20]}});
+//select * from test group by name, age having age >= 10 and age <= 20
+sql.group(["name", "age"]).having().find({age : {between : [10, 20]}});
+//select * from test group by name, age having age is null
+sql.group(["name", "age"]).having().isNull("age");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									<i>Optional</i>
+								</dt>
+								<dd>the query use on the having clause, same syntax as <a href="../symbols/SQL.html#find">SQL#find</a>, <a href="../symbols/SQL.html#where">SQL#where</a>;</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="innerJoin"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>innerJoin</b>(table, options)
+					
+					</div>
+					<div class="description">
+						Add an inner join to another table
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test inner join test2 on test.id=test2.id
+sql.innerJoin("test2", {id : "id"});
+//select * from test inner join test2 using (id, name)
+sql.innerJoin("test2", ["id", "name"]);</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|<a href="../symbols/SQL.html">SQL</a>}</span> <b>table</b>
+									
+								</dt>
+								<dd>the table or SQL clause that specifies the joining table.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array|Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>When an array is passed in the a using clause is used
+         to specify the columns to join on, of an object is passed in then it is the same as using an on clause;</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="is"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>is</b>(options)
+					
+					</div>
+					<div class="description">
+						Specify an is clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test where flag is true
+sql.is({flag : true});
+//select * from test where flag is false
+sql.is({flag : false});
+//select * from test where flag is null
+sql.is({flag : null});
+//select * from test where flag is unknown
+sql.is({flag : "unknown"});
+//select * from test where flag is true and otherFlag is false and anotherFlag is unknown and yetAnotherFlag is null
+sql.is({flag : true, otherFlag : false, anotherFlag : "unknown", yetAnotherFlag : null});
+//select * from test where flag is unknown
+sql.find({flag : {is : "unknown"}});
+//select * from test where flag is false and flag is not unknown and anotherFlag is null and yetAnotherFlag is not null
+sql.is({flag : false}).isNot({flag : "unknown"}).isNull("anotherFlag").isNotNull("yetAnotherFlag
+//select * from test where flag is not null and flag is true or flag is false
+sql.isNotNull("flag").is({flag : true}).or({flag : {is : false}});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>key value pairs to add is clauses for.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="isNot"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>isNot</b>(options)
+					
+					</div>
+					<div class="description">
+						Add is not clause
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">
+//select * from test where flag is not true
+sql.isNot({flag : true});
+//select * from test where flag is not false
+sql.isNot({flag : false});
+ //select * from test where flag is not null
+sql.isNot({flag : null});
+//select * from test where flag is not unknown
+sql.isNot({flag : "unknown"});
+//select * from test where flag is not true and otherFlag is not false and anotherFlag is not unknown and yetAnotherFlag is not null
+sql.isNot({flag : true, otherFlag : false, anotherFlag : "unknown", yetAnotherFlag : null});
+//select * from test where flag is not unknown
+sql.find({flag : {isNot : "unknown"}});
+//select * from test where flag is false and flag is not unknown and anotherFlag is null and yetAnotherFlag is not null
+sql.is({flag : false}).isNot({flag : "unknown"}).isNull("anotherFlag").isNotNull("yetAnotherFlag");
+sql.find({flag : {is : false}, flag2 : {isNot : "unknown"}, anotherFlag : {isNull : true}, yetAnotherFlag : {isNotNull : true}});
+//select * from test where flag is not null and flag is true or flag is false
+sql.isNotNull("flag").is({flag : true}).or({flag : {is : false}});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>key value pairs to add is not clauses for.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="isNotNull"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>isNotNull</b>(options)
+					
+					</div>
+					<div class="description">
+						Check if a column is not null.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test where flag is not null
+sql.isNotNull("flag");
+//select * from test where flag is false and flag is not unknown and anotherFlag is null and yetAnotherFlag is not null
+sql.is({flag : false}).isNot({flag : "unknown"}).isNull("anotherFlag").isNotNull("yetAnotherFlag
+//select * from test where flag is not null and flag is true or flag is false
+sql.isNotNull("flag").is({flag : true}).or({flag : {is : false}});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>options</b>
+									
+								</dt>
+								<dd>name of column to check.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="isNull"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>isNull</b>(options)
+					
+					</div>
+					<div class="description">
+						Add is null check
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code"> //select * from test where flag is null
+sql.isNull("flag");
+//select * from test where flag is false and flag is not unknown and anotherFlag is null and yetAnotherFlag is not null
+sql.is({flag : false}).isNot({flag : "unknown"}).isNull("anotherFlag").isNotNull("yetAnotherFlag
+//select * from test where flag is not null and flag is true or flag is false
+sql.isNotNull("flag").is({flag : true}).or({flag : {is : false}});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>options</b>
+									
+								</dt>
+								<dd>column to check is not null.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".isValidType"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Boolean}</span>
+					<span class="light">SQL.</span><b>isValidType</b>()
+					
+					</div>
+					<div class="description">
+						Check if a type is a valid type for this adapter.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Boolean}</span> true if it is a valid type, false otherwise.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="join"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>join</b>(table, options)
+					
+					</div>
+					<div class="description">
+						This is an alias for an inner join.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">
+//select * from test inner join test2 on test.id=test2.id
+ sql.join("test2", {id : "id"});
+//select * from test inner join test2 using (id, name)
+ sql.join("test2", ["id", "name"]);
+ //select * from test inner join test2 on test.id=test2.id left join test3 using (name)
+sql.join("test2", {id : "id"}).leftJoin("test3", ["name"]);
+//select * from test inner join test2 using (id, name) natural join test3
+sql.join("test2", ["id", "name"]).naturalJoin("test3
+//select * from test inner join test2 on test.id=test2.id left join test3 using (name) where x = 2 or x = 3
+sql.join("test2", {id : "id"}).leftJoin("test3", ["name"]).eq({x : 2}).or({x : 3});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|<a href="../symbols/SQL.html">SQL</a>}</span> <b>table</b>
+									
+								</dt>
+								<dd>the table or SQL clause that specifies the joining table.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array|Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>When an array is passed in the a using clause is used
+         to specify the columns to join on, of an object is passed in then it is the same as using an on clause;</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="leftJoin"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>leftJoin</b>(table, options)
+					
+					</div>
+					<div class="description">
+						Add a left join to another table
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test left join test2 on test.id=test2.id
+sql.leftJoin("test2", {id : "id"});
+//select * from test left join test2 using (id, name)
+sql.leftJoin("test2", ["id", "name"]);</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|<a href="../symbols/SQL.html">SQL</a>}</span> <b>table</b>
+									
+								</dt>
+								<dd>the table or SQL clause that specifies the joining table.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array|Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>When an array is passed in the a using clause is used
+         to specify the columns to join on, of an object is passed in then it is the same as using an on clause;</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="leftOuterJoin"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>leftOuterJoin</b>(table, options)
+					
+					</div>
+					<div class="description">
+						Add a left outer join to another table
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test left outer join test2 on test.id=test2.id
+sql.leftOuterJoin("test2", {id : "id"});
+//select * from test left outer join test2 using (id, name)
+sql.leftOuterJoin("test2", ["id", "name"]);</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|<a href="../symbols/SQL.html">SQL</a>}</span> <b>table</b>
+									
+								</dt>
+								<dd>the table or SQL clause that specifies the joining table.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array|Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>When an array is passed in the a using clause is used
+         to specify the columns to join on, of an object is passed in then it is the same as using an on clause;</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="like"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>like</b>(options)
+					
+					</div>
+					<div class="description">
+						Add a like clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test where name like 'bob'
+sql.like({name : "bob"});
+//select * from test where firstName like 'bob' and lastName not like 'henry'
+sql.find({firstName : {like : 'bob'}, lastName : {notLike : "henry"}});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>key, value pairs with the key representing a column,
+and the key represents the like condition.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="limit"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>limit</b>(limit, offset)
+					
+					</div>
+					<div class="description">
+						Use to limit the number of results returned.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test limit 1
+sql.limit(1);
+//select * from test limit 1 offset 10
+sql.limit(1, 10);
+//select * from test where a >= 'b' limit 1
+sql.find({a : {gte : "b"}}).limit(1);</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>limit</b>
+									
+								</dt>
+								<dd>the limit to specify on the query</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>offset</b>
+									<i>Optional</i>
+								</dt>
+								<dd><a href="../symbols/SQL.html#offset">SQL#offset</a></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="logicGroup"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>logicGroup</b>(query)
+					
+					</div>
+					<div class="description">
+						Add a logic group to a query. The query that is passed in will be wrapped in parens.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test where (flag is not null and x = 1) or (x = 2)
+sql.logicGroup({flag : {isNot : null}, x : 1}).or().logicGroup({x : 2});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>query</b>
+									
+								</dt>
+								<dd>query to group as one logical group;</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="lt"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>lt</b>(options)
+					
+					</div>
+					<div class="description">
+						Add a check for a value less than a particular value.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test where x < 1
+sql.lt({x : 1});
+sql.find({x : {lt : 1}});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>key values to add less than checks.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="lte"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>lte</b>(options)
+					
+					</div>
+					<div class="description">
+						Add a check for a value less than or equal to a particular value.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test where x <= 1
+sql.lte({x : 1});
+sql.find({x : {lte : 1}});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>key values to add less than or equal to checks.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="max"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>max</b>(options)
+					
+					</div>
+					<div class="description">
+						Helper to add a max clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select max(name) as name_max from test
+sql.max("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>options</b>
+									<i>Optional, Default: "*"</i>
+								</dt>
+								<dd>if a string is supplied
+then a max is added for that particular columns, an array
+adds a max for each column in the array.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="min"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>min</b>(options)
+					
+					</div>
+					<div class="description">
+						Helper to add a min clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select min(name) as name_min from test
+sql.min("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>options</b>
+									<i>Optional, Default: "*"</i>
+								</dt>
+								<dd>if a string is supplied
+then a min is added for that particular columns, an array
+adds a min for each column in the array.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="naturalJoin"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>naturalJoin</b>(table)
+					
+					</div>
+					<div class="description">
+						Add a natural join to another table
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test natural full join test2
+sql.naturalFullJoin("test2");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|<a href="../symbols/SQL.html">SQL</a>}</span> <b>table</b>
+									
+								</dt>
+								<dd>the table or SQL clause that specifies the joining table.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="naturalLeftJoin"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>naturalLeftJoin</b>(table)
+					
+					</div>
+					<div class="description">
+						Add a natural left join to another table
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test natural left join test2
+sql.naturalLeftJoin("test2");
+//select * from test natural join test2
+sql.naturalJoin("test2");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|<a href="../symbols/SQL.html">SQL</a>}</span> <b>table</b>
+									
+								</dt>
+								<dd>the table or SQL clause that specifies the joining table.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="naturalRightJoin"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>naturalRightJoin</b>(table)
+					
+					</div>
+					<div class="description">
+						Add a natural right join to another table
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test natural right join test2
+sql.naturalRightJoin("test2");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|<a href="../symbols/SQL.html">SQL</a>}</span> <b>table</b>
+									
+								</dt>
+								<dd>the table or SQL clause that specifies the joining table.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="neq"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>neq</b>(options)
+					
+					</div>
+					<div class="description">
+						Use to find rows that have a column that do not equal a particular value.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test where x != 0;
+sql.neq({x : 0});
+sql.find({x : {neq : 0}});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>key value pairs to find columns no equal to a value</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="notBetween"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>notBetween</b>(@param)
+					
+					</div>
+					<div class="description">
+						Add a not between check for a column.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test where x <= 1 and x >= 5
+sql.notBetween({x : [1,5]});
+//select * from test where x <= 'a' and x >= 'b'
+sql.notBetween({x : ["a","b"]});
+//select * from test where x <= 'a' and x >= 'b'
+sql.find({x : {notBetween : ["a","b"]}});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>@param</b>
+									
+								</dt>
+								<dd>options options key value pairs where the
+key is coulmn name and the value is an array of two
+values, first value in the array represents the lte
+value and the second value being the gte value.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="notIn"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>notIn</b>(options)
+					
+					</div>
+					<div class="description">
+						Add a not in clause
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test where id not in (1,2,3,4,5)
+sql.notIn({id : [1,2,3,4,5]});
+sql.find({id : {notIn : [1,2,3,4,5]}});
+//select * from test where id not in (1,2,3,4,5) and id2 in (6,7,8,9,10)
+sql.notIn({id : [1,2,3,4,5]}).in({id2 : [6,7,8,9,10]});
+//select * from test where id not in (1,2,3,4,5) and id2 not in (6,7,8,9,10)
+sql.notIn({id : [1,2,3,4,5], id2 : [6,7,8,9,10]});
+//select * from test where id not in (select id2 from test2 where name >= 'A' and name <= 'B')
+sql.notIn({id : new Mysql("test2", db).select("id2").between({name : ["A", "B"]})});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options key value pairs where the key is coulmn name and the value is an array of values.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="notLike"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>notLike</b>(options)
+					
+					</div>
+					<div class="description">
+						Add a not like clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test where name not like 'bob'
+sql.notLike({name : "bob"});
+//select * from test where firstName like 'bob' and lastName not like 'henry'
+sql.find({firstName : {like : 'bob'}, lastName : {notLike : "henry"}});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>key, value pairs with the key representing a column,
+and the key represents the not like condition.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="offset"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>offset</b>(offset)
+					
+					</div>
+					<div class="description">
+						Specify an offset, offset says to skip that many rows
+before beginning to return rows to the client. If both
+offset and limit are used, then offset rows are skipped
+before starting to count the limit rows that are returned
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test where a >= 'b' offset 10
+sql.find({a : {gte : "b"}}).offset(10);</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>offset</b>
+									
+								</dt>
+								<dd>the number to offset the result set by.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="or"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>or</b>(query)
+					
+					</div>
+					<div class="description">
+						Use to add an or clause
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test where x <= 1 and y >= 1
+ sql.lte({x : 1}).or({y : {gte : 1}});
+ sql.lte({x : 1}).or().gte({y : 1});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>query</b>
+									
+								</dt>
+								<dd>added after the or clause</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="order"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>order</b>(options)
+					
+					</div>
+					<div class="description">
+						To be used with queries to specify an order of the result set.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test order by x
+sql.order("x");
+//select * from test order by x desc
+sql.order({x : "desc"});
+//select * from test order by x, y
+sql.order(["x", "y"]);
+//select * from test order by x, y desc
+sql.order(["x", {y : "desc"}]);
+//select * from test order by x desc, y desc
+sql.order([{x : "desc"},{y : "desc"}]);
+//select * from test order by x, y, z desc
+sql.order("x").order("y").order({z : "desc"});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array|Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>see example for uses of each.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="orderBy"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>orderBy</b>(options)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>options</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".primaryKey"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">SQL.</span><b>primaryKey</b>()
+					
+					</div>
+					<div class="description">
+						Create a primary key statement
+<p><b>See your client adpater for parameters!</b></p>
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="remove"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>remove</b>(tables, query)
+					
+					</div>
+					<div class="description">
+						Signify this SQL instance as a delete statement
+
+ <p><b>Cannot be used in combination with update, or find queries.</b></p>
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//delete from test
+sql.remove();
+//delete from test where x >= 1 and x <= 5
+sql.remove(null, {x : {between : [1,5]}});
+//delete from test where x >= 1 and x <= 5
+sql.remove().where({x : {between : [1,5]}});
+//delete from test where x >= 1 and x <= 5
+sql.remove().find({x : {between : [1,5]}});
+//delete test from test inner join test2 on test.flag=test2.false
+sql.remove().join("test2", {flag : false});
+//delete test, test2 from test inner join test2 on test.flag=test2.false
+sql.remove("test2").join("test2", {flag : false});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>tables</b>
+									<i>Optional, Default: null</i>
+								</dt>
+								<dd>Should only be used to specify the removal of items from multiple tables.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>query</b>
+									<i>Optional</i>
+								</dt>
+								<dd>Use to limit the rows deleted <a href="../symbols/SQL.html#where">SQL#where</a></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="rightJoin"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>rightJoin</b>(table, options)
+					
+					</div>
+					<div class="description">
+						Add a right join to another table
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select * from test right join test2 on test.id=test2.id
+sql.rightJoin("test2", {id : "id"});
+//select * from test right join test2 using (id, name)
+sql.rightJoin("test2", ["id", "name"]);</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|<a href="../symbols/SQL.html">SQL</a>}</span> <b>table</b>
+									
+								</dt>
+								<dd>the table or SQL clause that specifies the joining table.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array|Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>When an array is passed in the a using clause is used
+         to specify the columns to join on, of an object is passed in then it is the same as using an on clause;</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="rightOuterJoin"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>rightOuterJoin</b>(table, options)
+					
+					</div>
+					<div class="description">
+						Add a right outer join to another table
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">sql.rightOuterJoin("test2", {id : "id"});
+//select * from test right outer join test2 on test.id=test2.id
+sql.rightOuterJoin("test2", ["id", "name"]);
+//select * from test right outer join test2 using (id, name);</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|<a href="../symbols/SQL.html">SQL</a>}</span> <b>table</b>
+									
+								</dt>
+								<dd>the table or SQL clause that specifies the joining table.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array|Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>When an array is passed in the a using clause is used
+         to specify the columns to join on, of an object is passed in then it is the same as using an on clause;</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".save"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{comb.Promise}</span>
+					<span class="light">SQL.</span><b>save</b>(table, object, db)
+					
+					</div>
+					<div class="description">
+						Perform a batch insert into a table the objects.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>table</b>
+									
+								</dt>
+								<dd>the name of the table</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>object</b>
+									
+								</dt>
+								<dd>the values to insert into the table</dd>
+							
+								<dt>
+									<span class="light fixedFont">{moose.adapters.client.Query|moose.adapters.client.TransactionQuery}</span> <b>db</b>
+									
+								</dt>
+								<dd>the conneciton to the database.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with results or the error call back is called with an error.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".schema"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{comb.Promise}</span>
+					<span class="light">SQL.</span><b>schema</b>(tableName, db)
+					
+					</div>
+					<div class="description">
+						Retrieve and create a <a href="../symbols/moose.Table.html">moose.Table</a> from a schema stored in the database.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>tableName</b>
+									
+								</dt>
+								<dd>name of the table</dd>
+							
+								<dt>
+									<span class="light fixedFont">{moose.adapters.client.Query|moose.adapters.client.TransactionQuery}</span> <b>db</b>
+									
+								</dt>
+								<dd>the conneciton to the database.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with <a href="../symbols/moose.Table.html">moose.Table</a> or the error call back is called with an error.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="select"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>select</b>(columns, options)
+					
+					</div>
+					<div class="description">
+						Use to return particular columns from a query, i.e. select clause in sql.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">var sql = new SQL("test", db);
+
+//select a, b, c from testTable;
+sql.select(["a", "b", "c"]);
+//select a from testTable;
+sql.select("a");
+//select a from test where x = 1 and y >=1 and y <= 10
+sql.select("a", {x : 1, y : {between : [1,10]}});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>columns</b>
+									
+								</dt>
+								<dd>the columns to select</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>query <a href="../symbols/SQL.html#find">SQL#find</a></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="std"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>std</b>(options)
+					
+					</div>
+					<div class="description">
+						Helper to add a std clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select std(name) as name_std from test
+sql.std("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>options</b>
+									<i>Optional, Default: "*"</i>
+								</dt>
+								<dd>if a string is supplied
+then a std is added for that particular columns, an array
+adds a std for each column in the array.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="stdDev"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>stdDev</b>(options)
+					
+					</div>
+					<div class="description">
+						Helper to add a std dev clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select stddev(name) as name_stddev from test
+sql.stdDev("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>options</b>
+									<i>Optional, Default: "*"</i>
+								</dt>
+								<dd>if a string is supplied
+then a std dev is added for that particular columns, an array
+adds a std dev for each column in the array.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="stdDevPop"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>stdDevPop</b>(options)
+					
+					</div>
+					<div class="description">
+						Helper to add a std dev clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select stddev_pop(name) as name_stddev_pop from test
+sql.stdDevPop("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>options</b>
+									<i>Optional, Default: "*"</i>
+								</dt>
+								<dd>if a string is supplied
+then a std dev pop is added for that particular columns, an array
+adds a std dev pop for each column in the array.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="stdDevSamp"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>stdDevSamp</b>(options)
+					
+					</div>
+					<div class="description">
+						Helper to add a std dev samp clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select stddev_samp(name) as name_stddev_samp from test
+sql.stdDevSamp("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>options</b>
+									<i>Optional, Default: "*"</i>
+								</dt>
+								<dd>if a string is supplied
+then a std dev samp is added for that particular columns, an array
+adds a std dev samp for each column in the array.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="sum"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>sum</b>(options)
+					
+					</div>
+					<div class="description">
+						Helper to add a sum clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select sum(name) as name_sum from test
+sql.sum("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>options</b>
+									<i>Optional, Default: "*"</i>
+								</dt>
+								<dd>if a string is supplied
+then a sum is added for that particular columns, an array
+adds a sum for each column in the array.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".unique"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">SQL.</span><b>unique</b>()
+					
+					</div>
+					<div class="description">
+						Create a unique constraint statement
+<p><b>See your client adpater for parameters!</b></p>
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="update"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>update</b>(values, query)
+					
+					</div>
+					<div class="description">
+						Signify this SQL instance as an update statement.
+
+<p><b>Cannot be used in combination with remove, or find queries.</b></p>
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//update test set x=1
+sql.update({x : 1});
+//update test set x=1 where x >= 1 and x <= 5
+sql.update({x : 1}, {x : {between : [1,5]}});
+//update test set x=1 where x >= 1 and x <= 5
+sql.update({x : 1}).where({x : {between : [1,5]}});
+//update test set x=1 where x >= 1 and x <= 5
+sql.update({x : 1}).find({x : {between : [1,5]}});
+//update test inner join test2 on test.flag=test2.false set x=1
+sql.update({x : 1}).join("test2", {flag : false});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>values</b>
+									
+								</dt>
+								<dd>key value pairs of columns, and values to update.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>query</b>
+									<i>Optional</i>
+								</dt>
+								<dd>optional query to allow limiting of rows to update <a href="../symbols/SQL.html#where">SQL#where</a></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="variance"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>variance</b>(options)
+					
+					</div>
+					<div class="description">
+						Helper to add a variance clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select variance(name) as name_variance from test
+sql.variance("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>options</b>
+									<i>Optional, Default: "*"</i>
+								</dt>
+								<dd>if a string is supplied
+then a variance is added for that particular columns, an array
+adds a variance for each column in the array.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="varPop"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>varPop</b>(options)
+					
+					</div>
+					<div class="description">
+						Helper to add a var pop clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select var_pop(name) as name_var_pop from test
+sql.varPop("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>options</b>
+									<i>Optional, Default: "*"</i>
+								</dt>
+								<dd>if a string is supplied
+then a var pop is added for that particular columns, an array
+adds a var pop for each column in the array.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="varSamp"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>varSamp</b>(options, options)
+					
+					</div>
+					<div class="description">
+						Helper to add a var samp clause.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//select var_samp(name) as name_var_samp from test
+sql.varSamp("name");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>options</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{String|Array}</span> <b>options</b>
+									<i>Optional, Default: "*"</i>
+								</dt>
+								<dd>if a string is supplied
+then a var samp is added for that particular columns, an array
+adds a var samp for each column in the array.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="where"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/SQL.html">SQL</a>}</span>
+					<b>where</b>(options)
+					
+					</div>
+					<div class="description">
+						Set the where clause of the query.
+This is different fron find in that it can be used with updates, and deletions.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">QUERYING
+
+var sql = new SQL("test", db);
+
+//select * from test where id = 1
+sql.where({id : 1});
+//select * from test where id in (1,2,3,4,5)
+sql.where({id : [1,2,3,4,5]});
+//select * from test where x != 0
+sql.where({x : {neq : 0}});
+//select distinct * from test where id = 1
+sql.where({id : 1}).distinct();
+//select * from test where a >= 'b' limit 1
+sql.where({a : {gte : "b"}}).limit(1);
+//select * from test where flag is unknown
+sql.where({flag : {is : "unknown"}});
+//select * from test where flag is not unknown
+sql.where({flag : {isNot : "unknown"}});
+//select * from test where flag is false and flag is not unknown and anotherFlag is null and yetAnotherFlag is not null
+sql.where({flag : {is : false}, flag2 : {isNot : "unknown"}, anotherFlag : {isNull : true}, yetAnotherFlag : {isNotNull : true}});
+//select * from test where firstName like 'bob' and lastName not like 'henry'
+sql.where({firstName : {like : 'bob'}, lastName : {notLike : "henry"}});
+//select * from test where firstName like 'bob' and lastName not like 'henry'
+sql.where({firstName : {like : 'bob'}, lastName : {notLike : "henry"}});</pre>
+					
+					<pre class="code">UPDATES
+
+//update test set x=1 where x >= 1 and x <= 5
+sql.update({x : 1}).where({x : {between : [1,5]}});</pre>
+					
+					<pre class="code">DELETIONS
+
+//delete from test where x >= 1 and x <= 5
+sql.remove().where({x : {between : [1,5]}});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>See <a href="../symbols/SQL.html#find">SQL#find</a></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/SQL.html">SQL</a>}</span> this to allow chaining of query elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Wed May 18 2011 17:03:49 GMT-0500 (CDT)
+		</div>
+	</body>
+</html>

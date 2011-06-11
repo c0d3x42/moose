@@ -1,0 +1,2322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - moose.adapters.mysql.types</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><a href="../symbols/_Association.html">_Association</a></li>
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/Dataset.html">Dataset</a></li>
+	
+	<li><a href="../symbols/ManyToMany.html">ManyToMany</a></li>
+	
+	<li><a href="../symbols/ManyToOne.html">ManyToOne</a></li>
+	
+	<li><a href="../symbols/MayToOne.html">MayToOne</a></li>
+	
+	<li><a href="../symbols/Migrations.html">Migrations</a></li>
+	
+	<li><a href="../symbols/Model.html">Model</a></li>
+	
+	<li><a href="../symbols/moose.html">moose</a></li>
+	
+	<li><a href="../symbols/moose.adapters.html">moose.adapters</a></li>
+	
+	<li><a href="../symbols/moose.adapters.mysql.html">moose.adapters.mysql</a></li>
+	
+	<li><a href="../symbols/moose.adapters.mysql.types.html">moose.adapters.mysql.types</a></li>
+	
+	<li><a href="../symbols/moose.plugins.html">moose.plugins</a></li>
+	
+	<li><a href="../symbols/moose.plugins.AssociationPlugin.html">moose.plugins.AssociationPlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.CachePlugin.html">moose.plugins.CachePlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.QueryPlugin.html">moose.plugins.QueryPlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.TimeStampPlugin.html">moose.plugins.TimeStampPlugin</a></li>
+	
+	<li><a href="../symbols/moose.Table.html">moose.Table</a></li>
+	
+	<li><a href="../symbols/OneToMany.html">OneToMany</a></li>
+	
+	<li><a href="../symbols/SQL.html">SQL</a></li>
+	
+	<li><a href="../symbols/Type.html">Type</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Namespace moose.adapters.mysql.types
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_index.js.html">index.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class moose.adapters.mysql.types.">
+				<caption>Namespace Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/moose.adapters.mysql.types.html#constructor">moose.adapters.mysql.types</a></b>
+							</div>
+							<div class="description"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class moose.adapters.mysql.types.">
+					<caption>Field Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Field Attributes</th>
+							<th scope="col">Field Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.NUMBER">NUMBER</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class moose.adapters.mysql.types.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.BIGINT">BIGINT</a></b>(options)
+								</div>
+								<div class="description">Mysql BIGINT datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.BOOL">BOOL</a></b>(options)
+								</div>
+								<div class="description">Mysql BOOL datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.BOOLEAN">BOOLEAN</a></b>(options)
+								</div>
+								<div class="description">Mysql BOOLEAN datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.CHAR">CHAR</a></b>(options)
+								</div>
+								<div class="description">Mysql CHAR datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.DATE">DATE</a></b>(options)
+								</div>
+								<div class="description">Mysql DATE datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.DATETIME">DATETIME</a></b>(options)
+								</div>
+								<div class="description">Mysql DATETIME datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.DECIMAL">DECIMAL</a></b>(options)
+								</div>
+								<div class="description">Mysql DECIMAL datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.DOUBLE">DOUBLE</a></b>(options)
+								</div>
+								<div class="description">Mysql DOUBLE datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.ENUM">ENUM</a></b>(options)
+								</div>
+								<div class="description">Mysql ENUM datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.FLOAT">FLOAT</a></b>(options)
+								</div>
+								<div class="description">Mysql FLOAT datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.INT">INT</a></b>(options)
+								</div>
+								<div class="description">Mysql INT datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.LONGTEXT">LONGTEXT</a></b>(options)
+								</div>
+								<div class="description">Mysql LONGTEXT datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.MEDIUMINT">MEDIUMINT</a></b>(options)
+								</div>
+								<div class="description">Mysql MEDIUMINT datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.MEDIUMTEXT">MEDIUMTEXT</a></b>(options)
+								</div>
+								<div class="description">Mysql MEDIUMTEXT datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.SET">SET</a></b>(options)
+								</div>
+								<div class="description">Mysql SET datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.SMALLINT">SMALLINT</a></b>(options)
+								</div>
+								<div class="description">Mysql SMALLINT datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.STRING">STRING</a></b>(options)
+								</div>
+								<div class="description">String alias for varchar datatype.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.TEXT">TEXT</a></b>(options)
+								</div>
+								<div class="description">Mysql TEXT datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.TIME">TIME</a></b>(options)
+								</div>
+								<div class="description">Mysql TIME datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.TIMESTAMP">TIMESTAMP</a></b>(options)
+								</div>
+								<div class="description">Mysql TIMESTAMP datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.TINYINT">TINYINT</a></b>(options)
+								</div>
+								<div class="description">Mysql TINYINT datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.TINYTEXT">TINYTEXT</a></b>(options)
+								</div>
+								<div class="description">Mysql TINYTEXT datatype</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">moose.adapters.mysql.types.<b><a href="../symbols/moose.adapters.mysql.types.html#.YEAR">YEAR</a></b>(options)
+								</div>
+								<div class="description">Mysql YEAR datatype</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Namespace Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>moose.adapters.mysql.types</b>
+				</div>
+				
+				<div class="description">
+					
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+				<div class="sectionTitle">
+					Field Detail
+				</div>
+				
+					<a name=".NUMBER"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">moose.adapters.mysql.types.</span><b>NUMBER</b>
+					
+					</div>
+					<div class="description">
+						
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_number.js.html">number.js</a>.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+							<dd></dd>
+							
+							</dl>
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name=".BIGINT"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>BIGINT</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql BIGINT datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_number.js.html">number.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the BIGINT data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.size</b>
+									<i>Optional</i>
+								</dt>
+								<dd>max size of the number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.unsigned</b>
+									<i>Optional, Default:  false</i>
+								</dt>
+								<dd>unsigned number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a BIGINT column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".BOOL"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>BOOL</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql BOOL datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_boolean.js.html">boolean.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the BOOL data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.unsigned</b>
+									<i>Optional, Default:  false</i>
+								</dt>
+								<dd>unsigned number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a BOOL column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".BOOLEAN"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>BOOLEAN</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql BOOLEAN datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_boolean.js.html">boolean.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the BOOLEAN data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.unsigned</b>
+									<i>Optional, Default:  false</i>
+								</dt>
+								<dd>unsigned number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a BOOLEAN column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".CHAR"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>CHAR</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql CHAR datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_string.js.html">string.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the CHAR data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.length</b>
+									<i>Optional, Default: 255</i>
+								</dt>
+								<dd>the length of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a CHAR column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".DATE"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>DATE</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql DATE datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_date.js.html">date.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the DATE data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.unsigned</b>
+									<i>Optional, Default:  false</i>
+								</dt>
+								<dd>unsigned number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a DATE column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".DATETIME"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>DATETIME</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql DATETIME datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_date.js.html">date.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the DATETIME data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.unsigned</b>
+									<i>Optional, Default:  false</i>
+								</dt>
+								<dd>unsigned number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a DATETIME column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".DECIMAL"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>DECIMAL</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql DECIMAL datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_number.js.html">number.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the DOUBLE data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.size</b>
+									<i>Optional</i>
+								</dt>
+								<dd>max size of the number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.digits</b>
+									<i>Optional</i>
+								</dt>
+								<dd>number of places right of the decimal</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.unsigned</b>
+									<i>Optional, Default:  false</i>
+								</dt>
+								<dd>unsigned number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a DOUBLE column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".DOUBLE"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>DOUBLE</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql DOUBLE datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_number.js.html">number.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the DOUBLE data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.size</b>
+									<i>Optional</i>
+								</dt>
+								<dd>max size of the number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.digits</b>
+									<i>Optional</i>
+								</dt>
+								<dd>number of places right of the decimal</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.unsigned</b>
+									<i>Optional, Default:  false</i>
+								</dt>
+								<dd>unsigned number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a DOUBLE column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".ENUM"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>ENUM</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql ENUM datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_string.js.html">string.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the TINYTEXT data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>options.enums</b>
+									
+								</dt>
+								<dd>the characters allowed for this ENUM</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.length</b>
+									<i>Optional</i>
+								</dt>
+								<dd>the length of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a ENUM column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".FLOAT"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>FLOAT</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql FLOAT datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_number.js.html">number.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the FLOAT data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.size</b>
+									<i>Optional</i>
+								</dt>
+								<dd>max size of the number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.digits</b>
+									<i>Optional</i>
+								</dt>
+								<dd>number of places right of the decimal</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.unsigned</b>
+									<i>Optional, Default:  false</i>
+								</dt>
+								<dd>unsigned number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a FLOAT column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".INT"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>INT</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql INT datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_number.js.html">number.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the INT data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.size</b>
+									<i>Optional</i>
+								</dt>
+								<dd>max size of the number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.unsigned</b>
+									<i>Optional, Default:  false</i>
+								</dt>
+								<dd>unsigned number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a INT column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".LONGTEXT"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>LONGTEXT</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql LONGTEXT datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_string.js.html">string.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the LONGTEXT data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.length</b>
+									<i>Optional</i>
+								</dt>
+								<dd>the length of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a LONGTEXT column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".MEDIUMINT"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>MEDIUMINT</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql MEDIUMINT datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_number.js.html">number.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the MEDIUMINT data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.size</b>
+									<i>Optional</i>
+								</dt>
+								<dd>max size of the number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.unsigned</b>
+									<i>Optional, Default:  false</i>
+								</dt>
+								<dd>unsigned number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a MEDIUMINT column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".MEDIUMTEXT"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>MEDIUMTEXT</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql MEDIUMTEXT datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_string.js.html">string.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the MEDIUMTEXT data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.length</b>
+									<i>Optional</i>
+								</dt>
+								<dd>the length of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a MEDIUMTEXT column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".SET"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>SET</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql SET datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_string.js.html">string.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the SET data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>options.enums</b>
+									
+								</dt>
+								<dd>the characters  allowed in this SET</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.length</b>
+									<i>Optional</i>
+								</dt>
+								<dd>the length of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a SET column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".SMALLINT"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>SMALLINT</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql SMALLINT datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_number.js.html">number.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the SMALLINT data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.size</b>
+									<i>Optional</i>
+								</dt>
+								<dd>max size of the number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.unsigned</b>
+									<i>Optional, Default:  false</i>
+								</dt>
+								<dd>unsigned number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a SMALLINT column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".STRING"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>STRING</b>(options)
+					
+					</div>
+					<div class="description">
+						String alias for varchar datatype.
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_string.js.html">string.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the STRING data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.length</b>
+									<i>Optional, Default: 255</i>
+								</dt>
+								<dd>the length of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a VARCHAR column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".TEXT"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>TEXT</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql TEXT datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_string.js.html">string.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the TEXT data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.length</b>
+									<i>Optional</i>
+								</dt>
+								<dd>the length of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a TEXT column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".TIME"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>TIME</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql TIME datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_date.js.html">date.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the TIME data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.unsigned</b>
+									<i>Optional, Default:  false</i>
+								</dt>
+								<dd>unsigned number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a TIME column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".TIMESTAMP"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>TIMESTAMP</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql TIMESTAMP datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_date.js.html">date.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the TIMESTAMP data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.unsigned</b>
+									<i>Optional, Default:  false</i>
+								</dt>
+								<dd>unsigned number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a TIMESTAMP column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".TINYINT"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>TINYINT</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql TINYINT datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_number.js.html">number.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the TINYINT data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.size</b>
+									<i>Optional</i>
+								</dt>
+								<dd>max size of the number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.unsigned</b>
+									<i>Optional, Default:  false</i>
+								</dt>
+								<dd>unsigned number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a TINYINT column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".TINYTEXT"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>TINYTEXT</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql TINYTEXT datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_string.js.html">string.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the TINYTEXT data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.length</b>
+									<i>Optional</i>
+								</dt>
+								<dd>the length of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a TINYTEXT column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".YEAR"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Type.html">Type</a>}</span>
+					<span class="light">moose.adapters.mysql.types.</span><b>YEAR</b>(options)
+					
+					</div>
+					<div class="description">
+						Mysql YEAR datatype
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_adapters_types_mysql_date.js.html">date.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for the YEAR data type.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.allowNull</b>
+									<i>Optional, Default: true</i>
+								</dt>
+								<dd>should the field allow null</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.default</b>
+									<i>Optional, Default:  null</i>
+								</dt>
+								<dd>default value of the field</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.unsigned</b>
+									<i>Optional, Default:  false</i>
+								</dt>
+								<dd>unsigned number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.description</b>
+									<i>Optional, Default:  ""</i>
+								</dt>
+								<dd>description fo the field.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Type.html">Type</a>}</span> A Type representing a YEAR column.</dd>
+							
+							</dl>
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Wed May 18 2011 17:03:49 GMT-0500 (CDT)
+		</div>
+	</body>
+</html>

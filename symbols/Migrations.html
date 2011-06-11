@@ -1,0 +1,810 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - Migrations</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><a href="../symbols/_Association.html">_Association</a></li>
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/Dataset.html">Dataset</a></li>
+	
+	<li><a href="../symbols/ManyToMany.html">ManyToMany</a></li>
+	
+	<li><a href="../symbols/ManyToOne.html">ManyToOne</a></li>
+	
+	<li><a href="../symbols/MayToOne.html">MayToOne</a></li>
+	
+	<li><a href="../symbols/Migrations.html">Migrations</a></li>
+	
+	<li><a href="../symbols/Model.html">Model</a></li>
+	
+	<li><a href="../symbols/moose.html">moose</a></li>
+	
+	<li><a href="../symbols/moose.adapters.html">moose.adapters</a></li>
+	
+	<li><a href="../symbols/moose.adapters.mysql.html">moose.adapters.mysql</a></li>
+	
+	<li><a href="../symbols/moose.adapters.mysql.types.html">moose.adapters.mysql.types</a></li>
+	
+	<li><a href="../symbols/moose.plugins.html">moose.plugins</a></li>
+	
+	<li><a href="../symbols/moose.plugins.AssociationPlugin.html">moose.plugins.AssociationPlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.CachePlugin.html">moose.plugins.CachePlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.QueryPlugin.html">moose.plugins.QueryPlugin</a></li>
+	
+	<li><a href="../symbols/moose.plugins.TimeStampPlugin.html">moose.plugins.TimeStampPlugin</a></li>
+	
+	<li><a href="../symbols/moose.Table.html">moose.Table</a></li>
+	
+	<li><a href="../symbols/OneToMany.html">OneToMany</a></li>
+	
+	<li><a href="../symbols/SQL.html">SQL</a></li>
+	
+	<li><a href="../symbols/Type.html">Type</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class Migrations
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				This is a plugin for moose to add migration functionality.
+Migrations are the preferred way of handling table creation, deletion, and altering.
+<p>Adds
+<ul>
+    <li>migrate - perform a migration</li>
+    <li>createTable - to create a new table</li>
+    <li>dropTable - drop a table</li>
+    <li>alterTable - alter an existing table</li>
+</ul>
+
+Migrations are done through files contained in a particular directory, the directory should only contain migrations.
+In order for moose to determine which versions to use
+the file names must end in <versionNumber>.js where versionNumber is a integer value representing the version num.
+An example directory structure might look like the following:
+
+<pre class="code">
+-migrations
+     - createFirstTables.1.js
+     - shortDescription.2.js
+     - another.3.js
+     .
+     .
+     .
+     -lastMigration.n.js
+</pre>
+
+In order to easily identify where certain schema alterations have taken place it is a good idea to provide a brief
+but meaningful migration name.
+
+createEmployee.1.js
+</br>
+
+In order to run a migraton all one has to do is call moose.migrate(options);
+
+<pre class="code">
+ moose.migrate({
+              connection : {user : "test", password : "testpass", database : 'test'}, //Connection information to connect to the database.
+              dir : "location of migrations", //Location of the directory containing the migrations.
+              start : 0,//What version to start migrating at.
+              end : 0,  //What version to stop migrations at.
+              up : true //set to true to go up in migrations, false to rollback
+ });
+</pre>
+
+<p>Example migration file</b>
+<pre class="code">
+
+//Up function used to migrate up a version
+exports.up = function() {
+  //create a new table
+  moose.createTable("company", function(table) {
+      //the table instance is passed in.
+      //add columns
+      table.column("id", types.INT({allowNull : false, autoIncrement : true}));
+      table.column("companyName", types.VARCHAR({length : 20, allowNull : false}));
+      //set the primary key
+      table.primaryKey("id");
+  });
+  moose.createTable("employee", function(table) {
+      table.column("id", types.INT({allowNull : false, autoIncrement : true}));
+      table.column("firstname", types.VARCHAR({length : 20, allowNull : false}));
+      table.column("lastname", types.VARCHAR({length : 20, allowNull : false}));
+      table.column("midinitial", types.CHAR({length : 1}));
+      table.column("gender", types.ENUM({enums : ["M", "F"], allowNull : false}));
+      table.column("street", types.VARCHAR({length : 50, allowNull : false}));
+      table.column("city", types.VARCHAR({length : 20, allowNull : false}));
+      table.primaryKey("id");
+  });
+
+  moose.createTable("companyEmployee", function(table) {
+      table.column("companyId", types.INT({allowNull : false}));
+      table.column("employeeId", types.INT({allowNull : false}));
+      table.primaryKey(["companyId", "employeeId"]);
+      table.foreignKey({companyId : {company : "id"}, employeeId : {employee : "id"}});
+  });
+  moose.createTable("works", function(table) {
+      table.column("id", types.INT({allowNull : false, autoIncrement : true}));
+      table.column("eid", types.INT({allowNull : false}));
+      table.column("companyName", types.VARCHAR({length : 20, allowNull : false}));
+      table.column("salary", types.DOUBLE({size : 8, digits : 2, allowNull : false}));
+      table.primaryKey("id");
+      table.foreignKey("eid", {employee : "id"});
+
+  });
+};
+
+//Down function used to migrate down version
+exports.down = function() {
+   moose.dropTable("companyEmployee");
+   moose.dropTable("works");
+   moose.dropTable("employee");
+   moose.dropTable("company");
+};
+</pre>
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_migrations.js.html">migrations.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Migrations.">
+				<caption>Class Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/Migrations.html#constructor">Migrations</a></b>()
+							</div>
+							<div class="description"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Migrations.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Migrations.html#alterTable">alterTable</a></b>(name, cb)
+								</div>
+								<div class="description">Alters a table</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Migrations.html#createTable">createTable</a></b>(tableName, cb)
+								</div>
+								<div class="description"><p>Creates a new table.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Migrations.html#dropTable">dropTable</a></b>(table)
+								</div>
+								<div class="description">Drops a table</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Migrations.html#migrate">migrate</a></b>(options)
+								</div>
+								<div class="description">Perform a migration.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Class Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>Migrations</b>()
+				</div>
+				
+				<div class="description">
+					
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name="alterTable"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>alterTable</b>(name, cb)
+					
+					</div>
+					<div class="description">
+						Alters a table
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">:
+
+moose.alterTable("test", function(table){
+    table.rename("test2");
+    table.addColumn("myColumn", types.STRING());
+});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>name</b>
+									
+								</dt>
+								<dd>The name of the table to alter.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>cb</b>
+									
+								</dt>
+								<dd>the function to execute with the table passed in as the first argument.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> There are two different results that the promise can be called back with.
+<ol>
+    <li>If a migration is currently being performed then the promise is called back with a
+    function that should be called to actually perform the migration.</li>
+    <li>If the called outside of a migration then the table is altered immediately and
+    the promise is called back with the result.</li>
+</ol></dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="createTable"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>createTable</b>(tableName, cb)
+					
+					</div>
+					<div class="description">
+						<p>Creates a new table. This function should be used while performing a migration.</p>
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">: moose.createTable("test", function(table){
+    table.column("id", types.INT())
+    table.primaryKey("id");
+});</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>tableName</b>
+									
+								</dt>
+								<dd>the name of the table to create</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Funciton}</span> <b>cb</b>
+									
+								</dt>
+								<dd>this funciton is callback with the table
+     - All table properties should be specified within this block</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> There are two different results that the promise can be called back with.
+<ol>
+    <li>If a migration is currently being performed then the promise is called back with a
+    function that should be called to actually perform the migration.</li>
+    <li>If the called outside of a migration then the table is created immediately and
+    the promise is called back with the result.</li>
+</ol></dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="dropTable"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>dropTable</b>(table)
+					
+					</div>
+					<div class="description">
+						Drops a table
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">: moose.dropTable("test");</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>table</b>
+									
+								</dt>
+								<dd>the name of the table</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> There are two different results that the promise can be called back with.
+<ol>
+    <li>If a migration is currently being performed then the promise is called back with a
+    function that should be called to actually perform the migration.</li>
+    <li>If the called outside of a migration then the table is dropped immediately and
+    the promise is called back with the result.</li>
+</ol></dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="migrate"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>migrate</b>(options)
+					
+					</div>
+					<div class="description">
+						Perform a migration.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code"> moose.migrate({
+              connection : {user : "test", password : "testpass", database : 'test'}, //Connection information to connect to the database.
+              dir : "location of migrations", //Location of the directory containing the migrations.
+              start : 0,//What version to start migrating at.
+              end : 0,  //What version to stop migrations at.
+              up : true //set to true to go up in migrations, false to rollback
+ });
+
+<p><b>NOTE</b></br>
+ If you start at 0 and end at 0 your migrations will inlude the file only at "migrationName".0.js
+ if you specify start : 0 and end 1 then your migrations will include files "migraiton0".0.js and "migration1".1.js,
+ the names being whatever you specify before the *.0 and *.1
+ </p>
+
+<p>Example migration file</b></pre>
+					
+					<pre class="code">
+//Up function used to migrate up a version
+exports.up = function() {
+  //create a new table
+  moose.createTable("company", function(table) {
+      //the table instance is passed in.
+      //add columns
+      table.column("id", types.INT({allowNull : false, autoIncrement : true}));
+      table.column("companyName", types.VARCHAR({length : 20, allowNull : false}));
+      //set the primary key
+      table.primaryKey("id");
+  });
+  moose.createTable("employee", function(table) {
+      table.column("id", types.INT({allowNull : false, autoIncrement : true}));
+      table.column("firstname", types.VARCHAR({length : 20, allowNull : false}));
+      table.column("lastname", types.VARCHAR({length : 20, allowNull : false}));
+      table.column("midinitial", types.CHAR({length : 1}));
+      table.column("gender", types.ENUM({enums : ["M", "F"], allowNull : false}));
+      table.column("street", types.VARCHAR({length : 50, allowNull : false}));
+      table.column("city", types.VARCHAR({length : 20, allowNull : false}));
+      table.primaryKey("id");
+  });
+
+  moose.createTable("companyEmployee", function(table) {
+      table.column("companyId", types.INT({allowNull : false}));
+      table.column("employeeId", types.INT({allowNull : false}));
+      table.primaryKey(["companyId", "employeeId"]);
+      table.foreignKey({companyId : {company : "id"}, employeeId : {employee : "id"}});
+  });
+  moose.createTable("works", function(table) {
+      table.column("id", types.INT({allowNull : false, autoIncrement : true}));
+      table.column("eid", types.INT({allowNull : false}));
+      table.column("companyName", types.VARCHAR({length : 20, allowNull : false}));
+      table.column("salary", types.DOUBLE({size : 8, digits : 2, allowNull : false}));
+      table.primaryKey("id");
+      table.foreignKey("eid", {employee : "id"});
+
+  });
+};
+
+//Down function used to migrate down version
+exports.down = function() {
+   moose.dropTable("companyEmployee");
+   moose.dropTable("works");
+   moose.dropTable("employee");
+   moose.dropTable("company");
+};</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd>the options to specify how to perform the migration.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options.connection</b>
+									
+								</dt>
+								<dd>: @see moose.createConnection</dd>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>options.dir</b>
+									
+								</dt>
+								<dd>Location of the directory where migrations are located.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>options.up</b>
+									<i>Optional, Default:  true</i>
+								</dt>
+								<dd>If true will migrate up otherwise down.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.start</b>
+									<i>Optional, Default:  0</i>
+								</dt>
+								<dd>The migration to start at.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>options.end</b>
+									<i>Optional, Default: Infinity</i>
+								</dt>
+								<dd>The migration to end at this, end is inclusive</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> Called back after all migrations have completed.</dd>
+							
+							</dl>
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Wed May 18 2011 17:03:49 GMT-0500 (CDT)
+		</div>
+	</body>
+</html>
