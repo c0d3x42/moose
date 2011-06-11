@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - Type</title>
+		<title>JsDoc Reference - moose.adapters.client.ConnectionPool</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -250,24 +250,26 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class Type
+				Class moose.adapters.client.ConnectionPool
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
 			<p class="description">
 				
+				<br />Extends
+					comb.collections.Pool.<br />
 				
 			
-				Represents a mysql datatype. This Class should not be instantiated directly!
+				Base class for all connection pools
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/lib_adapters_types_mysql_index.js.html">index.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/lib_adapters_clients_ConnectionPool.js.html">ConnectionPool.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Type.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class moose.adapters.client.ConnectionPool.">
 				<caption>Class Summary</caption>
 				<thead>
 					<tr>
@@ -280,7 +282,7 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/Type.html#constructor">Type</a></b>()
+								<b><a href="../symbols/moose.adapters.client.ConnectionPool.html#constructor">moose.adapters.client.ConnectionPool</a></b>()
 							</div>
 							<div class="description"></div>
 						</td>
@@ -291,40 +293,12 @@ ul.inheritsList
 
 <!-- ============================== properties summary ===================== -->
 			
-				
-				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class Type.">
-					<caption>Field Summary</caption>
-					<thead>
-						<tr>
-							<th scope="col">Field Attributes</th>
-							<th scope="col">Field Name and Description</th>
-						</tr>
-					</thead>
-					<tbody>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/Type.html#sql">sql</a></b>
-								</div>
-								<div class="description">the column definition of this Type.</div>
-							</td>
-						</tr>
-					
-					</tbody>
-				</table>
-				
-				
-				
-			
 
 <!-- ============================== methods summary ======================== -->
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Type.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class moose.adapters.client.ConnectionPool.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -337,45 +311,73 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Type.html#check">check</a></b>(value)
+								<div class="fixedFont"><b><a href="../symbols/moose.adapters.client.ConnectionPool.html#closeConnection">closeConnection</a></b>(conn)
 								</div>
-								<div class="description">Checks a value against this Type column definition.</div>
+								<div class="description">Override to implement close connection functionality;</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Type.html#fromSql">fromSql</a></b>(val)
+								<div class="fixedFont"><b><a href="../symbols/moose.adapters.client.ConnectionPool.html#createConnection">createConnection</a></b>()
 								</div>
-								<div class="description">Convert an SQL value to the javascript equivalent.</div>
+								<div class="description">Override to create connections to insert into this ConnectionPool.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Type.html#isPrimaryKey">isPrimaryKey</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/moose.adapters.client.ConnectionPool.html#endAll">endAll</a></b>()
 								</div>
-								<div class="description">Is this Type a primary key.</div>
+								<div class="description">Override to implement the closing of all connections.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Type.html#set">set</a></b>(name, value)
+								<div class="fixedFont"><b><a href="../symbols/moose.adapters.client.ConnectionPool.html#getConnection">getConnection</a></b>()
 								</div>
-								<div class="description">Set a property on this Type, such as isNull, unique, default etc.</div>
+								<div class="description">Performs a query on one of the connection in this Pool.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Type.html#toSql">toSql</a></b>(val)
+								<div class="fixedFont"><b><a href="../symbols/moose.adapters.client.ConnectionPool.html#removeConnection">removeConnection</a></b>(conn)
 								</div>
-								<div class="description">Converts a javacript value to the corresponding sql equivalent.</div>
+								<div class="description">Removes a connection from the pool.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/moose.adapters.client.ConnectionPool.html#returnConnection">returnConnection</a></b>(connection)
+								</div>
+								<div class="description">Return a connection to the pool.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/moose.adapters.client.ConnectionPool.html#returnObject">returnObject</a></b>(connection)
+								</div>
+								<div class="description">Override comb.collections.Pool to allow async validation to allow
+pools to do any calls to reset a connection if it needs to be done.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/moose.adapters.client.ConnectionPool.html#validate">validate</a></b>(connection)
+								</div>
+								<div class="description">Override to provide any additional validation.</div>
 							</td>
 						</tr>
 					
@@ -396,7 +398,7 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>Type</b>()
+						<b>moose.adapters.client.ConnectionPool</b>()
 				</div>
 				
 				<div class="description">
@@ -420,33 +422,6 @@ ul.inheritsList
 
 <!-- ============================== field details ========================== -->		
 			
-				<div class="sectionTitle">
-					Field Detail
-				</div>
-				
-					<a name="sql"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{String}</span>
-					<b>sql</b>
-					
-					</div>
-					<div class="description">
-						the column definition of this Type.
-						
-						
-					</div>
-					
-					
-
-						
-						
-						
-						
-
-					
-				
-			
 
 <!-- ============================== method details ========================= -->		
 			
@@ -454,15 +429,15 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name="check"> </a>
+					<a name="closeConnection"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{Boolean}</span>
-					<b>check</b>(value)
+					<span class="light">{comb.Promise}</span>
+					<b>closeConnection</b>(conn)
 					
 					</div>
 					<div class="description">
-						Checks a value against this Type column definition.
+						Override to implement close connection functionality;
 						
 						
 					</div>
@@ -474,10 +449,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{*}</span> <b>value</b>
+									<span class="light fixedFont">{*}</span> <b>conn</b>
 									
 								</dt>
-								<dd>the value to check.</dd>
+								<dd>the connection to close;</dd>
 							
 							</dl>
 						
@@ -488,7 +463,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Boolean}</span> true if the value is valid.</dd>
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back when the connection is closed.</dd>
 							
 							</dl>
 						
@@ -497,15 +472,140 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name="fromSql"> </a>
+					<a name="createConnection"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>createConnection</b>()
+					
+					</div>
+					<div class="description">
+						Override to create connections to insert into this ConnectionPool.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="endAll"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>endAll</b>()
+					
+					</div>
+					<div class="description">
+						Override to implement the closing of all connections.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> called when all connections are closed.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getConnection"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{comb.Promise}</span>
+					<b>getConnection</b>()
+					
+					</div>
+					<div class="description">
+						Performs a query on one of the connection in this Pool.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{comb.Promise}</span> A promise to called back with a connection.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="removeConnection"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>removeConnection</b>(conn)
+					
+					</div>
+					<div class="description">
+						Removes a connection from the pool.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>conn</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="returnConnection"> </a>
 					<div class="fixedFont">
 					
 					<span class="light">{*}</span>
-					<b>fromSql</b>(val)
+					<b>returnConnection</b>(connection)
 					
 					</div>
 					<div class="description">
-						Convert an SQL value to the javascript equivalent. This method will do a type check after the conversionn.
+						Return a connection to the pool.
 						
 						
 					</div>
@@ -517,10 +617,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>val</b>
+									<span class="light fixedFont">{*}</span> <b>connection</b>
 									
 								</dt>
-								<dd>the sql string to convert.</dd>
+								<dd>the connection to return.</dd>
 							
 							</dl>
 						
@@ -531,7 +631,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> the javascript value.</dd>
+								<dd><span class="light fixedFont">{*}</span> an adapter specific connection.</dd>
 							
 							</dl>
 						
@@ -540,47 +640,16 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name="isPrimaryKey"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{Boolean}</span>
-					<b>isPrimaryKey</b>()
-					
-					</div>
-					<div class="description">
-						Is this Type a primary key.
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{Boolean}</span> true if this Type is a primary key.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="set"> </a>
+					<a name="returnObject"> </a>
 					<div class="fixedFont">
 					
 					
-					<b>set</b>(name, value)
+					<b>returnObject</b>(connection)
 					
 					</div>
 					<div class="description">
-						Set a property on this Type, such as isNull, unique, default etc...
+						Override comb.collections.Pool to allow async validation to allow
+pools to do any calls to reset a connection if it needs to be done.
 						
 						
 					</div>
@@ -592,16 +661,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>name</b>
+									<span class="light fixedFont">{*}</span> <b>connection</b>
 									
 								</dt>
-								<dd>the name of the property.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{*}</span> <b>value</b>
-									
-								</dt>
-								<dd>the value to set it to.</dd>
+								<dd>the connection to return.</dd>
 							
 							</dl>
 						
@@ -614,16 +677,15 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name="toSql"> </a>
+					<a name="validate"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{String}</span>
-					<b>toSql</b>(val)
+					<span class="light">{comb.Promise}</span>
+					<b>validate</b>(connection)
 					
 					</div>
 					<div class="description">
-						Converts a javacript value to the corresponding sql equivalent.
-This function does a type check on the value before conversion, if it is not the right type an error is thrown.
+						Override to provide any additional validation. By default the promise is called back with true.
 						
 						
 					</div>
@@ -635,10 +697,10 @@ This function does a type check on the value before conversion, if it is not the
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{*}</span> <b>val</b>
+									<span class="light fixedFont">{*}</span> <b>connection</b>
 									
 								</dt>
-								<dd>the javacript value to convert</dd>
+								<dd>the conneciton to validate.</dd>
 							
 							</dl>
 						
@@ -649,7 +711,7 @@ This function does a type check on the value before conversion, if it is not the
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{String}</span> the sql value.</dd>
+								<dd><span class="light fixedFont">{comb.Promise}</span> called back with a valid or invalid state.</dd>
 							
 							</dl>
 						
