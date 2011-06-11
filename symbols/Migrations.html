@@ -209,6 +209,16 @@ ul.inheritsList
 	
 	<li><a href="../symbols/moose.adapters.html">moose.adapters</a></li>
 	
+	<li><a href="../symbols/moose.adapters.client.Client.html">moose.adapters.client.Client</a></li>
+	
+	<li><a href="../symbols/moose.adapters.client.ConnectionPool.html">moose.adapters.client.ConnectionPool</a></li>
+	
+	<li><a href="../symbols/moose.adapters.client.mysql.ConnectionPool.html">moose.adapters.client.mysql.ConnectionPool</a></li>
+	
+	<li><a href="../symbols/moose.adapters.client.mysql.Query.html">moose.adapters.client.mysql.Query</a></li>
+	
+	<li><a href="../symbols/moose.adapters.client.mysql.TransactionQuery.html">moose.adapters.client.mysql.TransactionQuery</a></li>
+	
 	<li><a href="../symbols/moose.adapters.mysql.html">moose.adapters.mysql</a></li>
 	
 	<li><a href="../symbols/moose.adapters.mysql.types.html">moose.adapters.mysql.types</a></li>
@@ -344,7 +354,7 @@ exports.down = function() {
 </pre>
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/_Users_pollen_gitProjects_moose_lib_migrations.js.html">migrations.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/lib_migrations.js.html">migrations.js</a>.
 				
 			</p>
 
@@ -392,7 +402,7 @@ exports.down = function() {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Migrations.html#alterTable">alterTable</a></b>(name, cb)
+								<div class="fixedFont"><b><a href="../symbols/Migrations.html#alterTable">alterTable</a></b>(name, database, cb)
 								</div>
 								<div class="description">Alters a table</div>
 							</td>
@@ -410,7 +420,7 @@ exports.down = function() {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Migrations.html#dropTable">dropTable</a></b>(table)
+								<div class="fixedFont"><b><a href="../symbols/Migrations.html#dropTable">dropTable</a></b>(table, database)
 								</div>
 								<div class="description">Drops a table</div>
 							</td>
@@ -477,7 +487,7 @@ exports.down = function() {
 					<div class="fixedFont">
 					
 					<span class="light">{comb.Promise}</span>
-					<b>alterTable</b>(name, cb)
+					<b>alterTable</b>(name, database, cb)
 					
 					</div>
 					<div class="description">
@@ -490,7 +500,14 @@ exports.down = function() {
 					
 					<pre class="code">:
 
+//alter table in default database
 moose.alterTable("test", function(table){
+    table.rename("test2");
+    table.addColumn("myColumn", types.STRING());
+});
+
+//alter table in another database
+moose.alterTable("test", "otherDB", function(table){
     table.rename("test2");
     table.addColumn("myColumn", types.STRING());
 });</pre>
@@ -506,6 +523,13 @@ moose.alterTable("test", function(table){
 									
 								</dt>
 								<dd>The name of the table to alter.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>database</b>
+									<i>Optional</i>
+								</dt>
+								<dd>the database that the table resides in, if a database is not
+                           provided then the default database is used.</dd>
 							
 								<dt>
 									<span class="light fixedFont">{Function}</span> <b>cb</b>
@@ -546,13 +570,22 @@ moose.alterTable("test", function(table){
 					</div>
 					<div class="description">
 						<p>Creates a new table. This function should be used while performing a migration.</p>
+<p>If the table should be created in another DB then the table should have the database set on it.</p>
 						
 						
 					</div>
 					
 					
 					
-					<pre class="code">: moose.createTable("test", function(table){
+					<pre class="code">//default database table creation
+moose.createTable("test", function(table){
+    table.column("id", types.INT())
+    table.primaryKey("id");
+});
+
+//create a table in another database
+moose.createTable("test", function(table){
+    table.database = "otherDB";
     table.column("id", types.INT())
     table.primaryKey("id");
 });</pre>
@@ -604,7 +637,7 @@ moose.alterTable("test", function(table){
 					<div class="fixedFont">
 					
 					<span class="light">{comb.Promise}</span>
-					<b>dropTable</b>(table)
+					<b>dropTable</b>(table, database)
 					
 					</div>
 					<div class="description">
@@ -615,7 +648,12 @@ moose.alterTable("test", function(table){
 					
 					
 					
-					<pre class="code">: moose.dropTable("test");</pre>
+					<pre class="code">
+//drop table in default database
+moose.dropTable("test");
+
+//drop table in another database.
+moose.dropTable("test", "otherDB");</pre>
 					
 					
 					
@@ -628,6 +666,13 @@ moose.alterTable("test", function(table){
 									
 								</dt>
 								<dd>the name of the table</dd>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>database</b>
+									<i>Optional</i>
+								</dt>
+								<dd>the database that the table resides in, if a database is not
+                           provided then the default database is used.</dd>
 							
 							</dl>
 						
@@ -804,7 +849,7 @@ exports.down = function() {
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Wed May 18 2011 17:03:49 GMT-0500 (CDT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sat Jun 11 2011 03:16:39 GMT-0500 (CDT)
 		</div>
 	</body>
 </html>
