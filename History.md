@@ -1,4 +1,4 @@
-0.0.2 / 2010-01-10
+0.0.2 / 2010-06-11
 ==================
 
   * Added custom ConnectionPool
@@ -8,7 +8,7 @@
   * Updated documentation
   * Updated Readme
 
-0.0.1 / 2011-20-0
+0.0.1 / 2011-05-19
 ==================
 
   * Initial release
